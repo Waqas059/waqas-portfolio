@@ -1,1 +1,265 @@
-<!doctype html> <html lang="en"> <head> <meta charset="utf-8" /> <meta name="viewport" content="width=device-width, initial-scale=1" /> <title>Waqas Arshad — Product Management & Innovation</title> <meta name="description" content="Senior Product Manager (CPaaS / SaaS). Portfolio, resume, courses, and contact." /> <!-- Fonts --> <link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Great+Vibes&display=swap" rel="stylesheet"> <style> :root{ --bg:#0b0e11; --fg:#e6edf3; --muted:#a7b0bd; --line:#1a202c; --accent:#f1c40f; /* gold highlight */ --card:#10151c; --pill:#162233; --shadow:0 8px 30px rgba(0,0,0,.25); } *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)} /* ===== Top Tabs (solid black like reference) ===== */ /* ===== Top Tabs (transparent over hero image) ===== */ .tabs{ position: fixed; top: 0; left: 0; right: 0; z-index: 60; background: transparent !important; /* remove black background */ border: none !important; box-shadow: none !important; } .tabs::before, .tabs::after{ content: none !important; } .tabs .inner{ max-width: 1200px; margin: 0 auto; display: flex; gap: 28px; align-items: center; justify-content: center; padding: 18px 20px; } .tabs a{ letter-spacing: .08em; text-transform: uppercase; text-decoration: none; color: #fff; font-weight: 800; font-size: 14px; text-shadow: 0 1px 3px rgba(0,0,0,.6); /* keep readable */ } .tabs a.active, .tabs a:hover{ color: var(--accent); } .tabs .inner{max-width:1200px;margin:0 auto;display:flex;gap:28px;align-items:center;justify-content:center;padding:14px 20px} .tabs a{letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#fff;opacity:.95;font-weight:800;font-size:14px} .tabs a.active,.tabs a:hover{color:var(--accent)} /* ===== Hero ===== */ .hero{min-height:100svh;position:relative;display:grid;place-items:center;text-align:center} .hero::before{ content:"";position:absolute;inset:0; background:url('replicate-prediction-d6z8q2mggdrmc0crttwagsyhv4.png') center/cover no-repeat; filter:brightness(.45); } .hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 18px 60px} .hero-name{font-family:"Great Vibes",cursive;font-size:76px;line-height:1.05;color:#fff;margin:0 0 10px} .hero-role{ margin:0; color:#ffffff; opacity:.95; letter-spacing:.08em; /* tighter spacing like reference */ text-transform:uppercase; font-weight:400; /* NOT bold */ font-size:16px; } .down{ position:absolute;left:50%;bottom:28px;transform:translateX(-50%); width:44px;height:44px;border:2px solid #ffffff;border-radius:50%; color:#ffffff;display:grid;place-items:center;text-decoration:none;font-size:22px;background:transparent; } /* ===== Sections ===== */ section{scroll-margin-top:70px} .wrap{max-width:1100px;margin:0 auto;padding:70px 18px} h2{margin:0 0 14px;font-size:28px} .card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:22px} .muted{color:var(--muted)} .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px} .pill{display:inline-block;background:var(--pill);border:1px solid var(--line);padding:6px 10px;border-radius:999px;color:#b2bfd0;font-size:12px;margin:4px 6px 0 0} .resume-item{border:1px solid var(--line);background:#0e141c;border-radius:12px;padding:14px} .resume-item h3{margin:0;font-size:18px} .resume-item .meta{color:var(--muted);font-size:13px;margin:.25rem 0 .5rem} /* Reveal on scroll */ .reveal{opacity:0;transform:translateY(16px);transition:all .6s ease} .reveal.show{opacity:1;transform:none} /* Contact */ .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px} .btn{display:inline-block;background:var(--accent);color:#221a00;border:0;border-radius:10px;padding:10px 14px;font-weight:800;text-decoration:none} footer{padding:40px 0;color:#8ea1b4;text-align:center} @media (max-width:980px){ .hero-name{font-size:56px} .grid,.contact-grid{grid-template-columns:1fr} .tabs .inner{gap:18px} } </style> </head> <body> <!-- Tabs --> <header class="tabs"> <nav class="inner" id="tabs"> <a href="#home" class="active">Home</a> <a href="#about">About</a> <a href="#resume">Resume</a> <a href="#courses">Courses</a> <a href="#portfolio">Portfolio</a> <a href="#contact">Contact</a> </nav> </header> <!-- HERO --> <section id="home" class="hero"> <div class="hero-inner"> <h1 class="hero-name">Waqas Arshad</h1> <p class="hero-role">Product Management & Innovation Strategy</p> </div> <a class="down" href="#about">⌄</a> </section> <!-- ABOUT --> <section id="about"> <div class="wrap"> <div class="card reveal"> <h2>About me</h2> <p class="muted">I operate at the intersection of product strategy, GTM, and engineering. I focus on CPaaS and revenue-driven messaging products (WhatsApp Business Platform, pricing & invoicing, embedded signup).</p> <div> <span class="pill">CPaaS</span><span class="pill">SaaS</span><span class="pill">WhatsApp Business</span><span class="pill">Design Thinking</span><span class="pill">Agile</span> </div> </div> </div> </section> <!-- RESUME --> <section id="resume"> <div class="wrap"> <h2>Resume</h2> <div class="grid"> <div class="resume-item reveal"> <h3>Senior Product Manager · GMS (Switzerland)</h3> <div class="meta">2022 – Present · CPaaS, WhatsApp Business Platform</div> <ul> <li>Launched WhatsApp→SMS fallback improving delivery and campaign reach.</li> <li>Designed transparent per-message pricing & invoicing with margin controls.</li> <li>Shipped embedded signup; restarted Scrum; raised delivery velocity.</li> </ul> </div> <div class="resume-item reveal"> <h3>Product Manager · GMS (Ukraine)</h3> <div class="meta">2021 – 2022</div> <ul> <li>Roadmap owner; launched Oracle Responsys ↔ Shopify integration.</li> <li>50% revenue growth, 30% retention uplift via research-driven strategy.</li> </ul> </div> <div class="resume-item reveal"> <h3>Earlier roles · Jazz, Telenor, TMB, CMPak/Ufone</h3> <div class="meta">2015 – 2021</div> <ul> <li>Scaled B2B portfolio; introduced Agile practices to reduce time-to-market.</li> <li>Launched telecom VAS impacting ARPU and growth.</li> </ul> </div> </div> </div> </section> <!-- COURSES --> <section id="courses"> <div class="wrap"> <div class="card reveal"> <h2>Courses</h2> <p class="muted">Add notable coursework / certifications (e.g., Product Strategy, Analytics, SQL, Agile).</p> </div> </div> </section> <!-- PORTFOLIO --> <section id="portfolio"> <div class="wrap"> <h2>Selected case studies</h2> <div class="grid"> <div class="card reveal"> <h3>WhatsApp → SMS Fallback</h3> <p class="muted">Reliability pipeline with guardrails; improved delivery and reduced manual re-sends.</p> </div> <div class="card reveal"> <h3>Per-message Pricing & Invoicing</h3> <p class="muted">Country-aware pricing and margin controls; transparent UI for trust and control.</p> </div> <div class="card reveal"> <h3>White-label CPaaS Positioning</h3> <p class="muted">Refocused GTM on reseller model; clarified TelXira USP, driving partner adoption.</p> </div> <div class="card reveal"> <h3>Embedded Signup</h3> <p class="muted">Reduced onboarding friction; aligned with Meta policies to speed approvals.</p> </div> </div> </div> </section> <!-- CONTACT --> <section id="contact"> <div class="wrap"> <div class="grid"> <div class="card reveal"> <h2>Contact</h2> <p>Email: <a href="mailto:hello@waqas-arshad.com">hello@waqas-arshad.com</a></p> <p>LinkedIn: <a href="#">Add your profile URL</a></p> <p><a class="btn" href="#">Download 1-page CV</a></p> </div> <div class="card reveal"> <h2>Availability</h2> <p class="muted">Open to senior PM roles across EMEA & MENA and advisory on CPaaS pricing & onboarding.</p> </div> </div> </div> </section> <footer>© <span id="y"></span> Waqas Arshad — built as a free static site.</footer> <script> // Active tab highlight while scrolling const links=[...document.querySelectorAll('#tabs a')]; const secs=links.map(a=>document.querySelector(a.getAttribute('href'))); const setActive=()=>{const y=scrollY+80;let i=0;secs.forEach((s,idx)=>{if(s && s.offsetTop<=y) i=idx});links.forEach((a,idx)=>a.classList.toggle('active',idx===i))}; addEventListener('scroll',setActive); setActive(); // Reveal-on-scroll const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})},{threshold:.15}); document.querySelectorAll('.reveal').forEach(el=>io.observe(el)); // Footer year document.getElementById('y').textContent=new Date().getFullYear(); </script> </body> </html>
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Waqas Arshad — Product Management & Innovation</title>
+  <meta name="description" content="Senior Product Manager (CPaaS / SaaS). Portfolio, resume, courses, and contact." />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --bg:#0b0e11; --fg:#e6edf3; --muted:#a7b0bd; --line:#1a202c;
+      --accent:#f1c40f;     /* gold highlight */
+      --card:#10151c; --pill:#162233;
+      --shadow:0 8px 30px rgba(0,0,0,.25);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+
+    /* ===== Top Tabs (solid black like reference) ===== */
+   /* ===== Top Tabs (transparent over hero image) ===== */
+.tabs{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  background: transparent !important;  /* remove black background */
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.tabs::before,
+.tabs::after{
+  content: none !important;
+}
+
+.tabs .inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 20px;
+}
+
+.tabs a{
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  text-shadow: 0 1px 3px rgba(0,0,0,.6);  /* keep readable */
+}
+
+.tabs a.active,
+.tabs a:hover{
+  color: var(--accent);
+}
+
+    .tabs .inner{max-width:1200px;margin:0 auto;display:flex;gap:28px;align-items:center;justify-content:center;padding:14px 20px}
+    .tabs a{letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#fff;opacity:.95;font-weight:800;font-size:14px}
+    .tabs a.active,.tabs a:hover{color:var(--accent)}
+
+    /* ===== Hero ===== */
+    .hero{min-height:100svh;position:relative;display:grid;place-items:center;text-align:center}
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      background:url('replicate-prediction-d6z8q2mggdrmc0crttwagsyhv4.png') center/cover no-repeat;
+      filter:brightness(.45);
+    }
+    .hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 18px 60px}
+    .hero-name{font-family:"Great Vibes",cursive;font-size:76px;line-height:1.05;color:#fff;margin:0 0 10px}
+    .hero-role{
+      margin:0;
+      color:#ffffff;
+      opacity:.95;
+      letter-spacing:.08em;      /* tighter spacing like reference */
+      text-transform:uppercase;
+      font-weight:400;           /* NOT bold */
+      font-size:16px;
+    }
+    .down{
+      position:absolute;left:50%;bottom:28px;transform:translateX(-50%);
+      width:44px;height:44px;border:2px solid #ffffff;border-radius:50%;
+      color:#ffffff;display:grid;place-items:center;text-decoration:none;font-size:22px;background:transparent;
+    }
+
+    /* ===== Sections ===== */
+    section{scroll-margin-top:70px}
+    .wrap{max-width:1100px;margin:0 auto;padding:70px 18px}
+    h2{margin:0 0 14px;font-size:28px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:22px}
+    .muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .pill{display:inline-block;background:var(--pill);border:1px solid var(--line);padding:6px 10px;border-radius:999px;color:#b2bfd0;font-size:12px;margin:4px 6px 0 0}
+    .resume-item{border:1px solid var(--line);background:#0e141c;border-radius:12px;padding:14px}
+    .resume-item h3{margin:0;font-size:18px}
+    .resume-item .meta{color:var(--muted);font-size:13px;margin:.25rem 0 .5rem}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0;transform:translateY(16px);transition:all .6s ease}
+    .reveal.show{opacity:1;transform:none}
+
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .btn{display:inline-block;background:var(--accent);color:#221a00;border:0;border-radius:10px;padding:10px 14px;font-weight:800;text-decoration:none}
+
+    footer{padding:40px 0;color:#8ea1b4;text-align:center}
+
+    @media (max-width:980px){
+      .hero-name{font-size:56px}
+      .grid,.contact-grid{grid-template-columns:1fr}
+      .tabs .inner{gap:18px}
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Tabs -->
+  <header class="tabs">
+    <nav class="inner" id="tabs">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#courses">Courses</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <h1 class="hero-name">Waqas Arshad</h1>
+      <p class="hero-role">Product Management & Innovation Strategy</p>
+    </div>
+    <a class="down" href="#about">⌄</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="wrap">
+      <div class="card reveal">
+        <h2>About me</h2>
+        <p class="muted">I operate at the intersection of product strategy, GTM, and engineering. I focus on CPaaS and revenue-driven messaging products (WhatsApp Business Platform, pricing & invoicing, embedded signup).</p>
+        <div>
+          <span class="pill">CPaaS</span><span class="pill">SaaS</span><span class="pill">WhatsApp Business</span><span class="pill">Design Thinking</span><span class="pill">Agile</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume">
+    <div class="wrap">
+      <h2>Resume</h2>
+      <div class="grid">
+        <div class="resume-item reveal">
+          <h3>Senior Product Manager · GMS (Switzerland)</h3>
+          <div class="meta">2022 – Present · CPaaS, WhatsApp Business Platform</div>
+          <ul>
+            <li>Launched WhatsApp→SMS fallback improving delivery and campaign reach.</li>
+            <li>Designed transparent per-message pricing & invoicing with margin controls.</li>
+            <li>Shipped embedded signup; restarted Scrum; raised delivery velocity.</li>
+          </ul>
+        </div>
+        <div class="resume-item reveal">
+          <h3>Product Manager · GMS (Ukraine)</h3>
+          <div class="meta">2021 – 2022</div>
+          <ul>
+            <li>Roadmap owner; launched Oracle Responsys ↔ Shopify integration.</li>
+            <li>50% revenue growth, 30% retention uplift via research-driven strategy.</li>
+          </ul>
+        </div>
+        <div class="resume-item reveal">
+          <h3>Earlier roles · Jazz, Telenor, TMB, CMPak/Ufone</h3>
+          <div class="meta">2015 – 2021</div>
+          <ul>
+            <li>Scaled B2B portfolio; introduced Agile practices to reduce time-to-market.</li>
+            <li>Launched telecom VAS impacting ARPU and growth.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section id="courses">
+    <div class="wrap">
+      <div class="card reveal">
+        <h2>Courses</h2>
+        <p class="muted">Add notable coursework / certifications (e.g., Product Strategy, Analytics, SQL, Agile).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="wrap">
+      <h2>Selected case studies</h2>
+      <div class="grid">
+        <div class="card reveal">
+          <h3>WhatsApp → SMS Fallback</h3>
+          <p class="muted">Reliability pipeline with guardrails; improved delivery and reduced manual re-sends.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Per-message Pricing & Invoicing</h3>
+          <p class="muted">Country-aware pricing and margin controls; transparent UI for trust and control.</p>
+        </div>
+        <div class="card reveal">
+          <h3>White-label CPaaS Positioning</h3>
+          <p class="muted">Refocused GTM on reseller model; clarified TelXira USP, driving partner adoption.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Embedded Signup</h3>
+          <p class="muted">Reduced onboarding friction; aligned with Meta policies to speed approvals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="grid">
+        <div class="card reveal">
+          <h2>Contact</h2>
+          <p>Email: <a href="mailto:hello@waqas-arshad.com">hello@waqas-arshad.com</a></p>
+          <p>LinkedIn: <a href="#">Add your profile URL</a></p>
+          <p><a class="btn" href="#">Download 1-page CV</a></p>
+        </div>
+        <div class="card reveal">
+          <h2>Availability</h2>
+          <p class="muted">Open to senior PM roles across EMEA & MENA and advisory on CPaaS pricing & onboarding.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© <span id="y"></span> Waqas Arshad — built as a free static site.</footer>
+
+  <script>
+    // Active tab highlight while scrolling
+    const links=[...document.querySelectorAll('#tabs a')];
+    const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+    const setActive=()=>{const y=scrollY+80;let i=0;secs.forEach((s,idx)=>{if(s && s.offsetTop<=y) i=idx});links.forEach((a,idx)=>a.classList.toggle('active',idx===i))};
+    addEventListener('scroll',setActive); setActive();
+
+    // Reveal-on-scroll
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})},{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Footer year
+    document.getElementById('y').textContent=new Date().getFullYear();
+  </script>
+</body>
+</html>

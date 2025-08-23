@@ -5,48 +5,84 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Waqas Arshad | Product Management & Innovation</title>
   <meta name="description" content="Senior Product Manager (CPaaS / SaaS). Portfolio and resume." />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
+
   <style>
     :root{
       --bg:#ffffff; --fg:#222; --muted:#444; --line:#ddd;
       --accent:#f1c40f; --card:#f9f9f9; --pill:#eee;
-      --shadow:0 8px 30px rgba(0,0,0,.08);
+      --shadow:0 8px 30px rgba(0,0,0,.1);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)}
 
-    /* NAV (only Home + About) */
-    .tabs{position:fixed;top:0;left:0;right:0;z-index:60;background:#fff;border-bottom:1px solid var(--line)}
-    .tabs .inner{max-width:1200px;margin:0 auto;display:flex;gap:18px;align-items:center;justify-content:center;padding:10px 16px}
-    .tabs a{letter-spacing:.02em;text-transform:uppercase;text-decoration:none;color:#333;font-weight:600;font-size:12px}
+    /* ===== NAV ===== */
+    .tabs{
+      position:fixed;top:0;left:0;right:0;z-index:60;
+      background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow);
+    }
+    .tabs .inner{
+      max-width:1200px;margin:0 auto;
+      display:flex;align-items:center;justify-content:center;
+      gap:18px;padding:10px 16px;
+    }
+    .tabs a{
+      letter-spacing:.02em;text-transform:uppercase;text-decoration:none;
+      color:#333;font-weight:600;font-size:12px;
+    }
     .tabs a.active,.tabs a:hover{color:var(--accent)}
 
-    /* HERO (simple light header section) */
-    .hero{min-height:60svh;display:grid;place-items:center;text-align:center;background:#f7f7f7}
-    .hero-inner{max-width:1100px;margin:0 auto;padding:100px 18px 60px}
-    .hero-name{font-family:"Great Vibes",cursive;font-size:clamp(44px,7.2vw,64px);line-height:1.06;color:#222;margin:0 0 10px}
-    .hero-role{margin:0;color:#555;letter-spacing:.18em;text-transform:uppercase;font-weight:400;font-size:clamp(13px,1.6vw,18px)}
+    /* ===== HERO ===== */
+    .hero{min-height:100svh;position:relative;display:grid;place-items:center;text-align:center;background:#f7f7f7}
+    .hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 18px 60px}
+    .hero-name{
+      font-family:"Great Vibes",cursive;
+      font-size:clamp(44px,7.2vw,64px);
+      line-height:1.06;color:#222;margin:0 0 6px;
+    }
+    .hero-role{
+      margin:0;color:#444;letter-spacing:.18em;
+      text-transform:uppercase;font-weight:400;font-size:clamp(13px,1.6vw,18px)
+    }
 
-    /* ABOUT (split layout) */
-    .wrap{max-width:1100px;margin:0 auto;padding:60px 18px}
-    .about .about-grid{display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:start}
+    /* ===== ABOUT ===== */
+    .about .about-grid{
+      display:grid;
+      grid-template-columns: 360px 1fr;
+      gap:28px;
+      align-items:start;
+    }
     .about-photo img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:var(--shadow)}
     .about-title{margin:0 0 8px}
     .about-intro{margin:0 0 18px;color:var(--muted)}
 
-    .about-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;margin:18px 0 10px}
+    .about-facts{
+      display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;
+      margin:18px 0 10px;
+    }
     .about-facts ul{list-style:none;padding:0;margin:0}
-    .about-facts li{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px dashed var(--line)}
+    .about-facts li{
+      display:flex;gap:8px;align-items:flex-start;
+      padding:6px 0;border-bottom:1px dashed var(--line);
+    }
     .about-facts li::before{content:"›";color:var(--accent);font-weight:900}
     .about-facts .k{min-width:120px;font-weight:700;color:#000}
     .about-facts .v a{color:#000;text-decoration:underline dotted}
 
-    .about-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:22px 0 8px}
+    .about-stats{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;margin:22px 0 8px;
+    }
     .stat{display:grid;grid-template-columns:40px auto;column-gap:10px;align-items:center}
-    .stat .ico{width:40px;height:40px;border-radius:50%;background:#f1f1f1;border:1px solid var(--line);display:grid;place-items:center;color:#222}
+    .stat .ico{
+      width:40px;height:40px;border-radius:50%;background:#f1f1f1;border:1px solid var(--line);
+      display:grid;place-items:center;color:var(--accent)
+    }
     .stat .num{font-size:22px;font-weight:900;color:#000}
     .stat .lbl{margin-top:2px;font-size:13px;color:var(--muted)}
 
@@ -55,8 +91,16 @@
     .bar-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-end}
     .bar-label{font-size:13px;font-weight:700;color:#333}
     .bar-val{font-size:12px;color:#333}
-    .bar-track{position:relative;height:10px;border-radius:999px;background:#eee;border:1px solid #ccc;overflow:hidden;margin-top:6px}
-    .bar-fill{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg, var(--accent), #ffd95b);transition:width 1.2s ease}
+    .bar-track{
+      position:relative;height:10px;border-radius:999px;background:#eee;border:1px solid #ccc;
+      overflow:hidden;margin-top:6px;
+    }
+    .bar-fill{
+      position:absolute;left:0;top:0;bottom:0;width:0;
+      background:linear-gradient(90deg, var(--accent), #ffd95b);
+      transition:width 1.2s ease;
+    }
+    .reveal.show .bar-fill{width:inherit}
 
     /* Responsive */
     @media (max-width:900px){
@@ -89,7 +133,9 @@
 
       <!-- Left: Portrait -->
       <figure class="about-photo">
-        <img src="replicate-prediction-h39x9ejt6nrmc0crtwnb2kegz8%20%281%29.png" alt="Waqas Arshad portrait" />
+        <img
+          src="replicate-prediction-h39x9ejt6nrmc0crtwnb2kegz8%20%281%29.png"
+          alt="Waqas Arshad portrait" />
       </figure>
 
       <!-- Right: Details -->
@@ -171,7 +217,7 @@
   </section>
 
   <script>
-    // fill skill bars after load
+    // Simple reveal for bars on load
     window.addEventListener('load',()=>{
       document.querySelectorAll('.bar-fill').forEach(el=>{
         el.style.width = el.getAttribute('style').match(/width:(\d+%)/)[1];

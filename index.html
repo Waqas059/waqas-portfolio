@@ -23,7 +23,48 @@
     body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)}
 
     /* ===== Top Tabs (solid black like reference) ===== */
-    .tabs{position:fixed;top:0;left:0;right:0;z-index:60;background:#111; /* solid black */ border-bottom:1px solid #222}
+   /* ===== Top Tabs (transparent over hero image) ===== */
+.tabs{
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 60;
+  background: transparent !important;  /* remove black background */
+  border: none !important;
+  box-shadow: none !important;
+}
+
+.tabs::before,
+.tabs::after{
+  content: none !important;
+}
+
+.tabs .inner{
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 20px;
+}
+
+.tabs a{
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 800;
+  font-size: 14px;
+  text-shadow: 0 1px 3px rgba(0,0,0,.6);  /* keep readable */
+}
+
+.tabs a.active,
+.tabs a:hover{
+  color: var(--accent);
+}
+
     .tabs .inner{max-width:1200px;margin:0 auto;display:flex;gap:28px;align-items:center;justify-content:center;padding:14px 20px}
     .tabs a{letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#fff;opacity:.95;font-weight:800;font-size:14px}
     .tabs a.active,.tabs a:hover{color:var(--accent)}

@@ -9,65 +9,47 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
     :root{
       --bg:#0b0e11; --fg:#e6edf3; --muted:#a7b0bd; --line:#1a202c;
-      --accent:#f1c40f;     /* gold highlight */
+      --accent:#2f80ed;                    /* 🔵 professional blue accent */
       --card:#10151c; --pill:#162233;
       --shadow:0 8px 30px rgba(0,0,0,.25);
     }
+
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)}
 
-    /* ===== Top Tabs (solid black like reference) ===== */
-   /* ===== Top Tabs (transparent over hero image) ===== */
-.tabs{
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 60;
-  background: transparent !important;  /* remove black background */
-  border: none !important;
-  box-shadow: none !important;
-}
+    /* ===== Top Tabs (transparent on hero; dark after scroll) ===== */
+    .tabs{
+      position:fixed; top:0; left:0; right:0; z-index:60;
+      background:transparent !important;
+      border:none !important; box-shadow:none !important;
+      transition:background .25s ease, box-shadow .25s ease;
+    }
+    .tabs::before,.tabs::after{content:none !important;}
 
-.tabs::before,
-.tabs::after{
-  content: none !important;
-}
+    .tabs .inner{
+      max-width:1200px; margin:0 auto;
+      display:flex; gap:34px; align-items:center; justify-content:center;
+      padding:20px 22px;
+    }
+    .tabs a{
+      letter-spacing:.12em; text-transform:uppercase; text-decoration:none;
+      color:#fff; font-weight:800; font-size:14px;
+      text-shadow:0 1px 3px rgba(0,0,0,.6);
+    }
+    .tabs a.active,.tabs a:hover{ color:var(--accent); }
 
-.tabs .inner{
-  max-width: 1200px;
-  margin: 0 auto;
-  display: flex;
-  gap: 28px;
-  align-items: center;
-  justify-content: center;
-  padding: 18px 20px;
-}
-
-.tabs a{
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: #fff;
-  font-weight: 800;
-  font-size: 14px;
-  text-shadow: 0 1px 3px rgba(0,0,0,.6);  /* keep readable */
-}
-
-.tabs a.active,
-.tabs a:hover{
-  color: var(--accent);
-}
-
-    .tabs .inner{max-width:1200px;margin:0 auto;display:flex;gap:28px;align-items:center;justify-content:center;padding:14px 20px}
-    .tabs a{letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:#fff;opacity:.95;font-weight:800;font-size:14px}
-    .tabs a.active,.tabs a:hover{color:var(--accent)}
+    /* when scrolled (added by JS) */
+    .tabs.scrolled{
+      background:rgba(17,17,17,.85) !important;
+      backdrop-filter:saturate(120%) blur(6px);
+      box-shadow:0 6px 20px rgba(0,0,0,.18);
+    }
 
     /* ===== Hero ===== */
     .hero{min-height:100svh;position:relative;display:grid;place-items:center;text-align:center}
@@ -77,24 +59,32 @@
       filter:brightness(.45);
     }
     .hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 18px 60px}
-    .hero-name{font-family:"Great Vibes",cursive;font-size:76px;line-height:1.05;color:#fff;margin:0 0 10px}
+
+    .hero-name{
+      font-family:"Great Vibes",cursive;
+      font-size:76px; line-height:1.06; letter-spacing:.01em;  /* slightly looser = elegant */
+      color:#fff; margin:0 0 12px;
+    }
     .hero-role{
-      margin:0;
-      color:#ffffff;
-      opacity:.95;
-      letter-spacing:.08em;      /* tighter spacing like reference */
-      text-transform:uppercase;
-      font-weight:400;           /* NOT bold */
+      margin:0; color:#ffffff; opacity:.95;
+      letter-spacing:.06em; text-transform:uppercase;
+      font-weight:300;                                     /* lighter for refinement */
       font-size:16px;
     }
+
+    /* ===== Animated scroll cue ===== */
     .down{
-      position:absolute;left:50%;bottom:28px;transform:translateX(-50%);
-      width:44px;height:44px;border:2px solid #ffffff;border-radius:50%;
-      color:#ffffff;display:grid;place-items:center;text-decoration:none;font-size:22px;background:transparent;
+      position:absolute; left:50%; bottom:28px; transform:translateX(-50%);
+      width:56px; height:56px; border:2px solid #ffffff; border-radius:50%;
+      display:grid; place-items:center; text-decoration:none;
+      background:transparent;
+      animation:bounce 1.8s ease-in-out infinite;
     }
+    .down::before{content:"⌄"; font-size:28px; color:#fff; line-height:1;}
+    @keyframes bounce{ 0%,100%{transform:translate(-50%,0)} 50%{transform:translate(-50%,8px)} }
 
     /* ===== Sections ===== */
-    section{scroll-margin-top:70px}
+    section{scroll-margin-top:80px}
     .wrap{max-width:1100px;margin:0 auto;padding:70px 18px}
     h2{margin:0 0 14px;font-size:28px}
     .card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:22px}
@@ -111,7 +101,7 @@
 
     /* Contact */
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
-    .btn{display:inline-block;background:var(--accent);color:#221a00;border:0;border-radius:10px;padding:10px 14px;font-weight:800;text-decoration:none}
+    .btn{display:inline-block;background:var(--accent);color:#0b1524;border:0;border-radius:10px;padding:10px 14px;font-weight:800;text-decoration:none}
 
     footer{padding:40px 0;color:#8ea1b4;text-align:center}
 
@@ -142,7 +132,7 @@
       <h1 class="hero-name">Waqas Arshad</h1>
       <p class="hero-role">Product Management & Innovation Strategy</p>
     </div>
-    <a class="down" href="#about">⌄</a>
+    <a class="down" href="#about" aria-label="Scroll down"></a>
   </section>
 
   <!-- ABOUT -->
@@ -252,7 +242,7 @@
     const links=[...document.querySelectorAll('#tabs a')];
     const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
     const setActive=()=>{const y=scrollY+80;let i=0;secs.forEach((s,idx)=>{if(s && s.offsetTop<=y) i=idx});links.forEach((a,idx)=>a.classList.toggle('active',idx===i))};
-    addEventListener('scroll',setActive); setActive();
+    addEventListener('scroll',setActive,{passive:true}); setActive();
 
     // Reveal-on-scroll
     const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})},{threshold:.15});
@@ -260,6 +250,11 @@
 
     // Footer year
     document.getElementById('y').textContent=new Date().getFullYear();
+
+    // Toggle dark bar after scrolling past top
+    const header=document.querySelector('.tabs');
+    const onScroll=()=>{ if (window.scrollY>10) header.classList.add('scrolled'); else header.classList.remove('scrolled'); };
+    addEventListener('scroll',onScroll,{passive:true}); onScroll();
   </script>
 </body>
 </html>

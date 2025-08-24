@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Waqas Arshad | Product Management & Innovation</title>
-  <meta name="description" content="Senior Product Manager (Telecom, SaaS, CPaaS, FinTech). Portfolio and resume." />
+  <meta name="description" content="Senior Product Manager (Telecom, SaaS, CPaaS, FinTech) — portfolio and about." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,46 +12,43 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
+    /* ===== Theme (white site) ===== */
     :root{
-      /* Light site with dark hero */
-      --bg:#ffffff; --fg:#222; --muted:#444; --line:#ddd;
-      --accent:#f1c40f; --card:#f9f9f9;
+      --bg:#ffffff;        /* page background (white) */
+      --fg:#222;           /* main text */
+      --muted:#555;        /* secondary text */
+      --line:#e6e6e6;      /* subtle lines */
+      --accent:#f1c40f;    /* gold accent */
       --shadow:0 8px 30px rgba(0,0,0,.08);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg) !important;color:var(--fg)}
 
-    /* ===== NAV: transparent over hero, solid after scroll ===== */
+    /* ===== Top nav: transparent over hero; solid on scroll ===== */
     .tabs{
       position:fixed;top:0;left:0;right:0;z-index:60;
-      background:transparent;transition:background .25s,border-color .25s,box-shadow .25s;
-      border-bottom:1px solid transparent;
+      background:transparent;border-bottom:1px solid transparent;
+      transition:background .25s,border-color .25s,box-shadow .25s;
     }
     .tabs.scrolled{
       background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow);
     }
     .tabs .inner{
-      max-width:1200px;margin:0 auto;
-      display:flex;gap:18px;align-items:center;justify-content:center;
-      padding:10px 16px;
+      max-width:1200px;margin:0 auto;display:flex;gap:18px;align-items:center;justify-content:center;padding:10px 16px;
     }
     .tabs a{
-      letter-spacing:.06em;text-transform:uppercase;text-decoration:none;
-      font-weight:700;font-size:12px;
-      color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5);
-      transition:color .2s;
+      letter-spacing:.06em;text-transform:uppercase;text-decoration:none;font-weight:700;font-size:12px;
+      color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5);transition:color .2s;
     }
     .tabs.scrolled a{ color:#333; text-shadow:none; }
     .tabs a.active,.tabs a:hover{color:var(--accent)}
 
-    /* ===== HERO (dark, full-bleed) ===== */
-    .hero{
-      min-height:100svh;position:relative;display:grid;place-items:center;text-align:center;color:#fff;
-    }
+    /* ===== Hero (dark, full-bleed image) ===== */
+    .hero{min-height:100svh;position:relative;display:grid;place-items:center;text-align:center;color:#fff}
     .hero::before{
       content:"";position:absolute;inset:0;
-      /* change this path if your hero image lives elsewhere */
+      /* Change this path if your hero image lives elsewhere */
       background:url('replicate-prediction-d6z8q2mggdrmc0crttwagsyhv4.png') center/cover no-repeat;
       filter:brightness(.45);
     }
@@ -62,19 +59,17 @@
     }
     .hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 18px 60px}
     .hero-name{
-      font-family:"Great Vibes",cursive;
-      font-size:clamp(56px,8vw,84px);line-height:1.04;margin:0 0 10px;color:#fff;
+      font-family:"Great Vibes",cursive;font-size:clamp(56px,8vw,84px);line-height:1.04;margin:0 0 10px;color:#fff;
       text-shadow:0 2px 12px rgba(0,0,0,.45);
     }
     .hero-role{
-      margin:0;color:#fff;opacity:.96;letter-spacing:.22em;text-transform:uppercase;
-      font-weight:400;font-size:clamp(13px,1.6vw,18px);
-      text-shadow:0 1px 6px rgba(0,0,0,.35)
+      margin:0;color:#fff;opacity:.96;letter-spacing:.22em;text-transform:uppercase;font-weight:400;
+      font-size:clamp(13px,1.6vw,18px);text-shadow:0 1px 6px rgba(0,0,0,.35);
     }
     .down{
       position:absolute;left:50%;bottom:28px;transform:translateX(-50%);
       width:44px;height:44px;border:2px solid #ffffff;border-radius:50%;
-      color:#ffffff;display:grid;place-items:center;text-decoration:none;background:transparent;
+      color:#ffffff;display:grid;place-items:center;background:transparent;text-decoration:none;
       animation:bounce 1.6s infinite;
     }
     .down svg{width:18px;height:18px;display:block;opacity:.9}
@@ -84,27 +79,27 @@
       60% { transform:translate(-50%,-4px) }
     }
 
-    /* ===== LAYOUT HELPERS ===== */
+    /* ===== Layout helpers ===== */
     section{scroll-margin-top:70px}
     .wrap{max-width:1100px;margin:0 auto;padding:70px 18px}
 
-    /* ===== ABOUT (light) ===== */
-    .about{background:#fff;color:var(--fg)}
+    /* ===== ABOUT (forced white background) ===== */
+    .about{background:#fff !important;color:var(--fg)}
     .about .about-grid{display:grid;grid-template-columns:360px 1fr;gap:28px;align-items:start}
     .about-photo img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:var(--shadow)}
     .about-title{margin:0 0 8px}
-    .about-intro{margin:0 0 18px;color:#555}
+    .about-intro{margin:0 0 18px;color:var(--muted)}
 
     .about-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;margin:18px 0 10px}
     .about-facts ul{list-style:none;padding:0;margin:0}
     .about-facts li{display:flex;gap:8px;align-items:flex-start;padding:6px 0;border-bottom:1px dashed var(--line)}
     .about-facts li::before{content:"›";color:var(--accent);font-weight:900}
-    .about-facts .k{min-width:150px;font-weight:700;color:#000}
+    .about-facts .k{min-width:160px;font-weight:700;color:#000}
     .about-facts .v a{color:#000;text-decoration:underline dotted}
 
     .about-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:22px 0 8px}
     .stat{display:grid;grid-template-columns:40px auto;column-gap:10px;align-items:center}
-    .stat .ico{width:40px;height:40px;border-radius:50%;background:#f1f1f1;border:1px solid var(--line);display:grid;place-items:center}
+    .stat .ico{width:40px;height:40px;border-radius:50%;background:#f6f6f6;border:1px solid var(--line);display:grid;place-items:center}
     .stat .num{font-size:22px;font-weight:900;color:#000}
     .stat .lbl{margin-top:2px;font-size:13px;color:#666}
 
@@ -147,7 +142,7 @@
     </a>
   </section>
 
-  <!-- ABOUT (updated content) -->
+  <!-- ABOUT (updated content, white background) -->
   <section id="about" class="about">
     <div class="wrap about-grid">
 
@@ -167,7 +162,7 @@
           building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
         </p>
 
-        <!-- Facts -->
+        <!-- Key facts -->
         <div class="about-facts">
           <ul>
             <li><span class="k">Name:</span> <span class="v">Waqas Arshad</span></li>
@@ -194,73 +189,3 @@
         <div class="about-stats">
           <div class="stat">
             <div class="ico">👥</div>
-            <div>
-              <div class="num">400</div>
-              <div class="lbl">Customer interviews</div>
-            </div>
-          </div>
-          <div class="stat">
-            <div class="ico">⏰</div>
-            <div>
-              <div class="num">6</div>
-              <div class="lbl">Years of experience</div>
-            </div>
-          </div>
-          <div class="stat">
-            <div class="ico">🏆</div>
-            <div>
-              <div class="num">2</div>
-              <div class="lbl">Co-founding experience</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Skills -->
-        <div class="about-skills">
-          <div class="bar">
-            <div class="bar-top">
-              <span class="bar-label">Product roadmapping, product strategy, user discovery, market analysis, leadership</span>
-              <span class="bar-val">90%</span>
-            </div>
-            <div class="bar-track"><span class="bar-fill" style="width:90%"></span></div>
-          </div>
-          <div class="bar">
-            <div class="bar-top">
-              <span class="bar-label">Messaging/CPaaS, pricing &amp; invoicing, onboarding, integrations</span>
-              <span class="bar-val">80%</span>
-            </div>
-            <div class="bar-track"><span class="bar-fill" style="width:80%"></span></div>
-          </div>
-          <div class="bar">
-            <div class="bar-top">
-              <span class="bar-label">HTML/CSS/JS, SQL, analytics, experimentation</span>
-              <span class="bar-val">65%</span>
-            </div>
-            <div class="bar-track"><span class="bar-fill" style="width:65%"></span></div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <script>
-    // Nav background toggles after leaving hero
-    const topbar = document.getElementById('topbar');
-    const toggleBar = () => {
-      if (window.scrollY > 10) topbar.classList.add('scrolled');
-      else topbar.classList.remove('scrolled');
-    };
-    addEventListener('scroll', toggleBar, { passive: true });
-    toggleBar();
-
-    // Fill skill bars after load
-    window.addEventListener('load',()=>{
-      document.querySelectorAll('.bar-fill').forEach(el=>{
-        const m = el.getAttribute('style').match(/width:(\d+%)/);
-        if(m) el.style.width = m[1];
-      });
-    });
-  </script>
-</body>
-</html>

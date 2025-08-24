@@ -15,10 +15,10 @@
     --ink:#0b1220;
     --muted:#4b5563;
     --line:#e5e7eb;
-    --accent:#f5b301;        /* warm gold */
+    --accent:#f5b301;
     --radius:16px;
-    --max:1180px;            /* matches your prototype tighter width */
-    --gutter:28px;           /* 7*4 baseline */
+    --max:1180px;
+    --gutter:28px;
   }
 
   *,*::before,*::after{box-sizing:border-box}
@@ -55,23 +55,23 @@
   .title{ text-align:center;font-weight:900;font-size:26px;margin:0 0 8px }
   .lede{ max-width:72ch;margin:0 auto 22px;text-align:center;color:var(--ink);opacity:.92;line-height:1.55 }
 
-  /* ABOUT GRID — matches prototype */
+  /* ABOUT GRID */
   .about-grid{
     display:grid;
-    grid-template-columns:480px 1fr;   /* left photo/facts | right stats/skills */
-    grid-template-rows:auto auto;      /* row 1 and row 2 */
+    grid-template-columns:480px 1fr;
+    grid-template-rows:auto auto;
     gap:var(--gutter);
     align-items:start;
   }
 
-  /* Cards (unified elevation) */
+  /* By default we keep cards, and we’ll “open” them on desktop with .open */
   .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
 
-  /* Photo (row1 col1) */
+  /* Photo */
   .portrait-card{grid-column:1;grid-row:1;padding:14px}
   .portrait{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
 
-  /* Stats (row1 col2) */
+  /* Stats */
   .stats{grid-column:2;grid-row:1;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden}
   .stat{padding:18px 20px;text-align:center}
   .stat + .stat{border-left:1px solid var(--line)}
@@ -83,15 +83,16 @@
   .value{font-weight:900;font-size:24px;line-height:1.2}
   .label{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:6px}
 
-  /* Facts (row2 col1) — thin left bullets like prototype */
+  /* Facts (THIS IS THE PART YOU ASKED TO CHANGE) */
   .facts{grid-column:1;grid-row:2;padding:16px 18px}
   .facts-list{display:grid;grid-template-columns:1fr;gap:10px}
-  .fact{display:grid;grid-template-columns:14px 1fr;gap:10px;align-items:start}
-  .dot{width:7px;height:7px;border:2px solid var(--accent);border-radius:2px;margin-top:6px}
+  .fact{display:grid;grid-template-columns:1fr;gap:6px;align-items:start}
   .fact b{display:block}
   .fact small{display:block;color:var(--muted);margin-top:2px}
+  /* the little yellow square is removed entirely: */
+  .dot{display:none}
 
-  /* Skills (row2 col2) */
+  /* Skills */
   .skills{grid-column:2;grid-row:2;padding:16px}
   .skillrow{margin:18px 0 8px}
   .skill-title{font-weight:900;letter-spacing:.05em;font-size:12px}
@@ -99,14 +100,43 @@
   .bar{height:8px;background:#f3f4f6;border-radius:9999px;overflow:hidden;margin-top:12px}
   .bar>span{display:block;height:100%;background:var(--accent)}
 
-  /* Other sections (placeholders) */
+  /* SECTION HEADERS (other pages placeholders) */
   .section-h{font-weight:900;margin:0 0 12px}
   .muted{color:var(--muted)}
 
   /* Footer */
   footer{padding:30px 24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
 
-  /* Responsive */
+  /* ========= OPEN LAYOUT (Jonathan-style) ========= */
+  body.open .card{background:transparent;border:0;box-shadow:none}
+
+  /* Photo keeps very soft frame */
+  body.open .portrait-card{padding:0}
+  body.open .portrait{border:1px solid var(--line)}
+
+  /* Stats band: open on desktop, subtle dividers only */
+  @media (min-width:981px){
+    body.open .stats{border:0;background:transparent}
+    body.open .stat{padding:22px 24px}
+    body.open .stat + .stat{border-left:1px solid var(--line)}
+  }
+  /* on mobile, give stats a light card for readability */
+  @media (max-width:980px){
+    body.open .stats{background:#fff;border:1px solid var(--line);border-radius:12px}
+  }
+
+  /* Facts: open style — label over value with thin separators like your ref image */
+  body.open .facts{padding:0}
+  body.open .facts .facts-list{gap:14px}
+  body.open .facts .fact{padding:10px 0;border-bottom:1px solid var(--line)}
+  body.open .facts .fact:last-child{border-bottom:0}
+  body.open .facts .fact b{font-weight:800}
+  body.open .facts .fact small{font-size:14px;color:var(--muted)}
+
+  /* Skills open — remove outer card padding */
+  body.open .skills{padding:0}
+
+  /* Responsive grid */
   @media (max-width:1100px){
     .about-grid{grid-template-columns:420px 1fr}
   }
@@ -116,6 +146,10 @@
     .stats{grid-template-columns:repeat(2,1fr)}
     .stat{border-left:none}
     .stat:nth-child(n+3){border-top:1px solid var(--line)}
+    /* re-add gentle cards to facts/skills on small screens */
+    body.open .facts,
+    body.open .skills{background:#fff;border:1px solid var(--line);border-radius:12px;padding:16px}
+    body.open .facts .fact{border-bottom:0}
   }
   @media (max-width:560px){
     .stats{grid-template-columns:1fr}
@@ -124,7 +158,10 @@
   }
 </style>
 </head>
-<body>
+
+<!-- Add class="open" to enable the Jonathan-style open layout -->
+<body class="open">
+
   <!-- NAV -->
   <nav class="nav">
     <div class="nav-inner">
@@ -156,12 +193,12 @@
       </p>
 
       <div class="about-grid">
-        <!-- row1 col1 -->
+        <!-- Photo -->
         <div class="card portrait-card">
           <img class="portrait" src="./portrait.png" alt="Portrait of Waqas Arshad">
         </div>
 
-        <!-- row1 col2 (4 stats) -->
+        <!-- 4 Stats -->
         <div class="card stats" aria-label="Impact statistics">
           <article class="stat" aria-label="Fourteen plus years experience">
             <div class="icircle" aria-hidden="true">
@@ -196,37 +233,37 @@
           </article>
         </div>
 
-        <!-- row2 col1 (facts) -->
+        <!-- Facts — NO bullets, label above value -->
         <div class="card facts" aria-label="Profile facts">
           <div class="facts-list">
             <div class="fact">
-              <span class="dot" aria-hidden="true"></span>
-              <div><b>Name</b><small>Waqas Arshad</small></div>
+              <b>Name</b>
+              <small>Waqas Arshad</small>
             </div>
             <div class="fact">
-              <span class="dot" aria-hidden="true"></span>
-              <div><b>Degrees</b><small>Master’s in Project Management; Bachelor’s in Electrical Engineering</small></div>
+              <b>Degrees</b>
+              <small>Master’s in Project Management; Bachelor’s in Electrical Engineering</small>
             </div>
             <div class="fact">
-              <span class="dot" aria-hidden="true"></span>
-              <div><b>City</b><small>Islamabad, Pakistan</small></div>
+              <b>City</b>
+              <small>Islamabad, Pakistan</small>
             </div>
             <div class="fact">
-              <span class="dot" aria-hidden="true"></span>
-              <div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science &amp; Technology</small></div>
+              <b>School</b>
+              <small>Shaheed Zulfikar Ali Bhutto Institute of Science &amp; Technology</small>
             </div>
             <div class="fact">
-              <span class="dot" aria-hidden="true"></span>
-              <div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div>
+              <b>Email</b>
+              <small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small>
             </div>
             <div class="fact">
-              <span class="dot" aria-hidden="true"></span>
-              <div><b>Current designation</b><small>Senior Product Manager</small></div>
+              <b>Current designation</b>
+              <small>Senior Product Manager</small>
             </div>
           </div>
         </div>
 
-        <!-- row2 col2 (skills bars) -->
+        <!-- Skills -->
         <div class="card skills" aria-label="Skills">
           <div class="skillrow">
             <div class="skill-title">PRODUCT STRATEGY &amp; LEADERSHIP</div>

@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Waqas Arshad • Product Management & Innovation</title>
 
-<!-- Inter font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
@@ -14,15 +13,12 @@
   :root{
     --bg:#ffffff;
     --ink:#0b1220;
-    --muted:#4b5563;            /* improved contrast */
+    --muted:#4b5563;
     --line:#e5e7eb;
+    --accent:#f5b301;        /* warm gold */
     --radius:16px;
-
-    --nav:#0b1220;
-    --accent:#f5b301;           /* warm gold */
-    --max:1380px;
-
-    --gutter:32px;              /* 8pt grid */
+    --max:1180px;            /* matches your prototype tighter width */
+    --gutter:28px;           /* 7*4 baseline */
   }
 
   *,*::before,*::after{box-sizing:border-box}
@@ -30,87 +26,80 @@
   img{display:block;max-width:100%;height:auto}
   a{color:inherit;text-decoration:none}
 
-  /* NAV (brand removed) */
+  /* NAV */
   .nav{
-    position:fixed;inset:0 0 auto 0;height:56px;background:var(--nav);
+    position:fixed;inset:0 0 auto 0;height:56px;background:#0b1220;
     display:flex;align-items:center;justify-content:center;z-index:100;
     box-shadow:0 1px 4px rgba(0,0,0,.28)
   }
   .nav-inner{width:100%;max-width:var(--max);display:flex;align-items:center;gap:16px;padding:0 16px}
-  .nav ul{list-style:none;margin:0 auto 0 auto;padding:0;display:flex;gap:28px}
+  .nav ul{list-style:none;margin:0 auto;padding:0;display:flex;gap:28px}
   .nav a{color:#e5e7eb;font-weight:800;letter-spacing:.06em;font-size:13px}
   .nav a.active,.nav a:hover{color:#fde68a}
   .spacer{height:56px}
 
   /* Sections */
-  section{padding:72px 24px}
+  section{padding:64px 18px}
   .container{max-width:var(--max);margin:0 auto}
 
-  /* HERO (minimal; background image) */
+  /* HERO */
   .hero{
-    position:relative;min-height:100vh;
+    position:relative;min-height:60vh;
     display:flex;align-items:center;justify-content:center;text-align:center;
     color:#fff;background:url('./Hero.png') center/cover no-repeat fixed;
   }
   .hero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55)}
-  .hero-name{position:relative;font-weight:900;font-size:clamp(42px,6vw,72px);letter-spacing:.01em;margin:0}
+  .hero-name{position:relative;font-weight:900;font-size:clamp(40px,5.8vw,72px);letter-spacing:.01em;margin:0}
 
   /* Headings */
-  .title{ text-align:center;font-weight:900;font-size:28px;margin:0 0 8px }
-  .lede{ max-width:72ch;margin:0 auto 20px;text-align:center;color:var(--ink);opacity:.92;line-height:1.55 }
-  .cta-row{display:flex;gap:12px;justify-content:center;margin-bottom:28px}
-  .btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:10px 16px;border-radius:10px;font-weight:800;font-size:14px;border:1px solid var(--line);background:#fff}
-  .btn-primary{background:var(--accent);border-color:var(--accent);color:#111}
-  .btn:hover{filter:brightness(0.98)}
+  .title{ text-align:center;font-weight:900;font-size:26px;margin:0 0 8px }
+  .lede{ max-width:72ch;margin:0 auto 22px;text-align:center;color:var(--ink);opacity:.92;line-height:1.55 }
 
-  /* ABOUT grid — 2 columns; rows align across */
+  /* ABOUT GRID — matches prototype */
   .about-grid{
     display:grid;
-    grid-template-columns:minmax(480px,560px) 1fr;  /* photo | right column */
-    grid-template-rows:auto auto;                   /* row1: photo+stats; row2: facts+skills */
+    grid-template-columns:480px 1fr;   /* left photo/facts | right stats/skills */
+    grid-template-rows:auto auto;      /* row 1 and row 2 */
     gap:var(--gutter);
     align-items:start;
   }
 
-  /* Unify elevation (bordered cards; no shadows) */
+  /* Cards (unified elevation) */
   .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
 
-  /* Photo card */
-  .portrait-card{grid-column:1;grid-row:1;padding:18px}
-  .portrait{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+  /* Photo (row1 col1) */
+  .portrait-card{grid-column:1;grid-row:1;padding:14px}
+  .portrait{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;border:1px solid var(--line)}
 
-  /* Right column uses the same row indices as left */
-  .stats{grid-column:2;grid-row:1}
-  .facts{grid-column:1;grid-row:2;padding:16px}
-  .skills{grid-column:2;grid-row:2;padding:16px}
+  /* Stats (row1 col2) */
+  .stats{grid-column:2;grid-row:1;display:grid;grid-template-columns:repeat(4,1fr);overflow:hidden}
+  .stat{padding:18px 20px;text-align:center}
+  .stat + .stat{border-left:1px solid var(--line)}
+  .icircle{
+    width:56px;height:56px;border-radius:999px;border:2px solid var(--accent);
+    display:inline-flex;align-items:center;justify-content:center;background:#fff;margin:2px auto 10px
+  }
+  .icircle svg{width:22px;height:22px;stroke:#0b1220;stroke-width:2;fill:none}
+  .value{font-weight:900;font-size:24px;line-height:1.2}
+  .label{font-size:12.5px;color:var(--muted);line-height:1.5;margin-top:6px}
 
-  /* Facts grid */
-  .facts-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 36px}
+  /* Facts (row2 col1) — thin left bullets like prototype */
+  .facts{grid-column:1;grid-row:2;padding:16px 18px}
+  .facts-list{display:grid;grid-template-columns:1fr;gap:10px}
+  .fact{display:grid;grid-template-columns:14px 1fr;gap:10px;align-items:start}
+  .dot{width:7px;height:7px;border:2px solid var(--accent);border-radius:2px;margin-top:6px}
   .fact b{display:block}
   .fact small{display:block;color:var(--muted);margin-top:2px}
 
-  /* Stat cards — four columns desktop; tidy dividers, bigger icons */
-  .stats{
-    display:grid;grid-template-columns:repeat(4, minmax(180px,1fr));overflow:hidden
-  }
-  .stat{padding:20px 22px;text-align:center}
-  .stat + .stat{border-left:1px solid var(--line)}
-  .icircle{
-    width:60px;height:60px;border-radius:999px;border:2px solid var(--accent);
-    display:inline-flex;align-items:center;justify-content:center;background:#fff;margin-bottom:12px
-  }
-  .icircle svg{width:24px;height:24px;stroke:#0b1220;stroke-width:2;fill:none}
-  .value{font-weight:900;font-size:28px;line-height:1.2}
-  .label{font-size:13px;color:var(--muted);line-height:1.5;margin-top:8px}
-
-  /* Skills / progress bars spacing */
-  .skillrow{margin:20px 0 10px}
+  /* Skills (row2 col2) */
+  .skills{grid-column:2;grid-row:2;padding:16px}
+  .skillrow{margin:18px 0 8px}
   .skill-title{font-weight:900;letter-spacing:.05em;font-size:12px}
   .skill-sub{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}
   .bar{height:8px;background:#f3f4f6;border-radius:9999px;overflow:hidden;margin-top:12px}
   .bar>span{display:block;height:100%;background:var(--accent)}
 
-  /* Resume / Portfolio / Achievements placeholders */
+  /* Other sections (placeholders) */
   .section-h{font-weight:900;margin:0 0 12px}
   .muted{color:var(--muted)}
 
@@ -118,26 +107,25 @@
   footer{padding:30px 24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
 
   /* Responsive */
-  @media (max-width:1220px){
-    .about-grid{grid-template-columns:520px 1fr}
+  @media (max-width:1100px){
+    .about-grid{grid-template-columns:420px 1fr}
   }
-  @media (max-width:1024px){
+  @media (max-width:980px){
     .about-grid{grid-template-columns:1fr;grid-template-rows:auto}
     .portrait-card,.facts,.stats,.skills{grid-column:auto;grid-row:auto}
-    .facts-grid{grid-template-columns:1fr}
-    .stats{grid-template-columns:repeat(2, minmax(220px,1fr))}
+    .stats{grid-template-columns:repeat(2,1fr)}
     .stat{border-left:none}
     .stat:nth-child(n+3){border-top:1px solid var(--line)}
   }
   @media (max-width:560px){
-    .value{font-size:26px}
     .stats{grid-template-columns:1fr}
     .stat + .stat{border-top:1px solid var(--line)}
+    .value{font-size:22px}
   }
 </style>
 </head>
 <body>
-  <!-- NAV (brand removed) -->
+  <!-- NAV -->
   <nav class="nav">
     <div class="nav-inner">
       <ul>
@@ -166,24 +154,18 @@
         driving digital transformation and product innovation across MENA, CIS, and Asia. I specialize in building
         scalable platforms, launching digital services, and delivering customer-centric growth strategies.
       </p>
-      <div class="cta-row">
-        <a class="btn btn-primary" href="#resume" aria-label="View resume">View Resume</a>
-        <a class="btn" href="#portfolio" aria-label="See portfolio">See Portfolio</a>
-      </div>
 
       <div class="about-grid">
-        <!-- LEFT / Row 1 -->
+        <!-- row1 col1 -->
         <div class="card portrait-card">
           <img class="portrait" src="./portrait.png" alt="Portrait of Waqas Arshad">
         </div>
 
-        <!-- RIGHT / Row 1 (4 stats) -->
+        <!-- row1 col2 (4 stats) -->
         <div class="card stats" aria-label="Impact statistics">
           <article class="stat" aria-label="Fourteen plus years experience">
             <div class="icircle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                <circle cx="12" cy="12" r="8"></circle><path d="M12 8v5l3 2"></path>
-              </svg>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 7v6l3 2"/></svg>
             </div>
             <div class="value">14+ years</div>
             <div class="label">Product management &amp; digital innovation</div>
@@ -191,57 +173,66 @@
 
           <article class="stat" aria-label="Global reach">
             <div class="icircle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                <circle cx="12" cy="12" r="8"></circle>
-                <path d="M4 12h16M12 4a14 14 0 0 0 0 16M12 4a14 14 0 0 1 0 16"></path>
-              </svg>
+              <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M4 12h16M12 4a14 14 0 0 0 0 16M12 4a14 14 0 0 1 0 16"/></svg>
             </div>
             <div class="value">Global reach</div>
             <div class="label">Delivered across MENA, CIS &amp; Asia</div>
           </article>
 
-          <article class="stat" aria-label="Fifty plus products launched">
+          <article class="stat" aria-label="Fifty plus launches">
             <div class="icircle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                <path d="M14 10l6-6a5 5 0 0 1 0 7l-6 6-4-4 4-4z"></path>
-                <path d="M5 19l4-4M9 15l2 2"></path>
-              </svg>
+              <svg viewBox="0 0 24 24"><path d="M14 10l6-6a5 5 0 0 1 0 7l-6 6-4-4 4-4z"/><path d="M5 19l4-4M9 15l2 2"/></svg>
             </div>
             <div class="value">50+ launches</div>
             <div class="label">CPaaS, Super Apps &amp; services</div>
           </article>
 
-          <article class="stat" aria-label="Five million plus users impacted">
+          <article class="stat" aria-label="Five million plus users">
             <div class="icircle" aria-hidden="true">
-              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
-                <path d="M16 21v-2a4 4 0 0 0-4-4h0a4 4 0 0 0-4 4v2"></path>
-                <circle cx="12" cy="7" r="3"></circle>
-              </svg>
+              <svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4h0a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="3"/></svg>
             </div>
             <div class="value">5M+ users</div>
             <div class="label">Telecom, SaaS &amp; FinTech solutions</div>
           </article>
         </div>
 
-        <!-- LEFT / Row 2 -->
+        <!-- row2 col1 (facts) -->
         <div class="card facts" aria-label="Profile facts">
-          <div class="facts-grid">
-            <div class="fact"><div><b>Name</b><small>Waqas Arshad</small></div></div>
-            <div class="fact"><div><b>Degrees</b><small>Master’s in Project Management; Bachelor’s in Electrical Engineering</small></div></div>
-            <div class="fact"><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
-            <div class="fact"><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science &amp; Technology</small></div></div>
-            <div class="fact"><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
-            <div class="fact"><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
+          <div class="facts-list">
+            <div class="fact">
+              <span class="dot" aria-hidden="true"></span>
+              <div><b>Name</b><small>Waqas Arshad</small></div>
+            </div>
+            <div class="fact">
+              <span class="dot" aria-hidden="true"></span>
+              <div><b>Degrees</b><small>Master’s in Project Management; Bachelor’s in Electrical Engineering</small></div>
+            </div>
+            <div class="fact">
+              <span class="dot" aria-hidden="true"></span>
+              <div><b>City</b><small>Islamabad, Pakistan</small></div>
+            </div>
+            <div class="fact">
+              <span class="dot" aria-hidden="true"></span>
+              <div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science &amp; Technology</small></div>
+            </div>
+            <div class="fact">
+              <span class="dot" aria-hidden="true"></span>
+              <div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div>
+            </div>
+            <div class="fact">
+              <span class="dot" aria-hidden="true"></span>
+              <div><b>Current designation</b><small>Senior Product Manager</small></div>
+            </div>
           </div>
         </div>
 
-        <!-- RIGHT / Row 2 -->
+        <!-- row2 col2 (skills bars) -->
         <div class="card skills" aria-label="Skills">
           <div class="skillrow">
             <div class="skill-title">PRODUCT STRATEGY &amp; LEADERSHIP</div>
             <div class="skill-sub">Roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
           </div>
-          <div class="bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Product Strategy & Leadership proficiency">
+          <div class="bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100">
             <span style="width:92%"></span>
           </div>
 
@@ -249,7 +240,7 @@
             <div class="skill-title">DIGITAL PLATFORMS &amp; FINTECH</div>
             <div class="skill-sub">VAS, charging systems, ICT, SuperApp &amp; digital platforms, FinTech</div>
           </div>
-          <div class="bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Digital Platforms & FinTech proficiency">
+          <div class="bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100">
             <span style="width:90%"></span>
           </div>
 
@@ -257,7 +248,7 @@
             <div class="skill-title">CPAAS &amp; MESSAGING PLATFORMS</div>
             <div class="skill-sub">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
           </div>
-          <div class="bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="CPaaS & Messaging proficiency">
+          <div class="bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100">
             <span style="width:88%"></span>
           </div>
 
@@ -265,7 +256,7 @@
             <div class="skill-title">AGILE &amp; DESIGN THINKING</div>
             <div class="skill-sub">Agile leadership, cross-functional collaboration, design thinking</div>
           </div>
-          <div class="bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" aria-label="Agile & Design Thinking proficiency">
+          <div class="bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100">
             <span style="width:87%"></span>
           </div>
         </div>
@@ -277,7 +268,7 @@
   <section id="resume" aria-label="Resume">
     <div class="container">
       <h2 class="section-h">Resume</h2>
-      <p class="muted">Add roles, impact metrics, and highlights here or link your PDF resume.</p>
+      <p class="muted">(Add your timeline resume here or link your PDF.)</p>
     </div>
   </section>
 
@@ -285,7 +276,7 @@
   <section id="portfolio" aria-label="Portfolio">
     <div class="container">
       <h2 class="section-h">Portfolio</h2>
-      <p class="muted">Showcase your key case studies and launches here.</p>
+      <p class="muted">Showcase case studies and launches.</p>
     </div>
   </section>
 
@@ -293,7 +284,7 @@
   <section id="achievements" aria-label="Certifications & Achievements">
     <div class="container">
       <h2 class="section-h">Certifications &amp; Achievements</h2>
-      <p class="muted">Add your credentials and awards here (with links to credentials if available).</p>
+      <p class="muted">Add important certifications & awards.</p>
     </div>
   </section>
 
@@ -307,10 +298,10 @@
 
   <footer>© <span id="y"></span> Waqas Arshad</footer>
 
-  <!-- Scroll-spy for active nav state -->
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
 
+    // Scroll-spy active state
     const links = [...document.querySelectorAll('.nav a[href^="#"]')];
     const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
     const io = new IntersectionObserver(entries => {
@@ -319,7 +310,7 @@
         .sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
       if (!top) return;
       links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+top.target.id));
-    }, { rootMargin: '-40% 0px -50% 0px', threshold: [0,.25,.5,.75,1] });
+    }, { rootMargin: '-40% 0px -55% 0px', threshold: [0,.25,.5,.75,1] });
     sections.forEach(s => io.observe(s));
   </script>
 </body>

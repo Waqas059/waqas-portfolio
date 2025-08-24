@@ -96,4 +96,184 @@
     .skills{border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px;margin-top:var(--bars-offset)}
     .skillrow{margin:18px 0 8px}
     .skill-title{font-weight:900;letter-spacing:.05em;font-size:12px}
-    .skill-sub{font-size:12px;color:var(--muted);mar
+    .skill-sub{font-size:12px;color:var(--muted);margin-top:6px}
+    .bar{height:8px;background:#f3f4f6;border-radius:999px;overflow:hidden}
+    .bar>span{display:block;height:100%;background:var(--accent)} /* gold fill */
+
+    /* Quick links (keep) */
+    .quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+    .pill{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:12px;background:#fff}
+
+    /* Footer */
+    footer{padding:30px 24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
+
+    /* Responsive */
+    @media (max-width:1220px){
+      .about-grid{grid-template-columns:600px 1fr;gap:44px}
+    }
+    @media (max-width:1024px){
+      .about-grid{grid-template-columns:1fr}
+      .facts-grid{grid-template-columns:1fr}
+      :root{ --bars-offset:18px; }
+    }
+    @media (max-width:560px){
+      .value{font-size:32px}
+      .stats{grid-template-columns:1fr}
+      :root{ --bars-offset:14px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="nav">
+    <ul>
+      <li><a href="#home" class="active">HOME</a></li>
+      <li><a href="#about">ABOUT</a></li>
+      <li><a href="#resume">RESUME</a></li>
+      <li><a href="#courses">COURSES</a></li>
+      <li><a href="#portfolio">PORTFOLIO</a></li>
+      <li><a href="#contact">CONTACT</a></li>
+    </ul>
+  </nav>
+  <div class="spacer"></div>
+
+  <!-- HOME -->
+  <section id="home" class="hero" aria-label="Home">
+    <div>
+      <h1>Waqas Arshad</h1>
+      <div class="tag">PRODUCT MANAGEMENT &amp; INNOVATION</div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" aria-label="About">
+    <div class="container">
+      <h2 class="ghost">ABOUT ME</h2>
+      <h3 class="title">About me</h3>
+      <p class="lede">
+        I am an experienced Senior Product Manager with <b>14+ years</b> in Telecom, SaaS, CPaaS, and FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia. I specialize in building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
+      </p>
+
+      <div class="about-grid">
+        <!-- LEFT -->
+        <div class="portrait-card">
+          <img class="portrait" src="./portrait.png" alt="Portrait of Waqas Arshad">
+          <div class="nameplate">Waqas Arshad</div>
+          <div class="role">Senior Product Manager</div>
+        </div>
+
+        <!-- RIGHT -->
+        <div class="right">
+          <!-- Stats with emoji badges -->
+          <div class="stats" aria-label="Impact statistics">
+            <div class="stat">
+              <div class="badge" aria-hidden="true">🕒</div>
+              <div class="value">14+ years</div>
+              <div class="label">Leading product management &amp; digital innovation</div>
+            </div>
+            <div class="stat">
+              <div class="badge" aria-hidden="true">🌍</div>
+              <div class="value">Global reach</div>
+              <div class="label">Delivered solutions across MENA, CIS &amp; Asia</div>
+            </div>
+            <div class="stat">
+              <div class="badge" aria-hidden="true">🚀</div>
+              <div class="value">50+ products launched</div>
+              <div class="label">Across CPaaS, Super Apps &amp; digital services</div>
+            </div>
+            <div class="stat">
+              <div class="badge" aria-hidden="true">👥</div>
+              <div class="value">5M+ users impacted</div>
+              <div class="label">Through telecom, SaaS &amp; FinTech solutions</div>
+            </div>
+          </div>
+
+          <!-- Facts (unchanged) -->
+          <div class="facts" aria-label="Profile facts">
+            <div class="facts-grid">
+              <div class="fact"><i class="fa-solid fa-user" aria-hidden="true"></i><div><b>Name</b><small>Waqas Arshad</small></div></div>
+              <div class="fact"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
+              <div class="fact"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
+              <div class="fact"><i class="fa-solid fa-school" aria-hidden="true"></i><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small></div></div>
+              <div class="fact"><i class="fa-solid fa-envelope" aria-hidden="true"></i><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
+              <div class="fact"><i class="fa-solid fa-briefcase" aria-hidden="true"></i><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
+            </div>
+          </div>
+
+          <!-- Skills (moved down slightly via --bars-offset) -->
+          <div class="skills" aria-label="Skills">
+            <div class="skillrow">
+              <div class="skill-title">PRODUCT STRATEGY &amp; LEADERSHIP</div>
+              <div class="skill-sub">Product roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
+            </div>
+            <div class="bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Product Strategy & Leadership proficiency"><span style="width:92%"></span></div>
+
+            <div class="skillrow">
+              <div class="skill-title">DIGITAL PLATFORMS &amp; FINTECH</div>
+              <div class="skill-sub">Value added services, charging system platform, ICT, SuperApp &amp; digital platforms, FinTech</div>
+            </div>
+            <div class="bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Digital Platforms & FinTech proficiency"><span style="width:90%"></span></div>
+
+            <div class="skillrow">
+              <div class="skill-title">CPAAS &amp; MESSAGING PLATFORMS</div>
+              <div class="skill-sub">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
+            </div>
+            <div class="bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="CPaaS & Messaging proficiency"><span style="width:88%"></span></div>
+
+            <div class="skillrow">
+              <div class="skill-title">AGILE &amp; DESIGN THINKING</div>
+              <div class="skill-sub">Agile leadership, cross-functional collaboration, design thinking</div>
+            </div>
+            <div class="bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" aria-label="Agile & Design Thinking proficiency"><span style="width:87%"></span></div>
+
+            <div class="quick" aria-label="Extra navigation">
+              <a class="pill" href="#resume">Resume</a>
+              <a class="pill" href="#courses">Courses</a>
+              <a class="pill" href="#portfolio">Portfolio</a>
+              <a class="pill" href="#contact">Contact</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESUME -->
+  <section id="resume" aria-label="Resume">
+    <div class="container">
+      <h2 style="font-weight:900;margin:0 0 12px">Resume</h2>
+      <p style="color:var(--muted)">Add your roles or link a PDF.</p>
+    </div>
+  </section>
+
+  <!-- COURSES -->
+  <section id="courses" aria-label="Courses">
+    <div class="container">
+      <h2 style="font-weight:900;margin:0 0 12px">Courses</h2>
+      <ul>
+        <li>IBM Design Thinking Practitioner</li>
+        <li>Professional Scrum Product Owner</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" aria-label="Portfolio">
+    <div class="container">
+      <h2 style="font-weight:900;margin:0 0 12px">Portfolio</h2>
+      <p style="color:var(--muted)">Add project cards or case studies.</p>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" aria-label="Contact">
+    <div class="container">
+      <h2 style="font-weight:900;margin:0 0 12px">Contact</h2>
+      <p>Email <a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></p>
+    </div>
+  </section>
+
+  <footer>© <span id="y"></span> Waqas Arshad</footer>
+  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+</body>
+</html>

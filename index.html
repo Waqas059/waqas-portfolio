@@ -19,6 +19,7 @@
       --bg:#ffffff;
       --ink:#0b0e11;
       --muted:#6b7280;
+      --muted2:#94a3b8;
       --line:#e5e7eb;
       --accent:#f1c40f; /* gold */
       --nav:#12161c;
@@ -55,50 +56,60 @@
     }
     .about .title{margin:6px 0 28px;text-align:center;font-weight:900;font-size:28px}
     .about .lede{max-width:980px;margin:0 auto 30px;text-align:center;color:var(--ink);opacity:.9}
-    .about .grid{display:grid;grid-template-columns:520px 1fr;gap:36px;align-items:start}
+    .about .grid{display:grid;grid-template-columns:480px 1fr;gap:40px;align-items:start} /* reduced portrait width to open space on right */
     .portrait{
-      width:520px;aspect-ratio:4/3;object-fit:cover;border-radius:6px;border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.06)
+      width:480px;aspect-ratio:4/3;object-fit:cover;border-radius:6px;border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.06)
     }
 
+    /* FACTS with icons (lighter than gold to reduce noise) */
     .facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 36px}
-    .fact{display:flex;gap:10px}
-    .chev{color:var(--accent);font-weight:900;margin-top:2px}
+    .fact{display:flex;gap:10px;align-items:flex-start}
+    .fact i{color:var(--muted2);font-size:16px;margin-top:2px}
     .fact b{display:block}
     .fact small{display:block;color:var(--muted);margin-top:2px}
 
-    /* METRICS */
+    /* METRICS — airy, centered, bigger numbers, tighter subtext */
     .metrics{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:50px;
-      margin:50px 0;
+      gap:56px;
+      margin:42px 0 64px;   /* extra space below to separate from skills */
       text-align:center;
     }
     @media (min-width:1100px){
       .metrics{grid-template-columns:repeat(4,1fr)}
     }
-    .metric{display:flex;flex-direction:column;align-items:center;gap:10px}
+    .metric{display:flex;flex-direction:column;align-items:center;gap:12px}
     .dot{
       width:60px;height:60px;border:2px solid var(--accent);border-radius:50%;
-      display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:4px
+      display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:2px
     }
-    .num{font-size:22px;font-weight:900;line-height:1.25}
-    .sub{font-size:14px;color:var(--muted);line-height:1.45}
+    .num{font-size:28px;font-weight:900;line-height:1.15}  /* larger numbers */
+    .sub{font-size:13px;color:var(--muted);line-height:1.35;max-width:220px}
+    .sub.small{font-size:12px}
 
     /* SKILLS */
-    .skills{margin-top:20px}
-    .skillrow{margin:20px 0 6px}
+    .skills{margin-top:10px}
+    .skillrow{margin:22px 0 8px}
     .skill-title{font-weight:800;letter-spacing:.06em;font-size:13px}
-    .skill-sub{font-size:12px;color:var(--muted);margin-top:4px}
+    .skill-sub{font-size:12px;color:var(--muted);margin-top:6px}
     .bar{height:10px;background:#edf1f4;border:1px solid var(--line);border-radius:8px;overflow:hidden}
     .bar > span{display:block;height:100%;background:var(--accent);width:0}
 
     /* Quick links row */
-    .quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+    .quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
     .pill{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;background:#fff}
 
     /* Footer */
     footer{padding:30px 20px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
+
+    /* Responsive */
+    @media (max-width:1100px){
+      .about .grid{grid-template-columns:1fr}
+      .portrait{width:100%}
+      .facts{grid-template-columns:1fr}
+      .metrics{gap:36px;margin:36px 0 48px}
+    }
   </style>
 </head>
 <body>
@@ -136,40 +147,43 @@
         <img class="portrait" src="./portrait.png" alt="Waqas portrait">
 
         <div>
+          <!-- FACTS (icons instead of chevrons) -->
           <div class="facts">
-            <div class="fact"><div class="chev">›</div><div><b>Name</b><small>Waqas Arshad</small></div></div>
-            <div class="fact"><div class="chev">›</div><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
-            <div class="fact"><div class="chev">›</div><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
-            <div class="fact"><div class="chev">›</div><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small></div></div>
-            <div class="fact"><div class="chev">›</div><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
-            <div class="fact"><div class="chev">›</div><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
+            <div class="fact"><i class="fa-solid fa-user"></i><div><b>Name</b><small>Waqas Arshad</small></div></div>
+            <div class="fact"><i class="fa-solid fa-graduation-cap"></i><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
+
+            <div class="fact"><i class="fa-solid fa-location-dot"></i><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
+            <div class="fact"><i class="fa-solid fa-school"></i><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small></div></div>
+
+            <div class="fact"><i class="fa-solid fa-envelope"></i><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
+            <div class="fact"><i class="fa-solid fa-briefcase"></i><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
           </div>
 
-          <!-- METRICS -->
+          <!-- METRICS (shorter subtext) -->
           <div class="metrics">
             <div class="metric">
               <div class="dot"><i class="fa-solid fa-clock"></i></div>
               <div class="num">14+ years</div>
-              <div class="sub">Leading product management & digital innovation</div>
+              <div class="sub">Product management & innovation</div>
             </div>
             <div class="metric">
               <div class="dot"><i class="fa-solid fa-globe"></i></div>
               <div class="num">Global reach</div>
-              <div class="sub">Delivered solutions across MENA, CIS & Asia</div>
+              <div class="sub">MENA, CIS & Asia</div>
             </div>
             <div class="metric">
               <div class="dot"><i class="fa-solid fa-rocket"></i></div>
               <div class="num">50+ launches</div>
-              <div class="sub">Across CPaaS, Super Apps & digital services</div>
+              <div class="sub">CPaaS, Super Apps & services</div>
             </div>
             <div class="metric">
               <div class="dot"><i class="fa-solid fa-users"></i></div>
               <div class="num">5M+ users</div>
-              <div class="sub">Through telecom, SaaS & FinTech solutions</div>
+              <div class="sub">Telecom, SaaS & FinTech</div>
             </div>
           </div>
 
-          <!-- SKILLS -->
+          <!-- SKILLS (kept your percentages) -->
           <div class="skills">
             <div class="skillrow">
               <div class="skill-title">PRODUCT STRATEGY & LEADERSHIP</div>

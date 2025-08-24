@@ -1,135 +1,140 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Waqas Arshad • Product Management & Innovation</title>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Waqas Arshad • Product Management & Innovation</title>
 
-  <!-- Inter font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<!-- Inter font -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
 
-  <style>
-    :root{
-      --bg:#ffffff;
-      --ink:#0b1220;
-      --muted:#6b7280;
-      --line:#e5e7eb;
-      --shadow:0 18px 48px rgba(7,9,16,.18);
-      --radius:16px;
+<style>
+  :root{
+    --bg:#ffffff;
+    --ink:#0b1220;
+    --muted:#4b5563;            /* improved contrast */
+    --line:#e5e7eb;
+    --radius:16px;
 
-      --nav:#0b1220;
-      --accent:#f5b301;     /* warm gold */
-      --max:1380px;
-    }
+    --nav:#0b1220;
+    --accent:#f5b301;           /* warm gold */
+    --max:1380px;
 
-    *,*::before,*::after{box-sizing:border-box}
-    html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Arial,sans-serif}
-    img{display:block;max-width:100%;height:auto}
-    a{color:inherit;text-decoration:none}
+    --gutter:32px;              /* 8pt grid */
+  }
 
-    /* NAV (brand removed) */
-    .nav{position:fixed;inset:0 0 auto 0;height:56px;background:var(--nav);
-         display:flex;align-items:center;justify-content:center;z-index:100;
-         box-shadow:0 1px 4px rgba(0,0,0,.28)}
-    .nav-inner{width:100%;max-width:var(--max);display:flex;align-items:center;gap:16px;padding:0 16px}
-    .nav ul{list-style:none;margin:0 auto 0 auto;padding:0;display:flex;gap:28px}
-    .nav a{color:#e5e7eb;font-weight:800;letter-spacing:.06em;font-size:13px}
-    .nav a.active,.nav a:hover{color:#fde68a}
-    .spacer{height:56px}
+  *,*::before,*::after{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Arial,sans-serif}
+  img{display:block;max-width:100%;height:auto}
+  a{color:inherit;text-decoration:none}
 
-    /* Sections */
-    section{padding:72px 24px}
-    .container{max-width:var(--max);margin:0 auto}
+  /* NAV (brand removed) */
+  .nav{
+    position:fixed;inset:0 0 auto 0;height:56px;background:var(--nav);
+    display:flex;align-items:center;justify-content:center;z-index:100;
+    box-shadow:0 1px 4px rgba(0,0,0,.28)
+  }
+  .nav-inner{width:100%;max-width:var(--max);display:flex;align-items:center;gap:16px;padding:0 16px}
+  .nav ul{list-style:none;margin:0 auto 0 auto;padding:0;display:flex;gap:28px}
+  .nav a{color:#e5e7eb;font-weight:800;letter-spacing:.06em;font-size:13px}
+  .nav a.active,.nav a:hover{color:#fde68a}
+  .spacer{height:56px}
 
-    /* HERO (minimal) */
-    .hero{
-      position:relative;min-height:100vh;
-      display:flex;align-items:center;justify-content:center;text-align:center;
-      color:#fff;background:url('./Hero.png') center/cover no-repeat fixed;
-    }
-    .hero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55)}
-    .hero-name{position:relative;font-weight:900;font-size:clamp(42px,6vw,72px);letter-spacing:.01em;margin:0}
-    .hero p,.hero .subtitle,.hero .chevron{display:none!important}
+  /* Sections */
+  section{padding:72px 24px}
+  .container{max-width:var(--max);margin:0 auto}
 
-    /* Headings */
-    .ghost{ text-align:center;font-weight:900;font-size:54px;letter-spacing:.20em;color:#e5e7eb;opacity:.65;margin:0 0 10px }
-    .title{ text-align:center;font-weight:900;font-size:26px;margin:0 0 14px }
-    .lede{ max-width:980px;margin:0 auto 36px;text-align:center;color:var(--ink);opacity:.92 }
+  /* HERO (minimal; background image) */
+  .hero{
+    position:relative;min-height:100vh;
+    display:flex;align-items:center;justify-content:center;text-align:center;
+    color:#fff;background:url('./Hero.png') center/cover no-repeat fixed;
+  }
+  .hero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55)}
+  .hero-name{position:relative;font-weight:900;font-size:clamp(42px,6vw,72px);letter-spacing:.01em;margin:0}
 
-    /* ABOUT grid — adjusted to guarantee 4 stats on the right */
-    .about-grid{
-      --gutter:32px;
-      display:grid;
-      grid-template-columns:minmax(480px,560px) 1fr;  /* slightly narrower left col */
-      grid-template-rows:auto auto;                   /* row1: photo + stats, row2: facts + skills */
-      gap:var(--gutter);
-      align-items:start;
-    }
+  /* Headings */
+  .title{ text-align:center;font-weight:900;font-size:28px;margin:0 0 8px }
+  .lede{ max-width:72ch;margin:0 auto 20px;text-align:center;color:var(--ink);opacity:.92;line-height:1.55 }
+  .cta-row{display:flex;gap:12px;justify-content:center;margin-bottom:28px}
+  .btn{display:inline-flex;gap:8px;align-items:center;justify-content:center;padding:10px 16px;border-radius:10px;font-weight:800;font-size:14px;border:1px solid var(--line);background:#fff}
+  .btn-primary{background:var(--accent);border-color:var(--accent);color:#111}
+  .btn:hover{filter:brightness(0.98)}
 
-    /* Left column */
-    .portrait-card{grid-column:1;grid-row:1;background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
-    .portrait{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
+  /* ABOUT grid — 2 columns; rows align across */
+  .about-grid{
+    display:grid;
+    grid-template-columns:minmax(480px,560px) 1fr;  /* photo | right column */
+    grid-template-rows:auto auto;                   /* row1: photo+stats; row2: facts+skills */
+    gap:var(--gutter);
+    align-items:start;
+  }
 
-    .facts{grid-column:1;grid-row:2;border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px}
-    .facts-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 36px}
-    .fact b{display:block}
-    .fact small{display:block;color:var(--muted);margin-top:2px}
+  /* Unify elevation (bordered cards; no shadows) */
+  .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius)}
 
-    /* Right column shares rows with left via display:contents */
-    .right{display:contents}
-    .stats{grid-column:2;grid-row:1}
-    .skills{grid-column:2;grid-row:2;margin-top:0}   /* aligned to facts top */
+  /* Photo card */
+  .portrait-card{grid-column:1;grid-row:1;padding:18px}
+  .portrait{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
 
-    /* Stat cards — force 4 columns by allowing smaller min width */
-    .stats{
-      background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:14px;
-      display:grid;grid-template-columns:repeat(4, minmax(160px,1fr));overflow:hidden
-    }
-    .stat{padding:20px 22px;text-align:center}
-    .stat + .stat{border-left:1px solid var(--line)}
+  /* Right column uses the same row indices as left */
+  .stats{grid-column:2;grid-row:1}
+  .facts{grid-column:1;grid-row:2;padding:16px}
+  .skills{grid-column:2;grid-row:2;padding:16px}
 
-    .icircle{
-      width:52px;height:52px;border-radius:999px;border:2px solid var(--accent);
-      display:inline-flex;align-items:center;justify-content:center;background:#fff;margin-bottom:10px
-    }
-    .icircle svg{width:22px;height:22px;stroke:#0b1220;stroke-width:2;fill:none}
+  /* Facts grid */
+  .facts-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 36px}
+  .fact b{display:block}
+  .fact small{display:block;color:var(--muted);margin-top:2px}
 
-    .value{font-weight:900;font-size:32px;line-height:1.1}
-    .label{font-size:13px;color:var(--muted);line-height:1.5;margin-top:8px}
+  /* Stat cards — four columns desktop; tidy dividers, bigger icons */
+  .stats{
+    display:grid;grid-template-columns:repeat(4, minmax(180px,1fr));overflow:hidden
+  }
+  .stat{padding:20px 22px;text-align:center}
+  .stat + .stat{border-left:1px solid var(--line)}
+  .icircle{
+    width:60px;height:60px;border-radius:999px;border:2px solid var(--accent);
+    display:inline-flex;align-items:center;justify-content:center;background:#fff;margin-bottom:12px
+  }
+  .icircle svg{width:24px;height:24px;stroke:#0b1220;stroke-width:2;fill:none}
+  .value{font-weight:900;font-size:28px;line-height:1.2}
+  .label{font-size:13px;color:var(--muted);line-height:1.5;margin-top:8px}
 
-    /* Skills */
-    .skills{border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px}
-    .skillrow{margin:18px 0 8px}
-    .skill-title{font-weight:900;letter-spacing:.05em;font-size:12px}
-    .skill-sub{font-size:12px;color:var(--muted);margin-top:6px}
-    .bar{height:8px;background:#f3f4f6;border-radius:999px;overflow:hidden}
-    .bar>span{display:block;height:100%;background:var(--accent)}
+  /* Skills / progress bars spacing */
+  .skillrow{margin:20px 0 10px}
+  .skill-title{font-weight:900;letter-spacing:.05em;font-size:12px}
+  .skill-sub{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.5}
+  .bar{height:8px;background:#f3f4f6;border-radius:9999px;overflow:hidden;margin-top:12px}
+  .bar>span{display:block;height:100%;background:var(--accent)}
 
-    /* Footer */
-    footer{padding:30px 24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
+  /* Resume / Portfolio / Achievements placeholders */
+  .section-h{font-weight:900;margin:0 0 12px}
+  .muted{color:var(--muted)}
 
-    /* Responsive */
-    @media (max-width:1220px){
-      .about-grid{grid-template-columns:520px 1fr}
-    }
-    @media (max-width:1024px){
-      .about-grid{grid-template-columns:1fr;grid-template-rows:auto}
-      .portrait-card,.facts,.stats,.skills{grid-column:auto;grid-row:auto}
-      .facts-grid{grid-template-columns:1fr}
-      .skills{margin-top:18px}
-      .stats{grid-template-columns:repeat(2, minmax(200px,1fr))}
-      .stat{border-left:none}
-      .stat:nth-child(n+3){border-top:1px solid var(--line)}
-    }
-    @media (max-width:560px){
-      .value{font-size:28px}
-      .stats{grid-template-columns:1fr}
-      .stat + .stat{border-top:1px solid var(--line)}
-      .skills{margin-top:14px}
-    }
-  </style>
+  /* Footer */
+  footer{padding:30px 24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
+
+  /* Responsive */
+  @media (max-width:1220px){
+    .about-grid{grid-template-columns:520px 1fr}
+  }
+  @media (max-width:1024px){
+    .about-grid{grid-template-columns:1fr;grid-template-rows:auto}
+    .portrait-card,.facts,.stats,.skills{grid-column:auto;grid-row:auto}
+    .facts-grid{grid-template-columns:1fr}
+    .stats{grid-template-columns:repeat(2, minmax(220px,1fr))}
+    .stat{border-left:none}
+    .stat:nth-child(n+3){border-top:1px solid var(--line)}
+  }
+  @media (max-width:560px){
+    .value{font-size:26px}
+    .stats{grid-template-columns:1fr}
+    .stat + .stat{border-top:1px solid var(--line)}
+  }
+</style>
 </head>
 <body>
   <!-- NAV (brand removed) -->
@@ -155,83 +160,86 @@
   <!-- ABOUT -->
   <section id="about" aria-label="About">
     <div class="container">
-      <h2 class="ghost">ABOUT ME</h2>
-      <h3 class="title">About me</h3>
+      <h2 class="title">About me</h2>
       <p class="lede">
         I am an experienced Senior Product Manager with <b>14+ years</b> in Telecom, SaaS, CPaaS, and FinTech,
         driving digital transformation and product innovation across MENA, CIS, and Asia. I specialize in building
         scalable platforms, launching digital services, and delivering customer-centric growth strategies.
       </p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#resume" aria-label="View resume">View Resume</a>
+        <a class="btn" href="#portfolio" aria-label="See portfolio">See Portfolio</a>
+      </div>
 
       <div class="about-grid">
         <!-- LEFT / Row 1 -->
-        <div class="portrait-card">
+        <div class="card portrait-card">
           <img class="portrait" src="./portrait.png" alt="Portrait of Waqas Arshad">
         </div>
 
         <!-- RIGHT / Row 1 (4 stats) -->
-        <div class="right">
-          <div class="stats" aria-label="Impact statistics">
-            <div class="stat">
-              <div class="icircle" aria-hidden="true">
-                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v5l3 2"></path></svg>
-              </div>
-              <div class="value">14+ years</div>
-              <div class="label">Leading product management &amp; digital innovation</div>
+        <div class="card stats" aria-label="Impact statistics">
+          <article class="stat" aria-label="Fourteen plus years experience">
+            <div class="icircle" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <circle cx="12" cy="12" r="8"></circle><path d="M12 8v5l3 2"></path>
+              </svg>
             </div>
+            <div class="value">14+ years</div>
+            <div class="label">Product management &amp; digital innovation</div>
+          </article>
 
-            <div class="stat">
-              <div class="icircle" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <circle cx="12" cy="12" r="8"></circle>
-                  <path d="M4 12h16M12 4a14 14 0 0 0 0 16M12 4a14 14 0 0 1 0 16"></path>
-                </svg>
-              </div>
-              <div class="value">Global reach</div>
-              <div class="label">Delivered solutions across MENA, CIS &amp; Asia</div>
+          <article class="stat" aria-label="Global reach">
+            <div class="icircle" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <circle cx="12" cy="12" r="8"></circle>
+                <path d="M4 12h16M12 4a14 14 0 0 0 0 16M12 4a14 14 0 0 1 0 16"></path>
+              </svg>
             </div>
+            <div class="value">Global reach</div>
+            <div class="label">Delivered across MENA, CIS &amp; Asia</div>
+          </article>
 
-            <div class="stat">
-              <div class="icircle" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M14 10l6-6a5 5 0 0 1 0 7l-6 6-4-4 4-4z"></path>
-                  <path d="M5 19l4-4M9 15l2 2"></path>
-                </svg>
-              </div>
-              <div class="value">50+ products launched</div>
-              <div class="label">Across CPaaS, Super Apps &amp; digital services</div>
+          <article class="stat" aria-label="Fifty plus products launched">
+            <div class="icircle" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M14 10l6-6a5 5 0 0 1 0 7l-6 6-4-4 4-4z"></path>
+                <path d="M5 19l4-4M9 15l2 2"></path>
+              </svg>
             </div>
+            <div class="value">50+ launches</div>
+            <div class="label">CPaaS, Super Apps &amp; services</div>
+          </article>
 
-            <div class="stat">
-              <div class="icircle" aria-hidden="true">
-                <svg viewBox="0 0 24 24">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4h0a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="3"></circle>
-                </svg>
-              </div>
-              <div class="value">5M+ users impacted</div>
-              <div class="label">Through telecom, SaaS &amp; FinTech solutions</div>
+          <article class="stat" aria-label="Five million plus users impacted">
+            <div class="icircle" aria-hidden="true">
+              <svg viewBox="0 0 24 24" role="img" aria-hidden="true">
+                <path d="M16 21v-2a4 4 0 0 0-4-4h0a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="3"></circle>
+              </svg>
             </div>
-          </div>
+            <div class="value">5M+ users</div>
+            <div class="label">Telecom, SaaS &amp; FinTech solutions</div>
+          </article>
         </div>
 
         <!-- LEFT / Row 2 -->
-        <div class="facts" aria-label="Profile facts">
+        <div class="card facts" aria-label="Profile facts">
           <div class="facts-grid">
             <div class="fact"><div><b>Name</b><small>Waqas Arshad</small></div></div>
-            <div class="fact"><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
+            <div class="fact"><div><b>Degrees</b><small>Master’s in Project Management; Bachelor’s in Electrical Engineering</small></div></div>
             <div class="fact"><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
-            <div class="fact"><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small></div></div>
+            <div class="fact"><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science &amp; Technology</small></div></div>
             <div class="fact"><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
             <div class="fact"><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
           </div>
         </div>
 
         <!-- RIGHT / Row 2 -->
-        <div class="skills" aria-label="Skills">
+        <div class="card skills" aria-label="Skills">
           <div class="skillrow">
             <div class="skill-title">PRODUCT STRATEGY &amp; LEADERSHIP</div>
-            <div class="skill-sub">Product roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
+            <div class="skill-sub">Roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
           </div>
           <div class="bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Product Strategy & Leadership proficiency">
             <span style="width:92%"></span>
@@ -239,7 +247,7 @@
 
           <div class="skillrow">
             <div class="skill-title">DIGITAL PLATFORMS &amp; FINTECH</div>
-            <div class="skill-sub">Value added services, charging system platform, ICT, SuperApp &amp; digital platforms, FinTech</div>
+            <div class="skill-sub">VAS, charging systems, ICT, SuperApp &amp; digital platforms, FinTech</div>
           </div>
           <div class="bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Digital Platforms & FinTech proficiency">
             <span style="width:90%"></span>
@@ -268,42 +276,31 @@
   <!-- RESUME -->
   <section id="resume" aria-label="Resume">
     <div class="container">
-      <h2 style="font-weight:900;margin:0 0 12px">Resume</h2>
-      <p style="color:var(--muted)">Add roles, impact metrics, and highlights here or link your PDF resume.</p>
+      <h2 class="section-h">Resume</h2>
+      <p class="muted">Add roles, impact metrics, and highlights here or link your PDF resume.</p>
     </div>
   </section>
 
   <!-- PORTFOLIO -->
   <section id="portfolio" aria-label="Portfolio">
     <div class="container">
-      <h2 style="font-weight:900;margin:0 0 12px">Portfolio</h2>
-      <p style="color:var(--muted)">Showcase your key case studies and launches here.</p>
+      <h2 class="section-h">Portfolio</h2>
+      <p class="muted">Showcase your key case studies and launches here.</p>
     </div>
   </section>
 
   <!-- CERTIFICATIONS & ACHIEVEMENTS -->
   <section id="achievements" aria-label="Certifications & Achievements">
     <div class="container">
-      <h2 style="font-weight:900;margin:0 0 12px">Certifications &amp; Achievements</h2>
-      <div style="display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:16px; margin:16px 0 24px">
-        <article style="border:1px solid var(--line);border-radius:14px;background:#fff;padding:14px">
-          <div style="font-weight:800">IBM Design Thinking Practitioner</div>
-          <div style="color:var(--muted);font-size:13px;margin-top:4px">IBM · 2024</div>
-          <a href="#" style="display:inline-block;margin-top:8px;font-size:12px">View credential →</a>
-        </article>
-        <article style="border:1px solid var(--line);border-radius:14px;background:#fff;padding:14px">
-          <div style="font-weight:800">Professional Scrum Product Owner (PSPO)</div>
-          <div style="color:var(--muted);font-size:13px;margin-top:4px">Scrum.org · 2023</div>
-          <a href="#" style="display:inline-block;margin-top:8px;font-size:12px">View credential →</a>
-        </article>
-      </div>
+      <h2 class="section-h">Certifications &amp; Achievements</h2>
+      <p class="muted">Add your credentials and awards here (with links to credentials if available).</p>
     </div>
   </section>
 
   <!-- CONTACT -->
   <section id="contact" aria-label="Contact">
     <div class="container">
-      <h2 style="font-weight:900;margin:0 0 12px">Contact</h2>
+      <h2 class="section-h">Contact</h2>
       <p>Email: <a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></p>
     </div>
   </section>
@@ -317,11 +314,12 @@
     const links = [...document.querySelectorAll('.nav a[href^="#"]')];
     const sections = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
     const io = new IntersectionObserver(entries => {
-      const top = entries.filter(e => e.isIntersecting)
-                         .sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      const top = entries
+        .filter(e => e.isIntersecting)
+        .sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
       if (!top) return;
       links.forEach(l => l.classList.toggle('active', l.getAttribute('href') === '#'+top.target.id));
-    }, { rootMargin: '-40% 0px -50% 0px', threshold: [0, .25, .5, .75, 1] });
+    }, { rootMargin: '-40% 0px -50% 0px', threshold: [0,.25,.5,.75,1] });
     sections.forEach(s => io.observe(s));
   </script>
 </body>

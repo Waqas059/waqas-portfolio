@@ -1,340 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Waqas Arshad — Personal Site</title>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#0f1420;          /* navbar/hero overlay base */
-    --ink:#0e1726;         /* headings */
-    --text:#333a49;        /* body */
-    --muted:#6b7280;       /* subdued text */
-    --card:#ffffff;        /* cards */
-    --line:#e9eef5;        /* hairlines */
-    --brand:#f5c400;       /* highlight (gold) */
-    --brand-ink:#1c2433;   /* dark ink for contrast */
-    --ring:#ffe89b;        /* soft ring accent */
-    --shadow: 0 6px 22px rgba(16, 24, 40, .08);
-    --radius:16px;
-    --container:1200px;
-    --gap:28px;
-  }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Waqas Arshad — Personal Site</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg: #0d1117;
+      --panel: #ffffff;
+      --text: #111827;
+      --muted:#6b7280;
+      --brand:#f4c430; /* warm gold accent */
+      --ink:#0f172a;
+      --ring:#e5e7eb;
+      --card-shadow: 0 10px 20px rgba(0,0,0,.06), 0 3px 6px rgba(0,0,0,.04);
+      --radius: 16px;
+      --radius-sm: 12px;
+      --maxw: 1180px;
+    }
 
-  *{box-sizing:border-box}
-  html,body{margin:0}
-  body{
-    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
-    color:var(--text);
-    background:#fafbfe;
-    line-height:1.5;
-  }
-  a{color:inherit;text-decoration:none}
-  .container{max-width:var(--container);margin:0 auto;padding:0 20px}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";color:var(--text);background:#f7f8fb}
 
-  /* NAV */
-  .nav{
-    position:sticky; top:0; z-index:40;
-    background:var(--bg);
-    border-bottom:1px solid rgba(255,255,255,.06);
-  }
-  .nav-inner{display:flex;align-items:center;gap:28px;height:56px}
-  .brand{color:#fff;font-weight:800;letter-spacing:.08em}
-  .nav a{color:#cfd6e5;font-weight:600;font-size:.92rem;opacity:.9}
-  .nav a:hover{opacity:1}
-  .nav a.active{color:#ffd24a}
+    /* ----- NAV ----- */
+    .nav{
+      position:sticky; top:0; z-index:50;
+      backdrop-filter:saturate(180%) blur(8px);
+      background:rgba(13,17,23,.82); border-bottom:1px solid rgba(255,255,255,.06);
+    }
+    .nav-inner{
+      max-width:var(--maxw); margin:auto; display:flex; align-items:center; justify-content:center; gap:28px;
+      padding:14px 20px;
+    }
+    .nav a{
+      color:#e5e7eb; text-decoration:none; font-weight:600; font-size:14px; letter-spacing:.02em;
+      padding:8px 10px; border-radius:8px;
+    }
+    .nav a:hover{ background:rgba(255,255,255,.06) }
+    .nav a.is-active{ color:#fff; border-bottom:2px solid var(--brand) }
 
-  /* HERO (home) */
-  .hero{
-    position:relative; isolation:isolate;
-    background:#090d16 url('Hero.png') center/cover no-repeat;
-    min-height:62vh; display:grid; place-items:center;
-  }
-  .hero::after{
-    content:""; position:absolute; inset:0;
-    background:linear-gradient(180deg, rgba(7,10,18,.65), rgba(7,10,18,.75));
-    z-index:-1;
-  }
-  .hero h1{
-    color:#fff; font-weight:800; font-size:clamp(28px,3.8vw,44px);
-    margin:0 0 8px; text-align:center; letter-spacing:.02em;
-  }
-  .hero p{
-    color:#dfe6f5; text-align:center; max-width:760px; margin:0 auto;
-    font-weight:500
-  }
-  .hero .chev{
-    position:absolute; bottom:22px; left:50%; translate:-50% 0;
-    width:38px;height:38px;border-radius:50%;
-    border:1px solid rgba(255,255,255,.25);
-    display:grid;place-items:center;color:#fff;opacity:.8
-  }
+    /* ----- HERO ----- */
+    .hero{
+      min-height:62vh; display:grid; place-items:center; text-align:center;
+      background:linear-gradient(rgba(13,17,23,.70), rgba(13,17,23,.70)), url('Hero.png') center/cover no-repeat;
+      color:#fff; border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .hero h1{ font-size:48px; line-height:1.1; margin:0 16px 12px; font-weight:800; letter-spacing:.01em}
+    .hero p{ max-width:920px; margin:0 auto; opacity:.9 }
+    .hero .hint{ margin-top:26px; font-size:13px; opacity:.85 }
 
-  /* SECTION HEAD */
-  .section-head{
-    text-align:center; padding:56px 0 12px;
-  }
-  .section-head h2{
-    font-size:28px; color:var(--ink); margin:0 0 8px; font-weight:800;
-    letter-spacing:.01em;
-  }
-  .section-head p{color:var(--muted); margin:0}
+    /* ----- WRAPPER ----- */
+    .section{ padding:56px 20px }
+    .wrap{ max-width:var(--maxw); margin:auto }
 
-  /* ABOUT GRID */
-  .about-wrap{padding:20px 0 64px}
-  .about-grid{
-    display:grid;
-    grid-template-columns: 5fr 7fr;   /* left vs right */
-    gap:var(--gap);
-    align-items:start;
-  }
-  .stack{display:flex;flex-direction:column;gap:var(--gap)}
+    /* ----- CARDS / UTIL ----- */
+    .card{
+      background:var(--panel); border:1px solid var(--ring); border-radius:var(--radius);
+      box-shadow:var(--card-shadow);
+    }
+    .card-sm{ border-radius:var(--radius-sm) }
+    .h2{ font-size:28px; font-weight:800; letter-spacing:.01em; color:var(--ink); margin:0 0 14px }
+    .muted{ color:var(--muted) }
+    .spacer-24{ height:24px }
+    .spacer-32{ height:32px }
 
-  .card{
-    background:var(--card); border:1px solid var(--line);
-    border-radius:var(--radius); box-shadow:var(--shadow);
-  }
+    /* ----- ABOUT GRID (2 rows x 2 cols) ----- */
+    .about-grid{
+      display:grid; gap:24px;
+      grid-template-columns: 420px 1fr; /* left column fixed, right fluid */
+      grid-auto-rows: min-content;
+    }
+    /* Row 1 */
+    .portrait-card{
+      grid-column:1; grid-row:1; padding:16px;
+    }
+    .portrait{
+      width:100%; aspect-ratio: 4/3; object-fit:cover; border-radius:12px; display:block;
+    }
+    .stats{
+      grid-column:2; grid-row:1;
+      display:grid; gap:16px; grid-template-columns: repeat(4, 1fr);
+    }
+    .stat{
+      padding:18px; display:flex; flex-direction:column; gap:8px;
+      align-items:flex-start; border-radius:12px;
+    }
+    .stat .badge{
+      width:34px; height:34px; display:grid; place-items:center; border-radius:50%;
+      border:2px solid var(--brand); color:#111; font-weight:700; font-size:12px; background:#fff;
+    }
+    .stat h3{ margin:4px 0 0; font-size:24px; line-height:1.1; font-weight:900 }
+    .stat small{ color:var(--muted); display:block; margin-top:6px; font-size:12px; line-height:1.35 }
 
-  /* Portrait */
-  .portrait{padding:14px}
-  .portrait img{
-    display:block; width:100%; height:auto; border-radius:12px;
-  }
+    /* Row 2 */
+    .facts{ grid-column:1; grid-row:2; padding:18px }
+    .facts-grid{
+      display:grid; gap:12px 18px; grid-template-columns: 160px 1fr;
+    }
+    .facts-grid .label{ font-weight:700; color:var(--ink) }
+    .facts-grid .value{ color:var(--text) }
+    .facts hr{ border:none; border-top:1px dashed var(--ring); margin:8px 0 }
 
-  /* Facts card (two-column pairs) */
-  .facts{padding:18px 22px}
-  .facts-grid{
-    display:grid; grid-template-columns:1fr 1fr; gap:18px 26px;
-  }
-  .fact h4{
-    font-weight:700; color:var(--ink); font-size:14px; margin:0 0 4px;
-  }
-  .fact p{margin:0; color:var(--text)}
-  .fact p.sub{color:var(--muted); font-size:.95rem}
+    .skills{ grid-column:2; grid-row:2; padding:18px }
+    .skill{ margin:14px 0 }
+    .skill h4{ margin:0 0 6px; font-size:13px; letter-spacing:.03em; color:var(--ink); font-weight:800 }
+    .bar{
+      height:10px; background:#eef2f6; border-radius:999px; overflow:hidden; border:1px solid #e8edf3
+    }
+    .bar > span{
+      display:block; height:100%; background:linear-gradient(90deg, #f6d676, var(--brand));
+      width:var(--v,80%); border-radius:999px
+    }
 
-  /* Stats row (4 open cards) */
-  .stats{
-    padding:14px;
-  }
-  .stats-grid{
-    display:grid; grid-template-columns: repeat(4, 1fr); gap:14px;
-  }
-  .stat{
-    border:1px solid var(--line); border-radius:14px; padding:18px 16px;
-    background:#fff;
-  }
-  .stat .icon{
-    width:44px;height:44px;border-radius:50%;
-    border:2px solid var(--brand);
-    display:grid;place-items:center;margin-bottom:10px;
-    background: radial-gradient(ellipse at center, #fff 55%, #fff3c7 100%);
-  }
-  .stat h3{
-    margin:0; color:var(--ink); font-size:22px; line-height:1.15;
-  }
-  .stat small{display:block; color:var(--muted); font-weight:600; margin-top:2px}
-  .stat p{margin:6px 0 0; font-size:.9rem; color:var(--muted)}
-
-  /* Skills (progress bars) */
-  .skills{padding:18px 22px}
-  .skill + .skill{margin-top:18px}
-  .skill h5{margin:0 0 8px; font-size:.92rem; color:var(--ink); letter-spacing:.02em}
-  .track{
-    height:8px; border-radius:999px; background:#eef3f9; position:relative; overflow:hidden;
-    outline:1px solid #eef3f9;
-  }
-  .bar{
-    position:absolute; inset:0 auto 0 0; width:80%; /* default */
-    background:linear-gradient(90deg, #ffc800, #ffdd66);
-    border-radius:999px;
-  }
-
-  /* Icon SVGs */
-  .i-clock, .i-globe, .i-rocket, .i-users{stroke:var(--brand-ink);stroke-width:2;fill:none}
-
-  /* RESPONSIVE */
-  @media (max-width: 1100px){
-    .about-grid{grid-template-columns: 1fr}
-    .stats-grid{grid-template-columns: repeat(4, minmax(140px,1fr))}
-  }
-  @media (max-width: 860px){
-    .stats-grid{grid-template-columns: repeat(2, 1fr)}
-  }
-  @media (max-width: 540px){
-    .facts-grid{grid-template-columns:1fr}
-  }
-</style>
+    /* ----- RESPONSIVE ----- */
+    @media (max-width: 1100px){
+      .about-grid{ grid-template-columns: 1fr }
+      .portrait-card{ grid-column:1; grid-row:auto }
+      .stats{ grid-column:1; grid-row:auto; grid-template-columns: repeat(2,1fr) }
+      .facts{ grid-column:1 }
+      .skills{ grid-column:1 }
+    }
+  </style>
 </head>
 <body>
 
   <!-- NAV -->
   <nav class="nav">
-    <div class="container nav-inner">
-      <div class="brand">WAQAS</div>
-      <div style="display:flex; gap:18px; margin-left:auto">
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#resume">Resume</a>
-        <a href="#portfolio">Portfolio</a>
-        <a href="#certs">Certifications & Achievements</a>
-        <a href="#contact">Contact</a>
-      </div>
+    <div class="nav-inner">
+      <a href="#home" class="is-active">Home</a>
+      <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#certs">Certifications &amp; Achievements</a>
+      <a href="#contact">Contact</a>
     </div>
   </nav>
 
-  <!-- HOME -->
+  <!-- HERO -->
   <header id="home" class="hero">
-    <div class="container">
+    <div>
       <h1>Waqas Arshad</h1>
-      <p>Senior Product Manager driving scalable platforms & digital services across MENA, CIS & Asia — Telecom, SaaS, CPaaS & FinTech.</p>
+      <p>Senior Product Manager driving scalable platforms &amp; digital services across MENA, CIS &amp; Asia — Telecom, SaaS, CPaaS &amp; FinTech.</p>
+      <div class="hint">Scroll to learn more</div>
     </div>
-    <div class="chev">⌄</div>
   </header>
 
   <!-- ABOUT -->
-  <section id="about" class="about-wrap">
-    <div class="section-head">
-      <h2>About me</h2>
-      <p>I build scalable platforms, launch digital services and deliver customer-centric growth strategies.</p>
-    </div>
+  <section id="about" class="section">
+    <div class="wrap">
+      <h2 class="h2">About me</h2>
+      <p class="muted" style="max-width:860px">I am an experienced Senior Product Manager with <strong>14+ years</strong> across Telecom, SaaS, CPaaS, and FinTech. I specialize in building scalable platforms, launching digital services, and delivering customer-centric growth strategies.</p>
 
-    <div class="container about-grid">
+      <div class="spacer-24"></div>
 
-      <!-- LEFT STACK: Portrait + Facts -->
-      <div class="stack">
-        <div class="card portrait">
-          <img src="portrait.png" alt="Waqas Arshad portrait">
+      <div class="about-grid">
+
+        <!-- Row 1: Portrait -->
+        <div class="card portrait-card">
+          <img class="portrait" src="portrait.png" alt="Waqas Arshad portrait">
         </div>
 
+        <!-- Row 1: Stats (4-up) -->
+        <div class="stats">
+          <div class="card stat">
+            <div class="badge">⏱</div>
+            <h3>14+ years</h3>
+            <small>Product management &amp; digital innovation</small>
+          </div>
+          <div class="card stat">
+            <div class="badge">🌐</div>
+            <h3>Global reach</h3>
+            <small>Delivered solutions across MENA, CIS &amp; Asia</small>
+          </div>
+          <div class="card stat">
+            <div class="badge">🚀</div>
+            <h3>50+ launches</h3>
+            <small>Across CPaaS, Super Apps &amp; digital services</small>
+          </div>
+          <div class="card stat">
+            <div class="badge">👥</div>
+            <h3>5M+ users</h3>
+            <small>Through telecom, SaaS &amp; FinTech solutions</small>
+          </div>
+        </div>
+
+        <!-- Row 2: Facts (open layout, no bullets) -->
         <div class="card facts">
           <div class="facts-grid">
-            <div class="fact">
-              <h4>Name</h4>
-              <p>Waqas Arshad</p>
-            </div>
-            <div class="fact">
-              <h4>Degrees</h4>
-              <p class="sub">Master’s in Project Management; Bachelor’s in Electrical Engineering</p>
-            </div>
+            <div class="label">Name</div>
+            <div class="value">Waqas Arshad</div>
 
-            <div class="fact">
-              <h4>City</h4>
-              <p>Islamabad, Pakistan</p>
-            </div>
-            <div class="fact">
-              <h4>School</h4>
-              <p class="sub">Shaheed Zulfiqar Ali Bhutto Institute of Science & Technology</p>
-            </div>
+            <div class="label">Degrees</div>
+            <div class="value">Master’s in Project Management; Bachelor’s in Electrical Engineering</div>
 
-            <div class="fact">
-              <h4>Email</h4>
-              <p>waxas.arshad@gmail.com</p>
-            </div>
-            <div class="fact">
-              <h4>Current designation</h4>
-              <p>Senior Product Manager</p>
-            </div>
-          </div>
-        </div>
-      </div>
+            <div class="label">City</div>
+            <div class="value">Islamabad, Pakistan</div>
 
-      <!-- RIGHT STACK: Stats + Skills -->
-      <div class="stack">
-        <!-- Stats -->
-        <div class="card stats">
-          <div class="stats-grid">
+            <div class="label">School</div>
+            <div class="value">Shaheed Zulfiqar Ali Bhutto Institute of Science &amp; Technology</div>
 
-            <div class="stat">
-              <div class="icon">
-                <svg class="i-clock" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M12 7v6l4 2"></path>
-                </svg>
-              </div>
-              <h3>14+ years</h3>
-              <p>Product management &amp; digital innovation</p>
-            </div>
+            <div class="label">Email</div>
+            <div class="value">waxas.arshad@gmail.com</div>
 
-            <div class="stat">
-              <div class="icon">
-                <svg class="i-globe" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                  <circle cx="12" cy="12" r="9"></circle>
-                  <path d="M2.5 12h19"></path>
-                  <path d="M12 2.5c3.5 3.5 3.5 15.5 0 19"></path>
-                </svg>
-              </div>
-              <h3>Global reach</h3>
-              <small>MENA, CIS &amp; Asia</small>
-              <p>Delivered solutions across regions</p>
-            </div>
-
-            <div class="stat">
-              <div class="icon">
-                <svg class="i-rocket" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M4 20c2-6 8-10 12-12 0 4-6 10-12 12Z"></path>
-                  <path d="M12 6l6-2-2 6"></path>
-                </svg>
-              </div>
-              <h3>50+ launches</h3>
-              <p>CPaaS, Super Apps &amp; digital services</p>
-            </div>
-
-            <div class="stat">
-              <div class="icon">
-                <svg class="i-users" width="18" height="18" viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M16 11a4 4 0 1 0-8 0"></path>
-                  <path d="M2 19c2-3 6-4 10-4s8 1 10 4"></path>
-                </svg>
-              </div>
-              <h3>5M+ users</h3>
-              <p>Telecom, SaaS &amp; FinTech solutions</p>
-            </div>
-
+            <div class="label">Current designation</div>
+            <div class="value">Senior Product Manager</div>
           </div>
         </div>
 
-        <!-- Skills -->
+        <!-- Row 2: Skill Bars -->
         <div class="card skills">
           <div class="skill">
-            <h5>PRODUCT STRATEGY & LEADERSHIP</h5>
-            <div class="track"><div class="bar" style="width:92%"></div></div>
+            <h4>PRODUCT STRATEGY &amp; LEADERSHIP</h4>
+            <div class="bar"><span style="--v:92%"></span></div>
           </div>
-
           <div class="skill">
-            <h5>DIGITAL PLATFORMS & FINTECH</h5>
-            <div class="track"><div class="bar" style="width:90%"></div></div>
+            <h4>DIGITAL PLATFORMS &amp; FINTECH</h4>
+            <div class="bar"><span style="--v:88%"></span></div>
           </div>
-
           <div class="skill">
-            <h5>CPAAS & MESSAGING PLATFORMS</h5>
-            <div class="track"><div class="bar" style="width:88%"></div></div>
+            <h4>CPAAS &amp; MESSAGING PLATFORMS</h4>
+            <div class="bar"><span style="--v:87%"></span></div>
           </div>
-
           <div class="skill">
-            <h5>AGILE & DESIGN THINKING</h5>
-            <div class="track"><div class="bar" style="width:87%"></div></div>
+            <h4>AGILE &amp; DESIGN THINKING</h4>
+            <div class="bar"><span style="--v:90%"></span></div>
           </div>
         </div>
-      </div>
 
+      </div>
     </div>
   </section>
 
-  <!-- Stub sections to preserve nav (fill later) -->
-  <section id="resume" class="container" style="padding:70px 0 100px">
-    <div class="section-head"><h2>Resume</h2><p>Coming up next…</p></div>
-  </section>
-  <section id="portfolio" class="container" style="padding:40px 0 100px">
-    <div class="section-head"><h2>Portfolio</h2><p>Showcasing selected work.</p></div>
-  </section>
-  <section id="certs" class="container" style="padding:40px 0 100px">
-    <div class="section-head"><h2>Certifications & Achievements</h2></div>
-  </section>
-  <section id="contact" class="container" style="padding:40px 0 100px">
-    <div class="section-head"><h2>Contact</h2></div>
-  </section>
+  <!-- Placeholder sections for nav (so the menu works) -->
+  <section id="resume" class="section"><div class="wrap"><h2 class="h2">Resume</h2><p class="muted">Add your timeline/experience here.</p></div></section>
+  <section id="portfolio" class="section"><div class="wrap"><h2 class="h2">Portfolio</h2><p class="muted">Showcase projects, case studies, and outcomes.</p></div></section>
+  <section id="certs" class="section"><div class="wrap"><h2 class="h2">Certifications &amp; Achievements</h2><p class="muted">List relevant credentials and awards.</p></div></section>
+  <section id="contact" class="section"><div class="wrap"><h2 class="h2">Contact</h2><p class="muted">Email: waxas.arshad@gmail.com</p></div></section>
 
 </body>
 </html>

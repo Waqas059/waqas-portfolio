@@ -15,16 +15,16 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 
   <style>
-    /* Luke-style palette: neutral + single blue accent */
+    /* Neutral, Luke-style palette (single grey accent) */
     :root{
       --bg:#ffffff;
-      --ink:#111827;     /* gray-900 */
-      --muted:#6b7280;   /* gray-500 */
-      --muted2:#9ca3af;  /* gray-400 */
-      --line:#e5e7eb;    /* gray-200 */
-      --accent:#2563eb;  /* blue-600 */
-      --accent-weak:#dbeafe; /* blue-100 */
-      --nav:#0b1220;     /* deep navy */
+      --ink:#111827;      /* gray-900 */
+      --muted:#6b7280;    /* gray-500 */
+      --muted2:#9ca3af;   /* gray-400 */
+      --line:#e5e7eb;     /* gray-200 */
+      --accent:#6b7280;   /* grey accent for bars & hovers */
+      --accent-weak:#f3f4f6; /* light grey focus ring */
+      --nav:#0b1220;      /* deep navy for top bar */
     }
 
     *{box-sizing:border-box}
@@ -36,12 +36,12 @@
     .nav{position:fixed;inset:0 0 auto 0;height:56px;background:var(--nav);display:flex;justify-content:center;align-items:center;z-index:50;box-shadow:0 1px 4px rgba(0,0,0,.25)}
     .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:28px}
     .nav a{color:#e5e7eb;font-weight:800;letter-spacing:.06em;font-size:13px}
-    .nav a:hover,.nav a.active{color:var(--accent)}
+    .nav a:hover,.nav a.active{color:var(--muted2)}
     .spacer{height:56px}
 
     /* Sections & container */
     section{padding:72px 24px}
-    .container{max-width:1320px;margin:0 auto}
+    .container{max-width:1380px;margin:0 auto}
 
     /* HERO */
     .hero{
@@ -54,37 +54,37 @@
 
     /* ABOUT */
     .about .ghost{
-      text-align:center;font-weight:900;font-size:54px;letter-spacing:.20em;color:#e5e7eb;opacity:.65;margin:0 0 6px
+      text-align:center;font-weight:900;font-size:54px;letter-spacing:.20em;color:#e5e7eb;opacity:.65;margin:0 0 8px
     }
     .about .title{margin:0 0 14px;text-align:center;font-weight:900;font-size:26px}
     .about .lede{max-width:960px;margin:0 auto 36px;text-align:center;color:var(--ink);opacity:.9}
 
-    /* Two-column: big portrait left, content right */
+    /* Two-column: bigger portrait left, content right */
     .about .grid{
-      display:grid;grid-template-columns:640px 1fr;gap:56px;align-items:start
+      display:grid;grid-template-columns:720px 1fr;gap:56px;align-items:start
     }
     .portrait{
-      width:640px;aspect-ratio:4/3;object-fit:cover;border-radius:12px;
-      border:1px solid var(--line);box-shadow:0 14px 36px rgba(0,0,0,.12)
+      width:720px;aspect-ratio:4/3;object-fit:cover;border-radius:14px;
+      border:1px solid var(--line);box-shadow:0 18px 48px rgba(0,0,0,.12)
     }
 
-    /* Facts with light icons */
-    .facts{display:grid;grid-template-columns:1fr 1fr;gap:16px 36px;margin-bottom:4px}
+    /* Facts with light grey icons */
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:16px 36px;margin-bottom:6px}
     .fact{display:flex;gap:10px;align-items:flex-start}
     .fact i{color:var(--muted2);font-size:16px;margin-top:2px}
     .fact b{display:block}
     .fact small{display:block;color:var(--muted);margin-top:2px}
 
-    /* Metrics: bold numbers, no circles */
+    /* Metrics: bold numbers, neutral separators (no circles) */
     .stats{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:26px 0 34px
+      display:grid;grid-template-columns:repeat(4,1fr);gap:28px;margin:28px 0 36px
     }
-    .stat{padding-right:16px}
+    .stat{padding-right:18px}
     .stat:not(:last-child){border-right:1px solid var(--line)}
-    .value{font-size:34px;font-weight:900;line-height:1.05;letter-spacing:.01em}
+    .value{font-size:40px;font-weight:900;line-height:1.04;letter-spacing:.005em}
     .label{font-size:13px;color:var(--muted);line-height:1.4;margin-top:6px}
 
-    /* Skills: Luke-style bars (thin, crisp, blue) */
+    /* Skills: thin grey bars */
     .skills{margin-top:4px}
     .skillrow{margin:18px 0 6px}
     .skill-title{font-weight:900;letter-spacing:.05em;font-size:12px}
@@ -101,9 +101,9 @@
     footer{padding:30px 24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
 
     /* Responsive */
-    @media (max-width:1180px){
-      .about .grid{grid-template-columns:560px 1fr;gap:44px}
-      .portrait{width:560px}
+    @media (max-width:1220px){
+      .about .grid{grid-template-columns:600px 1fr;gap:44px}
+      .portrait{width:600px}
     }
     @media (max-width:1024px){
       .about .grid{grid-template-columns:1fr}
@@ -114,7 +114,7 @@
     }
     @media (max-width:560px){
       .stats{grid-template-columns:1fr}
-      .value{font-size:28px}
+      .value{font-size:32px}
     }
   </style>
 </head>
@@ -145,16 +145,15 @@
       <h2 class="ghost">ABOUT ME</h2>
       <h3 class="title">About me</h3>
       <p class="lede">
-        I am an experienced Senior Product Manager with 14 years in Telecom, SaaS, CPaaS, and FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia. I specialize in building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
+        I am an experienced Senior Product Manager with 14+ years in Telecom, SaaS, CPaaS, and FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia. I specialize in building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
       </p>
 
       <div class="grid">
-        <!-- Left: portrait -->
+        <!-- Left: big portrait -->
         <img class="portrait" src="./portrait.png" alt="Waqas portrait">
 
-        <!-- Right: content -->
+        <!-- Right: content (your exact wording kept) -->
         <div>
-          <!-- Facts (kept exactly) -->
           <div class="facts">
             <div class="fact"><i class="fa-solid fa-user"></i><div><b>Name</b><small>Waqas Arshad</small></div></div>
             <div class="fact"><i class="fa-solid fa-graduation-cap"></i><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
@@ -164,7 +163,7 @@
             <div class="fact"><i class="fa-solid fa-briefcase"></i><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
           </div>
 
-          <!-- Metrics (your wording, Luke look) -->
+          <!-- Metrics (neutral grey style) -->
           <div class="stats">
             <div class="stat">
               <div class="value">14+ years</div>
@@ -184,7 +183,7 @@
             </div>
           </div>
 
-          <!-- Skills (your content + blue bars) -->
+          <!-- Skills (grey bars) -->
           <div class="skills">
             <div class="skillrow">
               <div class="skill-title">PRODUCT STRATEGY & LEADERSHIP</div>

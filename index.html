@@ -66,20 +66,18 @@
     .fact b{display:block}
     .fact small{display:block;color:var(--muted);margin-top:2px}
 
-    /* METRICS — airy and centered like the reference */
+    /* METRICS */
     .metrics{
       display:grid;
       grid-template-columns:1fr 1fr;
-      gap:50px;                /* breathing room */
-      margin:50px 0;           /* space above/below block */
+      gap:50px;
+      margin:50px 0;
       text-align:center;
     }
     @media (min-width:1100px){
       .metrics{grid-template-columns:repeat(4,1fr)}
     }
-    .metric{
-      display:flex;flex-direction:column;align-items:center;gap:10px
-    }
+    .metric{display:flex;flex-direction:column;align-items:center;gap:10px}
     .dot{
       width:60px;height:60px;border:2px solid var(--accent);border-radius:50%;
       display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:4px
@@ -87,9 +85,11 @@
     .num{font-size:22px;font-weight:900;line-height:1.25}
     .sub{font-size:14px;color:var(--muted);line-height:1.45}
 
-    /* Optional skill bars */
-    .skills{margin-top:10px}
-    .skill{margin:14px 0 8px;font-weight:700;font-size:12px;letter-spacing:.06em}
+    /* SKILLS */
+    .skills{margin-top:20px}
+    .skillrow{margin:20px 0 6px}
+    .skill-title{font-weight:800;letter-spacing:.06em;font-size:13px}
+    .skill-sub{font-size:12px;color:var(--muted);margin-top:4px}
     .bar{height:10px;background:#edf1f4;border:1px solid var(--line);border-radius:8px;overflow:hidden}
     .bar > span{display:block;height:100%;background:var(--accent);width:0}
 
@@ -137,89 +137,63 @@
 
         <div>
           <div class="facts">
-            <div class="fact">
-              <div class="chev">›</div>
-              <div>
-                <b>Name</b>
-                <small>Waqas Arshad</small>
-              </div>
-            </div>
-            <div class="fact">
-              <div class="chev">›</div>
-              <div>
-                <b>Degrees</b>
-                <small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small>
-              </div>
-            </div>
-
-            <div class="fact">
-              <div class="chev">›</div>
-              <div>
-                <b>City</b>
-                <small>Islamabad, Pakistan</small>
-              </div>
-            </div>
-            <div class="fact">
-              <div class="chev">›</div>
-              <div>
-                <b>School</b>
-                <small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small>
-              </div>
-            </div>
-
-            <div class="fact">
-              <div class="chev">›</div>
-              <div>
-                <b>Email</b>
-                <small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small>
-              </div>
-            </div>
-            <div class="fact">
-              <div class="chev">›</div>
-              <div>
-                <b>Current designation</b>
-                <small>Senior Product Manager</small>
-              </div>
-            </div>
+            <div class="fact"><div class="chev">›</div><div><b>Name</b><small>Waqas Arshad</small></div></div>
+            <div class="fact"><div class="chev">›</div><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
+            <div class="fact"><div class="chev">›</div><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
+            <div class="fact"><div class="chev">›</div><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small></div></div>
+            <div class="fact"><div class="chev">›</div><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
+            <div class="fact"><div class="chev">›</div><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
           </div>
 
-          <!-- METRICS (your chosen wording) -->
+          <!-- METRICS -->
           <div class="metrics">
             <div class="metric">
               <div class="dot"><i class="fa-solid fa-clock"></i></div>
               <div class="num">14+ years</div>
               <div class="sub">Leading product management & digital innovation</div>
             </div>
-
             <div class="metric">
               <div class="dot"><i class="fa-solid fa-globe"></i></div>
               <div class="num">Global reach</div>
               <div class="sub">Delivered solutions across MENA, CIS & Asia</div>
             </div>
-
             <div class="metric">
               <div class="dot"><i class="fa-solid fa-rocket"></i></div>
-              <div class="num">50+ products launched</div>
+              <div class="num">50+ launches</div>
               <div class="sub">Across CPaaS, Super Apps & digital services</div>
             </div>
-
             <div class="metric">
               <div class="dot"><i class="fa-solid fa-users"></i></div>
-              <div class="num">5M+ users impacted</div>
+              <div class="num">5M+ users</div>
               <div class="sub">Through telecom, SaaS & FinTech solutions</div>
             </div>
           </div>
 
-          <!-- Optional skill bars (keep or remove) -->
+          <!-- SKILLS -->
           <div class="skills">
-            <div class="skill">PRODUCT ROADMAP & STRATEGY, USER DISCOVERY</div>
-            <div class="bar"><span style="width:76%"></span></div>
+            <div class="skillrow">
+              <div class="skill-title">PRODUCT STRATEGY & LEADERSHIP</div>
+              <div class="skill-sub">Product roadmapping, user discovery, market analysis, adaptive leadership</div>
+            </div>
+            <div class="bar"><span style="width:92%"></span></div>
 
-            <div class="skill">CPAAS, TELECOM, WHATSAPP BUSINESS PLATFORM</div>
-            <div class="bar"><span style="width:65%"></span></div>
+            <div class="skillrow">
+              <div class="skill-title">DIGITAL PLATFORMS & FINTECH</div>
+              <div class="skill-sub">Value added services, charging systems, ICT, SuperApp, digital platforms, fintech</div>
+            </div>
+            <div class="bar"><span style="width:90%"></span></div>
 
-            <div class="skill">HTML/CSS/JS, DATA & KPI ANALYTICS</div>
-            <div class="bar"><span style="width:62%"></span></div>
+            <div class="skillrow">
+              <div class="skill-title">CPAAS & MESSAGING PLATFORMS</div>
+              <div class="skill-sub">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
+            </div>
+            <div class="bar"><span style="width:88%"></span></div>
+
+            <div class="skillrow">
+              <div class="skill-title">AGILE & DESIGN THINKING</div>
+              <div class="skill-sub">Agile leadership, cross functional collaboration, design thinking</div>
+            </div>
+            <div class="bar"><span style="width:87%"></span></div>
           </div>
 
           <div class="quick">

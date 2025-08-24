@@ -5,9 +5,15 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Waqas Arshad | Product Management & Innovation</title>
   <meta name="description" content="Senior Product Manager. Telecom, SaaS, CPaaS, FinTech." />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (icons for metrics) -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
+
   <style>
     :root{
       --bg:#ffffff;
@@ -53,37 +59,35 @@
     .portrait{
       width:520px;aspect-ratio:4/3;object-fit:cover;border-radius:6px;border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.06)
     }
-    .facts{
-      display:grid;grid-template-columns:1fr 1fr;gap:18px 36px
-    }
+
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 36px}
     .fact{display:flex;gap:10px}
     .chev{color:var(--accent);font-weight:900;margin-top:2px}
     .fact b{display:block}
     .fact small{display:block;color:var(--muted);margin-top:2px}
 
-    .metrics{
-      display:grid;grid-template-columns:repeat(3,1fr);gap:26px;margin:26px 0 6px
-    }
-    .metric{display:flex;gap:12px;align-items:center}
-    .metric .dot{width:46px;height:46px;border:2px solid var(--accent);border-radius:999px;display:grid;place-items:center;font-size:20px}
-    .metric .num{font-size:30px;font-weight:900;line-height:1}
-    .metric .sub{font-size:12px;color:var(--muted)}
+    /* METRICS */
+    .metrics{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin:26px 0 6px}
+    @media (min-width:1100px){ .metrics{grid-template-columns:repeat(4,1fr)} }
 
+    .metric{display:flex;gap:12px;align-items:center}
+    .dot{
+      width:46px;height:46px;border:2px solid var(--accent);border-radius:999px;
+      display:grid;place-items:center;font-size:20px;flex:0 0 46px
+    }
+    .dot i{color:#111}
+    .num{font-size:30px;font-weight:900;line-height:1}
+    .sub{font-size:12px;color:var(--muted)}
+
+    /* Skill bars (optional) */
     .skills{margin-top:10px}
     .skill{margin:14px 0 8px;font-weight:700;font-size:12px;letter-spacing:.06em}
     .bar{height:10px;background:#edf1f4;border:1px solid var(--line);border-radius:8px;overflow:hidden}
     .bar > span{display:block;height:100%;background:var(--accent);width:0}
 
-    /* Quick links row (no card) */
+    /* Quick links row */
     .quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
     .pill{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;background:#fff}
-
-    @media (max-width:1100px){
-      .about .grid{grid-template-columns:1fr;gap:22px}
-      .portrait{width:100%}
-      .facts{grid-template-columns:1fr}
-      .metrics{grid-template-columns:1fr 1fr}
-    }
 
     /* Footer */
     footer{padding:30px 20px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
@@ -111,7 +115,7 @@
     </div>
   </section>
 
-  <!-- ABOUT (no boxes) -->
+  <!-- ABOUT -->
   <section id="about" class="about">
     <div class="container">
       <h2 class="ghost">ABOUT ME</h2>
@@ -171,30 +175,42 @@
             </div>
           </div>
 
+          <!-- METRICS with Font Awesome icons -->
           <div class="metrics">
             <div class="metric">
-              <div class="dot">😊</div>
+              <div class="dot"><i class="fa-solid fa-clock"></i></div>
               <div>
-                <div class="num">400</div>
-                <div class="sub">customer interviews</div>
-              </div>
-            </div>
-            <div class="metric">
-              <div class="dot">🕒</div>
-              <div>
-                <div class="num">12+</div>
+                <div class="num">14+</div>
                 <div class="sub">years of experience</div>
               </div>
             </div>
+
             <div class="metric">
-              <div class="dot">🏆</div>
+              <div class="dot"><i class="fa-solid fa-globe"></i></div>
               <div>
-                <div class="num">2</div>
-                <div class="sub">co-founding experiences</div>
+                <div class="num">Global</div>
+                <div class="sub">MENA, CIS & Asia</div>
+              </div>
+            </div>
+
+            <div class="metric">
+              <div class="dot"><i class="fa-solid fa-rocket"></i></div>
+              <div>
+                <div class="num">50+</div>
+                <div class="sub">products launched</div>
+              </div>
+            </div>
+
+            <div class="metric">
+              <div class="dot"><i class="fa-solid fa-users"></i></div>
+              <div>
+                <div class="num">5M+</div>
+                <div class="sub">users impacted</div>
               </div>
             </div>
           </div>
 
+          <!-- Optional skill bars (keep or remove) -->
           <div class="skills">
             <div class="skill">PRODUCT ROADMAP & STRATEGY, USER DISCOVERY</div>
             <div class="bar"><span style="width:76%"></span></div>

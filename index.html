@@ -51,7 +51,8 @@
     .hero{ min-height:100svh; position:relative; display:grid; place-items:center; text-align:center; color:#fff; }
     .hero::before{
       content:""; position:absolute; inset:0;
-      background:url('replicate-prediction-d6z8q2mggdrmc0crttwagsyhv4.png?v=11') center/cover no-repeat;
+      /* IMPORTANT: fallback color so text is always visible */
+      background:#0f172a url('replicate-prediction-d6z8q2mggdrmc0crttwagsyhv4.png?v=11') center/cover no-repeat;
       filter:brightness(.45);
     }
     .hero::after{
@@ -136,4 +137,211 @@
     .bar-label{ font-size:12px; letter-spacing:.01em; text-transform:none; color:#5e6776; font-weight:600; }
     .bar-val{ font-size:12px; color:#333; }
     .bar-track{ position:relative; height:8px; border-radius:999px; background:#f1f3f7; border:1px solid #edf0f4; overflow:hidden; margin-top:6px; }
-    .bar-fill{ position:absolute; left:0; top:0; bottom:0; width:0; back
+    .bar-fill{ position:absolute; left:0; top:0; bottom:0; width:0; background:linear-gradient(90deg, var(--accent), #ffd95b); transition:width 1.2s ease; }
+
+    /* ===== Placeholders (for other tabs) ===== */
+    .placeholder{ background:#fff; color:#222; }
+    .placeholder .wrap{ padding:80px 18px 120px; }
+    .placeholder h2{ margin:0 0 8px; font-size:24px; font-weight:700; }
+    .placeholder p{ color:#666; margin:0; }
+
+    /* Responsive */
+    @media (max-width:900px){
+      .about .about-grid{
+        grid-template-columns:1fr;
+        grid-template-areas:
+          "photo"
+          "content"
+          "stats"
+          "skills";
+      }
+      .about-facts{ grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="tabs" id="topbar">
+    <nav class="inner" id="tabs">
+      <a href="#home" class="active">Home</a>
+      <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#courses">Courses</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- HOME / HERO -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <h1 class="hero-name">Waqas Arshad</h1>
+      <p class="hero-role">Product Management & Innovation Strategy</p>
+    </div>
+    <a class="down" href="#about" aria-label="Scroll down">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about">
+    <div class="wrap about-grid">
+
+      <!-- Left: Portrait -->
+      <figure class="about-photo">
+        <img
+          src="replicate-prediction-h39x9ejt6nrmc0crtwnb2kegz8%20%281%29.png?v=11"
+          alt="Waqas Arshad portrait" />
+      </figure>
+
+      <!-- Right: Details -->
+      <div class="about-content">
+        <h2 class="about-title">About me</h2>
+        <p class="about-intro">
+          I am an experienced Senior Product Manager with 12+ years in Telecom, SaaS, CPaaS, and FinTech,
+          driving digital transformation and product innovation across MENA, CIS, and Asia. I specialize in
+          building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
+        </p>
+
+        <!-- Facts -->
+        <div class="about-facts">
+          <ul>
+            <li><span class="k">Name:</span> <span class="v">Waqas Arshad</span></li>
+            <li><span class="k">City:</span> <span class="v">Islamabad, Pakistan</span></li>
+            <li><span class="k">Current designation:</span> <span class="v">Senior Product Manager</span></li>
+          </ul>
+          <ul>
+            <li>
+              <span class="k">Degrees:</span>
+              <span class="v">Master’s in Project Management; Bachelor’s in Electrical Engineering</span>
+            </li>
+            <li>
+              <span class="k">School:</span>
+              <span class="v">Shaheed Zulfikar Ali Bhutto Institute of Science and Technology; Sir Syed CASE Institute of Technology</span>
+            </li>
+            <li>
+              <span class="k">Email:</span>
+              <span class="v"><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Stats (inside grid, spanning both columns) -->
+      <div class="about-stats">
+        <div class="stat">
+          <div class="ico">👥</div>
+          <div>
+            <div class="num">400</div>
+            <div class="lbl">Customer interviews</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="ico">⏰</div>
+          <div>
+            <div class="num">12+</div>
+            <div class="lbl">Years of experience</div>
+          </div>
+        </div>
+        <div class="stat">
+          <div class="ico">🏆</div>
+          <div>
+            <div class="num">2</div>
+            <div class="lbl">Co-founding experience</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Skills (inside grid, spanning both columns) -->
+      <div class="about-skills">
+        <div class="bar">
+          <div class="bar-top">
+            <span class="bar-label">Product roadmapping, product strategy, user discovery, market analysis, leadership</span>
+            <span class="bar-val">90%</span>
+          </div>
+          <div class="bar-track"><span class="bar-fill" style="width:90%"></span></div>
+        </div>
+        <div class="bar">
+          <div class="bar-top">
+            <span class="bar-label">Messaging/CPaaS, pricing &amp; invoicing, onboarding, integrations</span>
+            <span class="bar-val">80%</span>
+          </div>
+          <div class="bar-track"><span class="bar-fill" style="width:80%"></span></div>
+        </div>
+        <div class="bar">
+          <div class="bar-top">
+            <span class="bar-label">HTML/CSS/JS, SQL, analytics, experimentation</span>
+            <span class="bar-val">65%</span>
+          </div>
+          <div class="bar-track"><span class="bar-fill" style="width:65%"></span></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PLACEHOLDER SECTIONS (fill later) -->
+  <section id="resume" class="placeholder">
+    <div class="wrap">
+      <h2>Resume</h2>
+      <p>Coming soon.</p>
+    </div>
+  </section>
+
+  <section id="courses" class="placeholder">
+    <div class="wrap">
+      <h2>Courses</h2>
+      <p>Coming soon.</p>
+    </div>
+  </section>
+
+  <section id="portfolio" class="placeholder">
+    <div class="wrap">
+      <h2>Portfolio</h2>
+      <p>Coming soon.</p>
+    </div>
+  </section>
+
+  <section id="contact" class="placeholder">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p>Coming soon.</p>
+    </div>
+  </section>
+
+  <script>
+    // Nav becomes solid after a tiny scroll
+    const topbar = document.getElementById('topbar');
+    const onScrollBar = () => (scrollY > 10)
+      ? topbar.classList.add('scrolled')
+      : topbar.classList.remove('scrolled');
+    addEventListener('scroll', onScrollBar, {passive:true}); onScrollBar();
+
+    // Active menu item as you scroll
+    const navLinks = Array.from(document.querySelectorAll('#tabs a'));
+    const sections = navLinks
+      .map(a => document.querySelector(a.getAttribute('href')))
+      .filter(Boolean);
+    const setActive = () => {
+      const y = window.scrollY + 90; // account for fixed nav height
+      let idx = 0;
+      sections.forEach((sec,i) => { if (sec.offsetTop <= y) idx = i; });
+      navLinks.forEach((a,i) => a.classList.toggle('active', i === idx));
+    };
+    addEventListener('scroll', setActive, {passive:true});
+    addEventListener('load', setActive);
+
+    // Animate skill bars on load (reads width from inline style)
+    window.addEventListener('load', () => {
+      document.querySelectorAll('.bar-fill').forEach(el => {
+        const m = el.getAttribute('style')?.match(/width:(\d+%)/);
+        if (m) el.style.width = m[1];
+      });
+    });
+  </script>
+</body>
+</html>

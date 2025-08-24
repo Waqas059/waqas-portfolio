@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Waqas Arshad | Product Management & Innovation</title>
-  <meta name="description" content="Senior Product Manager (Telecom, SaaS, CPaaS, FinTech) — portfolio and about." />
+  <meta name="description" content="Senior Product Manager (Telecom, SaaS, CPaaS, FinTech). About & portfolio." />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -13,89 +13,128 @@
 
   <style>
     :root{
-      --bg:#ffffff; --fg:#222; --muted:#555; --line:#e6e6e6;
-      --accent:#f1c40f; --shadow:0 8px 30px rgba(0,0,0,.08);
+      --bg:#ffffff; --fg:#222; --muted:#4a4f57; --line:#e6e6e6;
+      --accent:#f1c40f; --accent-soft:#e0ad00;
+      --shadow:0 8px 30px rgba(0,0,0,.08);
     }
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)}
-
-    /* NAV */
-    .tabs{
-      position:fixed;top:0;left:0;right:0;z-index:60;
-      background:transparent;border-bottom:1px solid transparent;
-      transition:background .25s,border-color .25s,box-shadow .25s;
+    body{
+      margin:0;
+      font-family:Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      background:var(--bg); color:var(--fg);
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      text-rendering:optimizeLegibility;
     }
-    .tabs.scrolled{background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
-    .tabs .inner{max-width:1200px;margin:0 auto;display:flex;gap:18px;align-items:center;justify-content:center;padding:10px 16px}
-    .tabs a{letter-spacing:.08em;text-transform:uppercase;text-decoration:none;font-weight:800;font-size:12.5px;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.5);transition:color .2s}
-    .tabs.scrolled a{color:#333;text-shadow:none}
-    .tabs a.active,.tabs a:hover{color:var(--accent)}
 
-    /* HERO */
-    .hero{min-height:100svh;position:relative;display:grid;place-items:center;text-align:center;color:#fff}
+    /* ===== Top nav ===== */
+    .tabs{
+      position:fixed; top:0; left:0; right:0; z-index:60;
+      background:transparent; border-bottom:1px solid transparent;
+      transition:background .25s, border-color .25s, box-shadow .25s;
+    }
+    .tabs.scrolled{ background:#fff; border-bottom:1px solid var(--line); box-shadow:var(--shadow); }
+    .tabs .inner{
+      max-width:1200px; margin:0 auto;
+      display:flex; gap:18px; align-items:center; justify-content:center;
+      padding:10px 16px;
+    }
+    .tabs a{
+      letter-spacing:.07em; text-transform:uppercase; text-decoration:none;
+      font-weight:800; font-size:12px;
+      color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.5); transition:color .2s;
+    }
+    .tabs.scrolled a{ color:#333; text-shadow:none; }
+    .tabs a.active,.tabs a:hover{ color:var(--accent); }
+
+    /* ===== Hero ===== */
+    .hero{ min-height:100svh; position:relative; display:grid; place-items:center; text-align:center; color:#fff; }
     .hero::before{
-      content:"";position:absolute;inset:0;
+      content:""; position:absolute; inset:0;
       background:url('replicate-prediction-d6z8q2mggdrmc0crttwagsyhv4.png') center/cover no-repeat;
       filter:brightness(.45);
     }
-    .hero::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 80% at 50% 30%, transparent 0, transparent 55%, rgba(0,0,0,.35) 100%);pointer-events:none}
-    .hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 18px 60px}
-    .hero-name{font-family:"Great Vibes",cursive;font-size:clamp(56px,8vw,84px);line-height:1.04;margin:0 0 10px;color:#fff;text-shadow:0 2px 12px rgba(0,0,0,.45)}
-    .hero-role{margin:0;color:#fff;opacity:.96;letter-spacing:.22em;text-transform:uppercase;font-weight:400;font-size:clamp(13px,1.6vw,18px);text-shadow:0 1px 6px rgba(0,0,0,.35)}
-    .down{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);width:44px;height:44px;border:2px solid #fff;border-radius:50%;color:#fff;display:grid;place-items:center;background:transparent;text-decoration:none;animation:bounce 1.6s infinite}
-    .down svg{width:18px;height:18px;display:block;opacity:.9}
-    @keyframes bounce{0%,20%,50%,80%,100%{transform:translate(-50%,0)}40%{transform:translate(-50%,-8px)}60%{transform:translate(-50%,-4px)}}
-
-    /* LAYOUT */
-    section{scroll-margin-top:70px}
-    .wrap{max-width:1100px;margin:0 auto;padding:70px 18px}
-
-    /* ABOUT */
-    .about{background:#fff;color:var(--fg)}
-    .about .wrap{position:relative}
-    .about .wrap::before{
-      content:"ABOUT ME";position:absolute;top:-60px;left:50%;transform:translateX(-50%);
-      font-weight:900;font-size:76px;letter-spacing:.06em;color:#f2f3f5;pointer-events:none;z-index:0
+    .hero::after{
+      content:""; position:absolute; inset:0;
+      background:radial-gradient(120% 80% at 50% 30%, transparent 0, transparent 55%, rgba(0,0,0,.35) 100%);
+      pointer-events:none;
     }
-    .about .about-grid{position:relative;z-index:1;display:grid;grid-template-columns:360px 1fr;gap:40px;align-items:start}
-    .about-photo img{display:block;width:100%;height:auto;border-radius:12px;box-shadow:var(--shadow)}
-    .about-title{margin:0 0 8px;font-size:36px;font-weight:900;letter-spacing:.3px}
-    .about-intro{margin:0 0 18px;color:var(--muted);font-size:18px;line-height:1.65;max-width:820px}
+    .hero-inner{ position:relative; z-index:1; max-width:1100px; margin:0 auto; padding:120px 18px 60px; }
+    .hero-name{
+      font-family:"Great Vibes", cursive;
+      font-size:clamp(56px,8vw,84px); line-height:1.04; margin:0 0 10px; color:#fff;
+      text-shadow:0 2px 12px rgba(0,0,0,.45);
+    }
+    .hero-role{
+      margin:0; color:#fff; opacity:.96; letter-spacing:.14em; text-transform:uppercase;
+      font-weight:400; font-size:clamp(13px,1.6vw,18px); text-shadow:0 1px 6px rgba(0,0,0,.35);
+    }
+    .down{
+      position:absolute; left:50%; bottom:28px; transform:translateX(-50%);
+      width:44px; height:44px; border:2px solid #fff; border-radius:50%;
+      color:#fff; display:grid; place-items:center; background:transparent; text-decoration:none;
+      animation:bounce 1.6s infinite;
+    }
+    .down svg{ width:18px; height:18px; display:block; opacity:.9; }
+    @keyframes bounce{
+      0%,20%,50%,80%,100%{ transform:translate(-50%,0) }
+      40%{ transform:translate(-50%,-8px) } 60%{ transform:translate(-50%,-4px) }
+    }
 
-    .about-facts{display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;margin:18px 0 10px}
-    .about-facts ul{list-style:none;padding:0;margin:0}
-    .about-facts li{display:flex;gap:8px;align-items:flex-start;padding:10px 0;border-bottom:1px solid var(--line)}
-    .about-facts li:last-child{border-bottom:none}
-    .about-facts li::before{content:"›";color:var(--accent);font-weight:900}
-    .about-facts .k{min-width:160px;font-size:15px;font-weight:800;color:#111}
-    .about-facts .v{font-size:16px;font-weight:500}
-    .about-facts .v a{color:#000;text-decoration:underline dotted}
+    /* ===== Layout helpers ===== */
+    section{ scroll-margin-top:70px; }
+    .wrap{ max-width:1100px; margin:0 auto; padding:70px 18px; }
 
-    .about-stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;margin:26px 0 8px}
-    .stat{display:grid;grid-template-columns:50px auto;column-gap:10px;align-items:center}
-    .stat .ico{width:50px;height:50px;border-radius:50%;background:#fff;border:1px solid #e7e7e7;display:grid;place-items:center}
-    .stat .num{font-size:35px;font-weight:900;color:#000}
-    .stat .lbl{margin-top:2px;font-size:13.5px;color:#666}
+    /* ===== About (refined) ===== */
+    .about{ background:#fff; color:var(--fg); }
+    .about .wrap{ position:relative; }
+    .about .wrap::before{
+      content:"ABOUT ME";
+      position:absolute; top:-28px; left:50%; transform:translateX(-50%);
+      font-weight:900; font-size:56px; letter-spacing:.06em; color:#f2f3f5; opacity:.18;
+      pointer-events:none; z-index:0;
+      /* To hide watermark completely, uncomment next line */
+      /* display:none; */
+    }
+    .about .about-grid{
+      position:relative; z-index:1;
+      display:grid; grid-template-columns:360px 1fr; gap:40px; align-items:start;
+    }
+    .about-photo img{ display:block; width:100%; height:auto; border-radius:12px; box-shadow:var(--shadow); }
+    .about-title{ margin:0 0 6px; font-size:30px; font-weight:800; letter-spacing:.2px; line-height:1.15; }
+    .about-intro{ margin:0 0 18px; color:var(--muted); font-size:16.5px; line-height:1.65; max-width:740px; }
 
-    .about-skills{margin-top:12px}
-    .bar{margin:12px 0}
-    .bar-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-end}
-    .bar-label{font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:#555;font-weight:700}
-    .bar-val{font-size:12px;color:#333}
-    .bar-track{position:relative;height:12px;border-radius:999px;background:#eceff3;border:1px solid #e6e9ee;overflow:hidden;margin-top:6px}
-    .bar-fill{position:absolute;left:0;top:0;bottom:0;width:0;background:linear-gradient(90deg,var(--accent),#ffd95b);transition:width 1.2s ease}
+    /* Facts grid */
+    .about-facts{ display:grid; grid-template-columns:1fr 1fr; gap:12px 28px; margin:18px 0 10px; }
+    .about-facts ul{ list-style:none; padding:0; margin:0; }
+    .about-facts li{ display:flex; gap:8px; align-items:flex-start; padding:8px 0; border-bottom:1px solid #eee; }
+    .about-facts li:last-child{ border-bottom:none; }
+    .about-facts li::before{ content:"›"; color:var(--accent-soft); font-weight:900; transform:translateY(2px); }
+    .about-facts .k{ min-width:150px; font-size:13.5px; font-weight:700; color:#2b2f36; }
+    .about-facts .v{ font-size:15px; font-weight:500; color:#2b2f36; }
+    .about-facts .v a{ color:#000; text-decoration:underline dotted; }
 
-    /* === ENFORCED OVERRIDES (in case older CSS lingers) === */
-    .about-title{font-size:36px!important;font-weight:900!important;letter-spacing:.3px!important}
-    .about-intro{font-size:18px!important;line-height:1.65!important;max-width:820px!important}
-    .about-facts li{padding:10px 0!important;border-bottom:1px solid #e6e6e6!important}
-    .about-facts .k{font-size:15px!important;font-weight:800!important}
-    .about-facts .v{font-size:16px!important;font-weight:500!important}
-    .stat .ico{width:50px!important;height:50px!important}
-    .stat .num{font-size:35px!important}
-    .bar-track{height:12px!important}
-    .bar-label{font-size:12px!important;letter-spacing:.05em!important;text-transform:uppercase!important}
+    /* Stats (smaller, calmer) */
+    .about-stats{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; margin:26px 0 8px; }
+    .stat{ display:grid; grid-template-columns:42px auto; column-gap:10px; align-items:center; }
+    .stat .ico{ width:42px; height:42px; border-radius:50%; background:#fff; border:1px solid #ececec; display:grid; place-items:center; }
+    .stat .num{ font-size:28px; font-weight:800; color:#000; }
+    .stat .lbl{ margin-top:2px; font-size:12.5px; color:#6b7280; }
+
+    /* Skill bars (slimmer, sentence-case labels) */
+    .about-skills{ margin-top:12px; }
+    .bar{ margin:12px 0; }
+    .bar-top{ display:flex; justify-content:space-between; gap:10px; align-items:flex-end; }
+    .bar-label{ font-size:12px; letter-spacing:.01em; text-transform:none; color:#4f5664; font-weight:700; }
+    .bar-val{ font-size:12px; color:#333; }
+    .bar-track{ position:relative; height:10px; border-radius:999px; background:#eceff3; border:1px solid #e6e9ee; overflow:hidden; margin-top:6px; }
+    .bar-fill{ position:absolute; left:0; top:0; bottom:0; width:0; background:linear-gradient(90deg, var(--accent), #ffd95b); transition:width 1.2s ease; }
+
+    /* Responsive */
+    @media (max-width:900px){
+      .about .about-grid{ grid-template-columns:1fr; }
+      .about-facts{ grid-template-columns:1fr; }
+    }
   </style>
 </head>
 <body>
@@ -128,7 +167,9 @@
 
       <!-- Left: Portrait -->
       <figure class="about-photo">
-        <img src="replicate-prediction-h39x9ejt6nrmc0crtwnb2kegz8%20%281%29.png" alt="Waqas Arshad portrait" />
+        <img
+          src="replicate-prediction-h39x9ejt6nrmc0crtwnb2kegz8%20%281%29.png"
+          alt="Waqas Arshad portrait" />
       </figure>
 
       <!-- Right: Details -->
@@ -140,7 +181,7 @@
           building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
         </p>
 
-        <!-- Facts -->
+        <!-- Key facts -->
         <div class="about-facts">
           <ul>
             <li><span class="k">Name:</span> <span class="v">Waqas Arshad</span></li>
@@ -148,9 +189,18 @@
             <li><span class="k">Current designation:</span> <span class="v">Senior Product Manager</span></li>
           </ul>
           <ul>
-            <li><span class="k">Degrees:</span> <span class="v">Master’s in Project Management; Bachelor’s in Electrical Engineering</span></li>
-            <li><span class="k">School:</span> <span class="v">Shaheed Zulfikar Ali Bhutto Institute of Science and Technology; Sir Syed CASE Institute of Technology</span></li>
-            <li><span class="k">Email:</span> <span class="v"><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></span></li>
+            <li>
+              <span class="k">Degrees:</span>
+              <span class="v">Master’s in Project Management; Bachelor’s in Electrical Engineering</span>
+            </li>
+            <li>
+              <span class="k">School:</span>
+              <span class="v">Shaheed Zulfikar Ali Bhutto Institute of Science and Technology; Sir Syed CASE Institute of Technology</span>
+            </li>
+            <li>
+              <span class="k">Email:</span>
+              <span class="v"><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></span>
+            </li>
           </ul>
         </div>
 
@@ -209,15 +259,16 @@
   </section>
 
   <script>
-    // Nav state after leaving hero
+    // Solid nav after scrolling a bit
     const topbar = document.getElementById('topbar');
-    const onScroll = () => (scrollY > 10) ? topbar.classList.add('scrolled') : topbar.classList.remove('scrolled');
+    const onScroll = () => { (scrollY > 10) ? topbar.classList.add('scrolled') : topbar.classList.remove('scrolled'); };
     addEventListener('scroll', onScroll, { passive: true }); onScroll();
 
     // Animate skill bars
     window.addEventListener('load', () => {
       document.querySelectorAll('.bar-fill').forEach(el => {
-        const m = el.getAttribute('style').match(/width:(\d+%)/); if (m) el.style.width = m[1];
+        const m = el.getAttribute('style').match(/width:(\d+%)/);
+        if (m) el.style.width = m[1];
       });
     });
   </script>

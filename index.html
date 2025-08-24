@@ -16,13 +16,11 @@
       --ink:#0b1220;
       --muted:#6b7280;
       --line:#e5e7eb;
-      --panel:#f8fafc;
       --shadow:0 18px 48px rgba(7,9,16,.18);
       --radius:16px;
 
       --nav:#0b1220;
-      --accent:#f5b301;      /* warm gold ring + bars */
-      --bars-offset:26px;
+      --accent:#f5b301;     /* warm gold */
       --max:1380px;
     }
 
@@ -31,13 +29,12 @@
     img{display:block;max-width:100%;height:auto}
     a{color:inherit;text-decoration:none}
 
-    /* NAV */
+    /* NAV (brand removed) */
     .nav{position:fixed;inset:0 0 auto 0;height:56px;background:var(--nav);
          display:flex;align-items:center;justify-content:center;z-index:100;
          box-shadow:0 1px 4px rgba(0,0,0,.28)}
     .nav-inner{width:100%;max-width:var(--max);display:flex;align-items:center;gap:16px;padding:0 16px}
-    .brand{color:#e5e7eb;font-weight:900;letter-spacing:.08em}
-    .nav ul{list-style:none;margin:0 0 0 auto;padding:0;display:flex;gap:28px}
+    .nav ul{list-style:none;margin:0 auto 0 auto;padding:0;display:flex;gap:28px}
     .nav a{color:#e5e7eb;font-weight:800;letter-spacing:.06em;font-size:13px}
     .nav a.active,.nav a:hover{color:#fde68a}
     .spacer{height:56px}
@@ -54,7 +51,6 @@
     }
     .hero::before{content:"";position:absolute;inset:0;background:rgba(0,0,0,.55)}
     .hero-name{position:relative;font-weight:900;font-size:clamp(42px,6vw,72px);letter-spacing:.01em;margin:0}
-    /* hide any leftover theme hero bits */
     .hero p,.hero .subtitle,.hero .chevron{display:none!important}
 
     /* Headings */
@@ -62,12 +58,12 @@
     .title{ text-align:center;font-weight:900;font-size:26px;margin:0 0 14px }
     .lede{ max-width:980px;margin:0 auto 36px;text-align:center;color:var(--ink);opacity:.92 }
 
-    /* ABOUT grid (hard alignment) */
+    /* ABOUT grid — adjusted to guarantee 4 stats on the right */
     .about-grid{
-      --gutter:40px;
+      --gutter:32px;
       display:grid;
-      grid-template-columns:minmax(520px,640px) 1fr;  /* left | right */
-      grid-template-rows:auto auto;                   /* row1: photo+stats, row2: facts+skills */
+      grid-template-columns:minmax(480px,560px) 1fr;  /* slightly narrower left col */
+      grid-template-rows:auto auto;                   /* row1: photo + stats, row2: facts + skills */
       gap:var(--gutter);
       align-items:start;
     }
@@ -84,12 +80,12 @@
     /* Right column shares rows with left via display:contents */
     .right{display:contents}
     .stats{grid-column:2;grid-row:1}
-    .skills{grid-column:2;grid-row:2;margin-top:var(--bars-offset)}
+    .skills{grid-column:2;grid-row:2;margin-top:0}   /* aligned to facts top */
 
-    /* Stat cards */
+    /* Stat cards — force 4 columns by allowing smaller min width */
     .stats{
       background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:14px;
-      display:grid;grid-template-columns:repeat(4, minmax(230px,1fr));overflow:hidden
+      display:grid;grid-template-columns:repeat(4, minmax(160px,1fr));overflow:hidden
     }
     .stat{padding:20px 22px;text-align:center}
     .stat + .stat{border-left:1px solid var(--line)}
@@ -116,14 +112,14 @@
 
     /* Responsive */
     @media (max-width:1220px){
-      .about-grid{grid-template-columns:560px 1fr}
+      .about-grid{grid-template-columns:520px 1fr}
     }
     @media (max-width:1024px){
       .about-grid{grid-template-columns:1fr;grid-template-rows:auto}
       .portrait-card,.facts,.stats,.skills{grid-column:auto;grid-row:auto}
       .facts-grid{grid-template-columns:1fr}
       .skills{margin-top:18px}
-      .stats{grid-template-columns:repeat(2, minmax(240px,1fr))}
+      .stats{grid-template-columns:repeat(2, minmax(200px,1fr))}
       .stat{border-left:none}
       .stat:nth-child(n+3){border-top:1px solid var(--line)}
     }
@@ -136,10 +132,9 @@
   </style>
 </head>
 <body>
-  <!-- NAV -->
+  <!-- NAV (brand removed) -->
   <nav class="nav">
     <div class="nav-inner">
-      <div class="brand"><a href="#home" style="color:#e5e7eb">WAQAS</a></div>
       <ul>
         <li><a href="#home" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
@@ -174,7 +169,7 @@
           <img class="portrait" src="./portrait.png" alt="Portrait of Waqas Arshad">
         </div>
 
-        <!-- RIGHT / Row 1 -->
+        <!-- RIGHT / Row 1 (4 stats) -->
         <div class="right">
           <div class="stats" aria-label="Impact statistics">
             <div class="stat">

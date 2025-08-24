@@ -13,17 +13,17 @@
   <style>
     :root{
       --bg:#ffffff;
-      --ink:#0b1220;       /* deep ink */
-      --muted:#6b7280;     /* gray-500 */
-      --muted2:#94a3b8;    /* slate-400 */
-      --line:#e5e7eb;      /* gray-200 */
-      --panel:#f8fafc;     /* gray-50 */
+      --ink:#0b1220;
+      --muted:#6b7280;
+      --muted2:#94a3b8;
+      --line:#e5e7eb;
+      --panel:#f8fafc;
       --shadow:0 18px 48px rgba(7,9,16,.18);
       --radius:16px;
 
       --nav:#0b1220;
-      --accent:#f5b301;    /* warm gold for highlights */
-      --bars-offset:26px;  /* nudge bars up/down to taste */
+      --accent:#f5b301;      /* warm gold ring */
+      --bars-offset:26px;    /* adjust skill bars vertical position */
     }
 
     *{box-sizing:border-box}
@@ -49,42 +49,39 @@
     .title{ text-align:center;font-weight:900;font-size:26px;margin:0 0 14px }
     .lede{ max-width:980px;margin:0 auto 36px;text-align:center;color:var(--ink);opacity:.92 }
 
-    /* ABOUT grid */
+    /* ABOUT layout */
     .about-grid{
       display:grid; grid-template-columns:640px 1fr; gap:40px; align-items:start;
     }
 
-    /* LEFT: portrait rail */
+    /* LEFT: portrait + facts */
     .portrait-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
     .portrait{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
-    .nameplate{margin:12px 4px 0;font-size:18px;font-weight:900}
-    .role{margin:2px 4px 2px;color:var(--muted);font-size:14px}
 
     .facts{border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px;margin-top:16px}
     .facts-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 36px}
-    .fact{display:flex;gap:10px;align-items:flex-start}
-    .fact i{width:16px;min-width:16px;text-align:center;color:var(--muted2);font-style:normal;margin-top:2px}
     .fact b{display:block}
     .fact small{display:block;color:var(--muted);margin-top:2px}
 
     /* RIGHT: stats + skills */
     .right{display:grid;gap:24px}
 
-    /* STATS (4 cards, align top with photo) */
+    /* STATS (4 centered cards; icon ring is SVG, not emoji) */
     .stats{
       background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:14px;
-      display:grid;grid-template-columns:repeat(4,minmax(240px,1fr));overflow:hidden
+      display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));overflow:hidden
     }
-    .stat{padding:20px 22px;position:relative}
+    .stat{padding:20px 22px;position:relative;text-align:center}
     .stat:not(:last-child)::after{content:"";position:absolute;top:14px;bottom:14px;right:0;width:1px;background:var(--line)}
-    .badge{
-      width:44px;height:44px;border-radius:999px;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;
-      font-size:20px;background:#fff;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,.06)
+    .icircle{
+      width:52px;height:52px;border-radius:999px;border:2px solid var(--accent);
+      display:inline-flex;align-items:center;justify-content:center;background:#fff;margin-bottom:10px
     }
-    .value{font-weight:900;font-size:44px;line-height:1.05;word-break:break-word}
-    .label{font-size:13px;color:var(--muted);line-height:1.45;margin-top:6px}
+    .icircle svg{width:22px;height:22px;stroke:#0b1220;stroke-width:2;fill:none}
+    .value{font-weight:900;font-size:34px;line-height:1.08;word-break:break-word}
+    .label{font-size:13px;color:var(--muted);line-height:1.5;margin-top:8px}
 
-    /* SKILLS (nudged down for visual alignment with photo bottom) */
+    /* SKILLS */
     .skills{border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px;margin-top:var(--bars-offset)}
     .skillrow{margin:18px 0 8px}
     .skill-title{font-weight:900;letter-spacing:.05em;font-size:12px}
@@ -105,7 +102,7 @@
       :root{--bars-offset:18px;}
     }
     @media (max-width:560px){
-      .value{font-size:36px}
+      .value{font-size:28px}
       .stats{grid-template-columns:1fr}
       :root{--bars-offset:14px;}
     }
@@ -137,53 +134,78 @@
       </p>
 
       <div class="about-grid">
-        <!-- LEFT: portrait + facts -->
+        <!-- LEFT: portrait + facts (no name/role caption under photo) -->
         <div>
           <div class="portrait-card">
             <img class="portrait" src="./portrait.png" alt="Portrait of Waqas Arshad">
-            <div class="nameplate">Waqas Arshad</div>
-            <div class="role">Senior Product Manager</div>
           </div>
 
           <div class="facts" aria-label="Profile facts">
             <div class="facts-grid">
-              <div class="fact"><i>👤</i><div><b>Name</b><small>Waqas Arshad</small></div></div>
-              <div class="fact"><i>🎓</i><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
-              <div class="fact"><i>📍</i><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
-              <div class="fact"><i>🏫</i><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small></div></div>
-              <div class="fact"><i>✉️</i><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
-              <div class="fact"><i>💼</i><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
+              <div class="fact"><div><b>Name</b><small>Waqas Arshad</small></div></div>
+              <div class="fact"><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
+              <div class="fact"><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
+              <div class="fact"><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small></div></div>
+              <div class="fact"><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
+              <div class="fact"><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
             </div>
           </div>
         </div>
 
-        <!-- RIGHT: 4 stat cards + skills -->
+        <!-- RIGHT: 4 stat cards (no emoji; SVG icons) + skills -->
         <div class="right">
-          <!-- 4 STAT CARDS (aligned to photo top) -->
           <div class="stats" aria-label="Impact statistics">
+            <!-- Years -->
             <div class="stat">
-              <div class="badge" aria-hidden="true">🕒</div>
+              <div class="icircle" aria-hidden="true">
+                <!-- clock -->
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"></circle><path d="M12 8v5l3 2"></path></svg>
+              </div>
               <div class="value">14+ years</div>
               <div class="label">Leading product management &amp; digital innovation</div>
             </div>
+
+            <!-- Reach -->
             <div class="stat">
-              <div class="badge" aria-hidden="true">🌍</div>
+              <div class="icircle" aria-hidden="true">
+                <!-- globe -->
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="8"></circle>
+                  <path d="M4 12h16M12 4a14 14 0 0 0 0 16M12 4a14 14 0 0 1 0 16"></path>
+                </svg>
+              </div>
               <div class="value">Global reach</div>
               <div class="label">Delivered solutions across MENA, CIS &amp; Asia</div>
             </div>
+
+            <!-- Launches -->
             <div class="stat">
-              <div class="badge" aria-hidden="true">🚀</div>
+              <div class="icircle" aria-hidden="true">
+                <!-- rocket -->
+                <svg viewBox="0 0 24 24">
+                  <path d="M5 19l4-4M9 15l2 2M14 10l-4 4"></path>
+                  <path d="M14 10l6-6a5 5 0 0 1 0 7l-6 6-4-4 4-4z"></path>
+                </svg>
+              </div>
               <div class="value">50+ products launched</div>
               <div class="label">Across CPaaS, Super Apps &amp; digital services</div>
             </div>
+
+            <!-- Users -->
             <div class="stat">
-              <div class="badge" aria-hidden="true">👥</div>
+              <div class="icircle" aria-hidden="true">
+                <!-- users -->
+                <svg viewBox="0 0 24 24">
+                  <path d="M16 21v-2a4 4 0 0 0-4-4h-0a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="3"></circle>
+                </svg>
+              </div>
               <div class="value">5M+ users impacted</div>
               <div class="label">Through telecom, SaaS &amp; FinTech solutions</div>
             </div>
           </div>
 
-          <!-- SKILLS (nudged down for bottom alignment) -->
+          <!-- Skills -->
           <div class="skills" aria-label="Skills">
             <div class="skillrow">
               <div class="skill-title">PRODUCT STRATEGY &amp; LEADERSHIP</div>
@@ -222,7 +244,7 @@
     </div>
   </section>
 
-  <!-- Placeholder sections to match your nav -->
+  <!-- Placeholder sections to match nav -->
   <section id="resume"><div class="container"><h2 style="font-weight:900;margin:0 0 12px">Resume/Work</h2></div></section>
   <section id="portfolio"><div class="container"><h2 style="font-weight:900;margin:0 0 12px">Portfolio</h2></div></section>
   <section id="achievements"><div class="container"><h2 style="font-weight:900;margin:0 0 12px">Certifications &amp; Achievements</h2></div></section>

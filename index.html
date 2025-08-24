@@ -11,7 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome (icons) -->
+  <!-- Font Awesome -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 
   <style>
@@ -68,53 +68,38 @@
       border:1px solid var(--line);box-shadow:0 18px 48px rgba(0,0,0,.10)
     }
 
-    /* Facts (kept as requested) */
-    .facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px;margin-bottom:10px}
+    /* Facts (kept) */
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px;margin-bottom:8px}
     .fact{display:flex;gap:10px;align-items:flex-start}
     .fact i{color:var(--muted2);font-size:16px;margin-top:2px}
     .fact b{display:block}
     .fact small{display:block;color:var(--muted);margin-top:2px}
 
-    /* Stats row (no circles) */
-    .stats{
-      display:flex;flex-wrap:wrap;gap:34px 48px;align-items:flex-start;margin:24px 0 30px
+    /* Metrics (with gold icon circles) */
+    .metrics{
+      display:grid;grid-template-columns:repeat(4,1fr);
+      gap:44px;margin:26px 0 34px;text-align:center
     }
-    .stat{
-      min-width:180px;
-      display:flex;flex-direction:column;gap:6px
+    .metric{display:flex;flex-direction:column;align-items:center;gap:10px}
+    .dot{
+      width:60px;height:60px;border:2px solid var(--accent);border-radius:50%;
+      display:flex;align-items:center;justify-content:center;font-size:20px
     }
-    .stat .value{
-      font-size:34px;font-weight:900;line-height:1;
-      letter-spacing:.01em
-    }
-    .stat .label{
-      font-size:13px;color:var(--muted);line-height:1.35;max-width:240px
-    }
-    /* optional thin separators on very wide screens */
-    @media (min-width:1200px){
-      .stat{position:relative;padding-right:24px}
-      .stat:not(:last-child)::after{
-        content:"";position:absolute;right:10px;top:8px;bottom:8px;width:1px;background:var(--line)
-      }
-    }
+    .m-title{font-size:22px;font-weight:900;line-height:1.2}
+    .m-sub{font-size:13px;color:var(--muted);line-height:1.35;max-width:240px}
 
-    /* Strengths (replacing percent bars) */
-    .strengths{
-      display:grid;grid-template-columns:1fr 1fr;gap:18px 28px;margin-top:10px
-    }
-    .strength{
-      display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line)
-    }
-    .strength:first-child{border-top:none}
-    .strength i{font-size:18px;color:#222;margin-top:2px}
-    .strength h4{margin:0;font-size:14px;font-weight:900;letter-spacing:.04em}
-    .strength p{margin:4px 0 0;color:var(--muted);font-size:13px;line-height:1.45}
+    /* Skills (bars with headings + subheads) */
+    .skills{margin-top:8px}
+    .skillrow{margin:22px 0 8px}
+    .skill-title{font-weight:800;letter-spacing:.06em;font-size:12px}
+    .skill-sub{font-size:12px;color:var(--muted);margin-top:6px}
+    .bar{height:10px;background:#edf1f4;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+    .bar > span{display:block;height:100%;background:var(--accent);width:0}
 
     /* Quick links */
-    .quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
+    .quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
     .pill{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;background:#fff}
 
-    /* Footer */
     footer{padding:30px 24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
 
     /* Responsive */
@@ -126,11 +111,11 @@
       .about .grid{grid-template-columns:1fr}
       .portrait{width:100%}
       .facts{grid-template-columns:1fr}
-      .strengths{grid-template-columns:1fr}
-      .stats{gap:28px 36px}
+      .metrics{grid-template-columns:1fr 1fr}
     }
     @media (max-width:560px){
-      .stat .value{font-size:28px}
+      .metrics{grid-template-columns:1fr}
+      .m-title{font-size:20px}
     }
   </style>
 </head>
@@ -162,16 +147,16 @@
       <h2 class="ghost">ABOUT ME</h2>
       <h3 class="title">About me</h3>
       <p class="lede">
-        Senior Product Manager focused on Telecom, SaaS, CPaaS, and FinTech — driving digital transformation and product innovation across MENA, CIS, and Asia.
+        I am an experienced Senior Product Manager with 12+ years in Telecom, SaaS, CPaaS, and FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia. I specialize in building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
       </p>
 
       <div class="grid">
-        <!-- Left: big portrait -->
+        <!-- Left: portrait -->
         <img class="portrait" src="./portrait.png" alt="Waqas portrait">
 
         <!-- Right: content -->
         <div>
-          <!-- Facts (kept) -->
+          <!-- Facts -->
           <div class="facts">
             <div class="fact"><i class="fa-solid fa-user"></i><div><b>Name</b><small>Waqas Arshad</small></div></div>
             <div class="fact"><i class="fa-solid fa-graduation-cap"></i><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
@@ -183,62 +168,57 @@
             <div class="fact"><i class="fa-solid fa-briefcase"></i><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
           </div>
 
-          <!-- Stats Row (no circles) -->
-          <div class="stats">
-            <div class="stat">
-              <div class="value">14+ years</div>
-              <div class="label">Product management & digital innovation</div>
+          <!-- Metrics (exact wording kept) -->
+          <div class="metrics">
+            <div class="metric">
+              <div class="dot"><i class="fa-solid fa-clock"></i></div>
+              <div class="m-title">14+ years</div>
+              <div class="m-sub">Leading product management & digital innovation</div>
             </div>
-            <div class="stat">
-              <div class="value">Global reach</div>
-              <div class="label">Delivered across MENA, CIS & Asia</div>
+            <div class="metric">
+              <div class="dot"><i class="fa-solid fa-globe"></i></div>
+              <div class="m-title">Global reach</div>
+              <div class="m-sub">Delivered solutions across MENA, CIS & Asia</div>
             </div>
-            <div class="stat">
-              <div class="value">50+ launches</div>
-              <div class="label">CPaaS, Super Apps & digital services</div>
+            <div class="metric">
+              <div class="dot"><i class="fa-solid fa-rocket"></i></div>
+              <div class="m-title">50+ products launched</div>
+              <div class="m-sub">Across CPaaS, Super Apps & digital services</div>
             </div>
-            <div class="stat">
-              <div class="value">5M+ users</div>
-              <div class="label">Telecom, SaaS & FinTech solutions</div>
-            </div>
-          </div>
-
-          <!-- Strengths (no percentage bars) -->
-          <div class="strengths">
-            <div class="strength">
-              <i class="fa-solid fa-chess-knight"></i>
-              <div>
-                <h4>Product Strategy & Leadership</h4>
-                <p>Roadmapping, user discovery, market analysis, adaptive leadership.</p>
-              </div>
-            </div>
-
-            <div class="strength">
-              <i class="fa-solid fa-layer-group"></i>
-              <div>
-                <h4>Digital Platforms & FinTech</h4>
-                <p>VAS, charging systems, ICT, SuperApp, and scalable platform design.</p>
-              </div>
-            </div>
-
-            <div class="strength">
-              <i class="fa-solid fa-message"></i>
-              <div>
-                <h4>CPaaS & Messaging</h4>
-                <p>Omnichannel messaging, WhatsApp Business, SaaS growth playbooks.</p>
-              </div>
-            </div>
-
-            <div class="strength">
-              <i class="fa-solid fa-diagram-project"></i>
-              <div>
-                <h4>Agile & Design Thinking</h4>
-                <p>Cross-functional leadership, iterative delivery, outcomes over output.</p>
-              </div>
+            <div class="metric">
+              <div class="dot"><i class="fa-solid fa-users"></i></div>
+              <div class="m-title">5M+ users impacted</div>
+              <div class="m-sub">Through telecom, SaaS & FinTech solutions</div>
             </div>
           </div>
 
-          <!-- Optional quick links -->
+          <!-- Skills (your four bars & percentages) -->
+          <div class="skills">
+            <div class="skillrow">
+              <div class="skill-title">PRODUCT STRATEGY & LEADERSHIP</div>
+              <div class="skill-sub">Product roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
+            </div>
+            <div class="bar"><span style="width:92%"></span></div>
+
+            <div class="skillrow">
+              <div class="skill-title">DIGITAL PLATFORMS & FINTECH</div>
+              <div class="skill-sub">Value added services, charging system platform, ICT, SuperApp & digital platforms, FinTech</div>
+            </div>
+            <div class="bar"><span style="width:90%"></span></div>
+
+            <div class="skillrow">
+              <div class="skill-title">CPAAS & MESSAGING PLATFORMS</div>
+              <div class="skill-sub">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
+            </div>
+            <div class="bar"><span style="width:88%"></span></div>
+
+            <div class="skillrow">
+              <div class="skill-title">AGILE & DESIGN THINKING</div>
+              <div class="skill-sub">Agile leadership, cross-functional collaboration, design thinking</div>
+            </div>
+            <div class="bar"><span style="width:87%"></span></div>
+          </div>
+
           <div class="quick">
             <a class="pill" href="#resume">Resume</a>
             <a class="pill" href="#courses">Courses</a>
@@ -281,7 +261,7 @@
   <section id="contact">
     <div class="container">
       <h2 style="font-weight:900;margin:0 0 12px">Contact</h2>
-      <p>Email <a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></p>
+    <p>Email <a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></p>
     </div>
   </section>
 

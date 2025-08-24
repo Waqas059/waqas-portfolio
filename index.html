@@ -37,78 +37,90 @@
     .spacer{height:56px}
 
     /* Sections */
-    section{padding:80px 20px}
-    .container{max-width:1180px;margin:0 auto}
+    section{padding:72px 24px}
+    .container{max-width:1360px;margin:0 auto}   /* wider page to use left/right space */
 
     /* HERO */
     .hero{
-      padding:0;height:82vh;min-height:520px;display:flex;align-items:center;justify-content:center;
+      padding:0;min-height:72vh;display:flex;align-items:center;justify-content:center;
       background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)), url('./Hero.png') center/cover no-repeat fixed;
       color:#fff;text-align:center;position:relative
     }
-    .hero .name{font-family:"Great Vibes",cursive;font-size:80px;line-height:1;margin:0 0 10px}
+    .hero .name{font-family:"Great Vibes",cursive;font-size:86px;line-height:1;margin:0 0 12px}
     .hero .tag{letter-spacing:.16em;font-weight:700;font-size:13px;opacity:.9}
     .scroll{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);border:2px solid rgba(255,255,255,.7);width:36px;height:36px;border-radius:999px;display:grid;place-items:center}
 
-    /* ABOUT (reference-style, no boxes) */
+    /* ABOUT */
     .about .ghost{
-      text-align:center;font-weight:900;font-size:64px;letter-spacing:.22em;color:#dbe1ea;opacity:.45;margin:0
+      text-align:center;font-weight:900;font-size:56px;letter-spacing:.22em;color:#dbe1ea;opacity:.45;margin:0 0 4px
     }
-    .about .title{margin:6px 0 28px;text-align:center;font-weight:900;font-size:28px}
-    .about .lede{max-width:980px;margin:0 auto 30px;text-align:center;color:var(--ink);opacity:.9}
-    .about .grid{display:grid;grid-template-columns:480px 1fr;gap:40px;align-items:start} /* reduced portrait width to open space on right */
+    .about .title{margin:0 0 16px;text-align:center;font-weight:900;font-size:28px}
+    .about .lede{max-width:980px;margin:0 auto 28px;text-align:center;color:var(--ink);opacity:.9}
+    .about .grid{
+      display:grid;
+      grid-template-columns:560px 1fr;   /* bigger photo, wider content */
+      gap:48px;
+      align-items:start
+    }
     .portrait{
-      width:480px;aspect-ratio:4/3;object-fit:cover;border-radius:6px;border:1px solid var(--line);box-shadow:0 8px 24px rgba(0,0,0,.06)
+      width:560px;aspect-ratio:4/3;object-fit:cover;border-radius:10px;
+      border:1px solid var(--line);box-shadow:0 16px 40px rgba(0,0,0,.10) /* stronger card-like presence */
     }
 
-    /* FACTS with icons (lighter than gold to reduce noise) */
-    .facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 36px}
+    /* FACTS with icons */
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px}
     .fact{display:flex;gap:10px;align-items:flex-start}
     .fact i{color:var(--muted2);font-size:16px;margin-top:2px}
     .fact b{display:block}
     .fact small{display:block;color:var(--muted);margin-top:2px}
 
-    /* METRICS — airy, centered, bigger numbers, tighter subtext */
+    /* METRICS — stretch nicely on the wider container */
     .metrics{
       display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:56px;
-      margin:42px 0 64px;   /* extra space below to separate from skills */
+      grid-template-columns:repeat(4,1fr);
+      gap:64px;                 /* more space between metrics */
+      margin:36px 0 44px;
       text-align:center;
-    }
-    @media (min-width:1100px){
-      .metrics{grid-template-columns:repeat(4,1fr)}
     }
     .metric{display:flex;flex-direction:column;align-items:center;gap:12px}
     .dot{
-      width:60px;height:60px;border:2px solid var(--accent);border-radius:50%;
+      width:64px;height:64px;border:2px solid var(--accent);border-radius:50%;
       display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:2px
     }
-    .num{font-size:28px;font-weight:900;line-height:1.15}  /* larger numbers */
-    .sub{font-size:13px;color:var(--muted);line-height:1.35;max-width:220px}
-    .sub.small{font-size:12px}
+    .num{font-size:30px;font-weight:900;line-height:1.1}
+    .sub{font-size:13px;color:var(--muted);line-height:1.35;max-width:240px}
 
     /* SKILLS */
-    .skills{margin-top:10px}
+    .skills{margin-top:8px}
     .skillrow{margin:22px 0 8px}
     .skill-title{font-weight:800;letter-spacing:.06em;font-size:13px}
-    .skill-sub{font-size:12px;color:var(--muted);margin-top:6px}
-    .bar{height:10px;background:#edf1f4;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+    .skill-sub{font-size:12px;color:var(--muted);margin-top:6px;max-width:820px}
+    .bar{height:12px;background:#edf1f4;border:1px solid var(--line);border-radius:9px;overflow:hidden}
     .bar > span{display:block;height:100%;background:var(--accent);width:0}
 
-    /* Quick links row */
-    .quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px}
+    /* Quick links */
+    .quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
     .pill{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;background:#fff}
 
     /* Footer */
-    footer{padding:30px 20px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
+    footer{padding:30px 24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
 
     /* Responsive */
-    @media (max-width:1100px){
+    @media (max-width:1200px){
+      .container{max-width:1100px}
+      .about .grid{grid-template-columns:520px 1fr;gap:36px}
+      .portrait{width:520px}
+      .metrics{gap:48px}
+    }
+    @media (max-width:1024px){
       .about .grid{grid-template-columns:1fr}
       .portrait{width:100%}
       .facts{grid-template-columns:1fr}
-      .metrics{gap:36px;margin:36px 0 48px}
+      .metrics{grid-template-columns:1fr 1fr;gap:36px}
+    }
+    @media (max-width:560px){
+      .metrics{grid-template-columns:1fr;gap:24px}
+      .num{font-size:26px}
     }
   </style>
 </head>
@@ -147,19 +159,17 @@
         <img class="portrait" src="./portrait.png" alt="Waqas portrait">
 
         <div>
-          <!-- FACTS (icons instead of chevrons) -->
+          <!-- FACTS (icons) -->
           <div class="facts">
             <div class="fact"><i class="fa-solid fa-user"></i><div><b>Name</b><small>Waqas Arshad</small></div></div>
             <div class="fact"><i class="fa-solid fa-graduation-cap"></i><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
-
             <div class="fact"><i class="fa-solid fa-location-dot"></i><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
             <div class="fact"><i class="fa-solid fa-school"></i><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small></div></div>
-
             <div class="fact"><i class="fa-solid fa-envelope"></i><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
             <div class="fact"><i class="fa-solid fa-briefcase"></i><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
           </div>
 
-          <!-- METRICS (shorter subtext) -->
+          <!-- METRICS -->
           <div class="metrics">
             <div class="metric">
               <div class="dot"><i class="fa-solid fa-clock"></i></div>
@@ -183,7 +193,7 @@
             </div>
           </div>
 
-          <!-- SKILLS (kept your percentages) -->
+          <!-- SKILLS -->
           <div class="skills">
             <div class="skillrow">
               <div class="skill-title">PRODUCT STRATEGY & LEADERSHIP</div>

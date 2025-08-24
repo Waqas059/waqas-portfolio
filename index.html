@@ -3,123 +3,151 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Waqas Arshad | About (Norman)</title>
+  <title>Waqas Arshad | Product Management & Innovation</title>
+  <meta name="description" content="Senior Product Manager. Telecom, SaaS, CPaaS, FinTech." />
 
-  <!-- Inter font + Font Awesome -->
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome (icons) -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 
   <style>
-    /* Don Norman–ish palette: calm greys, single accent via density (no loud color) */
+    /* Neutral, Norman-friendly palette */
     :root{
       --bg:#ffffff;
-      --ink:#111827;   /* gray-900 */
-      --muted:#6b7280; /* gray-500 */
-      --muted2:#9ca3af;/* gray-400 */
-      --line:#e5e7eb;  /* gray-200 */
-      --panel:#f8fafc; /* gray-50 */
-      --shadow:0 12px 28px rgba(0,0,0,.08);
+      --ink:#111827;      /* gray-900 */
+      --muted:#6b7280;    /* gray-500 */
+      --muted2:#9ca3af;   /* gray-400 */
+      --line:#e5e7eb;     /* gray-200 */
+      --panel:#f8fafc;    /* gray-50 */
+      --shadow:0 18px 48px rgba(0,0,0,.12);
       --radius:14px;
-      --nav:#0b1220;
-      --accent:#606b7b; /* soft grey accent for bars */
+      --nav:#0b1220;      /* deep navy for top bar */
+      --accent:#6b7280;   /* grey accent */
+      --accent-weak:#eef2f7;
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Arial,sans-serif}
-    img{display:block;max-width:100%;height:auto}
-    a{color:inherit;text-decoration:none}
 
-    /* Top nav (kept minimal) */
-    .nav{position:fixed;inset:0 0 auto 0;height:56px;background:var(--nav);display:flex;justify-content:center;align-items:center;z-index:40}
-    .nav ul{margin:0;padding:0;list-style:none;display:flex;gap:28px}
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Arial,sans-serif;scroll-behavior:smooth}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%;height:auto}
+
+    /* NAV */
+    .nav{position:fixed;inset:0 0 auto 0;height:56px;background:var(--nav);display:flex;justify-content:center;align-items:center;z-index:50;box-shadow:0 1px 4px rgba(0,0,0,.25)}
+    .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:28px}
     .nav a{color:#e5e7eb;font-weight:800;letter-spacing:.06em;font-size:13px}
-    .nav a:hover{color:#cbd5e1}
+    .nav a:hover,.nav a.active{color:#cbd5e1}
     .spacer{height:56px}
 
-    /* Page container */
-    .container{max-width:1400px;margin:0 auto;padding:48px 24px}
+    /* Sections & container */
+    section{padding:72px 24px}
+    .container{max-width:1380px;margin:0 auto}
 
-    /* Section header */
-    .ghost{font-size:54px;font-weight:900;letter-spacing:.18em;color:#e5e7eb;text-align:center;margin:8px 0}
-    .subtitle{font-size:26px;font-weight:900;text-align:center;margin:0 0 8px}
-    .lede{text-align:center;max-width:980px;margin:0 auto 36px;color:var(--ink);opacity:.9}
+    /* HERO */
+    .hero{
+      min-height:66vh;display:flex;align-items:center;justify-content:center;
+      background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)), url('./Hero.png') center/cover no-repeat fixed;
+      color:#fff;text-align:center;position:relative
+    }
+    .hero h1{font-weight:900;letter-spacing:.02em;font-size:48px;margin:0 0 8px}
+    .hero .tag{letter-spacing:.16em;font-weight:800;font-size:12px;opacity:.9}
 
-    /* Norman split layout */
-    .norman{
+    /* ABOUT */
+    .about .ghost{
+      text-align:center;font-weight:900;font-size:54px;letter-spacing:.20em;color:#e5e7eb;opacity:.65;margin:0 0 10px
+    }
+    .about .title{margin:0 0 14px;text-align:center;font-weight:900;font-size:26px}
+    .about .lede{max-width:980px;margin:0 auto 36px;text-align:center;color:var(--ink);opacity:.9}
+
+    /* Two-column: larger portrait left, content right */
+    .about .grid{
       display:grid;
-      grid-template-columns:420px 1fr;
-      gap:42px;
+      grid-template-columns:720px 1fr; /* portrait + content */
+      gap:56px;
       align-items:start;
     }
-    .rail{
-      position:sticky; top:84px;
-      background:var(--panel);
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      box-shadow:var(--shadow);
-      padding:18px;
+
+    /* Portrait card (only elevated element) */
+    .portrait-card{
+      background:#fff;border:1px solid var(--line);border-radius:var(--radius);
+      box-shadow:var(--shadow);padding:18px;
     }
-    .portrait-xl{
-      width:100%;
-      aspect-ratio:4/3;
-      object-fit:cover;
-      border-radius:12px;
-      border:1px solid var(--line);
-      margin-bottom:14px;
+    .portrait{
+      width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:12px;border:1px solid var(--line);
     }
-    .who{font-weight:900;font-size:20px;margin:0}
-    .role{color:var(--muted);font-size:14px;margin:2px 0 10px}
 
-    .facts{display:grid;grid-template-columns:1fr;gap:12px;margin-top:10px}
-    .fact{display:flex;gap:10px;align-items:flex-start}
-    .fact i{color:var(--muted2);margin-top:2px}
-    .fact b{display:block}
-    .fact small{display:block;color:var(--muted);margin-top:2px}
+    /* Right column stack */
+    .rightcol{display:grid;gap:24px;align-items:start}
 
-    /* Right content stack */
-    .stack{display:grid;gap:28px}
-
-    /* Impact stats (row with dividers) */
+    /* Stats row aligned to portrait top */
     .stats{
-      display:grid;grid-template-columns:repeat(4,1fr);gap:22px;
+      margin-top:0; /* baseline aligned */
+      display:grid;
+      grid-template-columns:repeat(4, minmax(220px,1fr)); /* prevents awkward wraps */
+      gap:22px;
       border:1px solid var(--line);border-radius:var(--radius);padding:18px;background:#fff
     }
     .stat{padding-right:12px}
     .stat:not(:last-child){border-right:1px solid var(--line)}
-    .value{font-weight:900;font-size:36px;line-height:1.05}
+    .value{font-weight:900;font-size:40px;line-height:1.04;letter-spacing:.005em}
     .label{font-size:13px;color:var(--muted);margin-top:6px;line-height:1.4}
 
-    /* Skills evidence bars (thin, crisp) */
-    .skills{border:1px solid var(--line);border-radius:var(--radius);padding:16px;background:#fff}
-    .skillrow{margin:18px 0 10px}
+    /* Facts list (icons normalized) */
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:14px 36px}
+    .fact{display:flex;gap:10px;align-items:flex-start}
+    .fact i{width:16px;min-width:16px;text-align:center;color:var(--muted2);font-size:16px;margin-top:2px;line-height:1}
+    .fact b{display:block}
+    .fact small{display:block;color:var(--muted);margin-top:2px}
+
+    /* Primary CTA */
+    .cta{
+      display:inline-flex;align-items:center;gap:8px;
+      background:var(--ink);color:#fff;border:none;border-radius:999px;
+      padding:10px 16px;font-weight:800;font-size:14px;letter-spacing:.02em;cursor:pointer
+    }
+    .cta:focus-visible{outline:3px solid var(--accent-weak)}
+    .cta i{font-size:14px}
+
+    /* Skills card (no elevation) */
+    .skills{
+      border:1px solid var(--line);border-radius:var(--radius);padding:16px;background:#fff
+    }
+    .skillrow{margin:18px 0 8px}
     .skill-title{font-weight:900;letter-spacing:.05em;font-size:12px}
     .skill-sub{font-size:12px;color:var(--muted);margin-top:6px}
-    .bar{height:8px;background:var(--line);border-radius:999px;overflow:hidden}
+    .bar{height:7px;background:var(--line);border-radius:999px;overflow:hidden}
     .bar > span{display:block;height:100%;background:var(--accent);width:0}
 
-    /* Principles chips (Don Norman nod) */
-    .chips{display:flex;flex-wrap:wrap;gap:10px}
-    .chip{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 10px;font-size:12px;color:var(--muted)}
-    .chip i{margin-right:6px;color:#475569}
+    /* Quick links (optional secondary nav) */
+    .quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:8px}
+    .pill{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:12px;background:#fff}
+    .pill:focus-visible{outline:3px solid var(--accent-weak)}
+
+    /* Footer */
+    footer{padding:30px 24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
 
     /* Responsive */
-    @media (max-width:1100px){
-      .norman{grid-template-columns:1fr}
-      .rail{position:static}
-      .stats{grid-template-columns:1fr 1fr}
+    @media (max-width:1220px){
+      .about .grid{grid-template-columns:600px 1fr;gap:44px}
+    }
+    @media (max-width:1024px){
+      .about .grid{grid-template-columns:1fr}
+      .facts{grid-template-columns:1fr}
     }
     @media (max-width:560px){
+      .value{font-size:32px}
       .stats{grid-template-columns:1fr}
-      .value{font-size:30px}
     }
   </style>
 </head>
 <body>
-  <!-- simple nav -->
   <nav class="nav">
     <ul>
-      <li><a href="#about" class="active">ABOUT</a></li>
+      <li><a href="#home" class="active">HOME</a></li>
+      <li><a href="#about">ABOUT</a></li>
       <li><a href="#resume">RESUME</a></li>
       <li><a href="#courses">COURSES</a></li>
       <li><a href="#portfolio">PORTFOLIO</a></li>
@@ -128,96 +156,142 @@
   </nav>
   <div class="spacer"></div>
 
-  <!-- ABOUT (Don Norman layout) -->
-  <section id="about" class="container">
-    <h2 class="ghost">ABOUT ME</h2>
-    <h3 class="subtitle">About me</h3>
-    <p class="lede">
-      I am an experienced Senior Product Manager with <b>14+ years</b> in Telecom, SaaS, CPaaS, and FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia. I specialize in building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
-    </p>
+  <!-- HOME -->
+  <section id="home" class="hero" aria-label="Home">
+    <div>
+      <h1>Waqas Arshad</h1>
+      <div class="tag">PRODUCT MANAGEMENT &amp; INNOVATION</div>
+    </div>
+  </section>
 
-    <div class="norman">
-      <!-- Left rail (discoverable identity) -->
-      <aside class="rail">
-        <img class="portrait-xl" src="./portrait.png" alt="Waqas Arshad portrait">
-        <h4 class="who">Waqas Arshad</h4>
-        <div class="role">Senior Product Manager</div>
+  <!-- ABOUT -->
+  <section id="about" class="about" aria-label="About">
+    <div class="container">
+      <h2 class="ghost">ABOUT ME</h2>
+      <h3 class="title">About me</h3>
+      <p class="lede">
+        I am an experienced Senior Product Manager with <b>14+ years</b> in Telecom, SaaS, CPaaS, and FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia. I specialize in building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
+      </p>
 
-        <div class="facts">
-          <div class="fact"><i class="fa-solid fa-user"></i><div><b>Name</b><small>Waqas Arshad</small></div></div>
-          <div class="fact"><i class="fa-solid fa-graduation-cap"></i><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
-          <div class="fact"><i class="fa-solid fa-location-dot"></i><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
-          <div class="fact"><i class="fa-solid fa-school"></i><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small></div></div>
-          <div class="fact"><i class="fa-solid fa-envelope"></i><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
-          <div class="fact"><i class="fa-solid fa-briefcase"></i><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
-        </div>
-      </aside>
-
-      <!-- Right content (mapping of info → impact → evidence) -->
-      <div class="stack">
-        <!-- Impact at a glance -->
-        <div class="stats">
-          <div class="stat">
-            <div class="value">14+ years</div>
-            <div class="label">Leading product management & digital innovation</div>
-          </div>
-          <div class="stat">
-            <div class="value">Global reach</div>
-            <div class="label">Delivered solutions across MENA, CIS & Asia</div>
-          </div>
-          <div class="stat">
-            <div class="value">50+ products launched</div>
-            <div class="label">Across CPaaS, Super Apps & digital services</div>
-          </div>
-          <div class="stat">
-            <div class="value">5M+ users impacted</div>
-            <div class="label">Through telecom, SaaS & FinTech solutions</div>
-          </div>
+      <div class="grid">
+        <!-- Left: portrait card -->
+        <div class="portrait-card" aria-labelledby="whois">
+          <img class="portrait" src="./portrait.png" alt="Portrait of Waqas Arshad">
+          <h4 id="whois" style="margin:12px 4px 0;font-size:18px;font-weight:900;">Waqas Arshad</h4>
+          <div style="margin:2px 4px 4px;color:var(--muted);font-size:14px;">Senior Product Manager</div>
         </div>
 
-        <!-- Evidence of capability (your exact skills + percentages) -->
-        <div class="skills">
-          <div class="skillrow">
-            <div class="skill-title">PRODUCT STRATEGY & LEADERSHIP</div>
-            <div class="skill-sub">Product roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
+        <!-- Right: content -->
+        <div class="rightcol">
+          <!-- Stats first to align baseline with portrait -->
+          <div class="stats" aria-label="Impact statistics">
+            <div class="stat">
+              <div class="value">14+ years</div>
+              <div class="label">Leading product management &amp; digital innovation</div>
+            </div>
+            <div class="stat">
+              <div class="value">Global reach</div>
+              <div class="label">Delivered solutions across MENA, CIS &amp; Asia</div>
+            </div>
+            <div class="stat">
+              <div class="value">50+ products launched</div>
+              <div class="label">Across CPaaS, Super Apps &amp; digital services</div>
+            </div>
+            <div class="stat">
+              <div class="value">5M+ users impacted</div>
+              <div class="label">Through telecom, SaaS &amp; FinTech solutions</div>
+            </div>
           </div>
-          <div class="bar"><span style="width:92%"></span></div>
 
-          <div class="skillrow">
-            <div class="skill-title">DIGITAL PLATFORMS & FINTECH</div>
-            <div class="skill-sub">Value added services, charging system platform, ICT, SuperApp & digital platforms, FinTech</div>
+          <!-- Facts -->
+          <div class="facts" aria-label="Profile facts">
+            <div class="fact"><i class="fa-solid fa-user" aria-hidden="true"></i><div><b>Name</b><small>Waqas Arshad</small></div></div>
+            <div class="fact"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
+            <div class="fact"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
+            <div class="fact"><i class="fa-solid fa-school" aria-hidden="true"></i><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small></div></div>
+            <div class="fact"><i class="fa-solid fa-envelope" aria-hidden="true"></i><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
+            <div class="fact"><i class="fa-solid fa-briefcase" aria-hidden="true"></i><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
           </div>
-          <div class="bar"><span style="width:90%"></span></div>
 
-          <div class="skillrow">
-            <div class="skill-title">CPAAS & MESSAGING PLATFORMS</div>
-            <div class="skill-sub">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
+          <!-- Primary CTA -->
+          <button class="cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})" aria-label="Contact me">
+            <i class="fa-regular fa-paper-plane" aria-hidden="true"></i> Contact me
+          </button>
+
+          <!-- Skills -->
+          <div class="skills" aria-label="Skills">
+            <div class="skillrow">
+              <div class="skill-title">PRODUCT STRATEGY &amp; LEADERSHIP</div>
+              <div class="skill-sub">Product roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
+            </div>
+            <div class="bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Product Strategy & Leadership proficiency"><span style="width:92%"></span></div>
+
+            <div class="skillrow">
+              <div class="skill-title">DIGITAL PLATFORMS &amp; FINTECH</div>
+              <div class="skill-sub">Value added services, charging system platform, ICT, SuperApp &amp; digital platforms, FinTech</div>
+            </div>
+            <div class="bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Digital Platforms & FinTech proficiency"><span style="width:90%"></span></div>
+
+            <div class="skillrow">
+              <div class="skill-title">CPAAS &amp; MESSAGING PLATFORMS</div>
+              <div class="skill-sub">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
+            </div>
+            <div class="bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="CPaaS & Messaging proficiency"><span style="width:88%"></span></div>
+
+            <div class="skillrow">
+              <div class="skill-title">AGILE &amp; DESIGN THINKING</div>
+              <div class="skill-sub">Agile leadership, cross-functional collaboration, design thinking</div>
+            </div>
+            <div class="bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" aria-label="Agile & Design Thinking proficiency"><span style="width:87%"></span></div>
+
+            <div class="quick" aria-label="Extra navigation">
+              <a class="pill" href="#resume">Resume</a>
+              <a class="pill" href="#courses">Courses</a>
+              <a class="pill" href="#portfolio">Portfolio</a>
+              <a class="pill" href="#contact">Contact</a>
+            </div>
           </div>
-          <div class="bar"><span style="width:88%"></span></div>
-
-          <div class="skillrow">
-            <div class="skill-title">AGILE & DESIGN THINKING</div>
-            <div class="skill-sub">Agile leadership, cross-functional collaboration, design thinking</div>
-          </div>
-          <div class="bar"><span style="width:87%"></span></div>
-        </div>
-
-        <!-- Principles (Don Norman nod; optional, can remove) -->
-        <div class="chips" aria-label="Design principles I lead by">
-          <span class="chip"><i class="fa-regular fa-eye"></i>Discoverability</span>
-          <span class="chip"><i class="fa-regular fa-hand-pointer"></i>Affordances & Signifiers</span>
-          <span class="chip"><i class="fa-solid fa-arrows-left-right"></i>Mapping</span>
-          <span class="chip"><i class="fa-regular fa-bell"></i>Feedback</span>
-          <span class="chip"><i class="fa-solid fa-sliders"></i>Constraints</span>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- simple footer -->
-  <footer class="container" style="border-top:1px solid var(--line);color:var(--muted);text-align:center;padding-top:18px">
-    © <span id="y"></span> Waqas Arshad
-  </footer>
+  <!-- Resume -->
+  <section id="resume" aria-label="Resume">
+    <div class="container">
+      <h2 style="font-weight:900;margin:0 0 12px">Resume</h2>
+      <p style="color:var(--muted)">Add your roles or link a PDF.</p>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section id="courses" aria-label="Courses">
+    <div class="container">
+      <h2 style="font-weight:900;margin:0 0 12px">Courses</h2>
+      <ul>
+        <li>IBM Design Thinking Practitioner</li>
+        <li>Professional Scrum Product Owner</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Portfolio -->
+  <section id="portfolio" aria-label="Portfolio">
+    <div class="container">
+      <h2 style="font-weight:900;margin:0 0 12px">Portfolio</h2>
+      <p style="color:var(--muted)">Add project cards or case studies.</p>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" aria-label="Contact">
+    <div class="container">
+      <h2 style="font-weight:900;margin:0 0 12px">Contact</h2>
+      <p>Email <a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></p>
+    </div>
+  </section>
+
+  <footer>© <span id="y"></span> Waqas Arshad</footer>
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();

@@ -4,28 +4,26 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Waqas Arshad | Product Management & Innovation</title>
-  <meta name="description" content="Senior Product Manager. Telecom, SaaS, CPaaS, FinTech." />
 
-  <!-- Fonts -->
+  <!-- Inter font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      /* elevated neutral + warm highlight */
       --bg:#ffffff;
-      --ink:#0b1220;
-      --muted:#6b7280;
-      --muted2:#94a3b8;
-      --line:#e5e7eb;
-      --panel:#f8fafc;
+      --ink:#0b1220;       /* deep ink */
+      --muted:#6b7280;     /* gray-500 */
+      --muted2:#94a3b8;    /* slate-400 */
+      --line:#e5e7eb;      /* gray-200 */
+      --panel:#f8fafc;     /* gray-50 */
       --shadow:0 18px 48px rgba(7,9,16,.18);
       --radius:16px;
 
       --nav:#0b1220;
-      --accent:#f5b301;       /* warm gold for touches */
-      --bars-offset:28px;     /* moves skill bars a bit lower for alignment */
+      --accent:#f5b301;    /* warm gold for highlights */
+      --bars-offset:26px;  /* nudge bars up/down to taste */
     }
 
     *{box-sizing:border-box}
@@ -34,116 +32,100 @@
     img{display:block;max-width:100%;height:auto}
 
     /* NAV */
-    .nav{position:fixed;inset:0 0 auto 0;height:56px;background:var(--nav);display:flex;justify-content:center;align-items:center;z-index:50;box-shadow:0 1px 4px rgba(0,0,0,.28)}
-    .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:28px}
+    .nav{position:fixed;inset:0 0 auto 0;height:56px;background:var(--nav);display:flex;align-items:center;justify-content:center;z-index:40;box-shadow:0 1px 4px rgba(0,0,0,.28)}
+    .nav-inner{width:100%;max-width:1380px;display:flex;align-items:center;gap:16px;padding:0 16px}
+    .brand{color:#e5e7eb;font-weight:900;letter-spacing:.08em}
+    .nav ul{list-style:none;margin:0 0 0 auto;padding:0;display:flex;gap:28px}
     .nav a{color:#e5e7eb;font-weight:800;letter-spacing:.06em;font-size:13px}
-    .nav a:hover,.nav a.active{color:#fde68a}
+    .nav a.active,.nav a:hover{color:#fde68a}
     .spacer{height:56px}
 
-    /* Sections & container */
+    /* Sections */
     section{padding:72px 24px}
     .container{max-width:1380px;margin:0 auto}
 
-    /* HERO */
-    .hero{
-      min-height:56vh;display:flex;align-items:center;justify-content:center;
-      background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)), url('./Hero.png') center/cover no-repeat fixed;
-      color:#fff;text-align:center
-    }
-    .hero h1{font-weight:900;font-size:48px;margin:0 0 8px}
-    .hero .tag{letter-spacing:.16em;font-weight:800;font-size:12px;opacity:.9}
-
-    /* ABOUT */
+    /* Headings */
     .ghost{ text-align:center;font-weight:900;font-size:54px;letter-spacing:.20em;color:#e5e7eb;opacity:.65;margin:0 0 10px }
     .title{ text-align:center;font-weight:900;font-size:26px;margin:0 0 14px }
     .lede{ max-width:980px;margin:0 auto 36px;text-align:center;color:var(--ink);opacity:.92 }
 
-    .about-grid{ display:grid;grid-template-columns:720px 1fr;gap:56px;align-items:start }
+    /* ABOUT grid */
+    .about-grid{
+      display:grid; grid-template-columns:640px 1fr; gap:40px; align-items:start;
+    }
 
-    /* LEFT: portrait card */
+    /* LEFT: portrait rail */
     .portrait-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
     .portrait{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
     .nameplate{margin:12px 4px 0;font-size:18px;font-weight:900}
     .role{margin:2px 4px 2px;color:var(--muted);font-size:14px}
 
-    /* RIGHT column */
-    .right{display:grid;gap:24px}
-
-    /* STATS – light cards + emoji badges */
-    .stats{
-      background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:14px;
-      display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));overflow:hidden
-    }
-    .stat{padding:18px 20px;position:relative}
-    .stat:not(:last-child)::after{content:"";position:absolute;top:14px;bottom:14px;right:0;width:1px;background:var(--line)}
-    .badge{
-      width:44px;height:44px;border-radius:999px;border:2px solid var(--accent);display:flex;
-      align-items:center;justify-content:center;background:#fff;font-size:20px;margin-bottom:8px;
-      box-shadow:0 1px 2px rgba(0,0,0,.06)
-    }
-    .value{font-weight:900;font-size:40px;line-height:1.04;letter-spacing:.005em}
-    .label{font-size:13px;color:var(--muted);line-height:1.45;margin-top:6px}
-
-    /* Facts */
-    .facts{border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px}
+    .facts{border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px;margin-top:16px}
     .facts-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 36px}
     .fact{display:flex;gap:10px;align-items:flex-start}
-    .fact i{width:16px;min-width:16px;text-align:center;color:var(--muted2);font-size:16px;margin-top:2px;line-height:1}
+    .fact i{width:16px;min-width:16px;text-align:center;color:var(--muted2);font-style:normal;margin-top:2px}
     .fact b{display:block}
     .fact small{display:block;color:var(--muted);margin-top:2px}
 
-    /* SKILLS – nudged down for alignment with photo */
+    /* RIGHT: stats + skills */
+    .right{display:grid;gap:24px}
+
+    /* STATS (4 cards, align top with photo) */
+    .stats{
+      background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:14px;
+      display:grid;grid-template-columns:repeat(4,minmax(240px,1fr));overflow:hidden
+    }
+    .stat{padding:20px 22px;position:relative}
+    .stat:not(:last-child)::after{content:"";position:absolute;top:14px;bottom:14px;right:0;width:1px;background:var(--line)}
+    .badge{
+      width:44px;height:44px;border-radius:999px;border:2px solid var(--accent);display:flex;align-items:center;justify-content:center;
+      font-size:20px;background:#fff;margin-bottom:8px;box-shadow:0 1px 2px rgba(0,0,0,.06)
+    }
+    .value{font-weight:900;font-size:44px;line-height:1.05;word-break:break-word}
+    .label{font-size:13px;color:var(--muted);line-height:1.45;margin-top:6px}
+
+    /* SKILLS (nudged down for visual alignment with photo bottom) */
     .skills{border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px;margin-top:var(--bars-offset)}
     .skillrow{margin:18px 0 8px}
     .skill-title{font-weight:900;letter-spacing:.05em;font-size:12px}
     .skill-sub{font-size:12px;color:var(--muted);margin-top:6px}
     .bar{height:8px;background:#f3f4f6;border-radius:999px;overflow:hidden}
-    .bar>span{display:block;height:100%;background:var(--accent)} /* gold fill */
-
-    /* Quick links (keep) */
-    .quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
-    .pill{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:12px;background:#fff}
+    .bar > span{display:block;height:100%;background:var(--accent)}
 
     /* Footer */
     footer{padding:30px 24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
 
     /* Responsive */
     @media (max-width:1220px){
-      .about-grid{grid-template-columns:600px 1fr;gap:44px}
+      .about-grid{grid-template-columns:560px 1fr}
     }
     @media (max-width:1024px){
       .about-grid{grid-template-columns:1fr}
       .facts-grid{grid-template-columns:1fr}
-      :root{ --bars-offset:18px; }
+      :root{--bars-offset:18px;}
     }
     @media (max-width:560px){
-      .value{font-size:32px}
+      .value{font-size:36px}
       .stats{grid-template-columns:1fr}
-      :root{ --bars-offset:14px; }
+      :root{--bars-offset:14px;}
     }
   </style>
 </head>
 <body>
   <!-- NAV -->
   <nav class="nav">
-    <ul>
-      <li><a href="#home" class="active">HOME</a></li>
-      <li><a href="#about">ABOUT</a></li>
-      <li><a href="#resume">RESUME</a></li>
-      <li><a href="#courses">COURSES</a></li>
-      <li><a href="#portfolio">PORTFOLIO</a></li>
-      <li><a href="#contact">CONTACT</a></li>
-    </ul>
+    <div class="nav-inner">
+      <div class="brand"><a href="#about" style="color:#e5e7eb">WAQAS</a></div>
+      <ul>
+        <li><a href="#about" class="active">About</a></li>
+        <li><a href="#resume">Resume/Work</a></li>
+        <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#achievements">Certifications &amp; Achievements</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
   </nav>
   <div class="spacer"></div>
-
-  <!-- HOME -->
-  <section id="home" class="hero" aria-label="Home">
-    <div>
-      <h1>Waqas Arshad</h1>
-      <div class="tag">PRODUCT MANAGEMENT &amp; INNOVATION</div>
-    </div>
-  </section>
 
   <!-- ABOUT -->
   <section id="about" aria-label="About">
@@ -155,16 +137,29 @@
       </p>
 
       <div class="about-grid">
-        <!-- LEFT -->
-        <div class="portrait-card">
-          <img class="portrait" src="./portrait.png" alt="Portrait of Waqas Arshad">
-          <div class="nameplate">Waqas Arshad</div>
-          <div class="role">Senior Product Manager</div>
+        <!-- LEFT: portrait + facts -->
+        <div>
+          <div class="portrait-card">
+            <img class="portrait" src="./portrait.png" alt="Portrait of Waqas Arshad">
+            <div class="nameplate">Waqas Arshad</div>
+            <div class="role">Senior Product Manager</div>
+          </div>
+
+          <div class="facts" aria-label="Profile facts">
+            <div class="facts-grid">
+              <div class="fact"><i>👤</i><div><b>Name</b><small>Waqas Arshad</small></div></div>
+              <div class="fact"><i>🎓</i><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
+              <div class="fact"><i>📍</i><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
+              <div class="fact"><i>🏫</i><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small></div></div>
+              <div class="fact"><i>✉️</i><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
+              <div class="fact"><i>💼</i><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
+            </div>
+          </div>
         </div>
 
-        <!-- RIGHT -->
+        <!-- RIGHT: 4 stat cards + skills -->
         <div class="right">
-          <!-- Stats with emoji badges -->
+          <!-- 4 STAT CARDS (aligned to photo top) -->
           <div class="stats" aria-label="Impact statistics">
             <div class="stat">
               <div class="badge" aria-hidden="true">🕒</div>
@@ -188,49 +183,38 @@
             </div>
           </div>
 
-          <!-- Facts (unchanged) -->
-          <div class="facts" aria-label="Profile facts">
-            <div class="facts-grid">
-              <div class="fact"><i class="fa-solid fa-user" aria-hidden="true"></i><div><b>Name</b><small>Waqas Arshad</small></div></div>
-              <div class="fact"><i class="fa-solid fa-graduation-cap" aria-hidden="true"></i><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
-              <div class="fact"><i class="fa-solid fa-location-dot" aria-hidden="true"></i><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
-              <div class="fact"><i class="fa-solid fa-school" aria-hidden="true"></i><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small></div></div>
-              <div class="fact"><i class="fa-solid fa-envelope" aria-hidden="true"></i><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
-              <div class="fact"><i class="fa-solid fa-briefcase" aria-hidden="true"></i><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
-            </div>
-          </div>
-
-          <!-- Skills (moved down slightly via --bars-offset) -->
+          <!-- SKILLS (nudged down for bottom alignment) -->
           <div class="skills" aria-label="Skills">
             <div class="skillrow">
               <div class="skill-title">PRODUCT STRATEGY &amp; LEADERSHIP</div>
               <div class="skill-sub">Product roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
             </div>
-            <div class="bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Product Strategy & Leadership proficiency"><span style="width:92%"></span></div>
+            <div class="bar" role="progressbar" aria-valuenow="92" aria-valuemin="0" aria-valuemax="100" aria-label="Product Strategy & Leadership proficiency">
+              <span style="width:92%"></span>
+            </div>
 
             <div class="skillrow">
               <div class="skill-title">DIGITAL PLATFORMS &amp; FINTECH</div>
               <div class="skill-sub">Value added services, charging system platform, ICT, SuperApp &amp; digital platforms, FinTech</div>
             </div>
-            <div class="bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Digital Platforms & FinTech proficiency"><span style="width:90%"></span></div>
+            <div class="bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100" aria-label="Digital Platforms & FinTech proficiency">
+              <span style="width:90%"></span>
+            </div>
 
             <div class="skillrow">
               <div class="skill-title">CPAAS &amp; MESSAGING PLATFORMS</div>
               <div class="skill-sub">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
             </div>
-            <div class="bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="CPaaS & Messaging proficiency"><span style="width:88%"></span></div>
+            <div class="bar" role="progressbar" aria-valuenow="88" aria-valuemin="0" aria-valuemax="100" aria-label="CPaaS & Messaging proficiency">
+              <span style="width:88%"></span>
+            </div>
 
             <div class="skillrow">
               <div class="skill-title">AGILE &amp; DESIGN THINKING</div>
               <div class="skill-sub">Agile leadership, cross-functional collaboration, design thinking</div>
             </div>
-            <div class="bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" aria-label="Agile & Design Thinking proficiency"><span style="width:87%"></span></div>
-
-            <div class="quick" aria-label="Extra navigation">
-              <a class="pill" href="#resume">Resume</a>
-              <a class="pill" href="#courses">Courses</a>
-              <a class="pill" href="#portfolio">Portfolio</a>
-              <a class="pill" href="#contact">Contact</a>
+            <div class="bar" role="progressbar" aria-valuenow="87" aria-valuemin="0" aria-valuemax="100" aria-label="Agile & Design Thinking proficiency">
+              <span style="width:87%"></span>
             </div>
           </div>
         </div>
@@ -238,40 +222,11 @@
     </div>
   </section>
 
-  <!-- RESUME -->
-  <section id="resume" aria-label="Resume">
-    <div class="container">
-      <h2 style="font-weight:900;margin:0 0 12px">Resume</h2>
-      <p style="color:var(--muted)">Add your roles or link a PDF.</p>
-    </div>
-  </section>
-
-  <!-- COURSES -->
-  <section id="courses" aria-label="Courses">
-    <div class="container">
-      <h2 style="font-weight:900;margin:0 0 12px">Courses</h2>
-      <ul>
-        <li>IBM Design Thinking Practitioner</li>
-        <li>Professional Scrum Product Owner</li>
-      </ul>
-    </div>
-  </section>
-
-  <!-- PORTFOLIO -->
-  <section id="portfolio" aria-label="Portfolio">
-    <div class="container">
-      <h2 style="font-weight:900;margin:0 0 12px">Portfolio</h2>
-      <p style="color:var(--muted)">Add project cards or case studies.</p>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact" aria-label="Contact">
-    <div class="container">
-      <h2 style="font-weight:900;margin:0 0 12px">Contact</h2>
-      <p>Email <a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></p>
-    </div>
-  </section>
+  <!-- Placeholder sections to match your nav -->
+  <section id="resume"><div class="container"><h2 style="font-weight:900;margin:0 0 12px">Resume/Work</h2></div></section>
+  <section id="portfolio"><div class="container"><h2 style="font-weight:900;margin:0 0 12px">Portfolio</h2></div></section>
+  <section id="achievements"><div class="container"><h2 style="font-weight:900;margin:0 0 12px">Certifications &amp; Achievements</h2></div></section>
+  <section id="contact"><div class="container"><h2 style="font-weight:900;margin:0 0 12px">Contact</h2><p>Email: <a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></p></div></section>
 
   <footer>© <span id="y"></span> Waqas Arshad</footer>
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>

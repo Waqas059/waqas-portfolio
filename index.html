@@ -9,97 +9,95 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
 
-  <!-- Font Awesome -->
+  <!-- Font Awesome (icons) -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet"/>
 
   <style>
+    /* Luke-style palette: neutral + single blue accent */
     :root{
       --bg:#ffffff;
-      --ink:#0b0e11;
-      --muted:#6b7280;
-      --muted2:#94a3b8;
-      --line:#e5e7eb;
-      --accent:#f1c40f; /* gold */
-      --nav:#12161c;
+      --ink:#111827;     /* gray-900 */
+      --muted:#6b7280;   /* gray-500 */
+      --muted2:#9ca3af;  /* gray-400 */
+      --line:#e5e7eb;    /* gray-200 */
+      --accent:#2563eb;  /* blue-600 */
+      --accent-weak:#dbeafe; /* blue-100 */
+      --nav:#0b1220;     /* deep navy */
     }
+
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,Arial,sans-serif;scroll-behavior:smooth}
     a{color:inherit;text-decoration:none}
     img{display:block;max-width:100%;height:auto}
 
     /* NAV */
-    .nav{position:fixed;inset:0 0 auto 0;height:56px;background:var(--nav);display:flex;justify-content:center;align-items:center;z-index:50;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+    .nav{position:fixed;inset:0 0 auto 0;height:56px;background:var(--nav);display:flex;justify-content:center;align-items:center;z-index:50;box-shadow:0 1px 4px rgba(0,0,0,.25)}
     .nav ul{list-style:none;margin:0;padding:0;display:flex;gap:28px}
-    .nav a{color:#e6edf3;font-weight:700;letter-spacing:.08em;font-size:13px}
+    .nav a{color:#e5e7eb;font-weight:800;letter-spacing:.06em;font-size:13px}
     .nav a:hover,.nav a.active{color:var(--accent)}
     .spacer{height:56px}
 
     /* Sections & container */
     section{padding:72px 24px}
-    .container{max-width:1360px;margin:0 auto}
+    .container{max-width:1320px;margin:0 auto}
 
     /* HERO */
     .hero{
-      padding:0;min-height:68vh;display:flex;align-items:center;justify-content:center;
+      min-height:66vh;display:flex;align-items:center;justify-content:center;
       background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)), url('./Hero.png') center/cover no-repeat fixed;
       color:#fff;text-align:center;position:relative
     }
-    .hero .name{font-family:"Great Vibes",cursive;font-size:86px;line-height:1;margin:0 0 12px}
-    .hero .tag{letter-spacing:.16em;font-weight:700;font-size:13px;opacity:.9}
-    .scroll{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);border:2px solid rgba(255,255,255,.7);width:36px;height:36px;border-radius:999px;display:grid;place-items:center}
+    .hero h1{font-weight:900;letter-spacing:.02em;font-size:48px;margin:0 0 8px}
+    .hero .tag{letter-spacing:.16em;font-weight:800;font-size:12px;opacity:.9}
 
     /* ABOUT */
     .about .ghost{
-      text-align:center;font-weight:900;font-size:56px;letter-spacing:.22em;color:#dbe1ea;opacity:.45;margin:0 0 4px
+      text-align:center;font-weight:900;font-size:54px;letter-spacing:.20em;color:#e5e7eb;opacity:.65;margin:0 0 6px
     }
-    .about .title{margin:0 0 16px;text-align:center;font-weight:900;font-size:28px}
-    .about .lede{max-width:980px;margin:0 auto 36px;text-align:center;color:var(--ink);opacity:.9}
+    .about .title{margin:0 0 14px;text-align:center;font-weight:900;font-size:26px}
+    .about .lede{max-width:960px;margin:0 auto 36px;text-align:center;color:var(--ink);opacity:.9}
 
+    /* Two-column: big portrait left, content right */
     .about .grid{
-      display:grid;
-      grid-template-columns:640px 1fr;  /* big portrait left, wide content right */
-      gap:56px;
-      align-items:start
+      display:grid;grid-template-columns:640px 1fr;gap:56px;align-items:start
     }
     .portrait{
       width:640px;aspect-ratio:4/3;object-fit:cover;border-radius:12px;
-      border:1px solid var(--line);box-shadow:0 18px 48px rgba(0,0,0,.10)
+      border:1px solid var(--line);box-shadow:0 14px 36px rgba(0,0,0,.12)
     }
 
-    /* Facts (kept) */
-    .facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px;margin-bottom:8px}
+    /* Facts with light icons */
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:16px 36px;margin-bottom:4px}
     .fact{display:flex;gap:10px;align-items:flex-start}
     .fact i{color:var(--muted2);font-size:16px;margin-top:2px}
     .fact b{display:block}
     .fact small{display:block;color:var(--muted);margin-top:2px}
 
-    /* Metrics (with gold icon circles) */
-    .metrics{
-      display:grid;grid-template-columns:repeat(4,1fr);
-      gap:44px;margin:26px 0 34px;text-align:center
+    /* Metrics: bold numbers, no circles */
+    .stats{
+      display:grid;grid-template-columns:repeat(4,1fr);gap:24px;margin:26px 0 34px
     }
-    .metric{display:flex;flex-direction:column;align-items:center;gap:10px}
-    .dot{
-      width:60px;height:60px;border:2px solid var(--accent);border-radius:50%;
-      display:flex;align-items:center;justify-content:center;font-size:20px
-    }
-    .m-title{font-size:22px;font-weight:900;line-height:1.2}
-    .m-sub{font-size:13px;color:var(--muted);line-height:1.35;max-width:240px}
+    .stat{padding-right:16px}
+    .stat:not(:last-child){border-right:1px solid var(--line)}
+    .value{font-size:34px;font-weight:900;line-height:1.05;letter-spacing:.01em}
+    .label{font-size:13px;color:var(--muted);line-height:1.4;margin-top:6px}
 
-    /* Skills (bars with headings + subheads) */
-    .skills{margin-top:8px}
-    .skillrow{margin:22px 0 8px}
-    .skill-title{font-weight:800;letter-spacing:.06em;font-size:12px}
+    /* Skills: Luke-style bars (thin, crisp, blue) */
+    .skills{margin-top:4px}
+    .skillrow{margin:18px 0 6px}
+    .skill-title{font-weight:900;letter-spacing:.05em;font-size:12px}
     .skill-sub{font-size:12px;color:var(--muted);margin-top:6px}
-    .bar{height:10px;background:#edf1f4;border:1px solid var(--line);border-radius:8px;overflow:hidden}
+    .bar{height:8px;background:var(--line);border-radius:999px;overflow:hidden}
     .bar > span{display:block;height:100%;background:var(--accent);width:0}
 
     /* Quick links */
     .quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
-    .pill{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:13px;background:#fff}
+    .pill{padding:6px 12px;border:1px solid var(--line);border-radius:999px;font-size:12px;background:#fff}
+    .pill:hover{border-color:var(--accent);box-shadow:0 0 0 3px var(--accent-weak)}
 
+    /* Footer */
     footer{padding:30px 24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
 
     /* Responsive */
@@ -111,11 +109,12 @@
       .about .grid{grid-template-columns:1fr}
       .portrait{width:100%}
       .facts{grid-template-columns:1fr}
-      .metrics{grid-template-columns:1fr 1fr}
+      .stats{grid-template-columns:1fr 1fr}
+      .stat{border-right:none}
     }
     @media (max-width:560px){
-      .metrics{grid-template-columns:1fr}
-      .m-title{font-size:20px}
+      .stats{grid-template-columns:1fr}
+      .value{font-size:28px}
     }
   </style>
 </head>
@@ -135,9 +134,8 @@
   <!-- HERO -->
   <section id="home" class="hero">
     <div>
-      <h1 class="name">Waqas Arshad</h1>
+      <h1>Waqas Arshad</h1>
       <div class="tag">PRODUCT MANAGEMENT & INNOVATION</div>
-      <a href="#about" class="scroll">⌄</a>
     </div>
   </section>
 
@@ -147,7 +145,7 @@
       <h2 class="ghost">ABOUT ME</h2>
       <h3 class="title">About me</h3>
       <p class="lede">
-        I am an experienced Senior Product Manager with 12+ years in Telecom, SaaS, CPaaS, and FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia. I specialize in building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
+        I am an experienced Senior Product Manager with 14 years in Telecom, SaaS, CPaaS, and FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia. I specialize in building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
       </p>
 
       <div class="grid">
@@ -156,43 +154,37 @@
 
         <!-- Right: content -->
         <div>
-          <!-- Facts -->
+          <!-- Facts (kept exactly) -->
           <div class="facts">
             <div class="fact"><i class="fa-solid fa-user"></i><div><b>Name</b><small>Waqas Arshad</small></div></div>
             <div class="fact"><i class="fa-solid fa-graduation-cap"></i><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
-
             <div class="fact"><i class="fa-solid fa-location-dot"></i><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
             <div class="fact"><i class="fa-solid fa-school"></i><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small></div></div>
-
             <div class="fact"><i class="fa-solid fa-envelope"></i><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
             <div class="fact"><i class="fa-solid fa-briefcase"></i><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
           </div>
 
-          <!-- Metrics (exact wording kept) -->
-          <div class="metrics">
-            <div class="metric">
-              <div class="dot"><i class="fa-solid fa-clock"></i></div>
-              <div class="m-title">14+ years</div>
-              <div class="m-sub">Leading product management & digital innovation</div>
+          <!-- Metrics (your wording, Luke look) -->
+          <div class="stats">
+            <div class="stat">
+              <div class="value">14+ years</div>
+              <div class="label">Leading product management & digital innovation</div>
             </div>
-            <div class="metric">
-              <div class="dot"><i class="fa-solid fa-globe"></i></div>
-              <div class="m-title">Global reach</div>
-              <div class="m-sub">Delivered solutions across MENA, CIS & Asia</div>
+            <div class="stat">
+              <div class="value">Global reach</div>
+              <div class="label">Delivered solutions across MENA, CIS & Asia</div>
             </div>
-            <div class="metric">
-              <div class="dot"><i class="fa-solid fa-rocket"></i></div>
-              <div class="m-title">50+ products launched</div>
-              <div class="m-sub">Across CPaaS, Super Apps & digital services</div>
+            <div class="stat">
+              <div class="value">50+ products launched</div>
+              <div class="label">Across CPaaS, Super Apps & digital services</div>
             </div>
-            <div class="metric">
-              <div class="dot"><i class="fa-solid fa-users"></i></div>
-              <div class="m-title">5M+ users impacted</div>
-              <div class="m-sub">Through telecom, SaaS & FinTech solutions</div>
+            <div class="stat">
+              <div class="value">5M+ users impacted</div>
+              <div class="label">Through telecom, SaaS & FinTech solutions</div>
             </div>
           </div>
 
-          <!-- Skills (your four bars & percentages) -->
+          <!-- Skills (your content + blue bars) -->
           <div class="skills">
             <div class="skillrow">
               <div class="skill-title">PRODUCT STRATEGY & LEADERSHIP</div>
@@ -261,7 +253,7 @@
   <section id="contact">
     <div class="container">
       <h2 style="font-weight:900;margin:0 0 12px">Contact</h2>
-    <p>Email <a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></p>
+      <p>Email <a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></p>
     </div>
   </section>
 
@@ -269,12 +261,6 @@
 
   <script>
     document.getElementById('y').textContent = new Date().getFullYear();
-    document.querySelectorAll('.nav a').forEach(a=>{
-      a.addEventListener('click',()=>{
-        document.querySelectorAll('.nav a').forEach(x=>x.classList.remove('active'));
-        a.classList.add('active');
-      });
-    });
   </script>
 </body>
 </html>

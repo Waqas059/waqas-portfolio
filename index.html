@@ -36,13 +36,13 @@
     .nav a:hover,.nav a.active{color:var(--accent)}
     .spacer{height:56px}
 
-    /* Sections */
+    /* Sections & container */
     section{padding:72px 24px}
-    .container{max-width:1360px;margin:0 auto}   /* wider page to use left/right space */
+    .container{max-width:1360px;margin:0 auto}
 
     /* HERO */
     .hero{
-      padding:0;min-height:72vh;display:flex;align-items:center;justify-content:center;
+      padding:0;min-height:68vh;display:flex;align-items:center;justify-content:center;
       background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)), url('./Hero.png') center/cover no-repeat fixed;
       color:#fff;text-align:center;position:relative
     }
@@ -55,48 +55,60 @@
       text-align:center;font-weight:900;font-size:56px;letter-spacing:.22em;color:#dbe1ea;opacity:.45;margin:0 0 4px
     }
     .about .title{margin:0 0 16px;text-align:center;font-weight:900;font-size:28px}
-    .about .lede{max-width:980px;margin:0 auto 28px;text-align:center;color:var(--ink);opacity:.9}
+    .about .lede{max-width:980px;margin:0 auto 36px;text-align:center;color:var(--ink);opacity:.9}
+
     .about .grid{
       display:grid;
-      grid-template-columns:560px 1fr;   /* bigger photo, wider content */
-      gap:48px;
+      grid-template-columns:640px 1fr;  /* big portrait left, wide content right */
+      gap:56px;
       align-items:start
     }
     .portrait{
-      width:560px;aspect-ratio:4/3;object-fit:cover;border-radius:10px;
-      border:1px solid var(--line);box-shadow:0 16px 40px rgba(0,0,0,.10) /* stronger card-like presence */
+      width:640px;aspect-ratio:4/3;object-fit:cover;border-radius:12px;
+      border:1px solid var(--line);box-shadow:0 18px 48px rgba(0,0,0,.10)
     }
 
-    /* FACTS with icons */
-    .facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px}
+    /* Facts (kept as requested) */
+    .facts{display:grid;grid-template-columns:1fr 1fr;gap:18px 40px;margin-bottom:10px}
     .fact{display:flex;gap:10px;align-items:flex-start}
     .fact i{color:var(--muted2);font-size:16px;margin-top:2px}
     .fact b{display:block}
     .fact small{display:block;color:var(--muted);margin-top:2px}
 
-    /* METRICS — stretch nicely on the wider container */
-    .metrics{
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:64px;                 /* more space between metrics */
-      margin:36px 0 44px;
-      text-align:center;
+    /* Stats row (no circles) */
+    .stats{
+      display:flex;flex-wrap:wrap;gap:34px 48px;align-items:flex-start;margin:24px 0 30px
     }
-    .metric{display:flex;flex-direction:column;align-items:center;gap:12px}
-    .dot{
-      width:64px;height:64px;border:2px solid var(--accent);border-radius:50%;
-      display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:2px
+    .stat{
+      min-width:180px;
+      display:flex;flex-direction:column;gap:6px
     }
-    .num{font-size:30px;font-weight:900;line-height:1.1}
-    .sub{font-size:13px;color:var(--muted);line-height:1.35;max-width:240px}
+    .stat .value{
+      font-size:34px;font-weight:900;line-height:1;
+      letter-spacing:.01em
+    }
+    .stat .label{
+      font-size:13px;color:var(--muted);line-height:1.35;max-width:240px
+    }
+    /* optional thin separators on very wide screens */
+    @media (min-width:1200px){
+      .stat{position:relative;padding-right:24px}
+      .stat:not(:last-child)::after{
+        content:"";position:absolute;right:10px;top:8px;bottom:8px;width:1px;background:var(--line)
+      }
+    }
 
-    /* SKILLS */
-    .skills{margin-top:8px}
-    .skillrow{margin:22px 0 8px}
-    .skill-title{font-weight:800;letter-spacing:.06em;font-size:13px}
-    .skill-sub{font-size:12px;color:var(--muted);margin-top:6px;max-width:820px}
-    .bar{height:12px;background:#edf1f4;border:1px solid var(--line);border-radius:9px;overflow:hidden}
-    .bar > span{display:block;height:100%;background:var(--accent);width:0}
+    /* Strengths (replacing percent bars) */
+    .strengths{
+      display:grid;grid-template-columns:1fr 1fr;gap:18px 28px;margin-top:10px
+    }
+    .strength{
+      display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--line)
+    }
+    .strength:first-child{border-top:none}
+    .strength i{font-size:18px;color:#222;margin-top:2px}
+    .strength h4{margin:0;font-size:14px;font-weight:900;letter-spacing:.04em}
+    .strength p{margin:4px 0 0;color:var(--muted);font-size:13px;line-height:1.45}
 
     /* Quick links */
     .quick{display:flex;gap:10px;flex-wrap:wrap;margin-top:26px}
@@ -106,21 +118,19 @@
     footer{padding:30px 24px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:14px}
 
     /* Responsive */
-    @media (max-width:1200px){
-      .container{max-width:1100px}
-      .about .grid{grid-template-columns:520px 1fr;gap:36px}
-      .portrait{width:520px}
-      .metrics{gap:48px}
+    @media (max-width:1180px){
+      .about .grid{grid-template-columns:560px 1fr;gap:44px}
+      .portrait{width:560px}
     }
     @media (max-width:1024px){
       .about .grid{grid-template-columns:1fr}
       .portrait{width:100%}
       .facts{grid-template-columns:1fr}
-      .metrics{grid-template-columns:1fr 1fr;gap:36px}
+      .strengths{grid-template-columns:1fr}
+      .stats{gap:28px 36px}
     }
     @media (max-width:560px){
-      .metrics{grid-template-columns:1fr;gap:24px}
-      .num{font-size:26px}
+      .stat .value{font-size:28px}
     }
   </style>
 </head>
@@ -152,74 +162,83 @@
       <h2 class="ghost">ABOUT ME</h2>
       <h3 class="title">About me</h3>
       <p class="lede">
-        I am an experienced Senior Product Manager with 12+ years in Telecom, SaaS, CPaaS, and FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia. I specialize in building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
+        Senior Product Manager focused on Telecom, SaaS, CPaaS, and FinTech — driving digital transformation and product innovation across MENA, CIS, and Asia.
       </p>
 
       <div class="grid">
+        <!-- Left: big portrait -->
         <img class="portrait" src="./portrait.png" alt="Waqas portrait">
 
+        <!-- Right: content -->
         <div>
-          <!-- FACTS (icons) -->
+          <!-- Facts (kept) -->
           <div class="facts">
             <div class="fact"><i class="fa-solid fa-user"></i><div><b>Name</b><small>Waqas Arshad</small></div></div>
             <div class="fact"><i class="fa-solid fa-graduation-cap"></i><div><b>Degrees</b><small>Master’s in Project Management, Bachelor’s in Electrical Engineering</small></div></div>
+
             <div class="fact"><i class="fa-solid fa-location-dot"></i><div><b>City</b><small>Islamabad, Pakistan</small></div></div>
             <div class="fact"><i class="fa-solid fa-school"></i><div><b>School</b><small>Shaheed Zulfikar Ali Bhutto Institute of Science and Technology</small></div></div>
+
             <div class="fact"><i class="fa-solid fa-envelope"></i><div><b>Email</b><small><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></small></div></div>
             <div class="fact"><i class="fa-solid fa-briefcase"></i><div><b>Current designation</b><small>Senior Product Manager</small></div></div>
           </div>
 
-          <!-- METRICS -->
-          <div class="metrics">
-            <div class="metric">
-              <div class="dot"><i class="fa-solid fa-clock"></i></div>
-              <div class="num">14+ years</div>
-              <div class="sub">Product management & innovation</div>
+          <!-- Stats Row (no circles) -->
+          <div class="stats">
+            <div class="stat">
+              <div class="value">14+ years</div>
+              <div class="label">Product management & digital innovation</div>
             </div>
-            <div class="metric">
-              <div class="dot"><i class="fa-solid fa-globe"></i></div>
-              <div class="num">Global reach</div>
-              <div class="sub">MENA, CIS & Asia</div>
+            <div class="stat">
+              <div class="value">Global reach</div>
+              <div class="label">Delivered across MENA, CIS & Asia</div>
             </div>
-            <div class="metric">
-              <div class="dot"><i class="fa-solid fa-rocket"></i></div>
-              <div class="num">50+ launches</div>
-              <div class="sub">CPaaS, Super Apps & services</div>
+            <div class="stat">
+              <div class="value">50+ launches</div>
+              <div class="label">CPaaS, Super Apps & digital services</div>
             </div>
-            <div class="metric">
-              <div class="dot"><i class="fa-solid fa-users"></i></div>
-              <div class="num">5M+ users</div>
-              <div class="sub">Telecom, SaaS & FinTech</div>
+            <div class="stat">
+              <div class="value">5M+ users</div>
+              <div class="label">Telecom, SaaS & FinTech solutions</div>
             </div>
           </div>
 
-          <!-- SKILLS -->
-          <div class="skills">
-            <div class="skillrow">
-              <div class="skill-title">PRODUCT STRATEGY & LEADERSHIP</div>
-              <div class="skill-sub">Product roadmapping, user discovery, market analysis, adaptive leadership</div>
+          <!-- Strengths (no percentage bars) -->
+          <div class="strengths">
+            <div class="strength">
+              <i class="fa-solid fa-chess-knight"></i>
+              <div>
+                <h4>Product Strategy & Leadership</h4>
+                <p>Roadmapping, user discovery, market analysis, adaptive leadership.</p>
+              </div>
             </div>
-            <div class="bar"><span style="width:92%"></span></div>
 
-            <div class="skillrow">
-              <div class="skill-title">DIGITAL PLATFORMS & FINTECH</div>
-              <div class="skill-sub">Value added services, charging systems, ICT, SuperApp, digital platforms, fintech</div>
+            <div class="strength">
+              <i class="fa-solid fa-layer-group"></i>
+              <div>
+                <h4>Digital Platforms & FinTech</h4>
+                <p>VAS, charging systems, ICT, SuperApp, and scalable platform design.</p>
+              </div>
             </div>
-            <div class="bar"><span style="width:90%"></span></div>
 
-            <div class="skillrow">
-              <div class="skill-title">CPAAS & MESSAGING PLATFORMS</div>
-              <div class="skill-sub">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
+            <div class="strength">
+              <i class="fa-solid fa-message"></i>
+              <div>
+                <h4>CPaaS & Messaging</h4>
+                <p>Omnichannel messaging, WhatsApp Business, SaaS growth playbooks.</p>
+              </div>
             </div>
-            <div class="bar"><span style="width:88%"></span></div>
 
-            <div class="skillrow">
-              <div class="skill-title">AGILE & DESIGN THINKING</div>
-              <div class="skill-sub">Agile leadership, cross functional collaboration, design thinking</div>
+            <div class="strength">
+              <i class="fa-solid fa-diagram-project"></i>
+              <div>
+                <h4>Agile & Design Thinking</h4>
+                <p>Cross-functional leadership, iterative delivery, outcomes over output.</p>
+              </div>
             </div>
-            <div class="bar"><span style="width:87%"></span></div>
           </div>
 
+          <!-- Optional quick links -->
           <div class="quick">
             <a class="pill" href="#resume">Resume</a>
             <a class="pill" href="#courses">Courses</a>

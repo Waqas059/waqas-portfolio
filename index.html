@@ -9,11 +9,12 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Great+Vibes&display=swap" rel="stylesheet">
+  <!-- Softer body font -->
+  <link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --bg:#ffffff; --fg:#222; --muted:#4a4f57; --line:#e6e6e6;
+      --bg:#ffffff; --fg:#1f2328; --muted:#4f5664; --line:#e7eaf0;
       --accent:#f1c40f; --accent-soft:#e0ad00;
       --shadow:0 8px 30px rgba(0,0,0,.08);
     }
@@ -21,7 +22,8 @@
     html{scroll-behavior:smooth}
     body{
       margin:0;
-      font-family:Inter, system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      font-family:"Source Sans 3", system-ui, Segoe UI, Roboto, Arial, sans-serif;
+      font-weight:400;
       background:var(--bg); color:var(--fg);
       -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
       text-rendering:optimizeLegibility;
@@ -40,11 +42,11 @@
       padding:10px 16px;
     }
     .tabs a{
-      letter-spacing:.07em; text-transform:uppercase; text-decoration:none;
-      font-weight:800; font-size:12px;
+      letter-spacing:.06em; text-transform:uppercase; text-decoration:none;
+      font-weight:700; font-size:12px;
       color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.5); transition:color .2s;
     }
-    .tabs.scrolled a{ color:#333; text-shadow:none; }
+    .tabs.scrolled a{ color:#2d2d2d; text-shadow:none; }
     .tabs a.active,.tabs a:hover{ color:var(--accent); }
 
     /* ===== Hero ===== */
@@ -66,8 +68,8 @@
       text-shadow:0 2px 12px rgba(0,0,0,.45);
     }
     .hero-role{
-      margin:0; color:#fff; opacity:.96; letter-spacing:.14em; text-transform:uppercase;
-      font-weight:400; font-size:clamp(13px,1.6vw,18px); text-shadow:0 1px 6px rgba(0,0,0,.35);
+      margin:0; color:#fff; opacity:.96; letter-spacing:.12em; text-transform:uppercase;
+      font-weight:400; font-size:clamp(13px,1.6vw,17px); text-shadow:0 1px 6px rgba(0,0,0,.35);
     }
     .down{
       position:absolute; left:50%; bottom:28px; transform:translateX(-50%);
@@ -76,58 +78,62 @@
       animation:bounce 1.6s infinite;
     }
     .down svg{ width:18px; height:18px; display:block; opacity:.9; }
-    @keyframes bounce{
-      0%,20%,50%,80%,100%{ transform:translate(-50%,0) }
-      40%{ transform:translate(-50%,-8px) } 60%{ transform:translate(-50%,-4px) }
-    }
+    @keyframes bounce{0%,20%,50%,80%,100%{transform:translate(-50%,0)}40%{transform:translate(-50%,-8px)}60%{transform:translate(-50%,-4px)}}
 
-    /* ===== Layout helpers ===== */
+    /* ===== Layout ===== */
     section{ scroll-margin-top:70px; }
     .wrap{ max-width:1100px; margin:0 auto; padding:70px 18px; }
 
-    /* ===== About (refined) ===== */
+    /* ===== About ===== */
     .about{ background:#fff; color:var(--fg); }
-    .about .wrap{ position:relative; }
-    .about .wrap::before{
-      content:"ABOUT ME";
-      position:absolute; top:-28px; left:50%; transform:translateX(-50%);
-      font-weight:900; font-size:56px; letter-spacing:.06em; color:#f2f3f5; opacity:.18;
-      pointer-events:none; z-index:0;
-      /* To hide watermark completely, uncomment next line */
-      /* display:none; */
-    }
     .about .about-grid{
-      position:relative; z-index:1;
       display:grid; grid-template-columns:360px 1fr; gap:40px; align-items:start;
     }
     .about-photo img{ display:block; width:100%; height:auto; border-radius:12px; box-shadow:var(--shadow); }
-    .about-title{ margin:0 0 6px; font-size:30px; font-weight:800; letter-spacing:.2px; line-height:1.15; }
-    .about-intro{ margin:0 0 18px; color:var(--muted); font-size:16.5px; line-height:1.65; max-width:740px; }
+
+    /* Heading + intro: lighter, smaller */
+    .about-title{
+      margin:0 0 6px;
+      font-size:28px; line-height:1.15; letter-spacing:.2px;
+      font-weight:700;   /* softer than 800/900 */
+    }
+    .about-intro{
+      margin:0 0 18px; color:var(--muted);
+      font-size:16px; line-height:1.65; max-width:720px;
+      font-weight:400;
+    }
 
     /* Facts grid */
-    .about-facts{ display:grid; grid-template-columns:1fr 1fr; gap:12px 28px; margin:18px 0 10px; }
+    .about-facts{ display:grid; grid-template-columns:1fr 1fr; gap:10px 28px; margin:18px 0 6px; }
     .about-facts ul{ list-style:none; padding:0; margin:0; }
-    .about-facts li{ display:flex; gap:8px; align-items:flex-start; padding:8px 0; border-bottom:1px solid #eee; }
+    .about-facts li{
+      display:flex; gap:8px; align-items:flex-start; padding:8px 0;
+      border-bottom:1px solid var(--line);
+    }
     .about-facts li:last-child{ border-bottom:none; }
-    .about-facts li::before{ content:"›"; color:var(--accent-soft); font-weight:900; transform:translateY(2px); }
-    .about-facts .k{ min-width:150px; font-size:13.5px; font-weight:700; color:#2b2f36; }
-    .about-facts .v{ font-size:15px; font-weight:500; color:#2b2f36; }
+    .about-facts li::before{ content:"›"; color:var(--accent-soft); font-weight:700; transform:translateY(2px); }
+    .about-facts .k{
+      min-width:148px; font-size:13.5px; font-weight:600; color:#2b2f36;
+    }
+    .about-facts .v{
+      font-size:15px; font-weight:500; color:#2b2f36;
+    }
     .about-facts .v a{ color:#000; text-decoration:underline dotted; }
 
-    /* Stats (smaller, calmer) */
-    .about-stats{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; margin:26px 0 8px; }
-    .stat{ display:grid; grid-template-columns:42px auto; column-gap:10px; align-items:center; }
-    .stat .ico{ width:42px; height:42px; border-radius:50%; background:#fff; border:1px solid #ececec; display:grid; place-items:center; }
-    .stat .num{ font-size:28px; font-weight:800; color:#000; }
+    /* Stats (smaller + calm) */
+    .about-stats{ display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px; margin:24px 0 6px; }
+    .stat{ display:grid; grid-template-columns:40px auto; column-gap:10px; align-items:center; }
+    .stat .ico{ width:40px; height:40px; border-radius:50%; background:#fff; border:1px solid #ececec; display:grid; place-items:center; }
+    .stat .num{ font-size:26px; font-weight:700; color:#111; }
     .stat .lbl{ margin-top:2px; font-size:12.5px; color:#6b7280; }
 
-    /* Skill bars (slimmer, sentence-case labels) */
-    .about-skills{ margin-top:12px; }
-    .bar{ margin:12px 0; }
+    /* Skill bars (slimmer + sentence-case) */
+    .about-skills{ margin-top:10px; }
+    .bar{ margin:10px 0; }
     .bar-top{ display:flex; justify-content:space-between; gap:10px; align-items:flex-end; }
-    .bar-label{ font-size:12px; letter-spacing:.01em; text-transform:none; color:#4f5664; font-weight:700; }
+    .bar-label{ font-size:12px; letter-spacing:.01em; text-transform:none; color:#4f5664; font-weight:600; }
     .bar-val{ font-size:12px; color:#333; }
-    .bar-track{ position:relative; height:10px; border-radius:999px; background:#eceff3; border:1px solid #e6e9ee; overflow:hidden; margin-top:6px; }
+    .bar-track{ position:relative; height:9px; border-radius:999px; background:#eef1f6; border:1px solid #e6e9ee; overflow:hidden; margin-top:6px; }
     .bar-fill{ position:absolute; left:0; top:0; bottom:0; width:0; background:linear-gradient(90deg, var(--accent), #ffd95b); transition:width 1.2s ease; }
 
     /* Responsive */
@@ -181,7 +187,7 @@
           building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
         </p>
 
-        <!-- Key facts -->
+        <!-- Facts -->
         <div class="about-facts">
           <ul>
             <li><span class="k">Name:</span> <span class="v">Waqas Arshad</span></li>

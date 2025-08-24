@@ -44,20 +44,25 @@
     section{padding:72px 24px}
     .container{max-width:1380px;margin:0 auto}
 
-    /* Headings */
+    /* HOME / HERO */
+    .hero{
+      min-height:64vh;display:flex;align-items:center;justify-content:center;text-align:center;color:#fff;
+      background:linear-gradient(rgba(0,0,0,.55),rgba(0,0,0,.55)),url('./hero.jpg') center/cover no-repeat fixed;
+    }
+    .hero h1{font-weight:900;font-size:56px;margin:0 0 10px}
+    .hero p{max-width:840px;margin:0 auto;font-size:18px;opacity:.95}
+
+    /* Headings (About + others) */
     .ghost{ text-align:center;font-weight:900;font-size:54px;letter-spacing:.20em;color:#e5e7eb;opacity:.65;margin:0 0 10px }
     .title{ text-align:center;font-weight:900;font-size:26px;margin:0 0 14px }
     .lede{ max-width:980px;margin:0 auto 36px;text-align:center;color:var(--ink);opacity:.92 }
 
     /* ABOUT layout */
-    .about-grid{
-      display:grid; grid-template-columns:640px 1fr; gap:40px; align-items:start;
-    }
+    .about-grid{ display:grid; grid-template-columns:640px 1fr; gap:40px; align-items:start; }
 
     /* LEFT: portrait + facts */
     .portrait-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:18px}
     .portrait{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;border:1px solid var(--line)}
-
     .facts{border:1px solid var(--line);border-radius:14px;background:#fff;padding:16px;margin-top:16px}
     .facts-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px 36px}
     .fact b{display:block}
@@ -66,7 +71,7 @@
     /* RIGHT: stats + skills */
     .right{display:grid;gap:24px}
 
-    /* STATS (4 centered cards; icon ring is SVG, not emoji) */
+    /* STATS (4 cards; SVG icons, no emojis) */
     .stats{
       background:#fff;color:var(--ink);border:1px solid var(--line);border-radius:14px;
       display:grid;grid-template-columns:repeat(4,minmax(220px,1fr));overflow:hidden
@@ -112,9 +117,10 @@
   <!-- NAV -->
   <nav class="nav">
     <div class="nav-inner">
-      <div class="brand"><a href="#about" style="color:#e5e7eb">WAQAS</a></div>
+      <div class="brand"><a href="#home" style="color:#e5e7eb">WAQAS</a></div>
       <ul>
-        <li><a href="#about" class="active">About</a></li>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
         <li><a href="#resume">Resume/Work</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
         <li><a href="#achievements">Certifications &amp; Achievements</a></li>
@@ -123,6 +129,14 @@
     </div>
   </nav>
   <div class="spacer"></div>
+
+  <!-- HOME -->
+  <section id="home" class="hero" aria-label="Home">
+    <div>
+      <h1>Waqas Arshad</h1>
+      <p>Senior Product Manager driving scalable platforms and digital services across MENA, CIS, and Asia — Telecom, SaaS, CPaaS &amp; FinTech.</p>
+    </div>
+  </section>
 
   <!-- ABOUT -->
   <section id="about" aria-label="About">
@@ -152,7 +166,7 @@
           </div>
         </div>
 
-        <!-- RIGHT: 4 stat cards (no emoji; SVG icons) + skills -->
+        <!-- RIGHT: 4 stat cards + skills -->
         <div class="right">
           <div class="stats" aria-label="Impact statistics">
             <!-- Years -->
@@ -181,10 +195,10 @@
             <!-- Launches -->
             <div class="stat">
               <div class="icircle" aria-hidden="true">
-                <!-- rocket -->
+                <!-- rocket-ish -->
                 <svg viewBox="0 0 24 24">
-                  <path d="M5 19l4-4M9 15l2 2M14 10l-4 4"></path>
                   <path d="M14 10l6-6a5 5 0 0 1 0 7l-6 6-4-4 4-4z"></path>
+                  <path d="M5 19l4-4M9 15l2 2"></path>
                 </svg>
               </div>
               <div class="value">50+ products launched</div>
@@ -194,9 +208,9 @@
             <!-- Users -->
             <div class="stat">
               <div class="icircle" aria-hidden="true">
-                <!-- users -->
+                <!-- user -->
                 <svg viewBox="0 0 24 24">
-                  <path d="M16 21v-2a4 4 0 0 0-4-4h-0a4 4 0 0 0-4 4v2"></path>
+                  <path d="M16 21v-2a4 4 0 0 0-4-4h0a4 4 0 0 0-4 4v2"></path>
                   <circle cx="12" cy="7" r="3"></circle>
                 </svg>
               </div>
@@ -244,13 +258,62 @@
     </div>
   </section>
 
-  <!-- Placeholder sections to match nav -->
-  <section id="resume"><div class="container"><h2 style="font-weight:900;margin:0 0 12px">Resume/Work</h2></div></section>
-  <section id="portfolio"><div class="container"><h2 style="font-weight:900;margin:0 0 12px">Portfolio</h2></div></section>
-  <section id="achievements"><div class="container"><h2 style="font-weight:900;margin:0 0 12px">Certifications &amp; Achievements</h2></div></section>
-  <section id="contact"><div class="container"><h2 style="font-weight:900;margin:0 0 12px">Contact</h2><p>Email: <a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></p></div></section>
+  <!-- RESUME / WORK -->
+  <section id="resume" aria-label="Resume/Work">
+    <div class="container">
+      <h2 style="font-weight:900;margin:0 0 12px">Resume/Work</h2>
+      <p style="color:var(--muted)">Add roles and highlights here or link your PDF resume.</p>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio" aria-label="Portfolio">
+    <div class="container">
+      <h2 style="font-weight:900;margin:0 0 12px">Portfolio</h2>
+      <p style="color:var(--muted)">Showcase case studies and launches here.</p>
+    </div>
+  </section>
+
+  <!-- CERTIFICATIONS & ACHIEVEMENTS -->
+  <section id="achievements" aria-label="Certifications & Achievements">
+    <div class="container">
+      <h2 style="font-weight:900;margin:0 0 12px">Certifications &amp; Achievements</h2>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(220px,1fr));gap:16px; margin:16px 0 24px">
+        <article style="border:1px solid var(--line);border-radius:14px;background:#fff;padding:14px">
+          <div style="font-weight:800">IBM Design Thinking Practitioner</div>
+          <div style="color:var(--muted);font-size:13px;margin-top:4px">IBM · 2024</div>
+          <a href="#" style="display:inline-block;margin-top:8px;font-size:12px">View credential →</a>
+        </article>
+        <article style="border:1px solid var(--line);border-radius:14px;background:#fff;padding:14px">
+          <div style="font-weight:800">Professional Scrum Product Owner (PSPO)</div>
+          <div style="color:var(--muted);font-size:13px;margin-top:4px">Scrum.org · 2023</div>
+          <a href="#" style="display:inline-block;margin-top:8px;font-size:12px">View credential →</a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" aria-label="Contact">
+    <div class="container">
+      <h2 style="font-weight:900;margin:0 0 12px">Contact</h2>
+      <p>Email: <a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></p>
+    </div>
+  </section>
 
   <footer>© <span id="y"></span> Waqas Arshad</footer>
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // simple scroll-spy highlight (optional)
+    const links=[...document.querySelectorAll('.nav a[href^="#"]')];
+    const sections=links.map(a=>document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    const io=new IntersectionObserver((ents)=>{
+      const v=ents.filter(e=>e.isIntersecting).sort((a,b)=>b.intersectionRatio-a.intersectionRatio)[0];
+      if(!v) return;
+      links.forEach(l=>l.classList.toggle('active', l.getAttribute('href')==='#'+v.target.id));
+    },{rootMargin:'-40% 0px -50% 0px',threshold:[0,0.25,0.5,0.75,1]});
+    sections.forEach(s=>io.observe(s));
+  </script>
 </body>
 </html>

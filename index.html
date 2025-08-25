@@ -1,232 +1,287 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Waqas Arshad — Personal Site</title>
+  <title>Waqas Arshad | Product Management & Innovation</title>
+  <meta name="description" content="Senior Product Manager (CPaaS / SaaS). Portfolio, resume, courses, and contact." />
+
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;900&family=Great+Vibes&display=swap" rel="stylesheet">
+
   <style>
     :root{
-      --bg: #0d1117;
-      --panel: #ffffff;
-      --text: #111827;
-      --muted:#6b7280;
-      --brand:#f4c430; /* warm gold accent */
-      --ink:#0f172a;
-      --ring:#e5e7eb;
-      --card-shadow: 0 10px 20px rgba(0,0,0,.06), 0 3px 6px rgba(0,0,0,.04);
-      --radius: 16px;
-      --radius-sm: 12px;
-      --maxw: 1180px;
+      --bg:#0b0e11; --fg:#e6edf3; --muted:#a7b0bd; --line:#1a202c;
+      --accent:#f1c40f; --card:#10151c; --pill:#162233;
+      --shadow:0 8px 30px rgba(0,0,0,.25);
     }
-
     *{box-sizing:border-box}
-    html,body{margin:0;padding:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";color:var(--text);background:#f7f8fb}
+    html{scroll-behavior:smooth}
+    body{margin:0;font-family:Inter,system-ui,Segoe UI,Roboto,Arial,sans-serif;background:var(--bg);color:var(--fg)}
 
-    /* ----- NAV ----- */
-    .nav{
-      position:sticky; top:0; z-index:50;
-      backdrop-filter:saturate(180%) blur(8px);
-      background:rgba(13,17,23,.82); border-bottom:1px solid rgba(255,255,255,.06);
+    /* ===== NAV: smaller, tighter ===== */
+    .tabs{
+      position:fixed;top:0;left:0;right:0;z-index:60;
+      background:transparent;border:0;box-shadow:none;
     }
-    .nav-inner{
-      max-width:var(--maxw); margin:auto; display:flex; align-items:center; justify-content:center; gap:28px;
-      padding:14px 20px;
+    .tabs .inner{
+      max-width:1200px;margin:0 auto;
+      display:flex;align-items:center;justify-content:center;
+      gap:14px;padding:6px 12px;
     }
-    .nav a{
-      color:#e5e7eb; text-decoration:none; font-weight:600; font-size:14px; letter-spacing:.02em;
-      padding:8px 10px; border-radius:8px;
+    .tabs a{
+      letter-spacing:.02em;text-transform:uppercase;text-decoration:none;
+      color:#fff;font-weight:600;font-size:11px;line-height:1.2;
+      text-shadow:0 1px 1px rgba(0,0,0,.35);
     }
-    .nav a:hover{ background:rgba(255,255,255,.06) }
-    .nav a.is-active{ color:#fff; border-bottom:2px solid var(--brand) }
+    .tabs a.active,.tabs a:hover{color:var(--accent)}
 
-    /* ----- HERO ----- */
-    .hero{
-      min-height:62vh; display:grid; place-items:center; text-align:center;
-      background:linear-gradient(rgba(13,17,23,.70), rgba(13,17,23,.70)), url('Hero.png') center/cover no-repeat;
-      color:#fff; border-bottom:1px solid rgba(255,255,255,.08);
+    /* ===== HERO ===== */
+    .hero{min-height:100svh;position:relative;display:grid;place-items:center;text-align:center}
+    .hero::before{
+      content:"";position:absolute;inset:0;
+      /* Update this path/name if your hero image lives elsewhere */
+      background:url('replicate-prediction-d6z8q2mggdrmc0crttwagsyhv4.png') center/cover no-repeat;
+      background-color:#1b1f26; /* fallback if image fails */
+      filter:brightness(.55);
     }
-    .hero h1{ font-size:48px; line-height:1.1; margin:0 16px 12px; font-weight:800; letter-spacing:.01em}
-    .hero p{ max-width:920px; margin:0 auto; opacity:.9 }
-    .hero .hint{ margin-top:26px; font-size:13px; opacity:.85 }
-
-    /* ----- WRAPPER ----- */
-    .section{ padding:56px 20px }
-    .wrap{ max-width:var(--maxw); margin:auto }
-
-    /* ----- CARDS / UTIL ----- */
-    .card{
-      background:var(--panel); border:1px solid var(--ring); border-radius:var(--radius);
-      box-shadow:var(--card-shadow);
+    .hero::after{
+      content:"";position:absolute;inset:0;
+      background:linear-gradient(180deg, rgba(0,0,0,.28) 0%, rgba(0,0,0,.45) 45%, rgba(0,0,0,.32) 100%);
+      pointer-events:none;
     }
-    .card-sm{ border-radius:var(--radius-sm) }
-    .h2{ font-size:28px; font-weight:800; letter-spacing:.01em; color:var(--ink); margin:0 0 14px }
-    .muted{ color:var(--muted) }
-    .spacer-24{ height:24px }
-    .spacer-32{ height:32px }
-
-    /* ----- ABOUT GRID (2 rows x 2 cols) ----- */
-    .about-grid{
-      display:grid; gap:24px;
-      grid-template-columns: 420px 1fr; /* left column fixed, right fluid */
-      grid-auto-rows: min-content;
+    .hero-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;padding:120px 18px 60px}
+    .hero-name{
+      font-family:"Great Vibes",cursive;
+      font-size:clamp(44px,7.2vw,64px);
+      line-height:1.06;color:#fff;margin:0 0 6px;
+      text-shadow:0 2px 8px rgba(0,0,0,.35)
     }
-    /* Row 1 */
-    .portrait-card{
-      grid-column:1; grid-row:1; padding:16px;
-    }
-    .portrait{
-      width:100%; aspect-ratio: 4/3; object-fit:cover; border-radius:12px; display:block;
-    }
-    .stats{
-      grid-column:2; grid-row:1;
-      display:grid; gap:16px; grid-template-columns: repeat(4, 1fr);
-    }
-    .stat{
-      padding:18px; display:flex; flex-direction:column; gap:8px;
-      align-items:flex-start; border-radius:12px;
-    }
-    .stat .badge{
-      width:34px; height:34px; display:grid; place-items:center; border-radius:50%;
-      border:2px solid var(--brand); color:#111; font-weight:700; font-size:12px; background:#fff;
-    }
-    .stat h3{ margin:4px 0 0; font-size:24px; line-height:1.1; font-weight:900 }
-    .stat small{ color:var(--muted); display:block; margin-top:6px; font-size:12px; line-height:1.35 }
-
-    /* Row 2 */
-    .facts{ grid-column:1; grid-row:2; padding:18px }
-    .facts-grid{
-      display:grid; gap:12px 18px; grid-template-columns: 160px 1fr;
-    }
-    .facts-grid .label{ font-weight:700; color:var(--ink) }
-    .facts-grid .value{ color:var(--text) }
-    .facts hr{ border:none; border-top:1px dashed var(--ring); margin:8px 0 }
-
-    .skills{ grid-column:2; grid-row:2; padding:18px }
-    .skill{ margin:14px 0 }
-    .skill h4{ margin:0 0 6px; font-size:13px; letter-spacing:.03em; color:var(--ink); font-weight:800 }
-    .bar{
-      height:10px; background:#eef2f6; border-radius:999px; overflow:hidden; border:1px solid #e8edf3
-    }
-    .bar > span{
-      display:block; height:100%; background:linear-gradient(90deg, #f6d676, var(--brand));
-      width:var(--v,80%); border-radius:999px
+    .hero-role{
+      margin:0;color:#fff;opacity:.96;
+      letter-spacing:.18em;text-transform:uppercase;font-weight:400;
+      font-size:clamp(13px,1.6vw,18px);text-shadow:0 1px 5px rgba(0,0,0,.35)
     }
 
-    /* ----- RESPONSIVE ----- */
-    @media (max-width: 1100px){
-      .about-grid{ grid-template-columns: 1fr }
-      .portrait-card{ grid-column:1; grid-row:auto }
-      .stats{ grid-column:1; grid-row:auto; grid-template-columns: repeat(2,1fr) }
-      .facts{ grid-column:1 }
-      .skills{ grid-column:1 }
+    /* ===== Scroll Down Circle (animated) ===== */
+    .down{
+      position:absolute;left:50%;bottom:28px;transform:translateX(-50%);
+      width:44px;height:44px;border:2px solid #ffffff;border-radius:50%;
+      color:#ffffff;display:grid;place-items:center;text-decoration:none;
+      background:transparent;
+      animation:bounce 1.6s infinite;
+    }
+    .down svg{width:18px;height:18px;display:block;opacity:.9}
+    @keyframes bounce{
+      0%,20%,50%,80%,100% { transform:translate(-50%,0) }
+      40% { transform:translate(-50%,-8px) }
+      60% { transform:translate(-50%,-4px) }
+    }
+
+    /* ===== SECTIONS / CARDS ===== */
+    section{scroll-margin-top:70px}
+    .wrap{max-width:1100px;margin:0 auto;padding:70px 18px}
+    h2{margin:0 0 14px;font-size:28px}
+    .card{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:22px}
+    .muted{color:var(--muted)}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+    .pill{display:inline-block;background:var(--pill);border:1px solid var(--line);padding:6px 10px;border-radius:999px;color:#b2bfd0;font-size:12px;margin:4px 6px 0 0}
+    .resume-item{border:1px solid var(--line);background:#0e141c;border-radius:12px;padding:14px}
+    .resume-item h3{margin:0;font-size:18px}
+    .resume-item .meta{color:var(--muted);font-size:13px;margin:.25rem 0 .5rem}
+
+    /* ===== ABOUT (split layout like reference) ===== */
+    .about .about-grid{
+      display:grid;
+      grid-template-columns: 420px 1fr;
+      gap:28px;
+      align-items:start;
+    }
+    .about-photo{margin:0;padding:0;overflow:hidden}
+    .about-photo img{display:block;width:100%;height:auto;border-radius:12px}
+    .about-right{display:block}
+    .about-title{margin:0 0 8px}
+    .about-intro{margin:0 0 18px}
+    .about-facts{
+      display:grid;grid-template-columns:1fr 1fr;gap:12px 28px;
+      margin:18px 0 10px;
+    }
+    .about-facts ul{list-style:none;padding:0;margin:0}
+    .about-facts li{
+      display:flex;gap:10px;align-items:flex-start;
+      padding:6px 0;border-bottom:1px dashed var(--line);
+    }
+    .about-facts li::before{content:"›";color:var(--accent);font-weight:900;margin-right:2px}
+    .about-facts .k{min-width:140px;font-weight:700;color:var(--fg)}
+    .about-facts .v a{color:var(--fg);text-decoration:underline dotted}
+
+    .about-stats{
+      display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+      gap:22px;margin:22px 0 8px;
+    }
+    .stat{display:grid;grid-template-columns:48px auto;column-gap:12px;align-items:center}
+    .stat .ico{
+      width:48px;height:48px;border-radius:50%;background:#111a25;border:1px solid var(--line);
+      display:grid;place-items:center;color:var(--accent)
+    }
+    .stat .ico svg{width:24px;height:24px}
+    .stat .num{font-size:28px;font-weight:900;line-height:1}
+    .stat .lbl{margin-top:2px}
+
+    .about-skills{margin-top:12px}
+    .bar{margin:12px 0}
+    .bar-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-end}
+    .bar-label{font-size:13px;font-weight:700;color:#cfd8e3}
+    .bar-val{font-size:12px;color:#cfd8e3}
+    .bar-track{
+      position:relative;height:10px;border-radius:999px;background:#2a3442;border:1px solid var(--line);
+      overflow:hidden;margin-top:6px;
+    }
+    .bar-fill{
+      position:absolute;left:0;top:0;bottom:0;width:0;
+      background:linear-gradient(90deg, var(--accent), #ffd95b);
+      border-right:1px solid rgba(0,0,0,.15);
+      transition:width 1.2s ease;
+    }
+    .reveal.show .bar-fill{width:inherit}
+
+    /* ===== Contact / Footer ===== */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+    .btn{display:inline-block;background:var(--accent);color:#221a00;border:0;border-radius:10px;padding:10px 14px;font-weight:800;text-decoration:none}
+    footer{padding:40px 0;color:#8ea1b4;text-align:center}
+
+    /* ===== Responsive ===== */
+    @media (max-width:1100px){
+      .about .about-grid{grid-template-columns:360px 1fr}
+    }
+    @media (max-width:980px){
+      .grid,.contact-grid{grid-template-columns:1fr}
+      .tabs .inner{gap:12px}
+      .tabs a{font-size:12px}
+      .about .about-grid{grid-template-columns:1fr}
+      .about-facts{grid-template-columns:1fr}
     }
   </style>
 </head>
 <body>
 
   <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-inner">
-      <a href="#home" class="is-active">Home</a>
+  <header class="tabs">
+    <nav class="inner" id="tabs">
+      <a href="#home" class="active">Home</a>
       <a href="#about">About</a>
       <a href="#resume">Resume</a>
+      <a href="#courses">Courses</a>
       <a href="#portfolio">Portfolio</a>
-      <a href="#certs">Certifications &amp; Achievements</a>
       <a href="#contact">Contact</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <header id="home" class="hero">
-    <div>
-      <h1>Waqas Arshad</h1>
-      <p>Senior Product Manager driving scalable platforms &amp; digital services across MENA, CIS &amp; Asia — Telecom, SaaS, CPaaS &amp; FinTech.</p>
-      <div class="hint">Scroll to learn more</div>
-    </div>
+    </nav>
   </header>
 
-  <!-- ABOUT -->
-  <section id="about" class="section">
-    <div class="wrap">
-      <h2 class="h2">About me</h2>
-      <p class="muted" style="max-width:860px">I am an experienced Senior Product Manager with <strong>14+ years</strong> across Telecom, SaaS, CPaaS, and FinTech. I specialize in building scalable platforms, launching digital services, and delivering customer-centric growth strategies.</p>
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <h1 class="hero-name">Waqas Arshad</h1>
+      <p class="hero-role">Product Management & Innovation Strategy</p>
+    </div>
 
-      <div class="spacer-24"></div>
+    <!-- animated down button with SVG chevron -->
+    <a class="down" href="#about" aria-label="Scroll down">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+           stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="6 9 12 15 18 9"></polyline>
+      </svg>
+    </a>
+  </section>
 
-      <div class="about-grid">
+  <!-- ABOUT (new layout) -->
+  <section id="about" class="about">
+    <div class="wrap about-grid">
 
-        <!-- Row 1: Portrait -->
-        <div class="card portrait-card">
-          <img class="portrait" src="portrait.png" alt="Waqas Arshad portrait">
+      <!-- Left: Portrait -->
+      <figure class="about-photo card reveal">
+        <!-- Your image name (URL-encoded for space + parentheses) -->
+        <img
+          src="replicate-prediction-h39x9ejt6nrmc0crtwnb2kegz8%20%281%29.png"
+          alt="Waqas Arshad portrait" />
+      </figure>
+
+      <!-- Right: Details -->
+      <div class="about-right">
+        <h2 class="about-title">About me</h2>
+        <p class="about-intro muted">
+          I am an experienced customer discovery and product innovation lead with a background in CPaaS & SaaS.
+          I work at the intersection of product strategy, engineering and GTM.
+        </p>
+
+        <!-- Key facts -->
+        <div class="about-facts">
+          <ul>
+            <li><span class="k">Name:</span> <span class="v">Waqas Arshad</span></li>
+            <li><span class="k">City:</span> <span class="v">Dubai, UAE</span></li>
+            <li><span class="k">Preferred place:</span> <span class="v">EMEA · Remote / Hybrid</span></li>
+            <li><span class="k">Email:</span> <span class="v"><a href="mailto:hello@waqas-arshad.com">hello@waqas-arshad.com</a></span></li>
+          </ul>
+          <ul>
+            <li><span class="k">Degrees:</span> <span class="v">MBA (Product/Strategy)</span></li>
+            <li><span class="k">Focus:</span> <span class="v">CPaaS, WhatsApp Business Platform</span></li>
+            <li><span class="k">School:</span> <span class="v">—</span></li>
+            <li><span class="k">LinkedIn:</span> <span class="v"><a href="#">Add your profile URL</a></span></li>
+          </ul>
         </div>
 
-        <!-- Row 1: Stats (4-up) -->
-        <div class="stats">
-          <div class="card stat">
-            <div class="badge">⏱</div>
-            <h3>14+ years</h3>
-            <small>Product management &amp; digital innovation</small>
+        <!-- Stats -->
+        <div class="about-stats">
+          <div class="stat">
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 12c2.761 0 5-2.239 5-5S14.761 2 12 2 7 4.239 7 7s2.239 5 5 5zm0 2c-4 0-7 2-7 4v3h14v-3c0-2-3-4-7-4z"/></svg>
+            </div>
+            <div class="num">400</div>
+            <div class="lbl muted">Customer interviews</div>
           </div>
-          <div class="card stat">
-            <div class="badge">🌐</div>
-            <h3>Global reach</h3>
-            <small>Delivered solutions across MENA, CIS &amp; Asia</small>
+
+          <div class="stat">
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+            </div>
+            <div class="num">6</div>
+            <div class="lbl muted">Years of experience</div>
           </div>
-          <div class="card stat">
-            <div class="badge">🚀</div>
-            <h3>50+ launches</h3>
-            <small>Across CPaaS, Super Apps &amp; digital services</small>
-          </div>
-          <div class="card stat">
-            <div class="badge">👥</div>
-            <h3>5M+ users</h3>
-            <small>Through telecom, SaaS &amp; FinTech solutions</small>
+
+          <div class="stat">
+            <div class="ico">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="5"/><path d="M8.5 14.5 6 22l6-3 6 3-2.5-7.5"/></svg>
+            </div>
+            <div class="num">2</div>
+            <div class="lbl muted">Co-founding experience</div>
           </div>
         </div>
 
-        <!-- Row 2: Facts (open layout, no bullets) -->
-        <div class="card facts">
-          <div class="facts-grid">
-            <div class="label">Name</div>
-            <div class="value">Waqas Arshad</div>
-
-            <div class="label">Degrees</div>
-            <div class="value">Master’s in Project Management; Bachelor’s in Electrical Engineering</div>
-
-            <div class="label">City</div>
-            <div class="value">Islamabad, Pakistan</div>
-
-            <div class="label">School</div>
-            <div class="value">Shaheed Zulfiqar Ali Bhutto Institute of Science &amp; Technology</div>
-
-            <div class="label">Email</div>
-            <div class="value">waxas.arshad@gmail.com</div>
-
-            <div class="label">Current designation</div>
-            <div class="value">Senior Product Manager</div>
+        <!-- Skills / bars -->
+        <div class="about-skills reveal">
+          <div class="bar">
+            <div class="bar-top">
+              <span class="bar-label">Product roadmapping, product strategy, user discovery, market analysis, leadership</span>
+              <span class="bar-val">90%</span>
+            </div>
+            <div class="bar-track"><span class="bar-fill" style="width:90%"></span></div>
           </div>
-        </div>
 
-        <!-- Row 2: Skill Bars -->
-        <div class="card skills">
-          <div class="skill">
-            <h4>PRODUCT STRATEGY &amp; LEADERSHIP</h4>
-            <div class="bar"><span style="--v:92%"></span></div>
+          <div class="bar">
+            <div class="bar-top">
+              <span class="bar-label">Messaging/CPaaS, pricing & invoicing, onboarding, integrations</span>
+              <span class="bar-val">80%</span>
+            </div>
+            <div class="bar-track"><span class="bar-fill" style="width:80%"></span></div>
           </div>
-          <div class="skill">
-            <h4>DIGITAL PLATFORMS &amp; FINTECH</h4>
-            <div class="bar"><span style="--v:88%"></span></div>
-          </div>
-          <div class="skill">
-            <h4>CPAAS &amp; MESSAGING PLATFORMS</h4>
-            <div class="bar"><span style="--v:87%"></span></div>
-          </div>
-          <div class="skill">
-            <h4>AGILE &amp; DESIGN THINKING</h4>
-            <div class="bar"><span style="--v:90%"></span></div>
+
+          <div class="bar">
+            <div class="bar-top">
+              <span class="bar-label">HTML/CSS/JS, SQL, analytics, experimentation</span>
+              <span class="bar-val">65%</span>
+            </div>
+            <div class="bar-track"><span class="bar-fill" style="width:65%"></span></div>
           </div>
         </div>
 
@@ -234,11 +289,108 @@
     </div>
   </section>
 
-  <!-- Placeholder sections for nav (so the menu works) -->
-  <section id="resume" class="section"><div class="wrap"><h2 class="h2">Resume</h2><p class="muted">Add your timeline/experience here.</p></div></section>
-  <section id="portfolio" class="section"><div class="wrap"><h2 class="h2">Portfolio</h2><p class="muted">Showcase projects, case studies, and outcomes.</p></div></section>
-  <section id="certs" class="section"><div class="wrap"><h2 class="h2">Certifications &amp; Achievements</h2><p class="muted">List relevant credentials and awards.</p></div></section>
-  <section id="contact" class="section"><div class="wrap"><h2 class="h2">Contact</h2><p class="muted">Email: waxas.arshad@gmail.com</p></div></section>
+  <!-- RESUME -->
+  <section id="resume">
+    <div class="wrap">
+      <h2>Resume</h2>
+      <div class="grid">
+        <div class="resume-item reveal">
+          <h3>Senior Product Manager · GMS (Switzerland)</h3>
+          <div class="meta">2022 – Present · CPaaS, WhatsApp Business Platform</div>
+          <ul>
+            <li>Launched WhatsApp→SMS fallback improving delivery and campaign reach.</li>
+            <li>Designed transparent per-message pricing & invoicing with margin controls.</li>
+            <li>Shipped embedded signup; restarted Scrum; raised delivery velocity.</li>
+          </ul>
+        </div>
+        <div class="resume-item reveal">
+          <h3>Product Manager · GMS (Ukraine)</h3>
+          <div class="meta">2021 – 2022</div>
+          <ul>
+            <li>Roadmap owner; launched Oracle Responsys ↔ Shopify integration.</li>
+            <li>50% revenue growth, 30% retention uplift via research-driven strategy.</li>
+          </ul>
+        </div>
+        <div class="resume-item reveal">
+          <h3>Earlier roles · Jazz, Telenor, TMB, CMPak/Ufone</h3>
+          <div class="meta">2015 – 2021</div>
+          <ul>
+            <li>Scaled B2B portfolio; introduced Agile practices to reduce time-to-market.</li>
+            <li>Launched telecom VAS impacting ARPU and growth.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- COURSES -->
+  <section id="courses">
+    <div class="wrap">
+      <div class="card reveal">
+        <h2>Courses</h2>
+        <p class="muted">Add notable coursework / certifications (e.g., Product Strategy, Analytics, SQL, Agile).</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- PORTFOLIO -->
+  <section id="portfolio">
+    <div class="wrap">
+      <h2>Selected case studies</h2>
+      <div class="grid">
+        <div class="card reveal">
+          <h3>WhatsApp → SMS Fallback</h3>
+          <p class="muted">Reliability pipeline with guardrails; improved delivery and reduced manual re-sends.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Per-message Pricing & Invoicing</h3>
+          <p class="muted">Country-aware pricing and margin controls; transparent UI for trust and control.</p>
+        </div>
+        <div class="card reveal">
+          <h3>White-label CPaaS Positioning</h3>
+          <p class="muted">Refocused GTM on reseller model; clarified TelXira USP, driving partner adoption.</p>
+        </div>
+        <div class="card reveal">
+          <h3>Embedded Signup</h3>
+          <p class="muted">Reduced onboarding friction; aligned with Meta policies to speed approvals.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="wrap">
+      <div class="grid">
+        <div class="card reveal">
+          <h2>Contact</h2>
+          <p>Email: <a href="mailto:hello@waqas-arshad.com">hello@waqas-arshad.com</a></p>
+          <p>LinkedIn: <a href="#">Add your profile URL</a></p>
+          <p><a class="btn" href="#">Download 1-page CV</a></p>
+        </div>
+        <div class="card reveal">
+          <h2>Availability</h2>
+          <p class="muted">Open to senior PM roles across EMEA & MENA and advisory on CPaaS pricing & onboarding.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>© <span id="y"></span> Waqas Arshad | built as a free static site.</footer>
+
+  <script>
+    // Active tab highlight while scrolling
+    const links=[...document.querySelectorAll('#tabs a')];
+    const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+    const setActive=()=>{const y=scrollY+80;let i=0;secs.forEach((s,idx)=>{if(s && s.offsetTop<=y) i=idx});links.forEach((a,idx)=>a.classList.toggle('active',idx===i))};
+    addEventListener('scroll',setActive); setActive();
+
+    // Reveal-on-scroll
+    const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')})},{threshold:.15});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Footer year
+    document.getElementById('y').textContent=new Date().getFullYear();
+  </script>
 </body>
 </html>

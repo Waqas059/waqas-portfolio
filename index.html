@@ -23,7 +23,7 @@
       --shadow:0 6px 18px rgba(17,24,39,.06);
       --radius:14px;
       --radius-lg:16px;
-      --maxw:1180px;
+      --maxw:1240px;      /* widened */
     }
 
     *{box-sizing:border-box}
@@ -38,12 +38,57 @@
     .tabs.on-hero a{ color:rgba(255,255,255,.95); text-shadow:0 1px 1px rgba(0,0,0,.35) } .tabs.on-hero a.active{ color:var(--accent); border-bottom-color:var(--accent) }
 
     /* UTIL */
-    .wrap{ max-width:var(--maxw); margin:0 auto; padding:70px 18px }
-    .wrap.narrow{ max-width:980px }
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:70px 24px } /* tighter side padding */
+    .wrap.narrow{ max-width:var(--maxw) } /* let About use full width now */
     h2{ margin:0 0 14px; font-size:32px; font-weight:800; letter-spacing:.01em; color:var(--ink) }
     .card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px }
     .muted{ color:var(--muted) }
     .center{text-align:center}
+
+    /* Fancy section heading (ghost title + underline) */
+    .section-title{
+      position:relative;
+      text-align:center;
+      margin:0 0 24px;
+      font-size:28px;
+      font-weight:800;
+      letter-spacing:.02em;
+      color:var(--ink);
+    }
+    .section-title::before{
+      content:attr(data-ghost);
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      top:-26px;
+      font-size:68px;
+      line-height:1;
+      font-weight:800;
+      letter-spacing:.16em;
+      text-transform:uppercase;
+      white-space:nowrap;
+      color:rgba(17,24,39,.06);
+      pointer-events:none;
+      z-index:0;
+    }
+    .section-title > span{
+      position:relative;
+      display:inline-block;
+      padding:6px 10px;
+      z-index:1;
+    }
+    .section-title > span::after{
+      content:"";
+      display:block;
+      width:60px;
+      height:3px;
+      background:var(--accent);
+      border-radius:999px;
+      margin:10px auto 0;
+    }
+    @media (max-width:768px){
+      .section-title::before{ font-size:42px; top:-18px; }
+    }
 
     /* HERO */
     .hero{ position:relative; min-height:100vh; display:grid; place-items:center; text-align:center; overflow:hidden }
@@ -62,30 +107,29 @@
 
     /* ===== ABOUT ===== */
     .section{ padding:70px 18px }
-    #about h2.center{ font-size:34px }
-    #about .intro{ max-width:760px; margin:0 auto 18px }
+    #about .intro{ max-width:760px; margin:0 auto 18px; text-align:center }
 
-    .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:22px; align-items:stretch }
+    .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:18px; align-items:start }
     @media (max-width: 980px){ .about-grid{ grid-template-columns:1fr } }
 
-    /* Portrait */
-    .portrait-card{ position:relative; padding:12px; border-radius:14px }
-    .portrait-frame{ position:relative; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#f8fafc }
+    /* Portrait — de-boxed */
+    .portrait-card{ padding:0 }
+    .portrait-frame{ position:relative; border-radius:0; overflow:hidden; border:0; background:#f8fafc }
     .portrait-frame::before{ content:""; display:block; aspect-ratio: 4 / 3 }
     .portrait{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
 
-    /* Metrics */
+    /* Metrics — open, with light separators */
     .metrics-panel{ padding:0 }
     .metrics{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)) }
-    .metric{ padding:22px; border-right:1px solid var(--line) }
+    .metric{ padding:18px 16px; border-right:1px solid #f3f4f6 }
     .metric:last-child{ border-right:none }
-    @media (max-width:980px){ .metrics{ grid-template-columns:repeat(2,1fr) } .metric:nth-child(2n){ border-right:none } .metric{ border-bottom:1px solid var(--line) } .metric:nth-last-child(-n+2){ border-bottom:none } }
-    @media (max-width:560px){ .metrics{ grid-template-columns:1fr } .metric{ border-right:none; border-bottom:1px solid var(--line) } .metric:last-child{ border-bottom:none } }
+    @media (max-width:980px){ .metrics{ grid-template-columns:repeat(2,1fr) } .metric:nth-child(2n){ border-right:none } .metric{ border-bottom:1px solid #f3f4f6 } .metric:nth-last-child(-n+2){ border-bottom:none } }
+    @media (max-width:560px){ .metrics{ grid-template-columns:1fr } .metric{ border-right:none; border-bottom:1px solid #f3f4f6 } .metric:last-child{ border-bottom:none } }
     .ring{ display:inline-grid; place-items:center; width:36px; height:36px; border-radius:50%; border:2px solid var(--accent); background:#fff; font-size:14px; color:#111 }
     .metric h3{ margin:8px 0 4px; font-size:24px; font-weight:800; color:var(--ink) }
     .metric small{ display:block; color:#6b7280; font-size:12px; line-height:1.35 }
 
-    /* OPEN FACTS (no box) */
+    /* Facts — open layout (no box) */
     .facts{ background:transparent; border:0; box-shadow:none; padding:0; height:auto }
     .facts-open{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px 32px }
     @media (max-width:720px){ .facts-open{ grid-template-columns:1fr } }
@@ -94,17 +138,18 @@
     .fact .k::before{ content:"›"; margin-right:8px; color:var(--accent); font-weight:900 }
     .fact .v{ color:var(--fg); font-size:14px; line-height:1.4 }
 
-    /* Skills */
+    /* Skills — open; bars without outline */
+    .skills{ padding:0 }
     .skills h3{ margin:0 0 10px; color:var(--ink) }
     .skill{ margin:14px 0 }
     .skill .title{ font-size:12px; font-weight:800; letter-spacing:.03em; color:var(--ink) }
     .skill .note{ margin:6px 0 8px; font-size:12px; color:#6b7280 }
-    .bar{ height:10px; background:#edf2f7; border-radius:999px; overflow:hidden; border:1px solid #e5e7eb }
+    .bar{ height:10px; background:#f1f5f9; border-radius:999px; overflow:hidden; border:0 }
     .bar > span{ display:block; height:100%; background:linear-gradient(90deg, #f1c40f, #ffd659); width:var(--v,70%) }
 
-    /* ===== RESUME TIMELINE (merged) ===== */
+    /* ===== RESUME TIMELINE ===== */
     .resume-head{ text-align:center }
-    .resume-title{ font-weight:800; letter-spacing:.02em; font-size:34px; margin:0 0 6px; color:var(--ink) }
+    .resume-title{ display:none } /* replaced by section-title */
     .resume-sub{ color:var(--muted); font-size:15px; margin:0 0 34px }
     .resume-grid{ display:grid; grid-template-columns:1fr 1fr; gap:32px }
     @media (max-width:900px){ .resume-grid{ grid-template-columns:1fr } }
@@ -123,8 +168,10 @@
     .desc ul{ margin:6px 0 0 18px; padding:0 }
     .desc li{ margin:4px 0 }
 
-    /* CERTS / CONTACT (unchanged styles reused) */
+    /* CERTS — open layout (no boxes) */
     .certs-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px }
+    .certs-grid .card,
+    .cert{ background:transparent; border:0; box-shadow:none; padding:0 }
     .cert .title{ font-weight:700; margin:0 0 6px; color:var(--ink) }
     .cert .org{ color:#6b7280; font-size:13px; margin:0 0 10px }
     .badge-pill{ display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; border:1px solid var(--line); background:#f8fafc; color:#374151 }
@@ -160,8 +207,8 @@
   <section id="about" class="section">
     <div class="wrap narrow">
 
-      <h2 class="center">About me</h2>
-      <p class="muted intro center">
+      <h2 class="section-title" data-ghost="ABOUT ME"><span>About me</span></h2>
+      <p class="muted intro">
         I am an experienced Senior Product Manager with <strong>14+ years</strong> in Telecom, SaaS, CPaaS, and
         FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia.
         I specialize in building scalable platforms, launching digital services, and delivering customer-centric
@@ -170,17 +217,20 @@
 
       <div class="about-grid">
         <!-- Row 1: Portrait + Metrics -->
-        <div class="card portrait-card">
+        <div class="portrait-card">
           <div class="portrait-frame">
             <img class="portrait" src="portrait.png" alt="Waqas Arshad portrait">
           </div>
         </div>
 
-        <div class="card metrics-panel">
+        <div class="metrics-panel">
           <div class="metrics">
             <div class="metric">
               <span class="ring">★</span>
-              <h3>14+ years</h3>
+              <h3>
+                <span class="count" data-from="0" data-to="14" data-duration="1200" data-suffix="+"></span>
+                &nbsp;years
+              </h3>
               <small>Product management & digital innovation</small>
             </div>
             <div class="metric">
@@ -190,12 +240,18 @@
             </div>
             <div class="metric">
               <span class="ring">✎</span>
-              <h3>50+ launches</h3>
+              <h3>
+                <span class="count" data-from="0" data-to="50" data-duration="1200" data-suffix="+"></span>
+                &nbsp;launches
+              </h3>
               <small>CPaaS, Super Apps & services</small>
             </div>
             <div class="metric">
               <span class="ring">👥</span>
-              <h3>5M+ users</h3>
+              <h3>
+                <span class="count" data-from="0" data-to="5" data-duration="1200" data-suffix="M+"></span>
+                &nbsp;users
+              </h3>
               <small>Telecom, SaaS & FinTech solutions</small>
             </div>
           </div>
@@ -213,7 +269,7 @@
           </div>
         </div>
 
-        <div class="card skills">
+        <div class="skills">
           <h3>Core strengths</h3>
 
           <div class="skill">
@@ -241,13 +297,11 @@
     </div>
   </section>
 
-  <!-- RESUME (merged timeline) -->
+  <!-- RESUME -->
   <section id="resume" class="section">
     <div class="wrap">
-      <div class="resume-head">
-        <h2 class="resume-title">My Resume</h2>
-        <p class="resume-sub">Product and innovation leader with hands-on delivery across CPaaS, SaaS, and telecom</p>
-      </div>
+      <h2 class="section-title" data-ghost="MY RESUME"><span>My Resume</span></h2>
+      <p class="resume-sub">Product and innovation leader with hands-on delivery across CPaaS, SaaS, and telecom</p>
 
       <div class="resume-grid">
         <!-- Education -->
@@ -369,7 +423,7 @@
 
   <!-- CERTIFICATIONS & ACHIEVEMENTS -->
   <section id="certs" class="wrap">
-    <h2>Certifications & Achievements</h2>
+    <h2 class="section-title" data-ghost="CERTIFICATIONS"><span>Certifications & Achievements</span></h2>
     <div class="certs-grid">
       <div class="card cert">
         <p class="title">IBM Design Thinking Practitioner</p>
@@ -396,9 +450,11 @@
 
   <!-- CONTACT -->
   <section id="contact" class="wrap">
-    <h2>Contact</h2>
-    <p class="muted" style="max-width:760px">Open to roles and collaborations in EMEA and APAC.</p>
-    <a class="card" href="mailto:waxas.arshad@gmail.com" style="display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid #111827;background:#111827;color:#fff">Email me</a>
+    <h2 class="section-title" data-ghost="CONTACT"><span>Contact</span></h2>
+    <p class="muted" style="max-width:760px;margin:0 auto 16px;text-align:center">Open to roles and collaborations in EMEA and APAC.</p>
+    <div style="text-align:center">
+      <a class="card" href="mailto:waxas.arshad@gmail.com" style="display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid #111827;background:#111827;color:#fff">Email me</a>
+    </div>
   </section>
 
   <footer class="wrap" style="text-align:center;color:#6b7280">
@@ -430,6 +486,47 @@
       const candidates=["Hero.jpg","Hero.png","hero.jpg","hero.png","header.jpg","bg.jpg","coworking.jpg"];
       let i=0; function loadNext(){ if(i>=candidates.length){return;} img.src=candidates[i++]; }
       img.onerror=loadNext; loadNext();
+    })();
+
+    // --- Count-up on first reveal of the metrics strip ---
+    (function(){
+      const metrics = document.querySelector('.metrics');
+      if(!metrics) return;
+
+      const counters = metrics.querySelectorAll('.count');
+      let started = false;
+
+      const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+      function animateCount(el){
+        const from = parseFloat(el.dataset.from || 0);
+        const to = parseFloat(el.dataset.to   || 0);
+        const dur = parseInt(el.dataset.duration || 1200, 10);
+        const suffix = el.dataset.suffix || '';
+        const decimals = parseInt(el.dataset.decimals || 0, 10);
+
+        const start = performance.now();
+        function frame(now){
+          const t = Math.min((now - start) / dur, 1);
+          const eased = easeOutCubic(t);
+          const value = from + (to - from) * eased;
+          el.textContent = value.toFixed(decimals) + suffix;
+          if (t < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+
+      const io = new IntersectionObserver((entries)=>{
+        if (started) return;
+        const e = entries[0];
+        if (e.isIntersecting){
+          counters.forEach(animateCount);
+          started = true;
+          io.disconnect();
+        }
+      }, { threshold: 0.35 });
+
+      io.observe(metrics);
     })();
   </script>
 </body>

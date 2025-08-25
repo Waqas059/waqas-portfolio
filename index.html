@@ -14,11 +14,11 @@
   <style>
     :root{
       --page:#ffffff;
-      --fg:#1f2937;        /* slate-800 */
-      --ink:#111827;       /* slate-900 */
-      --muted:#6b7280;     /* slate-500 */
-      --line:#e5e7eb;      /* slate-200 */
-      --accent:#f1c40f;    /* gold */
+      --fg:#1f2937;
+      --ink:#111827;
+      --muted:#6b7280;
+      --line:#e5e7eb;
+      --accent:#f1c40f;
       --card:#ffffff;
       --shadow:0 6px 18px rgba(17,24,39,.06);
       --radius:14px;
@@ -28,27 +28,24 @@
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
-    body{
-      margin:0; color:var(--fg); background:var(--page);
-      font-family:Montserrat, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-    }
+    body{ margin:0; color:var(--fg); background:var(--page); font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif }
 
-    /* ===== NAV (transparent over hero) ===== */
+    /* NAV */
     .tabs{ position:fixed; top:0; left:0; right:0; z-index:100; background:transparent }
     .tabs .inner{ max-width:var(--maxw); margin:0 auto; display:flex; justify-content:center; gap:28px; padding:14px 18px }
-    .tabs a{ text-decoration:none; text-transform:uppercase; letter-spacing:.08em; font-weight:700; font-size:12px; padding:8px 4px; border-bottom:2px solid transparent; transition:color .2s,border-color .2s,opacity .2s }
+    .tabs a{ text-decoration:none; text-transform:uppercase; letter-spacing:.08em; font-weight:700; font-size:12px; padding:8px 4px; border-bottom:2px solid transparent; transition:.2s }
     .tabs a{ color:#374151 } .tabs a:hover{ opacity:.8 } .tabs a.active{ color:#111827; border-bottom-color:var(--accent) }
     .tabs.on-hero a{ color:rgba(255,255,255,.95); text-shadow:0 1px 1px rgba(0,0,0,.35) } .tabs.on-hero a.active{ color:var(--accent); border-bottom-color:var(--accent) }
 
-    /* ===== UTIL ===== */
+    /* UTIL */
     .wrap{ max-width:var(--maxw); margin:0 auto; padding:70px 18px }
-    .wrap.narrow{ max-width:980px }      /* narrower like your screenshot */
+    .wrap.narrow{ max-width:980px }
     h2{ margin:0 0 14px; font-size:32px; font-weight:800; letter-spacing:.01em; color:var(--ink) }
     .card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px }
     .muted{ color:var(--muted) }
     .center{text-align:center}
 
-    /* ===== HERO ===== */
+    /* HERO */
     .hero{ position:relative; min-height:100vh; display:grid; place-items:center; text-align:center; overflow:hidden }
     @supports (min-height:100svh){ .hero{ min-height:100svh } }
     .hero img.hero-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(.05) brightness(.9) saturate(1.05); z-index:-2 }
@@ -63,37 +60,40 @@
     .scroll-indicator{ position:absolute; left:50%; bottom:24px; transform:translateX(-50%); width:40px; height:40px; border-radius:999px; border:1px solid rgba(255,255,255,.45); display:grid; place-items:center; color:#fff; text-decoration:none }
     #about,#resume,#certs,#contact{ scroll-margin-top:90px }
 
-    /* ===== ABOUT (as per your screenshot) ===== */
+    /* ABOUT */
     .section{ padding:70px 18px }
-
-    /* Top: centered title and summary */
     #about h2.center{ font-size:34px }
     #about .intro{ max-width:760px; margin:0 auto 18px }
 
-    /* Two rows grid: row1 (portrait + metrics), row2 (facts + skills) */
-    .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:22px }
+    .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:22px; align-items:stretch } /* stretch rows */
     @media (max-width: 980px){ .about-grid{ grid-template-columns:1fr } }
 
-    /* Portrait card */
-    .portrait-card{ position:relative; padding:12px; border-radius:14px; }
+    /* Portrait */
+    .portrait-card{ position:relative; padding:12px; border-radius:14px }
     .portrait-frame{ position:relative; border-radius:12px; overflow:hidden; border:1px solid var(--line); background:#f8fafc }
     .portrait-frame::before{ content:""; display:block; aspect-ratio: 4 / 3 }
     .portrait{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
 
-    /* Metrics panel (card with 4 tiles + separators) */
+    /* Metrics */
     .metrics-panel{ padding:0 }
-    .metrics{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)); }
+    .metrics{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)) }
     .metric{ padding:22px; border-right:1px solid var(--line) }
     .metric:last-child{ border-right:none }
     @media (max-width:980px){ .metrics{ grid-template-columns:repeat(2,1fr) } .metric:nth-child(2n){ border-right:none } .metric{ border-bottom:1px solid var(--line) } .metric:nth-last-child(-n+2){ border-bottom:none } }
     @media (max-width:560px){ .metrics{ grid-template-columns:1fr } .metric{ border-right:none; border-bottom:1px solid var(--line) } .metric:last-child{ border-bottom:none } }
-
     .ring{ display:inline-grid; place-items:center; width:36px; height:36px; border-radius:50%; border:2px solid var(--accent); background:#fff; font-size:14px; color:#111 }
     .metric h3{ margin:8px 0 4px; font-size:24px; font-weight:800; color:var(--ink) }
     .metric small{ display:block; color:#6b7280; font-size:12px; line-height:1.35 }
 
-    /* Facts table card */
-    .facts{ padding:18px }
+    /* Facts — now fills row height like Skills */
+    .facts{
+      height:100%;                 /* fill the grid row */
+      display:flex; flex-direction:column; /* keep content at top */
+      padding:18px;
+    }
+    /* On single column (mobile), revert height to natural */
+    @media (max-width:980px){ .facts{ height:auto } }
+
     .facts-grid{ display:grid; grid-template-columns: 180px 1fr; gap:10px 18px }
     @media (max-width:640px){ .facts-grid{ grid-template-columns:1fr } }
     .facts .label{ font-weight:700; color:var(--ink) }
@@ -101,7 +101,7 @@
     .facts a{ color:#111827; text-decoration:underline }
     .facts .arrow{ color:var(--accent); margin-right:8px; font-weight:800 }
 
-    /* Skills card with bars + notes */
+    /* Skills */
     .skills h3{ margin:0 0 10px; color:var(--ink) }
     .skill{ margin:14px 0 }
     .skill .title{ font-size:12px; font-weight:800; letter-spacing:.03em; color:var(--ink) }
@@ -109,18 +109,16 @@
     .bar{ height:10px; background:#edf2f7; border-radius:999px; overflow:hidden; border:1px solid #e5e7eb }
     .bar > span{ display:block; height:100%; background:linear-gradient(90deg, #f1c40f, #ffd659); width:var(--v,70%) }
 
-    /* ===== RESUME / CERTS / CONTACT (unchanged from earlier) ===== */
+    /* OTHER SECTIONS (unchanged) */
     .grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px }
     @media (max-width:900px){ .grid{ grid-template-columns:1fr } }
     .resume-item{ border:1px solid var(--line); background:var(--card); border-radius:12px; padding:16px; box-shadow:var(--shadow) }
     .resume-item h3{ margin:0; font-size:18px; color:var(--ink) }
     .resume-item .meta{ color:#6b7280; font-size:13px; margin:.35rem 0 .65rem }
-
     .certs-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px }
     .cert .title{ font-weight:700; margin:0 0 6px; color:var(--ink) }
     .cert .org{ color:#6b7280; font-size:13px; margin:0 0 10px }
     .badge{ display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; border:1px solid var(--line); background:#f8fafc; color:#374151 }
-
     footer{ text-align:center; font-size:13px; color:#6b7280 }
   </style>
 </head>
@@ -148,17 +146,20 @@
     <a href="#about" class="scroll-indicator" aria-label="Scroll to About">↓</a>
   </section>
 
-  <!-- ABOUT (updated to your reference) -->
+  <!-- ABOUT -->
   <section id="about" class="section">
     <div class="wrap narrow">
 
       <h2 class="center">About me</h2>
       <p class="muted intro center">
-       I am an experienced Senior Product Manager with 14+ years in Telecom, SaaS, CPaaS, and FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia. I specialize in building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
+        I am an experienced Senior Product Manager with <strong>14+ years</strong> in Telecom, SaaS, CPaaS, and
+        FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia.
+        I specialize in building scalable platforms, launching digital services, and delivering customer-centric
+        growth strategies.
       </p>
 
       <div class="about-grid">
-        <!-- Row 1: Left portrait + Right metrics -->
+        <!-- Row 1: Portrait + Metrics -->
         <div class="card portrait-card">
           <div class="portrait-frame">
             <img class="portrait" src="portrait.png" alt="Waqas Arshad portrait">
@@ -190,7 +191,7 @@
           </div>
         </div>
 
-        <!-- Row 2: Left facts + Right skills -->
+        <!-- Row 2: Facts (left) — now equal height with skills (right) -->
         <div class="card facts">
           <div class="facts-grid">
             <div class="label"><span class="arrow">›</span>Name</div>
@@ -244,7 +245,7 @@
     </div>
   </section>
 
-  <!-- RESUME (unchanged) -->
+  <!-- RESUME -->
   <section id="resume" class="wrap">
     <h2>Resume</h2>
     <div class="grid">
@@ -261,7 +262,7 @@
     </div>
   </section>
 
-  <!-- CERTIFICATIONS (unchanged) -->
+  <!-- CERTS -->
   <section id="certs" class="wrap">
     <h2>Certifications & Achievements</h2>
     <div class="certs-grid">
@@ -288,7 +289,7 @@
     </div>
   </section>
 
-  <!-- CONTACT (unchanged) -->
+  <!-- CONTACT -->
   <section id="contact" class="wrap">
     <h2>Contact</h2>
     <p class="muted" style="max-width:760px">Open to roles and collaborations in EMEA and APAC.</p>

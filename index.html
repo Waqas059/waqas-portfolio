@@ -23,7 +23,13 @@
       --shadow:0 6px 18px rgba(17,24,39,.06);
       --radius:14px;
       --radius-lg:16px;
-      --maxw:1240px;      /* widened */
+      --maxw:1240px;
+
+      /* ABOUT fine-tuning */
+      --about-left: 540px;    /* left column (photo + facts) */
+      --about-col-gap: 36px;  /* gap between columns */
+      --about-row-gap: 16px;  /* gap between stacked rows */
+      --metrics-left-pad: 14px; /* matches .metric padding-left */
     }
 
     *{box-sizing:border-box}
@@ -104,18 +110,18 @@
     .scroll-indicator{ position:absolute; left:50%; bottom:24px; transform:translateX(-50%); width:40px; height:40px; border-radius:999px; border:1px solid rgba(255,255,255,.45); display:grid; place-items:center; color:#fff; text-decoration:none }
     #about,#resume,#certs,#contact{ scroll-margin-top:90px }
 
-    /* ===== ABOUT (two-column layout) ===== */
+    /* ===== ABOUT (two-column) ===== */
     .section{ padding:70px 18px }
     #about .intro{ max-width:760px; margin:0 auto 18px; text-align:center }
 
-    /* Grid with areas: top row photo|metrics, second row facts|skills */
     .about-grid{
       display:grid;
-      grid-template-columns: minmax(420px, 520px) 1fr;
+      grid-template-columns: clamp(420px, 42vw, var(--about-left)) 1fr;
       grid-template-areas:
         "photo metrics"
         "facts skills";
-      gap:20px 28px;
+      column-gap: var(--about-col-gap);
+      row-gap: var(--about-row-gap);
       align-items:start;
     }
     .g-photo  { grid-area: photo; }
@@ -135,32 +141,46 @@
       }
     }
 
-    /* De-boxing & element styles */
+    /* Portrait */
     .portrait-card{ padding:0 }
     .portrait-frame{ position:relative; border-radius:0; overflow:hidden; border:0; background:#f8fafc }
-    .portrait-frame::before{ content:""; display:block; aspect-ratio: 4 / 3 }
+    .portrait-frame::before{ content:""; display:block; aspect-ratio: 4 / 3 } /* change to 3/4 if you want taller */
     .portrait{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
 
+    /* Metrics row */
     .metrics{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)) }
-    .metric{ padding:18px 16px; border-right:1px solid #f3f4f6 }
+    .metric{ padding:14px 14px; border-right:1px solid #f3f4f6 }
     .metric:last-child{ border-right:none }
-    @media (max-width:980px){ .metrics{ grid-template-columns:repeat(2,1fr) } .metric:nth-child(2n){ border-right:none } .metric{ border-bottom:1px solid #f3f4f6 } .metric:nth-last-child(-n+2){ border-bottom:none } }
-    @media (max-width:560px){ .metrics{ grid-template-columns:1fr } .metric{ border-right:none; border-bottom:1px solid #f3f4f6 } .metric:last-child{ border-bottom:none } }
+    @media (max-width:980px){
+      .metrics{ grid-template-columns:repeat(2,1fr) }
+      .metric:nth-child(2n){ border-right:none }
+      .metric{ border-bottom:1px solid #f3f4f6 }
+      .metric:nth-last-child(-n+2){ border-bottom:none }
+    }
+    @media (max-width:560px){
+      .metrics{ grid-template-columns:1fr }
+      .metric{ border-right:none; border-bottom:1px solid #f3f4f6 }
+      .metric:last-child{ border-bottom:none }
+    }
     .ring{ display:inline-grid; place-items:center; width:36px; height:36px; border-radius:50%; border:2px solid var(--accent); background:#fff; font-size:14px; color:#111 }
     .metric h3{ margin:8px 0 4px; font-size:24px; font-weight:800; color:var(--ink) }
     .metric small{ display:block; color:#6b7280; font-size:12px; line-height:1.35 }
 
+    /* Facts (open layout) */
     .facts{ background:transparent; border:0; box-shadow:none; padding:0; height:auto }
-    .facts-open{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px 32px }
+    .facts-open{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px 28px }
     @media (max-width:720px){ .facts-open{ grid-template-columns:1fr } }
     .fact{ display:flex; flex-direction:column; gap:6px }
     .fact .k{ font-weight:800; letter-spacing:.02em; color:var(--ink); font-size:13px }
     .fact .k::before{ content:"›"; margin-right:8px; color:var(--accent); font-weight:900 }
     .fact .v{ color:var(--fg); font-size:14px; line-height:1.4 }
 
+    /* Core strengths */
     .skills{ padding:0 }
+    .g-skills{ padding-left: var(--metrics-left-pad) } /* aligns with first metric content */
+    @media (max-width:980px){ .g-skills{ padding-left:0 } } /* no indent on mobile */
     .skills h3{ margin:0 0 10px; color:var(--ink) }
-    .skill{ margin:14px 0 }
+    .skill{ margin:12px 0 }
     .skill .title{ font-size:12px; font-weight:800; letter-spacing:.03em; color:var(--ink) }
     .skill .note{ margin:6px 0 8px; font-size:12px; color:#6b7280 }
     .bar{ height:10px; background:#f1f5f9; border-radius:999px; overflow:hidden; border:0 }
@@ -168,18 +188,14 @@
 
     /* ===== RESUME TIMELINE ===== */
     .resume-head{ text-align:center }
-    .resume-title{ display:none }
     .resume-sub{ color:var(--muted); font-size:15px; margin:0 0 34px }
     .resume-grid{ display:grid; grid-template-columns:1fr 1fr; gap:32px }
     @media (max-width:900px){ .resume-grid{ grid-template-columns:1fr } }
-
     .section h3{ font-size:22px; margin:0 0 16px; color:var(--ink) }
-
     .timeline{ position:relative; margin:0; padding:0; list-style:none }
     .timeline:before{ content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:var(--line) }
     .tl-item{ position:relative; padding-left:36px; margin:0 0 18px }
     .tl-item:before{ content:""; position:absolute; left:3px; top:6px; width:14px; height:14px; border:3px solid var(--accent); background:#fff; border-radius:50% }
-
     .heading{ font-weight:800; font-size:13px; color:#f59e0b; text-transform:uppercase; letter-spacing:.02em }
     .badge{ display:inline-block; background:#f3f4f6; color:#111827; border:1px solid var(--line); border-radius:6px; padding:4px 8px; font-size:12px; font-weight:700; margin:6px 0 }
     .meta{ font-style:italic; color:#374151; font-size:13px; margin:2px 0 6px }
@@ -187,33 +203,14 @@
     .desc ul{ margin:6px 0 0 18px; padding:0 }
     .desc li{ margin:4px 0 }
 
-    /* CERTS — open layout (no boxes) */
+    /* CERTS — open layout */
     .certs-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px }
-    .certs-grid .card,
     .cert{ background:transparent; border:0; box-shadow:none; padding:0 }
     .cert .title{ font-weight:700; margin:0 0 6px; color:var(--ink) }
     .cert .org{ color:#6b7280; font-size:13px; margin:0 0 10px }
     .badge-pill{ display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; border:1px solid var(--line); background:#f8fafc; color:#374151 }
 
     footer{ text-align:center; font-size:13px; color:#6b7280 }
-
-    /* === About layout fine-tuning (pixel alignment) === */
-    :root{
-      --about-left: 540px;    /* left column width */
-      --about-col-gap: 36px;  /* gap between columns */
-      --about-row-gap: 16px;  /* gap between stacked rows */
-    }
-    .about-grid{
-      grid-template-columns: clamp(420px, 42vw, var(--about-left)) 1fr !important;
-      column-gap: var(--about-col-gap) !important;
-      row-gap: var(--about-row-gap) !important;
-      align-items: start !important;
-    }
-    .metric{ padding: 14px 14px !important; }
-    .facts-open{ gap: 12px 28px !important; }
-    .skill{ margin: 12px 0 !important; }
-    /* Optional portrait ratio: make taller if desired */
-    /* .portrait-frame::before{ aspect-ratio: 3 / 4 !important; } */
   </style>
 </head>
 <body>
@@ -257,6 +254,7 @@
         <div class="g-photo">
           <div class="portrait-card">
             <div class="portrait-frame">
+              <!-- Replace portrait.png with your image name -->
               <img class="portrait" src="portrait.png" alt="Waqas Arshad portrait">
             </div>
           </div>
@@ -507,7 +505,7 @@
   </footer>
 
   <script>
-    // Active tab highlight + color scheme toggle depending on hero overlap
+    // Active tab highlight + switch to light/dark nav color over hero
     const nav=document.getElementById('tabs');
     const links=[...document.querySelectorAll('#tabs a')];
     const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
@@ -525,7 +523,7 @@
     // Footer year
     document.getElementById('y').textContent=new Date().getFullYear();
 
-    // HERO image loader with sequential fallbacks
+    // HERO fallback image loader
     (function(){
       const img=document.getElementById('heroImg');
       const candidates=["Hero.jpg","Hero.png","hero.jpg","hero.png","header.jpg","bg.jpg","coworking.jpg"];

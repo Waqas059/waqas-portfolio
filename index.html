@@ -34,65 +34,50 @@
     section{padding:64px 20px;border-top:1px solid var(--line)}
     .wrap{max-width:var(--wrap);margin:0 auto}
 
-    /* Hero */
+    /* Hero (reference style) */
     .hero{min-height:92vh;display:grid;place-items:center;text-align:center;color:#fff;background:
-      linear-gradient(rgba(13,17,23,.45), rgba(13,17,23,.72)),
+      linear-gradient(rgba(13,17,23,.40), rgba(13,17,23,.72)),
       url('Hero.png') center/cover no-repeat;border-bottom:1px solid rgba(255,255,255,.06);position:relative}
     .hero-inner{max-width:960px;padding:0 16px;margin:0 auto}
     .subtitle{font-weight:800;letter-spacing:.12em;text-transform:uppercase;opacity:.95;font-size:clamp(12px,1.2vw,16px)}
-    .hero-name{font-family:"Great Vibes",cursive;font-weight:400;line-height:1.05;margin:6px 0 0;font-size:clamp(48px,8vw,92px);text-shadow:0 2px 12px rgba(0,0,0,.35)}
-    .hero-chevron{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);font-size:26px;color:#fff;text-decoration:none;opacity:.9;animation:bounce 1.8s infinite}
+    .hero h1{font-family:"Great Vibes",cursive;font-weight:400;line-height:1.05;margin:6px 0 0;font-size:clamp(48px,8vw,92px);text-shadow:0 2px 12px rgba(0,0,0,.35)}
+    .chevron{position:absolute;left:50%;bottom:28px;transform:translateX(-50%);font-size:26px;color:#fff;text-decoration:none;opacity:.9;animation:bounce 1.8s infinite}
     @keyframes bounce{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,8px)}}
 
-    /* About Layout */
-    .about-wrap{max-width:1180px;margin:0 auto;padding:0 20px}
-    .about-grid2{display:grid;grid-template-columns:380px 1fr;gap:28px;align-items:start;margin-top:18px}
-    @media(max-width:1100px){.about-grid2{grid-template-columns:1fr}}
-    .card-soft{background:#fff;border:1px solid #e5e7eb;border-radius:14px;box-shadow:0 8px 18px rgba(0,0,0,.06)}
-    .about-photo{display:block;width:100%;aspect-ratio:1/1;object-fit:cover;border-radius:12px}
-    .facts-card{padding:14px}
-    .facts-grid{display:grid;grid-template-columns:140px 1fr;gap:8px 16px}
-    .facts-label{font-weight:700;color:#0f172a}
-    .facts-value{color:#1f2937}
+    /* About (open layout) */
+    h2{font-size:28px;font-weight:800;letter-spacing:.01em;color:var(--ink);margin:0 0 10px}
+    .lead{color:#6b7280;max-width:860px}
+    .about-top{display:grid;gap:28px;grid-template-columns:360px 1fr;align-items:start}
+    @media(max-width:1000px){.about-top{grid-template-columns:1fr}}
+    .portrait{width:100%;border-radius:14px;display:block;object-fit:cover;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+    .stats-open{display:grid;gap:16px;grid-template-columns:repeat(4,1fr)}
+    @media(max-width:900px){.stats-open{grid-template-columns:repeat(2,1fr)}}
+    .stat{padding:12px 0;border-bottom:1px solid var(--line)}
+    .stat:last-child{border-bottom:none}
+    .k{font-size:24px;font-weight:900;color:var(--ink);margin:2px 0}
+    .sub{font-size:12px;color:#6b7280;line-height:1.35}
+    .about-bottom{display:grid;gap:28px;grid-template-columns:1fr 1fr;margin-top:10px}
+    @media(max-width:1000px){.about-bottom{grid-template-columns:1fr}}
 
-    /* Stats card */
-    .stats-card{padding:0}
-    .stats-row{display:grid;grid-template-columns:repeat(4,1fr);align-items:stretch}
-    @media(max-width:1100px){.stats-row{grid-template-columns:repeat(2,1fr)}}
-    .stat-tile{padding:20px 18px;display:grid;gap:6px;justify-items:start;position:relative}
-    .stat-tile + .stat-tile{border-left:1px solid #eaecef}
-    .stat-icon{width:36px;height:36px;display:grid;place-items:center;border-radius:50%;border:2px solid var(--brand);background:#fff;color:#111}
-    .stat-k{font-size:22px;font-weight:900;color:#0f172a;margin:2px 0 0}
-    .stat-sub{font-size:12px;color:#6b7280;line-height:1.35}
+    .facts{display:grid;gap:10px 18px;grid-template-columns:160px 1fr}
+    .facts .label{font-weight:700;color:var(--ink)}
+    .facts .value{color:#1f2937}
 
-    /* Skills */
-    .skills-card{padding:14px}
-    .skill-item{margin:10px 0 14px}
+    /* Skills: original title + gray sub + thin meter */
+    .skill-list{display:flex;flex-direction:column;gap:16px}
     .skill-title{font-size:12px;font-weight:800;letter-spacing:.06em;color:#111827;margin:0 0 4px}
     .skill-sub{font-size:12px;color:#6b7280;margin:0 0 8px;line-height:1.35}
-    .meter{height:10px;border-radius:999px;overflow:hidden;background:#eef2f7;border:1px solid #e6ebf2;position:relative}
+    .meter{height:10px;border-radius:999px;position:relative;overflow:hidden;background:#eef2f7;border:1px solid #e6ebf2}
     .meter::after{content:"";position:absolute;inset:0;border-radius:999px;box-shadow:inset 0 1px 0 rgba(255,255,255,.65)}
     .meter > span{display:block;height:100%;border-radius:999px;width:var(--w,0);background:#475569}
 
-    /* Resume timeline */
-    .resume-tl{padding:64px 20px;border-top:1px solid #e5e7eb}
-    .resume-wrap{max-width:1100px;margin:0 auto}
-    .resume-title{text-align:center;font-weight:800;letter-spacing:.02em;font-size:34px;margin:0 0 6px}
-    .resume-sub{text-align:center;color:#6b7280;font-size:15px;margin:0 0 40px}
-    .resume-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px}
-    .resume-h{font-size:22px;margin:0 0 14px}
-    .tl{list-style:none;margin:0;padding:0;position:relative}
-    .tl:before{content:"";position:absolute;left:10px;top:0;bottom:0;width:2px;background:#e5e7eb}
-    .tl-item{position:relative;padding-left:36px;margin:0 0 18px}
-    .tl-item:before{content:"";position:absolute;left:3px;top:6px;width:14px;height:14px;border:3px solid #f59e0b;background:#fff;border-radius:50%}
-    .tl-head{font-weight:800;font-size:13px;color:#f59e0b;text-transform:uppercase;letter-spacing:.02em}
-    .tl-badge{display:inline-block;background:#f3f4f6;color:#111827;border:1px solid #e5e7eb;border-radius:6px;padding:4px 8px;font-size:12px;font-weight:700;margin:6px 0}
-    .tl-meta{font-style:italic;color:#374151;font-size:13px;margin:2px 0 6px}
-    .tl-desc{color:#6b7280;font-size:14px;line-height:1.6}
-    .tl-desc ul{margin:6px 0 0 18px;padding:0}
-    .tl-desc li{margin:4px 0}
-    @media (max-width:900px){.resume-grid{grid-template-columns:1fr}}
-
+    /* Resume */
+    .resume-grid{display:grid;gap:18px}
+    .role{font-weight:800}
+    .meta{color:#66778a;font-size:14px;margin-top:2px}
+    .item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}
+    .item ul{margin:8px 0 0 18px}
+    .edu{display:grid;gap:8px}
     footer{padding:28px 0;color:#92a0b4;text-align:center;border-top:1px solid var(--line)}
   </style>
 </head>
@@ -101,11 +86,11 @@
   <!-- Header -->
   <header class="header">
     <nav class="nav" id="nav">
-      <a href="#home">Home</a>
+      <a href="#home" class="active">Home</a>
       <a href="#about">About</a>
       <a href="#resume">Resume</a>
       <a href="#portfolio">Portfolio</a>
-      <a href="#achievements">Certifications & Achievements</a>
+      <a href="#certs">Certifications & Achievements</a>
       <a href="#contact">Contact</a>
     </nav>
   </header>
@@ -113,53 +98,79 @@
   <!-- Hero -->
   <section id="home" class="hero">
     <div class="hero-inner">
-      <h1 class="hero-name">Waqas Arshad</h1>
       <div class="subtitle">Product Management & Innovation Strategy</div>
+      <h1>Waqas Arshad</h1>
     </div>
-    <a class="hero-chevron" href="#about" aria-label="Scroll">⌄</a>
+    <a class="chevron" href="#about" aria-label="Scroll">⌄</a>
   </section>
 
   <!-- About -->
   <section id="about">
-    <div class="about-wrap">
-      <h2 style="text-align:center;margin:0 0 8px">About me</h2>
-      <p style="text-align:center;max-width:860px;margin:0 auto 8px;color:#374151">
-        I am an experienced Senior Product Manager with <strong>14+ years</strong> in Telecom, SaaS, CPaaS, and FinTech. 
-        I specialize in building scalable platforms, launching digital services, and delivering customer-centric growth strategies.
-      </p>
+    <div class="wrap">
+      <h2>About me</h2>
+      <p class="lead">I am an experienced Senior Product Manager with <strong>14+ years</strong> across Telecom, SaaS, CPaaS, and FinTech. I specialize in building scalable platforms, launching digital services, and delivering customer-centric growth strategies.</p>
 
-      <div class="about-grid2">
-        <!-- Left column -->
+      <div class="about-top" style="margin-top:18px">
+        <img class="portrait" src="portrait.png" alt="Waqas Arshad">
+
         <div>
-          <div class="card-soft" style="padding:16px">
-            <img class="about-photo" src="portrait.png" alt="Waqas Arshad">
-          </div>
-          <div class="card-soft facts-card" style="margin-top:14px">
-            <div class="facts-grid">
-              <div class="facts-label">Name</div><div class="facts-value">Waqas Arshad</div>
-              <div class="facts-label">Degrees</div><div class="facts-value">Master’s in Project Management; Bachelor’s in Electrical Engineering</div>
-              <div class="facts-label">City</div><div class="facts-value">Islamabad, Pakistan</div>
-              <div class="facts-label">School</div><div class="facts-value">Shaheed Zulfiqar Ali Bhutto Institute of Science & Technology</div>
-              <div class="facts-label">Email</div><div class="facts-value"><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></div>
-              <div class="facts-label">Current designation</div><div class="facts-value">Senior Product Manager</div>
+          <div class="stats-open">
+            <div class="stat">
+              <div class="k">14+ years</div>
+              <div class="sub">Product management and digital innovation</div>
+            </div>
+            <div class="stat">
+              <div class="k">Global reach</div>
+              <div class="sub">Delivered solutions across MENA, CIS and Asia</div>
+            </div>
+            <div class="stat">
+              <div class="k">50+ launches</div>
+              <div class="sub">Across CPaaS, Super Apps and digital services</div>
+            </div>
+            <div class="stat">
+              <div class="k">5M+ users</div>
+              <div class="sub">Through telecom, SaaS and FinTech solutions</div>
             </div>
           </div>
         </div>
-        <!-- Right column -->
+      </div>
+
+      <div class="about-bottom">
+        <!-- Facts -->
         <div>
-          <div class="card-soft stats-card">
-            <div class="stats-row">
-              <div class="stat-tile"><div class="stat-icon">⏱</div><div class="stat-k">14+ years</div><div class="stat-sub">Product management & digital innovation</div></div>
-              <div class="stat-tile"><div class="stat-icon">🌐</div><div class="stat-k">Global reach</div><div class="stat-sub">Delivered across MENA, CIS & Asia</div></div>
-              <div class="stat-tile"><div class="stat-icon">✦</div><div class="stat-k">50+ launches</div><div class="stat-sub">CPaaS, Super Apps & digital services</div></div>
-              <div class="stat-tile"><div class="stat-icon">👥</div><div class="stat-k">5M+ users</div><div class="stat-sub">Telecom, SaaS & FinTech</div></div>
-            </div>
+          <div class="facts">
+            <div class="label">Name</div><div class="value">Waqas Arshad</div>
+            <div class="label">Degrees</div><div class="value">Master’s in Project Management; Bachelor’s in Electrical Engineering</div>
+            <div class="label">City</div><div class="value">Islamabad, Pakistan</div>
+            <div class="label">School</div><div class="value">Shaheed Zulfiqar Ali Bhutto Institute of Science & Technology</div>
+            <div class="label">Email</div><div class="value"><a href="mailto:waqas.arshad@gmail.com">waqas.arshad@gmail.com</a></div>
+            <div class="label">Current designation</div><div class="value">Senior Product Manager</div>
           </div>
-          <div class="card-soft skills-card" style="margin-top:14px">
-            <div class="skill-item"><div class="skill-title">PRODUCT STRATEGY & LEADERSHIP</div><div class="skill-sub">Roadmapping, strategy, discovery, market analysis, adaptive leadership</div><div class="meter"><span style="--w:92%"></span></div></div>
-            <div class="skill-item"><div class="skill-title">DIGITAL PLATFORMS & FINTECH</div><div class="skill-sub">VAS, charging systems, ICT, SuperApp & digital platforms, FinTech</div><div class="meter"><span style="--w:90%"></span></div></div>
-            <div class="skill-item"><div class="skill-title">CPAAS & MESSAGING PLATFORMS</div><div class="skill-sub">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div><div class="meter"><span style="--w:88%"></span></div></div>
-            <div class="skill-item"><div class="skill-title">AGILE & DESIGN THINKING</div><div class="skill-sub">Agile leadership, cross-functional collaboration, design thinking</div><div class="meter"><span style="--w:87%"></span></div></div>
+        </div>
+
+        <!-- Skills (title + description + meter) -->
+        <div>
+          <div class="skill-list">
+            <div>
+              <div class="skill-title">PRODUCT STRATEGY & LEADERSHIP</div>
+              <div class="skill-sub">Product roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
+              <div class="meter"><span style="--w:92%"></span></div>
+            </div>
+            <div>
+              <div class="skill-title">DIGITAL PLATFORMS & FINTECH</div>
+              <div class="skill-sub">Value added services, charging system platform, ICT, SuperApp & digital platforms, FinTech</div>
+              <div class="meter"><span style="--w:86%"></span></div>
+            </div>
+            <div>
+              <div class="skill-title">CPAAS & MESSAGING PLATFORMS</div>
+              <div class="skill-sub">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
+              <div class="meter"><span style="--w:82%"></span></div>
+            </div>
+            <div>
+              <div class="skill-title">AGILE & DESIGN THINKING</div>
+              <div class="skill-sub">Agile leadership, cross-functional collaboration, design thinking</div>
+              <div class="meter"><span style="--w:84%"></span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -167,67 +178,117 @@
   </section>
 
   <!-- Resume -->
-  <section id="resume" class="resume-tl">
-    <div class="resume-wrap">
-      <h2 class="resume-title">My Resume</h2>
-      <p class="resume-sub">Product and innovation leader with hands-on delivery across CPaaS, SaaS, and telecom</p>
+  <section id="resume">
+    <div class="wrap">
+      <h2>My Resume</h2>
+      <p class="lead">Product and innovation leader with hands-on delivery across CPaaS, SaaS and telecom.</p>
+
       <div class="resume-grid">
-        <section>
-          <h3 class="resume-h">Education</h3>
-          <ul class="tl">
-            <li class="tl-item"><div class="tl-head">Master of Science, Project Management</div><div class="tl-badge">2014</div><div class="tl-meta">SZABIST, Islamabad</div></li>
-            <li class="tl-item"><div class="tl-head">Bachelor of Electrical Engineering</div><div class="tl-badge">2009</div><div class="tl-meta">CASE, Islamabad</div></li>
+        <div class="item">
+          <div class="role">Senior Product Manager</div>
+          <div class="meta">GMS, Switzerland  Remote · 2022 to Present</div>
+          <ul>
+            <li>Led product strategy and execution for CPaaS solutions including WhatsApp, Viber and SMS hubs.</li>
+            <li>Delivered omnichannel messaging solutions across CIS, Asia and MENA with compliant, customer-centric delivery.</li>
+            <li>Drove WhatsApp on the TelXira powered campaign platform — templates, campaigns, chat and conversation types.</li>
+            <li>Achieved Meta App Review approval in one day and completed display name approval.</li>
+            <li>Designed transparent WhatsApp pricing and invoicing based on Meta pricing with flexible margins and regional rates.</li>
+            <li>Rebooted Scrum from Kanban to recover a delayed program and improved delivery cadence.</li>
+            <li>Managed enterprise onboarding including Sunrise with work on KP reporting and security.</li>
           </ul>
-        </section>
-        <section>
-          <h3 class="resume-h">Professional Experience</h3>
-          <ul class="tl">
-            <li class="tl-item"><div class="tl-head">Senior Product Manager</div><div class="tl-badge">2022 – Present</div><div class="tl-meta">GMS, Switzerland — Remote</div></li>
-            <li class="tl-item"><div class="tl-head">Senior Product Manager, B2B</div><div class="tl-badge">2020 – 2021</div><div class="tl-meta">Jazz, Pakistan</div></li>
-            <li class="tl-item"><div class="tl-head">Project Manager</div><div class="tl-badge">2016 – 2020</div><div class="tl-meta">Telenor, Pakistan</div></li>
-            <li class="tl-item"><div class="tl-head">Project Manager</div><div class="tl-badge">2015 – 2016</div><div class="tl-meta">Telenor Microfinance Bank</div></li>
-            <li class="tl-item"><div class="tl-head">Earlier Roles</div><div class="tl-badge">2010 – 2015</div><div class="tl-meta">China Mobile Pakistan · Ufone</div></li>
+        </div>
+
+        <div class="item">
+          <div class="role">Senior Product Manager, B2B</div>
+          <div class="meta">Jazz Pakistan · 2020 to 2021</div>
+          <ul>
+            <li>Directed a portfolio overhaul that grew revenue by 30 percent and market share by 15 percent.</li>
+            <li>Improved efficiency by 35 percent and market response by 40 percent through agile practices.</li>
+            <li>Cut critical bugs by 50 percent and increased development speed by 15 percent with stronger testing.</li>
+            <li>Aligned product vision to market insights and competitive signals with senior leadership.</li>
           </ul>
-        </section>
+        </div>
+
+        <div class="item">
+          <div class="role">Project Manager</div>
+          <div class="meta">Telenor Pakistan · 2016 to 2020</div>
+          <ul>
+            <li>Implemented Agile across five teams which increased efficiency by 40 percent and reduced time to market by 25 percent.</li>
+            <li>Shipped customer focused enterprise solutions with zero critical complaints.</li>
+            <li>Led My Telenor App delivery that migrated users from USSD to app self care at multi-million scale.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="role">Project Manager</div>
+          <div class="meta">Telenor Microfinance Bank · 2015 to 2016</div>
+          <ul>
+            <li>Ran stakeholder workshops that cut delivery time by 15 percent and increased engagement by 25 percent.</li>
+            <li>Managed risk on product migrations with 99.9 percent data accuracy and 40 percent less downtime for more than one million users.</li>
+            <li>Launched the first merchant portal with QR and NFC payments for 50,000 plus SMEs.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="role">Earlier roles</div>
+          <div class="meta">China Mobile Pakistan · Ufone</div>
+          <ul>
+            <li>Introduced telecom services including Zero Balance Calls and Advanced Loan via DTMF; grew monthly revenue to PKR 10M with new VAS.</li>
+            <li>Directed VAS upgrades and delivered products that lifted revenue and market footprint.</li>
+          </ul>
+        </div>
+
+        <div class="item">
+          <div class="role">Education</div>
+          <div class="edu">
+            <div>Master of Science in Project Management — SZABIST, 2014</div>
+            <div>Bachelor of Electrical Engineering — Sir Syed CASE Institute of Technology, 2009</div>
+          </div>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- Portfolio -->
-  <section id="portfolio"><div class="wrap"><h2>Portfolio</h2><p class="lead">Coming soon.</p></div></section>
+  <section id="portfolio">
+    <div class="wrap">
+      <h2>Portfolio</h2>
+      <p class="lead">Add selected case studies here. Cards can link to live work or PDFs.</p>
+    </div>
+  </section>
 
-  <!-- Achievements -->
-  <section id="achievements"><div class="wrap"><h2>Certifications & Achievements</h2><p class="lead">Coming soon.</p></div></section>
+  <!-- Certifications -->
+  <section id="certs">
+    <div class="wrap">
+      <h2>Certifications & Achievements</h2>
+      <p class="lead">IBM Design Thinking Practitioner, PSPO, Meta Business Messaging milestones and more.</p>
+    </div>
+  </section>
 
   <!-- Contact -->
-  <section id="contact"><div class="wrap"><h2>Contact</h2><p>Email <a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></p></div></section>
+  <section id="contact">
+    <div class="wrap">
+      <h2>Contact</h2>
+      <p class="lead">Email <a href="mailto:waqas.arshad@gmail.com">waqas.arshad@gmail.com</a></p>
+    </div>
+  </section>
 
-  <footer><div class="wrap">© <span id="y"></span> Waqas Arshad</div></footer>
+  <footer>
+    <div class="wrap">© <span id="y"></span> Waqas Arshad</div>
+  </footer>
 
   <script>
-    // Scroll spy
-    const navLinks = Array.from(document.querySelectorAll('.nav a'));
-    const homeLink = document.querySelector('.nav a[href="#home"]');
-    const sections = ['home','about','resume','portfolio','achievements','contact']
-      .map(id => document.getElementById(id))
-      .filter(Boolean);
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        const id = entry.target.id;
-        if (id === 'home') {
-          if (entry.isIntersecting) homeLink && homeLink.classList.remove('active');
-          return;
-        }
-        if (entry.isIntersecting) {
-          navLinks.forEach(a => a.classList.remove('active'));
-          const link = document.querySelector(`.nav a[href="#${id}"]`);
-          link && link.classList.add('active');
-        }
-      });
-    }, { root: null, threshold: 0.55 });
-    sections.forEach(sec => observer.observe(sec));
-    navLinks.forEach(a => a.classList.remove('active'));
+    // active link on scroll
+    const links = Array.from(document.querySelectorAll('.nav a'));
+    const secs = links.map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+    function setActive(){
+      const y = scrollY + 90;
+      let id = secs[0].id;
+      for(const s of secs){ if(s.offsetTop <= y) id = s.id; }
+      links.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
+    }
+    addEventListener('scroll', setActive, {passive:true});
+    addEventListener('load', setActive);
     document.getElementById('y').textContent = new Date().getFullYear();
   </script>
 </body>

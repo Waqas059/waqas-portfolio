@@ -25,14 +25,14 @@
       --about-left: 540px;
       --about-col-gap: 36px;
       --about-row-gap: 16px;
-      --metrics-left-pad: 14px; /* matches metric padding-left */
+      --metric-pad: 16px;    /* left/right padding inside each metric */
     }
 
     *{box-sizing:border-box}
     html{scroll-behavior:smooth}
     body{ margin:0; color:var(--fg); background:var(--page); font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif }
 
-    /* NAV */
+    /* NAV (fixed) */
     .tabs{ position:fixed; top:0; left:0; right:0; z-index:100; background:transparent }
     .tabs .inner{
       max-width:var(--maxw);
@@ -141,30 +141,30 @@
     .section{ padding:70px 18px }
     #about .intro{ max-width:760px; margin:0 auto 18px; text-align:center }
 
-    /* OUTER FRAME for the whole About content */
+    /* OUTER FRAME for entire About */
     #about .about-frame{
-      max-width: 1080px;      /* adjust this to widen/narrow the frame */
+      max-width: 1080px;      /* the visual “frame” – change if you want wider/narrower */
       margin: 0 auto;
-      padding: 0 20px 32px;   /* inner side gutters + bottom */
+      padding: 0 20px 32px;
     }
 
     .about-grid{
       display:grid;
-      grid-template-columns: clamp(420px, 42vw, var(--about-left)) 1fr;
+      grid-template-columns: minmax(360px, 520px) 1fr;  /* more stable than clamp for alignment */
       grid-template-areas:
         "photo metrics"
         "facts skills";
       column-gap: var(--about-col-gap);
       row-gap: var(--about-row-gap);
       align-items:start;
-      margin:0; /* keep grid tight to the frame */
+      margin:0;
     }
     .g-photo  { grid-area: photo; }
     .g-metrics{ grid-area: metrics; }
     .g-facts  { grid-area: facts; }
     .g-skills { grid-area: skills; }
 
-    @media (max-width: 980px){
+    @media (max-width: 1024px){
       .about-grid{
         grid-template-columns: 1fr;
         grid-template-areas:
@@ -179,27 +179,33 @@
 
     /* Portrait */
     .portrait-frame{ position:relative; border-radius:0; overflow:hidden; background:#f8fafc }
-    .portrait-frame::before{ content:""; display:block; aspect-ratio: 4 / 3 } /* switch to 3/4 for taller portrait */
+    .portrait-frame::before{ content:""; display:block; aspect-ratio: 4 / 3 }
     .portrait{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
 
-    /* Metrics */
-    .metrics{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)) }
-    .metric{ padding:14px 14px; border-right:1px solid #f3f4f6 }
+    /* Metrics — add a little horizontal gap and stop label crashes */
+    .metrics{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      column-gap:20px;                    /* breathing room between columns */
+    }
+    .metric{
+      padding:14px var(--metric-pad);
+      border-right:1px solid #f3f4f6;
+    }
     .metric:last-child{ border-right:none }
 
-    /* keep 2 columns on phones (no single-column collapse) */
-    @media (max-width:980px){
-      .metrics{ grid-template-columns:repeat(2,1fr) }
-      .metric:nth-child(2n){ border-right:none }
-      .metric{ border-bottom:1px solid #f3f4f6 }
-      .metric:nth-last-child(-n+2){ border-bottom:none }
-    }
-    @media (max-width:380px){
-      .metrics{ grid-template-columns:repeat(2,1fr) }
+    /* always 2 columns on mobile/tablet */
+    @media (max-width:1024px){
+      .metrics{ grid-template-columns:repeat(2,1fr); column-gap:16px; row-gap:10px; }
+      .metric{ border-right:none; }
     }
 
-    .ring{ display:inline-grid; place-items:center; width:36px; height:36px; border-radius:50%; border:2px solid var(--accent); background:#fff; font-size:14px; color:#111 }
-    .metric h3{ margin:8px 0 4px; font-size:22px; font-weight:800; color:var(--ink) }
+    .ring{
+      display:inline-grid; place-items:center;
+      width:36px; height:36px; border-radius:50%;
+      border:2px solid var(--accent); background:#fff; font-size:14px; color:#111;
+    }
+    .metric h3{ margin:8px 0 4px; font-size:22px; font-weight:800; color:var(--ink); }
     .metric small{ display:block; color:#6b7280; font-size:12px; line-height:1.35 }
 
     /* Facts */
@@ -210,16 +216,8 @@
     .fact .k::before{ content:"›"; margin-right:8px; color:var(--accent); font-weight:900 }
     .fact .v{ color:var(--fg); font-size:14px; line-height:1.4 }
 
-    /* Core strengths — align with metric text edge */
-    .g-metrics,
-    .g-skills{
-      width:100%;
-      padding-left: var(--metrics-left-pad);   /* aligns titles & bars with metric text */
-      padding-right: 0;
-    }
-    @media (max-width:980px){
-      .g-metrics, .g-skills{ padding-left:0 }   /* no inset on stacked mobile layout */
-    }
+    /* Core strengths — align with the same column edge as metrics (no extra inset) */
+    .g-metrics, .g-skills{ width:100%; padding-left:0; padding-right:0; }
 
     .skills h3{ margin:0 0 10px; color:var(--ink) }
     .skill{ margin:12px 0 }
@@ -282,8 +280,7 @@
   <!-- ABOUT -->
   <section id="about" class="section">
     <div class="wrap">
-
-      <div class="about-frame"><!-- OUTER FRAME START -->
+      <div class="about-frame"><!-- FRAME START -->
 
         <h2 class="section-title" data-ghost="ABOUT ME"><span>About me</span></h2>
         <p class="muted intro">
@@ -294,15 +291,14 @@
         </p>
 
         <div class="about-grid">
-          <!-- Left column -->
+          <!-- Photo -->
           <div class="g-photo">
             <div class="portrait-frame">
-              <!-- Replace with your photo -->
               <img class="portrait" src="portrait.png" alt="Waqas Arshad portrait">
             </div>
           </div>
 
-          <!-- Right column (top): Metrics -->
+          <!-- Metrics -->
           <div class="g-metrics">
             <div class="metrics">
               <div class="metric">
@@ -328,7 +324,7 @@
             </div>
           </div>
 
-          <!-- Left column (bottom): Facts -->
+          <!-- Facts -->
           <div class="g-facts">
             <div class="facts-open">
               <div class="fact"><div class="k">Name</div><div class="v">Waqas Arshad</div></div>
@@ -340,7 +336,7 @@
             </div>
           </div>
 
-          <!-- Right column (bottom): Skills -->
+          <!-- Skills -->
           <div class="g-skills">
             <div class="skills">
               <h3>Core strengths</h3>
@@ -368,7 +364,8 @@
             </div>
           </div>
         </div>
-      </div><!-- OUTER FRAME END -->
+
+      </div><!-- FRAME END -->
     </div>
   </section>
 
@@ -555,7 +552,7 @@
     // Footer year
     document.getElementById('y').textContent=new Date().getFullYear();
 
-    // HERO fallback image loader
+    // HERO fallback image loader (use any of these names in your repo)
     (function(){
       const img=document.getElementById('heroImg');
       const candidates=["Hero.jpg","Hero.png","hero.jpg","hero.png","header.jpg","bg.jpg","coworking.jpg"];

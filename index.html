@@ -15,7 +15,7 @@
     :root{
       --page:#ffffff;
       --fg:#1f2937;
-      --ink:#111827;
+      --ink:#0f172a;
       --muted:#6b7280;
       --line:#e5e7eb;
       --accent:#f1c40f;
@@ -65,7 +65,7 @@
     #about h2.center{ font-size:34px }
     #about .intro{ max-width:760px; margin:0 auto 18px }
 
-    .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:22px; align-items:stretch } /* stretch rows */
+    .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:22px; align-items:stretch }
     @media (max-width: 980px){ .about-grid{ grid-template-columns:1fr } }
 
     /* Portrait */
@@ -85,21 +85,23 @@
     .metric h3{ margin:8px 0 4px; font-size:24px; font-weight:800; color:var(--ink) }
     .metric small{ display:block; color:#6b7280; font-size:12px; line-height:1.35 }
 
-    /* Facts — now fills row height like Skills */
+    /* ===== OPEN FACTS LAYOUT (no box) ===== */
     .facts{
-      height:100%;                 /* fill the grid row */
-      display:flex; flex-direction:column; /* keep content at top */
-      padding:18px;
+      background:transparent; border:0; box-shadow:none; padding:0; height:auto;
     }
-    /* On single column (mobile), revert height to natural */
-    @media (max-width:980px){ .facts{ height:auto } }
+    .facts-open{
+      display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px 32px;
+    }
+    @media (max-width:720px){ .facts-open{ grid-template-columns:1fr } }
 
-    .facts-grid{ display:grid; grid-template-columns: 180px 1fr; gap:10px 18px }
-    @media (max-width:640px){ .facts-grid{ grid-template-columns:1fr } }
-    .facts .label{ font-weight:700; color:var(--ink) }
-    .facts .value{ color:var(--fg) }
-    .facts a{ color:#111827; text-decoration:underline }
-    .facts .arrow{ color:var(--accent); margin-right:8px; font-weight:800 }
+    .fact{ display:flex; flex-direction:column; gap:6px }
+    .fact .k{
+      font-weight:800; letter-spacing:.02em; color:var(--ink); font-size:13px;
+    }
+    .fact .k::before{
+      content:"›"; margin-right:8px; color:var(--accent); font-weight:900;
+    }
+    .fact .v{ color:var(--fg); font-size:14px; line-height:1.4 }
 
     /* Skills */
     .skills h3{ margin:0 0 10px; color:var(--ink) }
@@ -171,7 +173,7 @@
             <div class="metric">
               <span class="ring">★</span>
               <h3>14+ years</h3>
-              <small>Product management & digital innovation</small>
+              <small>Product management & Digital innovation</small>
             </div>
             <div class="metric">
               <span class="ring">🌐</span>
@@ -191,26 +193,33 @@
           </div>
         </div>
 
-        <!-- Row 2: Facts (left) — now equal height with skills (right) -->
-        <div class="card facts">
-          <div class="facts-grid">
-            <div class="label"><span class="arrow">›</span>Name</div>
-            <div class="value">Waqas Arshad</div>
-
-            <div class="label"><span class="arrow">›</span>Degrees</div>
-            <div class="value">Master’s in Project Management; Bachelor’s in Electrical Engineering</div>
-
-            <div class="label"><span class="arrow">›</span>City</div>
-            <div class="value">Islamabad, Pakistan</div>
-
-            <div class="label"><span class="arrow">›</span>School</div>
-            <div class="value">Shaheed Zulfiqar Ali Bhutto Institute of Science & Technology</div>
-
-            <div class="label"><span class="arrow">›</span>Email</div>
-            <div class="value"><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></div>
-
-            <div class="label"><span class="arrow">›</span>Current designation</div>
-            <div class="value">Senior Product Manager</div>
+        <!-- Row 2: OPEN facts (no box) + Skills -->
+        <div class="facts">
+          <div class="facts-open">
+            <div class="fact">
+              <div class="k">Name</div>
+              <div class="v">Waqas Arshad</div>
+            </div>
+            <div class="fact">
+              <div class="k">Degrees</div>
+              <div class="v">Master’s in Project Management; Bachelor’s in Electrical Engineering</div>
+            </div>
+            <div class="fact">
+              <div class="k">City</div>
+              <div class="v">Islamabad, Pakistan</div>
+            </div>
+            <div class="fact">
+              <div class="k">School</div>
+              <div class="v">Shaheed Zulfiqar Ali Bhutto Institute of Science & Technology</div>
+            </div>
+            <div class="fact">
+              <div class="k">Email</div>
+              <div class="v"><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></div>
+            </div>
+            <div class="fact">
+              <div class="k">Current designation</div>
+              <div class="v">Senior Product Manager</div>
+            </div>
           </div>
         </div>
 
@@ -219,25 +228,25 @@
 
           <div class="skill">
             <div class="title">PRODUCT STRATEGY & LEADERSHIP</div>
-            <div class="note">Roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
+            <div class="note">Roadmapping, Product strategy, user discovery, Market analysis, Adaptive leadership</div>
             <div class="bar"><span style="--v:90%"></span></div>
           </div>
 
           <div class="skill">
             <div class="title">DIGITAL PLATFORMS & FINTECH</div>
-            <div class="note">VAS, charging systems, ICT, SuperApp & digital platforms, FinTech</div>
+            <div class="note">VAS, Charging systems, ICT, SuperApp & Digital platforms, FinTech</div>
             <div class="bar"><span style="--v:88%"></span></div>
           </div>
 
           <div class="skill">
             <div class="title">CPAAS & MESSAGING PLATFORMS</div>
-            <div class="note">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
+            <div class="note">WhatsApp Business, Viber, SMS, Omnichannel messaging, SaaS scaling</div>
             <div class="bar"><span style="--v:86%"></span></div>
           </div>
 
           <div class="skill">
             <div class="title">AGILE & DESIGN THINKING</div>
-            <div class="note">Agile leadership, cross-functional collaboration, design thinking</div>
+            <div class="note">Agile leadership, cross-functional collaboration, Design thinking</div>
             <div class="bar"><span style="--v:84%"></span></div>
           </div>
         </div>

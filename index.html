@@ -38,14 +38,13 @@
     .tabs.on-hero a{ color:rgba(255,255,255,.95); text-shadow:0 1px 1px rgba(0,0,0,.35) } .tabs.on-hero a.active{ color:var(--accent); border-bottom-color:var(--accent) }
 
     /* UTIL */
-    .wrap{ max-width:var(--maxw); margin:0 auto; padding:70px 24px } /* tighter side padding */
-    .wrap.narrow{ max-width:var(--maxw) } /* let About use full width now */
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:70px 24px }
+    .wrap.narrow{ max-width:var(--maxw) }
     h2{ margin:0 0 14px; font-size:32px; font-weight:800; letter-spacing:.01em; color:var(--ink) }
-    .card{ background:var(--card); border:1px solid var(--line); border-radius:var(--radius); box-shadow:var(--shadow); padding:22px }
     .muted{ color:var(--muted) }
     .center{text-align:center}
 
-    /* Fancy section heading (ghost title + underline) */
+    /* Ghost section heading */
     .section-title{
       position:relative;
       text-align:center;
@@ -105,21 +104,43 @@
     .scroll-indicator{ position:absolute; left:50%; bottom:24px; transform:translateX(-50%); width:40px; height:40px; border-radius:999px; border:1px solid rgba(255,255,255,.45); display:grid; place-items:center; color:#fff; text-decoration:none }
     #about,#resume,#certs,#contact{ scroll-margin-top:90px }
 
-    /* ===== ABOUT ===== */
+    /* ===== ABOUT (two-column layout) ===== */
     .section{ padding:70px 18px }
     #about .intro{ max-width:760px; margin:0 auto 18px; text-align:center }
 
-    .about-grid{ display:grid; grid-template-columns: 1fr 1fr; gap:18px; align-items:start }
-    @media (max-width: 980px){ .about-grid{ grid-template-columns:1fr } }
+    /* Grid with areas: top row photo|metrics, second row facts|skills */
+    .about-grid{
+      display:grid;
+      grid-template-columns: minmax(420px, 520px) 1fr;
+      grid-template-areas:
+        "photo metrics"
+        "facts skills";
+      gap:20px 28px;
+      align-items:start;
+    }
+    .g-photo  { grid-area: photo; }
+    .g-metrics{ grid-area: metrics; }
+    .g-facts  { grid-area: facts; }
+    .g-skills { grid-area: skills; }
 
-    /* Portrait — de-boxed */
+    @media (max-width: 980px){
+      .about-grid{
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "photo"
+          "metrics"
+          "facts"
+          "skills";
+        gap:18px;
+      }
+    }
+
+    /* De-boxing & element styles */
     .portrait-card{ padding:0 }
     .portrait-frame{ position:relative; border-radius:0; overflow:hidden; border:0; background:#f8fafc }
     .portrait-frame::before{ content:""; display:block; aspect-ratio: 4 / 3 }
     .portrait{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
 
-    /* Metrics — open, with light separators */
-    .metrics-panel{ padding:0 }
     .metrics{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)) }
     .metric{ padding:18px 16px; border-right:1px solid #f3f4f6 }
     .metric:last-child{ border-right:none }
@@ -129,16 +150,14 @@
     .metric h3{ margin:8px 0 4px; font-size:24px; font-weight:800; color:var(--ink) }
     .metric small{ display:block; color:#6b7280; font-size:12px; line-height:1.35 }
 
-    /* Facts — open layout (no box) */
     .facts{ background:transparent; border:0; box-shadow:none; padding:0; height:auto }
-    .facts-open{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:16px 32px }
+    .facts-open{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px 32px }
     @media (max-width:720px){ .facts-open{ grid-template-columns:1fr } }
     .fact{ display:flex; flex-direction:column; gap:6px }
     .fact .k{ font-weight:800; letter-spacing:.02em; color:var(--ink); font-size:13px }
     .fact .k::before{ content:"›"; margin-right:8px; color:var(--accent); font-weight:900 }
     .fact .v{ color:var(--fg); font-size:14px; line-height:1.4 }
 
-    /* Skills — open; bars without outline */
     .skills{ padding:0 }
     .skills h3{ margin:0 0 10px; color:var(--ink) }
     .skill{ margin:14px 0 }
@@ -149,7 +168,7 @@
 
     /* ===== RESUME TIMELINE ===== */
     .resume-head{ text-align:center }
-    .resume-title{ display:none } /* replaced by section-title */
+    .resume-title{ display:none }
     .resume-sub{ color:var(--muted); font-size:15px; margin:0 0 34px }
     .resume-grid{ display:grid; grid-template-columns:1fr 1fr; gap:32px }
     @media (max-width:900px){ .resume-grid{ grid-template-columns:1fr } }
@@ -216,14 +235,17 @@
       </p>
 
       <div class="about-grid">
-        <!-- Row 1: Portrait + Metrics -->
-        <div class="portrait-card">
-          <div class="portrait-frame">
-            <img class="portrait" src="portrait.png" alt="Waqas Arshad portrait">
+        <!-- Left column -->
+        <div class="g-photo">
+          <div class="portrait-card">
+            <div class="portrait-frame">
+              <img class="portrait" src="portrait.png" alt="Waqas Arshad portrait">
+            </div>
           </div>
         </div>
 
-        <div class="metrics-panel">
+        <!-- Right column (top): Metrics -->
+        <div class="g-metrics">
           <div class="metrics">
             <div class="metric">
               <span class="ring">★</span>
@@ -257,40 +279,45 @@
           </div>
         </div>
 
-        <!-- Row 2: OPEN facts + Skills -->
-        <div class="facts">
-          <div class="facts-open">
-            <div class="fact"><div class="k">Name</div><div class="v">Waqas Arshad</div></div>
-            <div class="fact"><div class="k">Degrees</div><div class="v">Master’s in Project Management; Bachelor’s in Electrical Engineering</div></div>
-            <div class="fact"><div class="k">City</div><div class="v">Islamabad, Pakistan</div></div>
-            <div class="fact"><div class="k">School</div><div class="v">Shaheed Zulfiqar Ali Bhutto Institute of Science & Technology</div></div>
-            <div class="fact"><div class="k">Email</div><div class="v"><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></div></div>
-            <div class="fact"><div class="k">Current designation</div><div class="v">Senior Product Manager</div></div>
+        <!-- Left column (bottom): Facts -->
+        <div class="g-facts">
+          <div class="facts">
+            <div class="facts-open">
+              <div class="fact"><div class="k">Name</div><div class="v">Waqas Arshad</div></div>
+              <div class="fact"><div class="k">Degrees</div><div class="v">Master’s in Project Management; Bachelor’s in Electrical Engineering</div></div>
+              <div class="fact"><div class="k">City</div><div class="v">Islamabad, Pakistan</div></div>
+              <div class="fact"><div class="k">School</div><div class="v">Shaheed Zulfiqar Ali Bhutto Institute of Science & Technology</div></div>
+              <div class="fact"><div class="k">Email</div><div class="v"><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></div></div>
+              <div class="fact"><div class="k">Current designation</div><div class="v">Senior Product Manager</div></div>
+            </div>
           </div>
         </div>
 
-        <div class="skills">
-          <h3>Core strengths</h3>
+        <!-- Right column (bottom): Skills -->
+        <div class="g-skills">
+          <div class="skills">
+            <h3>Core strengths</h3>
 
-          <div class="skill">
-            <div class="title">PRODUCT STRATEGY & LEADERSHIP</div>
-            <div class="note">Roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
-            <div class="bar"><span style="--v:90%"></span></div>
-          </div>
-          <div class="skill">
-            <div class="title">DIGITAL PLATFORMS & FINTECH</div>
-            <div class="note">VAS, charging systems, ICT, SuperApp & digital platforms, FinTech</div>
-            <div class="bar"><span style="--v:88%"></span></div>
-          </div>
-          <div class="skill">
-            <div class="title">CPAAS & MESSAGING PLATFORMS</div>
-            <div class="note">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
-            <div class="bar"><span style="--v:86%"></span></div>
-          </div>
-          <div class="skill">
-            <div class="title">AGILE & DESIGN THINKING</div>
-            <div class="note">Agile leadership, cross-functional collaboration, design thinking</div>
-            <div class="bar"><span style="--v:84%"></span></div>
+            <div class="skill">
+              <div class="title">PRODUCT STRATEGY & LEADERSHIP</div>
+              <div class="note">Roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
+              <div class="bar"><span style="--v:90%"></span></div>
+            </div>
+            <div class="skill">
+              <div class="title">DIGITAL PLATFORMS & FINTECH</div>
+              <div class="note">VAS, charging systems, ICT, SuperApp & digital platforms, FinTech</div>
+              <div class="bar"><span style="--v:88%"></span></div>
+            </div>
+            <div class="skill">
+              <div class="title">CPAAS & MESSAGING PLATFORMS</div>
+              <div class="note">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
+              <div class="bar"><span style="--v:86%"></span></div>
+            </div>
+            <div class="skill">
+              <div class="title">AGILE & DESIGN THINKING</div>
+              <div class="note">Agile leadership, cross-functional collaboration, design thinking</div>
+              <div class="bar"><span style="--v:84%"></span></div>
+            </div>
           </div>
         </div>
       </div>
@@ -488,7 +515,7 @@
       img.onerror=loadNext; loadNext();
     })();
 
-    // --- Count-up on first reveal of the metrics strip ---
+    // Count-up on first reveal of the metrics strip
     (function(){
       const metrics = document.querySelector('.metrics');
       if(!metrics) return;

@@ -19,17 +19,13 @@
       --muted:#6b7280;
       --line:#e5e7eb;
       --accent:#f1c40f;   /* gold */
-      --card:#ffffff;
-      --shadow:0 6px 18px rgba(17,24,39,.06);
-      --radius:14px;
-      --radius-lg:16px;
       --maxw:1240px;
 
-      /* ABOUT fine-tuning */
-      --about-left: 540px;    /* left column (photo + facts) */
-      --about-col-gap: 36px;  /* gap between columns */
-      --about-row-gap: 16px;  /* gap between stacked rows */
-      --metrics-left-pad: 14px; /* matches .metric padding-left */
+      /* About tuning */
+      --about-left: 540px;
+      --about-col-gap: 36px;
+      --about-row-gap: 16px;
+      --metrics-left-pad: 14px; /* matches metric padding-left */
     }
 
     *{box-sizing:border-box}
@@ -38,17 +34,48 @@
 
     /* NAV */
     .tabs{ position:fixed; top:0; left:0; right:0; z-index:100; background:transparent }
-    .tabs .inner{ max-width:var(--maxw); margin:0 auto; display:flex; justify-content:center; gap:28px; padding:14px 18px }
-    .tabs a{ text-decoration:none; text-transform:uppercase; letter-spacing:.08em; font-weight:700; font-size:12px; padding:8px 4px; border-bottom:2px solid transparent; transition:.2s }
-    .tabs a{ color:#374151 } .tabs a:hover{ opacity:.8 } .tabs a.active{ color:#111827; border-bottom-color:var(--accent) }
-    .tabs.on-hero a{ color:rgba(255,255,255,.95); text-shadow:0 1px 1px rgba(0,0,0,.35) } .tabs.on-hero a.active{ color:var(--accent); border-bottom-color:var(--accent) }
+    .tabs .inner{
+      max-width:var(--maxw);
+      margin:0 auto;
+      display:flex;
+      justify-content:center;
+      gap:28px;
+      padding:14px 18px;
+    }
+    .tabs a{
+      text-decoration:none;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-weight:700;
+      font-size:12px;
+      padding:8px 4px;
+      border-bottom:2px solid transparent;
+      transition:.2s;
+      color:#374151;
+      white-space:nowrap;
+    }
+    .tabs a:hover{ opacity:.8 }
+    .tabs a.active{ color:#111827; border-bottom-color:var(--accent) }
+    .tabs.on-hero a{ color:rgba(255,255,255,.95); text-shadow:0 1px 1px rgba(0,0,0,.35) }
+    .tabs.on-hero a.active{ color:var(--accent); border-bottom-color:var(--accent) }
+
+    /* Mobile nav: scrollable so it never overlaps/wraps */
+    @media (max-width: 680px){
+      .tabs .inner{
+        justify-content:flex-start;
+        gap:18px;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        scrollbar-width:none;
+      }
+      .tabs .inner::-webkit-scrollbar{ display:none }
+      .tabs a{ font-size:11px; padding:10px 6px }
+    }
 
     /* UTIL */
     .wrap{ max-width:var(--maxw); margin:0 auto; padding:70px 24px }
-    .wrap.narrow{ max-width:var(--maxw) }
     h2{ margin:0 0 14px; font-size:32px; font-weight:800; letter-spacing:.01em; color:var(--ink) }
     .muted{ color:var(--muted) }
-    .center{text-align:center}
 
     /* Ghost section heading */
     .section-title{
@@ -110,9 +137,16 @@
     .scroll-indicator{ position:absolute; left:50%; bottom:24px; transform:translateX(-50%); width:40px; height:40px; border-radius:999px; border:1px solid rgba(255,255,255,.45); display:grid; place-items:center; color:#fff; text-decoration:none }
     #about,#resume,#certs,#contact{ scroll-margin-top:90px }
 
-    /* ===== ABOUT (two-column) ===== */
+    /* ===== ABOUT ===== */
     .section{ padding:70px 18px }
     #about .intro{ max-width:760px; margin:0 auto 18px; text-align:center }
+
+    /* OUTER FRAME for the whole About content */
+    #about .about-frame{
+      max-width: 1080px;      /* adjust this to widen/narrow the frame */
+      margin: 0 auto;
+      padding: 0 20px 32px;   /* inner side gutters + bottom */
+    }
 
     .about-grid{
       display:grid;
@@ -123,6 +157,7 @@
       column-gap: var(--about-col-gap);
       row-gap: var(--about-row-gap);
       align-items:start;
+      margin:0; /* keep grid tight to the frame */
     }
     .g-photo  { grid-area: photo; }
     .g-metrics{ grid-area: metrics; }
@@ -139,35 +174,35 @@
           "skills";
         gap:18px;
       }
+      #about .about-frame{ padding:0 16px 28px; }
     }
 
     /* Portrait */
-    .portrait-card{ padding:0 }
-    .portrait-frame{ position:relative; border-radius:0; overflow:hidden; border:0; background:#f8fafc }
-    .portrait-frame::before{ content:""; display:block; aspect-ratio: 4 / 3 } /* change to 3/4 if you want taller */
+    .portrait-frame{ position:relative; border-radius:0; overflow:hidden; background:#f8fafc }
+    .portrait-frame::before{ content:""; display:block; aspect-ratio: 4 / 3 } /* switch to 3/4 for taller portrait */
     .portrait{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
 
-    /* Metrics row */
+    /* Metrics */
     .metrics{ display:grid; grid-template-columns:repeat(4, minmax(0,1fr)) }
     .metric{ padding:14px 14px; border-right:1px solid #f3f4f6 }
     .metric:last-child{ border-right:none }
+
+    /* keep 2 columns on phones (no single-column collapse) */
     @media (max-width:980px){
       .metrics{ grid-template-columns:repeat(2,1fr) }
       .metric:nth-child(2n){ border-right:none }
       .metric{ border-bottom:1px solid #f3f4f6 }
       .metric:nth-last-child(-n+2){ border-bottom:none }
     }
-    @media (max-width:560px){
-      .metrics{ grid-template-columns:1fr }
-      .metric{ border-right:none; border-bottom:1px solid #f3f4f6 }
-      .metric:last-child{ border-bottom:none }
+    @media (max-width:380px){
+      .metrics{ grid-template-columns:repeat(2,1fr) }
     }
+
     .ring{ display:inline-grid; place-items:center; width:36px; height:36px; border-radius:50%; border:2px solid var(--accent); background:#fff; font-size:14px; color:#111 }
-    .metric h3{ margin:8px 0 4px; font-size:24px; font-weight:800; color:var(--ink) }
+    .metric h3{ margin:8px 0 4px; font-size:22px; font-weight:800; color:var(--ink) }
     .metric small{ display:block; color:#6b7280; font-size:12px; line-height:1.35 }
 
-    /* Facts (open layout) */
-    .facts{ background:transparent; border:0; box-shadow:none; padding:0; height:auto }
+    /* Facts */
     .facts-open{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px 28px }
     @media (max-width:720px){ .facts-open{ grid-template-columns:1fr } }
     .fact{ display:flex; flex-direction:column; gap:6px }
@@ -175,10 +210,17 @@
     .fact .k::before{ content:"›"; margin-right:8px; color:var(--accent); font-weight:900 }
     .fact .v{ color:var(--fg); font-size:14px; line-height:1.4 }
 
-    /* Core strengths */
-    .skills{ padding:0 }
-    .g-skills{ padding-left: var(--metrics-left-pad) } /* aligns with first metric content */
-    @media (max-width:980px){ .g-skills{ padding-left:0 } } /* no indent on mobile */
+    /* Core strengths — align with metric text edge */
+    .g-metrics,
+    .g-skills{
+      width:100%;
+      padding-left: var(--metrics-left-pad);   /* aligns titles & bars with metric text */
+      padding-right: 0;
+    }
+    @media (max-width:980px){
+      .g-metrics, .g-skills{ padding-left:0 }   /* no inset on stacked mobile layout */
+    }
+
     .skills h3{ margin:0 0 10px; color:var(--ink) }
     .skill{ margin:12px 0 }
     .skill .title{ font-size:12px; font-weight:800; letter-spacing:.03em; color:var(--ink) }
@@ -186,9 +228,8 @@
     .bar{ height:10px; background:#f1f5f9; border-radius:999px; overflow:hidden; border:0 }
     .bar > span{ display:block; height:100%; background:linear-gradient(90deg, #f1c40f, #ffd659); width:var(--v,70%) }
 
-    /* ===== RESUME TIMELINE ===== */
-    .resume-head{ text-align:center }
-    .resume-sub{ color:var(--muted); font-size:15px; margin:0 0 34px }
+    /* ===== RESUME ===== */
+    .resume-sub{ color:var(--muted); font-size:15px; margin:0 0 34px; text-align:center }
     .resume-grid{ display:grid; grid-template-columns:1fr 1fr; gap:32px }
     @media (max-width:900px){ .resume-grid{ grid-template-columns:1fr } }
     .section h3{ font-size:22px; margin:0 0 16px; color:var(--ink) }
@@ -203,14 +244,15 @@
     .desc ul{ margin:6px 0 0 18px; padding:0 }
     .desc li{ margin:4px 0 }
 
-    /* CERTS — open layout */
+    /* CERTS */
     .certs-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px }
-    .cert{ background:transparent; border:0; box-shadow:none; padding:0 }
+    @media (max-width:680px){ .certs-grid{ grid-template-columns:1fr } }
+    .cert{ background:transparent; border:0; padding:0 }
     .cert .title{ font-weight:700; margin:0 0 6px; color:var(--ink) }
     .cert .org{ color:#6b7280; font-size:13px; margin:0 0 10px }
     .badge-pill{ display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; border:1px solid var(--line); background:#f8fafc; color:#374151 }
 
-    footer{ text-align:center; font-size:13px; color:#6b7280 }
+    footer{ text-align:center; font-size:13px; color:#6b7280; padding-bottom:24px }
   </style>
 </head>
 <body>
@@ -239,65 +281,55 @@
 
   <!-- ABOUT -->
   <section id="about" class="section">
-    <div class="wrap narrow">
+    <div class="wrap">
 
-      <h2 class="section-title" data-ghost="ABOUT ME"><span>About me</span></h2>
-      <p class="muted intro">
-        I am an experienced Senior Product Manager with <strong>14+ years</strong> in Telecom, SaaS, CPaaS, and
-        FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia.
-        I specialize in building scalable platforms, launching digital services, and delivering customer-centric
-        growth strategies.
-      </p>
+      <div class="about-frame"><!-- OUTER FRAME START -->
 
-      <div class="about-grid">
-        <!-- Left column -->
-        <div class="g-photo">
-          <div class="portrait-card">
+        <h2 class="section-title" data-ghost="ABOUT ME"><span>About me</span></h2>
+        <p class="muted intro">
+          I am an experienced Senior Product Manager with <strong>14+ years</strong> in Telecom, SaaS, CPaaS, and
+          FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia.
+          I specialize in building scalable platforms, launching digital services, and delivering customer-centric
+          growth strategies.
+        </p>
+
+        <div class="about-grid">
+          <!-- Left column -->
+          <div class="g-photo">
             <div class="portrait-frame">
-              <!-- Replace portrait.png with your image name -->
+              <!-- Replace with your photo -->
               <img class="portrait" src="portrait.png" alt="Waqas Arshad portrait">
             </div>
           </div>
-        </div>
 
-        <!-- Right column (top): Metrics -->
-        <div class="g-metrics">
-          <div class="metrics">
-            <div class="metric">
-              <span class="ring">★</span>
-              <h3>
-                <span class="count" data-from="0" data-to="14" data-duration="1200" data-suffix="+"></span>
-                &nbsp;years
-              </h3>
-              <small>Product management & digital innovation</small>
-            </div>
-            <div class="metric">
-              <span class="ring">🌐</span>
-              <h3>Global reach</h3>
-              <small>Delivered across MENA, CIS & Asia</small>
-            </div>
-            <div class="metric">
-              <span class="ring">✎</span>
-              <h3>
-                <span class="count" data-from="0" data-to="50" data-duration="1200" data-suffix="+"></span>
-                &nbsp;launches
-              </h3>
-              <small>CPaaS, Super Apps & services</small>
-            </div>
-            <div class="metric">
-              <span class="ring">👥</span>
-              <h3>
-                <span class="count" data-from="0" data-to="5" data-duration="1200" data-suffix="M+"></span>
-                &nbsp;users
-              </h3>
-              <small>Telecom, SaaS & FinTech solutions</small>
+          <!-- Right column (top): Metrics -->
+          <div class="g-metrics">
+            <div class="metrics">
+              <div class="metric">
+                <span class="ring">★</span>
+                <h3><span class="count" data-from="0" data-to="14" data-duration="1200" data-suffix="+"></span>&nbsp;years</h3>
+                <small>Product management & digital innovation</small>
+              </div>
+              <div class="metric">
+                <span class="ring">🌐</span>
+                <h3>Global reach</h3>
+                <small>Delivered across MENA, CIS & Asia</small>
+              </div>
+              <div class="metric">
+                <span class="ring">✎</span>
+                <h3><span class="count" data-from="0" data-to="50" data-duration="1200" data-suffix="+"></span>&nbsp;launches</h3>
+                <small>CPaaS, Super Apps & services</small>
+              </div>
+              <div class="metric">
+                <span class="ring">👥</span>
+                <h3><span class="count" data-from="0" data-to="5" data-duration="1200" data-suffix="M+"></span>&nbsp;users</h3>
+                <small>Telecom, SaaS & FinTech solutions</small>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Left column (bottom): Facts -->
-        <div class="g-facts">
-          <div class="facts">
+          <!-- Left column (bottom): Facts -->
+          <div class="g-facts">
             <div class="facts-open">
               <div class="fact"><div class="k">Name</div><div class="v">Waqas Arshad</div></div>
               <div class="fact"><div class="k">Degrees</div><div class="v">Master’s in Project Management; Bachelor’s in Electrical Engineering</div></div>
@@ -307,36 +339,36 @@
               <div class="fact"><div class="k">Current designation</div><div class="v">Senior Product Manager</div></div>
             </div>
           </div>
-        </div>
 
-        <!-- Right column (bottom): Skills -->
-        <div class="g-skills">
-          <div class="skills">
-            <h3>Core strengths</h3>
+          <!-- Right column (bottom): Skills -->
+          <div class="g-skills">
+            <div class="skills">
+              <h3>Core strengths</h3>
 
-            <div class="skill">
-              <div class="title">PRODUCT STRATEGY & LEADERSHIP</div>
-              <div class="note">Roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
-              <div class="bar"><span style="--v:90%"></span></div>
-            </div>
-            <div class="skill">
-              <div class="title">DIGITAL PLATFORMS & FINTECH</div>
-              <div class="note">VAS, charging systems, ICT, SuperApp & digital platforms, FinTech</div>
-              <div class="bar"><span style="--v:88%"></span></div>
-            </div>
-            <div class="skill">
-              <div class="title">CPAAS & MESSAGING PLATFORMS</div>
-              <div class="note">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
-              <div class="bar"><span style="--v:86%"></span></div>
-            </div>
-            <div class="skill">
-              <div class="title">AGILE & DESIGN THINKING</div>
-              <div class="note">Agile leadership, cross-functional collaboration, design thinking</div>
-              <div class="bar"><span style="--v:84%"></span></div>
+              <div class="skill">
+                <div class="title">PRODUCT STRATEGY & LEADERSHIP</div>
+                <div class="note">Roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
+                <div class="bar"><span style="--v:90%"></span></div>
+              </div>
+              <div class="skill">
+                <div class="title">DIGITAL PLATFORMS & FINTECH</div>
+                <div class="note">VAS, charging systems, ICT, SuperApp & digital platforms, FinTech</div>
+                <div class="bar"><span style="--v:88%"></span></div>
+              </div>
+              <div class="skill">
+                <div class="title">CPAAS & MESSAGING PLATFORMS</div>
+                <div class="note">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
+                <div class="bar"><span style="--v:86%"></span></div>
+              </div>
+              <div class="skill">
+                <div class="title">AGILE & DESIGN THINKING</div>
+                <div class="note">Agile leadership, cross-functional collaboration, design thinking</div>
+                <div class="bar"><span style="--v:84%"></span></div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      </div><!-- OUTER FRAME END -->
     </div>
   </section>
 
@@ -468,22 +500,22 @@
   <section id="certs" class="wrap">
     <h2 class="section-title" data-ghost="CERTIFICATIONS"><span>Certifications & Achievements</span></h2>
     <div class="certs-grid">
-      <div class="card cert">
+      <div class="cert">
         <p class="title">IBM Design Thinking Practitioner</p>
         <p class="org">IBM</p>
         <span class="badge-pill">Credentialed</span>
       </div>
-      <div class="card cert">
+      <div class="cert">
         <p class="title">Professional Scrum Product Owner (PSPO)</p>
         <p class="org">Scrum.org</p>
         <span class="badge-pill">Certified</span>
       </div>
-      <div class="card cert">
+      <div class="cert">
         <p class="title">50+ Product Launches</p>
         <p class="org">Telecom, SaaS, CPaaS</p>
         <span class="badge-pill">Achievement</span>
       </div>
-      <div class="card cert">
+      <div class="cert">
         <p class="title">5M+ Users Reached</p>
         <p class="org">MENA, CIS, APAC</p>
         <span class="badge-pill">Impact</span>
@@ -496,16 +528,16 @@
     <h2 class="section-title" data-ghost="CONTACT"><span>Contact</span></h2>
     <p class="muted" style="max-width:760px;margin:0 auto 16px;text-align:center">Open to roles and collaborations in EMEA and APAC.</p>
     <div style="text-align:center">
-      <a class="card" href="mailto:waxas.arshad@gmail.com" style="display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid #111827;background:#111827;color:#fff">Email me</a>
+      <a href="mailto:waxas.arshad@gmail.com" style="display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid #111827;background:#111827;color:#fff">Email me</a>
     </div>
   </section>
 
-  <footer class="wrap" style="text-align:center;color:#6b7280">
+  <footer class="wrap" style="text-align:center;color:#6b7280;padding-bottom:24px">
     © <span id="y">2025</span> Waqas Arshad
   </footer>
 
   <script>
-    // Active tab highlight + switch to light/dark nav color over hero
+    // Active tab + switch colors over hero
     const nav=document.getElementById('tabs');
     const links=[...document.querySelectorAll('#tabs a')];
     const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
@@ -531,14 +563,13 @@
       img.onerror=loadNext; loadNext();
     })();
 
-    // Count-up on first reveal of the metrics strip
+    // Count-up on first reveal of metrics
     (function(){
       const metrics = document.querySelector('.metrics');
       if(!metrics) return;
 
       const counters = metrics.querySelectorAll('.count');
       let started = false;
-
       const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
 
       function animateCount(el){
@@ -547,7 +578,6 @@
         const dur = parseInt(el.dataset.duration || 1200, 10);
         const suffix = el.dataset.suffix || '';
         const decimals = parseInt(el.dataset.decimals || 0, 10);
-
         const start = performance.now();
         function frame(now){
           const t = Math.min((now - start) / dur, 1);

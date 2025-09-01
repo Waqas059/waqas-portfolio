@@ -3,552 +3,591 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <title>Waqas Arshad | Portfolio</title>
-  <meta name="description" content="Senior Product Manager portfolio for Waqas Arshad. CPaaS, SaaS, FinTech, and product leadership." />
-  <meta name="robots" content="index,follow" />
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Waqas Arshad | Portfolio" />
-  <meta property="og:description" content="Senior Product Manager in CPaaS and SaaS. Portfolio, resume, certifications, and contact." />
-  <meta property="og:type" content="website" />
-  <meta property="og:image" content="hero.jpg" />
+  <title>Waqas Arshad | Product Management & Innovation</title>
+  <meta name="description" content="Senior Product Manager in CPaaS and SaaS. Portfolio, resume, certifications, and contact.">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&family=Great+Vibes&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
 
   <style>
     :root{
-      --maxw: 1200px;
-      --ink: #0f172a;
-      --fg: #1f2937;
+      --page:#ffffff;
+      --fg:#1f2937;
+      --ink:#0f172a;
       --muted:#6b7280;
-      --gold:#f5c542;
       --line:#e5e7eb;
-      --bg:#ffffff;
-      --navh: 68px;
-      --gap: 40px;
-      --leftw: 520px;
-      --radius: 14px;
-      --shadow: 0 10px 30px rgba(0,0,0,.08);
+      --accent:#f1c40f;
+      --maxw:1240px;
+
+      --about-col-gap: 36px;
+      --about-row-gap: 16px;
+      --metric-pad: 16px;    /* inner padding in each metric card */
     }
 
-    *{ box-sizing:border-box }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{ margin:0; color:var(--fg); background:var(--page); font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif }
 
-    html{ scroll-behavior:smooth }
-
-    body{
-      margin:0;
-      font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
-      color:var(--fg);
-      background:var(--bg);
-    }
-
-    /* container used everywhere to guarantee same edges */
-    .container{
+    /* NAV (fixed) */
+    .tabs{ position:fixed; top:0; left:0; right:0; z-index:100; background:transparent }
+    .tabs .inner{
       max-width:var(--maxw);
       margin:0 auto;
-      padding:0 24px;
+      display:flex;
+      justify-content:center;
+      gap:28px;
+      padding:14px 18px;
     }
-
-    /* nav */
-    .tabs{
-      position:fixed;
-      inset:0 0 auto 0;
-      height:var(--navh);
-      display:grid;
-      place-items:center;
-      z-index:50;
-      background:linear-gradient(to bottom, rgba(255,255,255,.9), rgba(255,255,255,.7));
-      backdrop-filter: blur(6px);
-      border-bottom:1px solid rgba(0,0,0,.04);
-    }
-    .tabs .inner{ width:100% }
-    .tabs nav{ display:flex; gap:28px; justify-content:center; align-items:center }
     .tabs a{
-      font-size:12px;
-      font-weight:800;
-      letter-spacing:.08em;
-      text-transform:uppercase;
       text-decoration:none;
-      color:#374151;
-      padding:10px 4px;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      font-weight:700;
+      font-size:12px;
+      padding:8px 4px;
       border-bottom:2px solid transparent;
-      transition: .15s;
+      transition:.2s;
+      color:#374151;
       white-space:nowrap;
     }
-    .tabs a:hover{ opacity:.85 }
-    .tabs a.active{ color:#111827; border-bottom-color:var(--gold) }
+    .tabs a:hover{ opacity:.8 }
+    .tabs a.active{ color:#111827; border-bottom-color:var(--accent) }
+    .tabs.on-hero a{ color:rgba(255,255,255,.95); text-shadow:0 1px 1px rgba(0,0,0,.35) }
+    .tabs.on-hero a.active{ color:var(--accent); border-bottom-color:var(--accent) }
 
-    /* hero */
-    .hero{
-      min-height:calc(100vh - 0px);
-      display:grid;
-      place-items:center;
-      text-align:center;
-      position:relative;
-      padding-top:var(--navh);
-      overflow:hidden;
-    }
-    .hero::before{
-      content:"";
-      position:absolute;
-      inset:0;
-      background:
-        radial-gradient(80vh 60vh at 75% 10%, rgba(245,197,66,.12), transparent 60%),
-        radial-gradient(90vh 70vh at 25% 0%, rgba(245,197,66,.12), transparent 60%);
-      z-index:-1;
-    }
-    .hero .sig{
-      font-family:"Great Vibes", cursive;
-      font-size:56px;
-      margin:0 0 10px;
-      color:#111;
-      text-shadow:0 2px 10px rgba(0,0,0,.06);
-    }
-    .hero .subtitle{
-      margin:0 auto;
-      max-width:820px;
-      color:#4b5563;
-      font-weight:700;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      font-size:12px;
+    @media (max-width: 680px){
+      .tabs .inner{
+        justify-content:flex-start;
+        gap:18px;
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        scrollbar-width:none;
+      }
+      .tabs .inner::-webkit-scrollbar{ display:none }
+      .tabs a{ font-size:11px; padding:10px 6px }
     }
 
-    /* section */
-    section{ padding:64px 0 }
-    h2{
-      margin:0 0 16px;
-      font-size:32px;
-      font-weight:800;
-      color:var(--ink);
-      letter-spacing:.01em;
-    }
+    /* UTIL */
+    .wrap{ max-width:var(--maxw); margin:0 auto; padding:70px 24px }
+    h2{ margin:0 0 14px; font-size:32px; font-weight:800; letter-spacing:.01em; color:var(--ink) }
     .muted{ color:var(--muted) }
 
-    /* About */
-    #about .intro{
+    /* Ghost section heading */
+    .section-title{
+      position:relative;
       text-align:center;
-      max-width:900px;
-      margin:0 auto 28px;
-      color:#4b5563;
+      margin:0 0 24px;
+      font-size:28px; font-weight:800; letter-spacing:.02em; color:var(--ink)
+    }
+    .section-title::before{
+      content:attr(data-ghost);
+      position:absolute; left:50%; transform:translateX(-50%); top:-26px;
+      font-size:68px; line-height:1; font-weight:800; letter-spacing:.16em; text-transform:uppercase;
+      white-space:nowrap; color:rgba(17,24,39,.06); pointer-events:none; z-index:0;
+    }
+    .section-title > span{ position:relative; display:inline-block; padding:6px 10px; z-index:1 }
+    .section-title > span::after{
+      content:""; display:block; width:60px; height:3px; background:var(--accent);
+      border-radius:999px; margin:10px auto 0;
+    }
+    @media (max-width:768px){
+      .section-title::before{ font-size:42px; top:-18px }
     }
 
-    /* two-row grid locks the bottom of strengths to the bottom of facts */
+    /* HERO */
+    .hero{ position:relative; min-height:100vh; display:grid; place-items:center; text-align:center; overflow:hidden }
+    @supports (min-height:100svh){ .hero{ min-height:100svh } }
+    .hero img.hero-bg{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:grayscale(.05) brightness(.9) saturate(1.05); z-index:-2 }
+    .hero::before{ content:""; position:absolute; inset:0; background:
+      radial-gradient(80vh 60vh at 75% 10%, rgba(241,196,15,.12), transparent 60%),
+      radial-gradient(90vh 70vh at 25% 0%, rgba(241,196,15,.12), transparent 60%),
+      linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.6)); z-index:-1 }
+    .hero .inner{ position:relative; z-index:1; padding:30px 16px }
+    .hero .sig{ font-family:"Great Vibes", cursive; font-size:56px; margin:0 0 10px; color:#fff; text-shadow:0 2px 10px rgba(0,0,0,.45) }
+    .hero h1{ display:none }
+    .hero .subtitle{ margin:0 auto; max-width:820px; color:#e5e7eb; font-weight:700; letter-spacing:.08em; text-transform:uppercase; font-size:12px }
+    .scroll-indicator{ position:absolute; left:50%; bottom:24px; transform:translateX(-50%); width:40px; height:40px; border-radius:999px; border:1px solid rgba(255,255,255,.45); display:grid; place-items:center; color:#fff; text-decoration:none }
+
+    #about,#resume,#certs,#contact{ scroll-margin-top:90px }
+    .section{ padding:70px 18px }
+    #about .intro{ max-width:760px; margin:0 auto 18px; text-align:center }
+
+    /* OUTER FRAME for entire About */
+    #about .about-frame{
+      max-width: 1060px;
+      margin: 0 auto;
+      padding: 0 20px 32px;
+    }
+
     .about-grid{
       display:grid;
-      grid-template-columns: var(--leftw) 1fr;
-      grid-template-rows: auto 1fr;
-      column-gap: var(--gap);
+      grid-template-columns: 480px minmax(0,1fr);
+      grid-template-areas:
+        "photo metrics"
+        "facts  skills";
+      column-gap: var(--about-col-gap);
+      row-gap: var(--about-row-gap);
       align-items:stretch;
+      margin:0;
     }
+    .g-photo  { grid-area: photo; }
+    .g-metrics{ grid-area: metrics; }
+    .g-facts  { grid-area: facts; }
+    .g-skills { grid-area: skills; align-self:stretch; height:100%; display:grid; grid-auto-rows:max-content; align-content:space-between; }
+    .g-skills { grid-area: skills; align-self:stretch; height:100%; display:grid; grid-auto-rows:max-content; align-content:space-between; }
 
-    /* left column */
-    .left-photo{
-      grid-column:1;
-      grid-row:1;
-      width:100%;
-      border-radius:8px;
-      box-shadow:var(--shadow);
-      display:block;
-    }
-    .facts{
-      grid-column:1;
-      grid-row:2;
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap:10px 30px;
-      align-content:start;
-      margin-top:16px;
-    }
-    .facts .label{ color:#8b8f97; font-size:12px }
-    .facts .value{ color:#111827; font-weight:600; font-size:14px }
-
-    /* right column */
-    .right-metrics{
-      grid-column:2;
-      grid-row:1;
-      display:grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap:28px;
-      padding:6px 0 26px;
-      border-left:1px solid var(--line);
-      padding-left:28px;
-    }
-    .metric{ display:grid; gap:6px }
-    .metric .num{ font-size:20px; font-weight:800; color:#111827 }
-    .metric .cap{ font-size:12px; color:#6b7280 }
-
-    .strengths{
-      grid-column:2;
-      grid-row:2;
-      height:100%;
-      display:grid;
-      grid-auto-rows:max-content;
-      align-content:space-between;   /* pushes the last item to the bottom baseline */
-      gap:16px;
-      margin-top:8px;
-    }
-    .strengths h3{ margin:0 0 4px; font-size:22px; font-weight:800; color:#111827 }
-    .skill{ margin:0 }
-    .skill .title{ font-size:12px; font-weight:800; color:#1f2937; margin:0 0 6px }
-    .skill .desc{ font-size:12px; color:#6b7280; margin:0 0 8px }
-
-    .bar{
-      width:100%;
-      height:10px;
-      background:var(--line);
-      border-radius:999px;
-      overflow:hidden;
-    }
-    .bar .fill{
-      height:100%;
-      background:var(--gold);
-      width:0; /* set by inline style */
-    }
-
-    /* Resume section sample styles */
-    .timeline{
-      display:grid;
-      gap:18px;
-      margin-top:8px;
-    }
-    .t-item{
-      display:grid;
-      grid-template-columns: 160px 1fr;
-      gap:24px;
-      align-items:start;
-      padding:18px;
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      background:#fff;
-      box-shadow:0 4px 16px rgba(0,0,0,.03);
-    }
-    .t-date{ font-weight:700; color:#111827 }
-    .t-role{ font-weight:800; color:#111827; margin:0 }
-    .t-org{ color:#6b7280; margin:4px 0 8px }
-    .t-bullets{ margin:0; padding-left:18px; color:#374151 }
-    .t-bullets li{ margin:6px 0 }
-
-    /* Certs grid */
-    .certs-grid{
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:18px;
-    }
-    .cert{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:16px;
-      background:#fff;
-      box-shadow:0 4px 16px rgba(0,0,0,.03);
-    }
-    .cert .c-title{ font-weight:700; color:#111827; margin:0 0 6px }
-    .cert .c-issuer{ color:#6b7280; font-size:14px }
-
-    /* Contact simple card */
-    .contact-card{
-      border:1px solid var(--line);
-      border-radius:var(--radius);
-      padding:18px;
-      background:#fff;
-      box-shadow:0 4px 16px rgba(0,0,0,.03);
-      display:grid;
-      gap:10px;
-      max-width:720px;
-    }
-    .contact-row{ display:flex; gap:10px; align-items:center }
-    .contact-row a{ color:#2563eb; text-decoration:none }
-    .contact-row a:hover{ text-decoration:underline }
-
-    footer{
-      padding:40px 0;
-      border-top:1px solid var(--line);
-      color:#6b7280;
-      text-align:center;
-      font-size:14px;
-    }
-
-    /* responsive */
-    @media (max-width: 1100px){
-      :root{ --leftw: 440px }
-      .right-metrics{ grid-template-columns: repeat(2, 1fr) }
-    }
-    @media (max-width: 900px){
+    @media (max-width: 1024px){
       .about-grid{
-        grid-template-columns:1fr;
-        grid-template-rows:auto auto auto auto;
-        row-gap:28px;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "photo"
+          "metrics"
+          "facts"
+          "skills";
+        gap:18px;
       }
-      .right-metrics{
-        grid-column:1;
-        border-left:0;
-        padding-left:0;
-      }
-      .strengths{
-        grid-column:1;
-        height:auto;
-        align-content:start; /* no shared baseline needed on mobile stack */
-      }
-      .timeline .t-item{
-        grid-template-columns:1fr;
-        gap:8px;
-      }
-      .certs-grid{
-        grid-template-columns:1fr 1fr;
-      }
+      #about .about-frame{ padding:0 16px 28px }
     }
-    @media (max-width: 600px){
-      .certs-grid{ grid-template-columns:1fr }
+
+    /* Photo */
+    .portrait-frame{ position:relative; border-radius:0; overflow:hidden; background:#f8fafc }
+    .portrait-frame::before{ content:""; display:block; aspect-ratio: 4 / 3 }
+    .portrait{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover }
+
+    /* Metrics */
+    .metrics{
+      display:grid;
+      grid-template-columns:repeat(4, minmax(0,1fr));
+      column-gap:20px;
+      align-content:start;
     }
+    .metric{
+      padding:14px var(--metric-pad);
+      border-right:1px solid #f3f4f6;
+    }
+    .metric:last-child{ border-right:none }
+
+    @media (max-width:1024px){
+      .metrics{ grid-template-columns:repeat(2,1fr); column-gap:16px; row-gap:10px }
+      .metric{ border-right:none }
+    }
+
+    .ring{
+      display:inline-grid; place-items:center;
+      width:36px; height:36px; border-radius:50%;
+      border:2px solid var(--accent); background:#fff; font-size:14px; color:#111;
+    }
+    .metric h3{ margin:8px 0 4px; font-size:22px; font-weight:800; color:var(--ink) }
+    .metric small{ display:block; color:#6b7280; font-size:12px; line-height:1.35 }
+
+    /* Facts */
+    .facts-open{ display:grid; grid-template-columns:repeat(2, minmax(0,1fr)); gap:12px 28px }
+    @media (max-width:720px){ .facts-open{ grid-template-columns:1fr } }
+    .fact{ display:flex; flex-direction:column; gap:6px }
+    .fact .k{ font-weight:800; letter-spacing:.02em; color:var(--ink); font-size:13px }
+    .fact .k::before{ content:"›"; margin-right:8px; color:var(--accent); font-weight:900 }
+    .fact .v{ color:var(--fg); font-size:14px; line-height:1.4 }
+
+    /* Ensure metrics + skills share identical content edge */
+    .g-metrics, .g-skills{ width:100%; padding-left:0; padding-right:0 }
+    .skills h3{ margin:0 0 10px; color:var(--ink) }
+    .skill{ margin:12px 0 }
+    .skill .title{ font-size:12px; font-weight:800; letter-spacing:.03em; color:var(--ink) }
+    .skill .note{ margin:6px 0 8px; font-size:12px; color:#6b7280 }
+    .bar{ height:10px; background:#f1f5f9; border-radius:999px; overflow:hidden; border:0 }
+    .bar > span{ display:block; height:100%; background:linear-gradient(90deg, #f1c40f, #ffd659); width:var(--v,70%) }
+
+    /* ===== RESUME ===== */
+    .resume-sub{ color:var(--muted); font-size:15px; margin:0 0 34px; text-align:center }
+    .resume-grid{ display:grid; grid-template-columns:1fr 1fr; gap:32px }
+    @media (max-width:900px){ .resume-grid{ grid-template-columns:1fr } }
+    .section h3{ font-size:22px; margin:0 0 16px; color:var(--ink) }
+    .timeline{ position:relative; margin:0; padding:0; list-style:none }
+    .timeline:before{ content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:var(--line) }
+    .tl-item{ position:relative; padding-left:36px; margin:0 0 18px }
+    .tl-item:before{ content:""; position:absolute; left:3px; top:6px; width:14px; height:14px; border:3px solid var(--accent); background:#fff; border-radius:50% }
+    .heading{ font-weight:800; font-size:13px; color:#f59e0b; text-transform:uppercase; letter-spacing:.02em }
+    .badge{ display:inline-block; background:#f3f4f6; color:#111827; border:1px solid var(--line); border-radius:6px; padding:4px 8px; font-size:12px; font-weight:700; margin:6px 0 }
+    .meta{ font-style:italic; color:#374151; font-size:13px; margin:2px 0 6px }
+    .desc{ color:var(--muted); font-size:14px; line-height:1.6 }
+    .desc ul{ margin:6px 0 0 18px; padding:0 }
+    .desc li{ margin:4px 0 }
+
+    /* CERTS */
+    .certs-grid{ display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:16px }
+    @media (max-width:680px){ .certs-grid{ grid-template-columns:1fr } }
+    .cert{ background:transparent; border:0; padding:0 }
+    .cert .title{ font-weight:700; margin:0 0 6px; color:var(--ink) }
+    .cert .org{ color:#6b7280; font-size:13px; margin:0 0 10px }
+    .badge-pill{ display:inline-block; padding:6px 10px; border-radius:999px; font-size:12px; border:1px solid var(--line); background:#f8fafc; color:#374151 }
+
+    footer{ text-align:center; font-size:13px; color:#6b7280; padding-bottom:24px }
   </style>
 </head>
 <body>
 
-  <!-- nav -->
-  <header class="tabs">
-    <div class="container inner">
-      <nav>
-        <a href="#home" class="active">Home</a>
-        <a href="#about">About</a>
-        <a href="#resume">Resume</a>
-        <a href="#certs">Certifications</a>
-        <a href="#contact">Contact</a>
-      </nav>
+  <!-- NAV -->
+  <nav class="tabs" id="tabs">
+    <div class="inner">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+      <a href="#resume">Resume</a>
+      <a href="#certs">Certifications & Achievements</a>
+      <a href="#contact">Contact</a>
     </div>
-  </header>
+  </nav>
 
-  <!-- hero -->
+  <!-- HERO -->
   <section id="home" class="hero">
-    <div class="container">
+    <img class="hero-bg" id="heroImg" alt="Background">
+    <div class="inner">
+      <h1 style="display:none">Waqas Arshad</h1>
       <p class="sig">Waqas Arshad</p>
-      <p class="subtitle">Senior Product Manager  CPaaS  SaaS  FinTech  AI</p>
+      <p class="subtitle">Product Management and Innovation</p>
+    </div>
+    <a href="#about" class="scroll-indicator" aria-label="Scroll to About">↓</a>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="section">
+    <div class="wrap">
+      <div class="about-frame">
+
+        <h2 class="section-title" data-ghost="ABOUT ME"><span>About me</span></h2>
+        <p class="muted intro">
+          I am an experienced Senior Product Manager with <strong>14+ years</strong> in Telecom, SaaS, CPaaS, and
+          FinTech, driving digital transformation and product innovation across MENA, CIS, and Asia.
+          I specialize in building scalable platforms, launching digital services, and delivering customer-centric
+          growth strategies.
+        </p>
+
+        <div class="about-grid">
+          <!-- Photo -->
+          <div class="g-photo">
+            <div class="portrait-frame">
+              <img class="portrait" src="portrait.png" alt="Waqas Arshad portrait">
+            </div>
+          </div>
+
+          <!-- Metrics -->
+          <div class="g-metrics">
+            <div class="metrics">
+              <div class="metric">
+                <span class="ring">★</span>
+                <h3><span class="count" data-from="0" data-to="14" data-duration="1200" data-suffix="+"></span>&nbsp;years</h3>
+                <small>Product management & digital innovation</small>
+              </div>
+              <div class="metric">
+                <span class="ring">🌐</span>
+                <h3>Global reach</h3>
+                <small>Delivered across MENA, CIS & Asia</small>
+              </div>
+              <div class="metric">
+                <span class="ring">✎</span>
+                <h3><span class="count" data-from="0" data-to="50" data-duration="1200" data-suffix="+"></span>&nbsp;launches</h3>
+                <small>CPaaS, Super Apps & services</small>
+              </div>
+              <div class="metric">
+                <span class="ring">👥</span>
+                <h3><span class="count" data-from="0" data-to="5" data-duration="1200" data-suffix="M+"></span>&nbsp;users</h3>
+                <small>Telecom, SaaS & FinTech solutions</small>
+              </div>
+            </div>
+          </div>
+
+          <!-- Facts -->
+          <div class="g-facts">
+            <div class="facts-open">
+              <div class="fact"><div class="k">Name</div><div class="v">Waqas Arshad</div></div>
+              <div class="fact"><div class="k">Degrees</div><div class="v">Master’s in Project Management; Bachelor’s in Electrical Engineering</div></div>
+              <div class="fact"><div class="k">City</div><div class="v">Islamabad, Pakistan</div></div>
+              <div class="fact"><div class="k">School</div><div class="v">Shaheed Zulfiqar Ali Bhutto Institute of Science & Technology</div></div>
+              <div class="fact"><div class="k">Email</div><div class="v"><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></div></div>
+              <div class="fact"><div class="k">Current designation</div><div class="v">Senior Product Manager</div></div>
+            </div>
+          </div>
+
+          <!-- Skills -->
+          <div class="g-skills">
+            <div class="skills">
+              <h3>Core strengths</h3>
+
+              <div class="skill">
+                <div class="title">PRODUCT STRATEGY & LEADERSHIP</div>
+                <div class="note">Roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
+                <div class="bar"><span style="--v:90%"></span></div>
+              </div>
+              <div class="skill">
+                <div class="title">DIGITAL PLATFORMS & FINTECH</div>
+                <div class="note">VAS, charging systems, ICT, SuperApp & digital platforms, FinTech</div>
+                <div class="bar"><span style="--v:88%"></span></div>
+              </div>
+              <div class="skill">
+                <div class="title">CPAAS & MESSAGING PLATFORMS</div>
+                <div class="note">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
+                <div class="bar"><span style="--v:86%"></span></div>
+              </div>
+              <div class="skill">
+                <div class="title">AGILE & DESIGN THINKING</div>
+                <div class="note">Agile leadership, cross-functional collaboration, design thinking</div>
+                <div class="bar"><span style="--v:84%"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /about-frame -->
     </div>
   </section>
 
-  <!-- about -->
-  <section id="about">
-    <div class="container">
-      <h2>About me</h2>
-      <p class="intro">
-        I am an experienced Senior Product Manager with 14 plus years in Telecom, SaaS, CPaaS, and FinTech,
-        driving digital transformation and product innovation across MENA, CIS, and Asia.
-        I specialize in building scalable platforms, launching digital services, and delivering customer centric growth strategies.
-      </p>
+  <!-- RESUME -->
+  <section id="resume" class="section">
+    <div class="wrap">
+      <h2 class="section-title" data-ghost="MY RESUME"><span>My Resume</span></h2>
+      <p class="resume-sub">Product and innovation leader with hands-on delivery across CPaaS, SaaS, and telecom</p>
 
-      <div class="about-grid">
-        <!-- left col row 1 -->
-        <img class="left-photo"
-             src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=1200&auto=format&fit=crop"
-             alt="Portrait" />
+      <div class="resume-grid">
+        <!-- Education -->
+        <section class="section">
+          <h3>Education</h3>
+          <ul class="timeline">
+            <li class="tl-item">
+              <div class="heading">Master of Science, Project Management</div>
+              <div class="badge">2014</div>
+              <div class="meta">SZABIST, Islamabad</div>
+              <div class="desc">Focus on program and project management, delivery, and stakeholder leadership.</div>
+            </li>
+            <li class="tl-item">
+              <div class="heading">Bachelor of Electrical Engineering</div>
+              <div class="badge">2009</div>
+              <div class="meta">CASE, Islamabad</div>
+              <div class="desc">Electrical and telecom foundations with emphasis on networks and systems.</div>
+            </li>
+          </ul>
+        </section>
 
-        <!-- left col row 2 -->
-        <div class="facts">
-          <div>
-            <div class="label">Name</div>
-            <div class="value">Waqas Arshad</div>
-          </div>
-          <div>
-            <div class="label">Degrees</div>
-            <div class="value">Master in Project Management  Bachelor in Electrical Engineering</div>
-          </div>
-          <div>
-            <div class="label">City</div>
-            <div class="value">Islamabad, Pakistan</div>
-          </div>
-          <div>
-            <div class="label">School</div>
-            <div class="value">Shaheed Zulfiqar Ali Bhutto Institute of Science and Technology</div>
-          </div>
-          <div>
-            <div class="label">Email</div>
-            <div class="value"><a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a></div>
-          </div>
-          <div>
-            <div class="label">Current designation</div>
-            <div class="value">Senior Product Manager</div>
-          </div>
-        </div>
+        <!-- Experience -->
+        <section class="section">
+          <h3>Professional Experience</h3>
+          <ul class="timeline">
+            <li class="tl-item">
+              <div class="heading">Senior Product Manager</div>
+              <div class="badge">2022 – Present</div>
+              <div class="meta">GMS, Switzerland — Remote</div>
+              <div class="desc">
+                <ul>
+                  <li>Leading product strategy and execution for CPaaS solutions including WhatsApp Business API, Viber, and SMS hubs.</li>
+                  <li>Delivered omnichannel messaging solutions across CIS, Asia, and MENA.</li>
+                  <li>Collaborated with cross-functional teams to ship compliant, customer-centric messaging aligned with telecom regulations.</li>
+                </ul>
+              </div>
+            </li>
 
-        <!-- right col row 1 -->
-        <div class="right-metrics">
-          <div class="metric">
-            <div class="num">14 plus years</div>
-            <div class="cap">Product management and digital innovation</div>
-          </div>
-          <div class="metric">
-            <div class="num">Global reach</div>
-            <div class="cap">Delivered across MENA, CIS and Asia</div>
-          </div>
-          <div class="metric">
-            <div class="num">50 plus launches</div>
-            <div class="cap">CPaaS, Super Apps and services</div>
-          </div>
-          <div class="metric">
-            <div class="num">5M plus users</div>
-            <div class="cap">Telecom, SaaS and FinTech solutions</div>
-          </div>
-        </div>
+            <li class="tl-item">
+              <div class="heading">Product Manager</div>
+              <div class="badge">2021 – 2022</div>
+              <div class="meta">GMS, Switzerland — Remote</div>
+              <div class="desc">
+                <ul>
+                  <li>Defined product vision for B2B Viber solutions in the Ukrainian market.</li>
+                  <li>Worked closely with engineering, design, and operations teams to roll out localized product solutions.</li>
+                  <li>Supported go-to-market with localized use cases and sales enablement.</li>
+                </ul>
+              </div>
+            </li>
 
-        <!-- right col row 2 -->
-        <div class="strengths">
-          <h3>Core strengths</h3>
+            <li class="tl-item">
+              <div class="heading">Product Manager</div>
+              <div class="badge">2020 – 2021</div>
+              <div class="meta">Jazz, Pakistan</div>
+              <div class="desc">
+                <ul>
+                  <li>Managed a $40M B2B portfolio including A2P messaging and Jazz Super App.</li>
+                  <li>Expanded enterprise reach by optimizing A2P SMS and driving adoption in new segments.</li>
+                  <li>Worked with senior leadership to shape product vision using market research and competitive insights.</li>
+                </ul>
+              </div>
+            </li>
 
-          <div class="skill">
-            <div class="title">Product strategy and leadership</div>
-            <div class="desc">Roadmapping, product strategy, user discovery, market analysis, adaptive leadership</div>
-            <div class="bar"><div class="fill" style="width:88%"></div></div>
-          </div>
+            <li class="tl-item">
+              <div class="heading">Project Manager</div>
+              <div class="badge">2016 – 2020</div>
+              <div class="meta">Telenor, Pakistan</div>
+              <div class="desc">
+                <ul>
+                  <li>Directed launch of 20+ VAS products including Sehat Care, Smart Tunes, and Islamic Portal 786.</li>
+                  <li>Led development of My Telenor App (2M+ downloads), moving customers from USSD to app-based self-care.</li>
+                  <li>Built partnerships with health and utility providers to extend the digital ecosystem.</li>
+                </ul>
+              </div>
+            </li>
 
-          <div class="skill">
-            <div class="title">Digital platforms and FinTech</div>
-            <div class="desc">VAS, charging systems, ICT, SuperApp and digital platforms, FinTech</div>
-            <div class="bar"><div class="fill" style="width:82%"></div></div>
-          </div>
+            <li class="tl-item">
+              <div class="heading">Project Manager</div>
+              <div class="badge">2015 – 2016</div>
+              <div class="meta">Telenor Microfinance Bank, Pakistan</div>
+              <div class="desc">
+                <ul>
+                  <li>Launched Pakistan’s first fintech Super App for payments, transfers, and bills.</li>
+                  <li>Owned product vision and rollout of a merchant portal adopted by 50,000+ SMEs for QR and NFC payments.</li>
+                  <li>Drove adoption through USSD-to-app migration campaigns.</li>
+                </ul>
+              </div>
+            </li>
 
-          <div class="skill">
-            <div class="title">CPaaS and messaging platforms</div>
-            <div class="desc">WhatsApp Business, Viber, SMS, omnichannel messaging, SaaS scaling</div>
-            <div class="bar"><div class="fill" style="width:86%"></div></div>
-          </div>
+            <li class="tl-item">
+              <div class="heading">VAS Product Manager</div>
+              <div class="badge">2014 – 2015</div>
+              <div class="meta">China Mobile, Pakistan</div>
+              <div class="desc">
+                <ul>
+                  <li>Introduced services like Zero Balance Calls and Advanced Loan for customer accessibility.</li>
+                  <li>Enhanced experience with Yaari Load and Double Number App.</li>
+                </ul>
+              </div>
+            </li>
 
-          <div class="skill">
-            <div class="title">Agile and design thinking</div>
-            <div class="desc">Agile leadership, cross functional collaboration, design thinking</div>
-            <div class="bar"><div class="fill" style="width:78%"></div></div>
-          </div>
-        </div>
+            <li class="tl-item">
+              <div class="heading">VAS Planning Engineer</div>
+              <div class="badge">2010 – 2013</div>
+              <div class="meta">Ufone, Pakistan</div>
+              <div class="desc">
+                <ul>
+                  <li>Improved messaging and VAS network performance through targeted upgrades.</li>
+                  <li>Delivered 40+ VAS products that expanded the digital services portfolio.</li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </section>
       </div>
     </div>
   </section>
 
-  <!-- resume -->
-  <section id="resume">
-    <div class="container">
-      <h2>Resume</h2>
-      <div class="timeline">
-
-        <article class="t-item">
-          <div class="t-date">2022 to Present</div>
-          <div>
-            <h3 class="t-role">Senior Product Manager</h3>
-            <div class="t-org">GMS Switzerland</div>
-            <ul class="t-bullets">
-              <li>Built market leading product strategies aligned with company mission and targets</li>
-              <li>Reduced time to market through agile process optimization and backlog leadership</li>
-              <li>Led cross functional delivery for WhatsApp Business, Viber, SMS, and omnichannel features</li>
-              <li>Collaborated with engineering and design to ship high quality releases</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="t-item">
-          <div class="t-date">2020 to 2021</div>
-          <div>
-            <h3 class="t-role">B2B Product Manager</h3>
-            <div class="t-org">Jazz Pakistan</div>
-            <ul class="t-bullets">
-              <li>Drove portfolio growth through customer centric product launches</li>
-              <li>Improved processes to boost efficiency and speed of delivery</li>
-            </ul>
-          </div>
-        </article>
-
-        <article class="t-item">
-          <div class="t-date">Earlier</div>
-          <div>
-            <h3 class="t-role">Project and Product Roles</h3>
-            <div class="t-org">Telenor Group and others</div>
-            <ul class="t-bullets">
-              <li>Delivered enterprise solutions with strong focus on reliability and user impact</li>
-              <li>Implemented agile methods across teams and reduced time to market</li>
-            </ul>
-          </div>
-        </article>
-
+  <!-- CERTIFICATIONS & ACHIEVEMENTS -->
+  <section id="certs" class="wrap">
+    <h2 class="section-title" data-ghost="CERTIFICATIONS"><span>Certifications & Achievements</span></h2>
+    <div class="certs-grid">
+      <div class="cert">
+        <p class="title">IBM Design Thinking Practitioner</p>
+        <p class="org">IBM</p>
+        <span class="badge-pill">Credentialed</span>
+      </div>
+      <div class="cert">
+        <p class="title">Professional Scrum Product Owner (PSPO)</p>
+        <p class="org">Scrum.org</p>
+        <span class="badge-pill">Certified</span>
+      </div>
+      <div class="cert">
+        <p class="title">50+ Product Launches</p>
+        <p class="org">Telecom, SaaS, CPaaS</p>
+        <span class="badge-pill">Achievement</span>
+      </div>
+      <div class="cert">
+        <p class="title">5M+ Users Reached</p>
+        <p class="org">MENA, CIS, APAC</p>
+        <span class="badge-pill">Impact</span>
       </div>
     </div>
   </section>
 
-  <!-- certifications and achievements -->
-  <section id="certs">
-    <div class="container">
-      <h2>Certifications and achievements</h2>
-      <div class="certs-grid">
-        <div class="cert">
-          <div class="c-title">IBM Design Thinking Practitioner</div>
-          <div class="c-issuer">IBM</div>
-        </div>
-        <div class="cert">
-          <div class="c-title">Professional Scrum Product Owner</div>
-          <div class="c-issuer">Scrum.org</div>
-        </div>
-        <div class="cert">
-          <div class="c-title">Meta Business Messaging Programs</div>
-          <div class="c-issuer">Meta</div>
-        </div>
-      </div>
+  <!-- CONTACT -->
+  <section id="contact" class="wrap">
+    <h2 class="section-title" data-ghost="CONTACT"><span>Contact</span></h2>
+    <p class="muted" style="max-width:760px;margin:0 auto 16px;text-align:center">Open to roles and collaborations in EMEA and APAC.</p>
+    <div style="text-align:center">
+      <a href="mailto:waxas.arshad@gmail.com" style="display:inline-block;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:700;border:1px solid #111827;background:#111827;color:#fff">Email me</a>
     </div>
   </section>
 
-  <!-- contact -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <div class="contact-card">
-        <div class="contact-row">
-          <strong>Email</strong>
-          <a href="mailto:waxas.arshad@gmail.com">waxas.arshad@gmail.com</a>
-        </div>
-        <div class="contact-row">
-          <strong>City</strong>
-          <span>Islamabad, Pakistan</span>
-        </div>
-        <div class="contact-row">
-          <strong>LinkedIn</strong>
-          <a href="#" rel="noopener">linkedin.com/in/waqas-arshad</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    © <span id="y"></span> Waqas Arshad. All rights reserved.
+  <footer class="wrap" style="text-align:center;color:#6b7280;padding-bottom:24px">
+    © <span id="y">2025</span> Waqas Arshad
   </footer>
 
   <script>
-    // active nav on scroll
-    const links = Array.from(document.querySelectorAll('.tabs a'));
-    const ids = links.map(a => a.getAttribute('href'));
-    const secs = ids.map(id => document.querySelector(id)).filter(Boolean);
-    const setActive = () => {
-      let idx = 0;
-      const y = window.scrollY + 100;
-      secs.forEach((s, i) => { if (s.offsetTop <= y) idx = i; });
-      links.forEach(l => l.classList.remove('active'));
-      if (links[idx]) links[idx].classList.add('active');
-    };
-    window.addEventListener('scroll', setActive);
-    setActive();
+    // Active tab + color over hero
+    const nav=document.getElementById('tabs');
+    const links=[...document.querySelectorAll('#tabs a')];
+    const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
+    const hero=document.getElementById('home');
 
-    // year in footer
-    document.getElementById('y').textContent = new Date().getFullYear();
+    function setActive(){
+      const y=scrollY+80; let i=0;
+      secs.forEach((s,idx)=>{ if(s && s.offsetTop<=y) i=idx });
+      links.forEach((a,idx)=>a.classList.toggle('active', idx===i));
+      const heroBottom=hero.getBoundingClientRect().bottom + scrollY;
+      nav.classList.toggle('on-hero', scrollY < heroBottom - 80);
+    }
+    addEventListener('scroll', setActive); addEventListener('load', setActive);
 
-    // optional: smooth click scroll offset for fixed nav
-    links.forEach(a => {
-      a.addEventListener('click', e => {
-        const href = a.getAttribute('href');
-        if (!href || !href.startsWith('#')) return;
-        const target = document.querySelector(href);
-        if (!target) return;
-        e.preventDefault();
-        const top = target.getBoundingClientRect().top + window.scrollY - 60;
-        window.scrollTo({ top, behavior: 'smooth' });
-      });
-    });
+    // Footer year
+    document.getElementById('y').textContent=new Date().getFullYear();
+
+    // HERO fallback image loader
+    (function(){
+      const img=document.getElementById('heroImg');
+      const candidates=["Hero.jpg","Hero.png","hero.jpg","hero.png","header.jpg","bg.jpg","coworking.jpg"];
+      let i=0; function loadNext(){ if(i>=candidates.length){return;} img.src=candidates[i++]; }
+      img.onerror=loadNext; loadNext();
+    })();
+
+    // Count-up on reveal of metrics
+    (function(){
+      const metrics = document.querySelector('.metrics');
+      if(!metrics) return;
+
+      const counters = metrics.querySelectorAll('.count');
+      let started = false;
+      const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+      function animateCount(el){
+        const from = parseFloat(el.dataset.from || 0);
+        const to = parseFloat(el.dataset.to   || 0);
+        const dur = parseInt(el.dataset.duration || 1200, 10);
+        const suffix = el.dataset.suffix || '';
+        const decimals = parseInt(el.dataset.decimals || 0, 10);
+        const start = performance.now();
+        function frame(now){
+          const t = Math.min((now - start) / dur, 1);
+          const eased = easeOutCubic(t);
+          const value = from + (to - from) * eased;
+          el.textContent = value.toFixed(decimals) + suffix;
+          if (t < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      }
+
+      const io = new IntersectionObserver((entries)=>{
+        if (started) return;
+        if (entries[0].isIntersecting){
+          counters.forEach(animateCount);
+          started = true;
+          io.disconnect();
+        }
+      }, { threshold: 0.35 });
+
+      io.observe(metrics);
+    })();
+
+    // *** Hard alignment guard: make "Core strengths" left edge match metrics left edge on desktop ***
+    function alignSkills(){
+      const mq = window.matchMedia('(max-width:1024px)');
+      const skills = document.querySelector('#about .g-skills');
+      const metrics = document.querySelector('#about .g-metrics');
+      if(!skills || !metrics) return;
+      if (mq.matches){
+        skills.style.marginLeft = '0px';
+        return;
+      }
+      const delta = metrics.getBoundingClientRect().left - skills.getBoundingClientRect().left;
+      skills.style.marginLeft = delta + 'px';
+    }
+    addEventListener('load', alignSkills);
+    addEventListener('resize', () => { requestAnimationFrame(alignSkills); });
   </script>
 </body>
 </html>
+
+    .skill:last-child{ margin-bottom:0 }
